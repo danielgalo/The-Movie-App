@@ -1,13 +1,21 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.TMAMain;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 public class PantallaLoginController {
 
@@ -24,6 +32,9 @@ public class PantallaLoginController {
 	private Button btnRegister;
 
 	@FXML
+	private ImageView imgLogo;
+
+	@FXML
 	private Label lblTitle;
 
 	@FXML
@@ -33,7 +44,32 @@ public class PantallaLoginController {
 	private PasswordField txtPassword;
 
 	@FXML
+	void btnRegistroPressed(MouseEvent event) {
+
+		// Navegar a pantalla de registro
+
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(TMAMain.class.getResource("/views/PantallaRegister.fxml"));
+			Pane ventana;
+			ventana = (Pane) loader.load();
+			Scene scene = new Scene(ventana);
+
+			String urlCss = getClass().getResource("/styles/register-style.css").toExternalForm();
+
+			scene.getStylesheets().add(urlCss);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
 	void initialize() {
+
+		imgLogo.setImage(new Image("/resources/logo-app.png"));
 
 	}
 
