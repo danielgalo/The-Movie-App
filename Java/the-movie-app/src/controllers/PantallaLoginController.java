@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class PantallaLoginController {
 
@@ -47,20 +48,21 @@ public class PantallaLoginController {
 	void btnRegistroPressed(MouseEvent event) {
 
 		// Navegar a pantalla de registro
-
 		try {
+			Stage stage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(TMAMain.class.getResource("/views/PantallaRegister.fxml"));
 			Pane ventana;
 			ventana = (Pane) loader.load();
 			Scene scene = new Scene(ventana);
-
 			String urlCss = getClass().getResource("/styles/register-style.css").toExternalForm();
-
 			scene.getStylesheets().add(urlCss);
 
+			stage.setTitle("Pantalla de Registro");
+			stage.setScene(scene);
+			stage.show();
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
