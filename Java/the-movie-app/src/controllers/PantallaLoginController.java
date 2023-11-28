@@ -18,6 +18,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Clase controller de la pantalla de login
+ */
 public class PantallaLoginController {
 
 	@FXML

@@ -1,19 +1,23 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/** Styles de la pantalla de login */
+
+/* Fondo gradiente */
 .root {
     -fx-background-color: linear-gradient(to bottom, #CEF3FF, #00789E);
 }
 
+/* Texto del logo */
 #lblTitle{
-	-fx-color: #000;
+	-fx-color: #000000;
 	-fx-font-family: "Inter";
 	-fx-font-size: 40.0px;
-	-fx-font-weight: SEMI_BOLD;
+	-fx-font-weight: 600;
 	-fx-alignment: CENTER;
 	-fx-text-alignment: center;
 	-fx-translate-x: 50%; 
     -fx-translate-y: 50%;
 }
 
+/* Text field del email */
 #txtCorreo {
 	
     -fx-border-radius: 30; 
@@ -21,12 +25,14 @@
 	-fx-font-size: 20.0px;
 }
 
+/* Password field */
 #txtPassword{
     -fx-border-radius: 30; 
     -fx-font-family: "Inter";
 	-fx-font-size: 20.0px;
 }
 
+/* Estilos generales de los botones */
 .button{
 	 -fx-font-family: "Inter";
 	-fx-text-fill:#FFFFFF;
@@ -37,20 +43,24 @@
     -fx-padding: 3 6 6 6;
 }
 
+/* Boton de registro */
 #btnRegister{
 	
 	-fx-font-weight: 600;
 	-fx-background-color:#000000;
 }
 
+/* Hover del boton de registro */
 #btnRegister:hover{
 	-fx-background-color:#000AFF;
 }
 
+/* Boton de acceder */
 #btnAcceder:hover{
 	-fx-background-color:#000000;
 }
 
+/* Hover del boton de acceder */
 #btnAcceder{
 	
 	-fx-font-weight: 600;
