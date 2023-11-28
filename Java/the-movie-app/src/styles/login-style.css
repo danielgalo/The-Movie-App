@@ -19,15 +19,18 @@
 
 /* Text field del email */
 #txtCorreo {
-	
-    -fx-border-radius: 30; 
+    -fx-border-color: #000000;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15; 
     -fx-font-family: "Inter";
 	-fx-font-size: 20.0px;
 }
 
 /* Password field */
 #txtPassword{
-    -fx-border-radius: 30; 
+    -fx-border-radius: 15; 
+    -fx-border-color: #000000;
+     -fx-background-radius: 15; 
     -fx-font-family: "Inter";
 	-fx-font-size: 20.0px;
 }

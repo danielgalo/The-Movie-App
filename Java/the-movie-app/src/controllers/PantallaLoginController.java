@@ -12,10 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -78,6 +80,16 @@ public class PantallaLoginController {
 	void initialize() {
 
 		imgLogo.setImage(new Image("/resources/logo-app.png"));
+		// Setting the deep shadow effect to the text
+		DropShadow shadow = new DropShadow();
+		shadow.setOffsetY(3);
+		shadow.setColor(new Color(0, 0, 0, 0.35));
+
+		lblTitle.setEffect(shadow);
+		txtCorreo.setEffect(shadow);
+		txtPassword.setEffect(shadow);
+		btnAcceder.setEffect(shadow);
+		btnRegister.setEffect(shadow);
 
 	}
 
