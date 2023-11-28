@@ -32,14 +32,22 @@
 	-fx-text-fill:#FFFFFF;
 	-fx-font-size: 30px;
     -fx-border-width: 2px;
-    -fx-border-radius: 15;
-    -fx-background-radius: 15;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
     -fx-padding: 3 6 6 6;
 }
 
 #btnRegister{
 	
 	-fx-font-weight: 600;
+	-fx-background-color:#000000;
+}
+
+#btnRegister:hover{
+	-fx-background-color:#000AFF;
+}
+
+#btnAcceder:hover{
 	-fx-background-color:#000000;
 }
 

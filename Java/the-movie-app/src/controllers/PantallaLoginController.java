@@ -49,19 +49,22 @@ public class PantallaLoginController {
 
 		// Navegar a pantalla de registro
 		try {
+			// Crear stage
 			Stage stage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
+			// Cargar la clase
 			loader.setLocation(TMAMain.class.getResource("/views/PantallaRegister.fxml"));
+			// Crear la ventana
 			Pane ventana;
 			ventana = (Pane) loader.load();
 			Scene scene = new Scene(ventana);
+			// Añadirle los estilos
 			String urlCss = getClass().getResource("/styles/register-style.css").toExternalForm();
 			scene.getStylesheets().add(urlCss);
-
+			// Mostrar la pantalla
 			stage.setTitle("Pantalla de Registro");
 			stage.setScene(scene);
 			stage.show();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
