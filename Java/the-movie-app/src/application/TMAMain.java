@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * Clase principal de la aplicación. Lanza la pantalla de Login
+ */
 public class TMAMain extends Application {
 	@Override
 	public void start(Stage primaryStage) {
@@ -29,6 +32,11 @@ public class TMAMain extends Application {
 		}
 	}
 
+	/**
+	 * Método principal
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
