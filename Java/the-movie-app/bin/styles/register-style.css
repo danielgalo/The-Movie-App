@@ -1,0 +1,7 @@
+#mainPane {
+	-fx-background-color: rgb(143, 187, 201);
+}
+
+#subPane{
+	-fx-background-color: lightblue;
+}
