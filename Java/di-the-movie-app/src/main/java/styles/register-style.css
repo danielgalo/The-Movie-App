@@ -1,7 +1,59 @@
 #mainPane {
+	-fx-width: 1440;
+	-fx-height: 1024;
 	-fx-background-color: rgb(143, 187, 201);
 }
 
 #subPane{
+	-fx-width: 1068;
+	-fx-height: 924;
 	-fx-background-color: lightblue;
+}
+
+#lblRegistro{
+	-fx-color: black;
+	-fx-font: System 96px;
+	-fx-weight: 400;
+}
+
+#lblEmail{
+	-fx-color: black;
+	-fx-font: System 30px;
+	-fx-weight: 400;
+}
+
+#txtEmail{
+	-fx-layout-x: 131;
+	-fx-layout-y: 318;
+	-fx-width: 810;
+	-fx-height: 73;
+	-fx-radius: 30;
+}
+
+#lblContrasena{
+	-fx-color: black;
+	-fx-font: System 30px;
+	-fx-weight: 400;
+}
+
+#txtContrasena{
+	-fx-layout-x: 131;
+	-fx-layout-y: 501;
+	-fx-width: 810;
+	-fx-height: 73;
+	-fx-radius: 30;
+}
+
+#lblRepetirContrasena{
+	-fx-color: black;
+	-fx-font: System 30px;
+	-fx-weight: 400;
+}
+
+#txtReptirContrasena{
+	-fx-layout-x: 131;
+	-fx-layout-y: 692;
+	-fx-width: 810;
+	-fx-height: 73;
+	-fx-radius: 30;
 }
