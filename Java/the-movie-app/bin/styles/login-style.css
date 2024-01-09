@@ -1,0 +1,72 @@
+/** Styles de la pantalla de login */
+
+/* Fondo gradiente */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #CEF3FF, #00789E);
+}
+
+/* Texto del logo */
+#lblTitle{
+	-fx-color: #000000;
+	-fx-font-family: "Inter";
+	-fx-font-size: 40.0px;
+	-fx-font-weight: 600;
+	-fx-alignment: CENTER;
+	-fx-text-alignment: center;
+	-fx-translate-x: 50%; 
+    -fx-translate-y: 50%;
+}
+
+/* Text field del email */
+#txtCorreo {
+    -fx-border-color: #000000;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15; 
+    -fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
+}
+
+/* Password field */
+#txtPassword{
+    -fx-border-radius: 15; 
+    -fx-border-color: #000000;
+     -fx-background-radius: 15; 
+    -fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
+}
+
+/* Estilos generales de los botones */
+.button{
+	 -fx-font-family: "Inter";
+	-fx-text-fill:#FFFFFF;
+	-fx-font-size: 30px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-padding: 3 6 6 6;
+}
+
+/* Boton de registro */
+#btnRegister{
+	
+	-fx-font-weight: 600;
+	-fx-background-color:#000000;
+}
+
+/* Hover del boton de registro */
+#btnRegister:hover{
+	-fx-background-color:#000AFF;
+}
+
+/* Boton de acceder */
+#btnAcceder:hover{
+	-fx-background-color:#000000;
+}
+
+/* Hover del boton de acceder */
+#btnAcceder{
+	
+	-fx-font-weight: 600;
+	-fx-background-color:#000AFF;
+}
+
