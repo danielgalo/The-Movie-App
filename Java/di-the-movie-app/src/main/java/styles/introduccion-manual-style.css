@@ -1,0 +1,88 @@
+#mainPane{
+	-fx-background-color: #3B97B5;
+}
+
+#subPane{
+	-fx-background-color: #D9D9D9;
+	-fx-background-radius: 50;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 50;
+}
+
+#cabecera{
+	-fx-background-color: black;
+}
+
+#lblCabecera{
+	-fx-font-family: System;
+	-fx-font-size: 50;
+	-fx-text-fill: white;
+}
+
+#lblExplicacion{
+	-fx-font-family: System;
+	-fx-font-size: 50;
+}
+
+#lblTitulo{
+	-fx-font-family: System;
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+}
+
+#lblDescripcion{
+	-fx-font-family: System;
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+}
+
+#lblFechaEstreno{
+	-fx-font-family: System;
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+}
+
+#lblPoster{
+	-fx-font-family: System;
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+}
+
+#txtTitulo{
+	-fx-pref-width: 810;
+	-fx-pref-height: 64;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
+#txtDescripcion{
+	-fx-pref-width: 810;
+	-fx-pref-height: 64;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
+#txtFechaEstreno{
+	-fx-pref-width: 810;
+	-fx-pref-height: 64;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
+#txtPoster{
+	-fx-pref-width: 810;
+	-fx-pref-height: 64;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
+#btnAlta{
+	-fx-background-color: blue;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}

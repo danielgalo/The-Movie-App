@@ -8,31 +8,37 @@
 	-fx-pref-width: 1068;
 	-fx-pref-height: 924;
 	-fx-background-color: #D9D9D9;
-	-fx-background-radius: 30;
+	-fx-background-radius: 50;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 50;
 }
 
 #lblRegistro{
 	-fx-font-family: System;
 	-fx-font-size: 96px;
-	-fx-font-weight: 600;
+	-fx-font-weight: bold;
 }
 
 #lblEmail{
 	-fx-font-family: System;
 	-fx-font-size: 30px;
-	-fx-font-weight: 400;
+	-fx-font-weight: bold;
 }
 
 #txtEmail{
 	-fx-pref-width: 810;
 	-fx-pref-height: 73;
 	-fx-background-radius: 30;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 30;
 }
 
 #lblContrasena{
 	-fx-font-family: System;
 	-fx-font-size: 30px;
-	-fx-font-weight: 400;
+	-fx-font-weight: bold;
 }
 
 #txtContrasena{
@@ -41,12 +47,15 @@
 	-fx-pref-width: 810;
 	-fx-pref-height: 73;
 	-fx-background-radius: 30;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 30;
 }
 
 #lblRepetirContrasena{
 	-fx-font-family: System;
 	-fx-font-size: 30px;
-	-fx-font-weight: 400;
+	-fx-font-weight: bold;
 }
 
 #txtRepetirContrasena{
@@ -55,11 +64,17 @@
 	-fx-pref-width: 810;
 	-fx-pref-height: 73;
 	-fx-background-radius: 30;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-border-radius: 30;
 }
 
 #btnRegistrarse{
 	-fx-background-color: blue;
-	-fx-background-radius: 30;
+	-fx-background-radius: 50;
 	-fx-text-fill: white;
-	-fx-font-weight: 600;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 50;
 }
