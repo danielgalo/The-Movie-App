@@ -1,10 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="mainPane" layoutY="4.0" prefHeight="200.0" prefWidth="200.0" />
+      <Pane id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/introduccion-manual-style.css">
+         <children>
+            <Pane id="cabecera" prefHeight="114.0" prefWidth="1440.0">
+               <children>
+                  <Label id="lblCabecera" layoutX="393.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Introducción de datos manual" textFill="WHITE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="76.0" fitWidth="134.0" layoutX="21.0" layoutY="18.0">
+                     <image>
+                        <Image url="@../resources/Vector.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="subPane" layoutX="50.0" layoutY="149.0" prefHeight="810.0" prefWidth="1340.0" stylesheets="@../styles/introduccion-manual-style.css">
+               <children>
+                  <Label id="lblExplicacion" layoutX="142.0" layoutY="64.0" stylesheets="@../styles/introduccion-manual-style.css" text="Rellenar los campos con los datos de la película">
+                     <font>
+                        <Font name="System Bold" size="50.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.4868420958518982" green="0.4868420958518982" blue="0.4868420958518982" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <TextArea id="txtTitulo" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.46052631735801697" green="0.45839425921440125" blue="0.45839425921440125" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextArea>
+                  <TextArea id="txtDescripcion" layoutX="500.0" layoutY="320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.46052631735801697" green="0.45839425921440125" blue="0.45839425921440125" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextArea>
+                  <TextArea id="txtFechaEstreno" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.46052631735801697" green="0.45839425921440125" blue="0.45839425921440125" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextArea>
+                  <TextArea id="txtPoster" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.46052631735801697" green="0.45839425921440125" blue="0.45839425921440125" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextArea>
+                  <Label id="lblTitulo" layoutX="30.0" layoutY="230.0" stylesheets="@../styles/introduccion-manual-style.css" text="Título:">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <Label id="lblDescripcion" layoutX="30.0" layoutY="330.0" stylesheets="@../styles/introduccion-manual-style.css" text="Descripción:">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <Label id="lblFechaEstreno" layoutX="30.0" layoutY="430.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de estreno:">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <Label id="lblPoster" layoutX="30.0" layoutY="530.0" stylesheets="@../styles/introduccion-manual-style.css" text="Poster (URL)">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <Button id="btnAlta" layoutX="510.0" layoutY="659.0" mnemonicParsing="false" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.34210526943206787" green="0.34210526943206787" blue="0.34210526943206787" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
+               </effect>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

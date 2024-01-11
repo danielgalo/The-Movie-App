@@ -1,7 +1,7 @@
 #mainPane {
 	-fx-pref-width: 1440;
 	-fx-pref-height: 1024;
-	-fx-background-color: #8FBBC9;
+	-fx-background-color: linear-gradient(#8FBBC9, #CEF3FF);
 }
 
 #subPane{

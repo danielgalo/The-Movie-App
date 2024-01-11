@@ -3,8 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -13,35 +15,94 @@
          <children>
             <Pane id="subPane" layoutX="170.0" layoutY="40.0" prefHeight="924.0" prefWidth="1068.0" stylesheets="@../styles/register-style.css">
                <children>
-                  <TextField id="txtEmail" layoutX="131.0" layoutY="318.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css" />
-                  <TextField id="txtContrasena" layoutX="131.0" layoutY="501.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css" />
-                  <TextField id="txtRepetirContrasena" layoutX="131.0" layoutY="692.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css" />
+                  <TextField id="txtEmail" layoutX="131.0" layoutY="318.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextField>
+                  <TextField id="txtContrasena" layoutX="131.0" layoutY="501.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextField>
+                  <TextField id="txtRepetirContrasena" layoutX="131.0" layoutY="692.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect></TextField>
                   <Button id="btnRegistrarse" layoutX="398.0" layoutY="821.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="252.0" stylesheets="@../styles/register-style.css" text="Registrarse">
                      <font>
                         <Font size="32.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Button>
                   <Label id="lblEmail" layoutX="406.0" layoutY="260.0" stylesheets="@../styles/register-style.css" text="Correo electrónico:">
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Label>
                   <Label id="lblContrasena" layoutX="453.0" layoutY="450.0" stylesheets="@../styles/register-style.css" text="Contraseña:">
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Label>
                   <Label id="lblRepetirContrasena" layoutX="405.0" layoutY="630.0" stylesheets="@../styles/register-style.css" text="Repetir contraseña:">
                      <font>
                         <Font size="30.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Label>
                   <Label id="lblRegistro" layoutX="356.0" layoutY="48.0" stylesheets="@../styles/register-style.css" text="Registro" textAlignment="CENTER">
                      <font>
                         <Font size="96.0" />
                      </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </Label>
-               </children></Pane>
+               </children>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
+               </effect></Pane>
          </children>
       </Pane>
    </children>
