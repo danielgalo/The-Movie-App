@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaAltaAPIController">
+   <children>
+      <Pane fx:id="panelPrincipal" layoutX="200.0" layoutY="100.0" prefHeight="286.0" prefWidth="373.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <Label layoutX="638.0" layoutY="28.0" text="Datos de la película" />
+            <Label layoutX="20.0" layoutY="108.0" text="Título:" />
+            <TextField fx:id="txtTituloPelicula" layoutX="134.0" layoutY="97.0" prefHeight="42.0" prefWidth="387.0" promptText="Introduce un título..." />
+            <Button fx:id="btnAnterior" layoutX="45.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnAnteriorPressed" prefHeight="39.0" prefWidth="79.0" text="Anterior" />
+            <Button fx:id="btnSiguiente" layoutX="134.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnSiguientePressed" prefHeight="39.0" prefWidth="79.0" text="Siguiente" />
+            <Button fx:id="btnConsultaManual" layoutX="1252.0" layoutY="104.0" mnemonicParsing="false" onMousePressed="#btnConsultaManualPressed" prefHeight="39.0" prefWidth="120.0" text="Consulta Manual" />
+            <Button fx:id="btnAlta" layoutX="641.0" layoutY="96.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
+            <ImageView fx:id="imgPelicula" fitHeight="526.0" fitWidth="443.0" layoutX="920.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblResTitulo" layoutX="671.0" layoutY="328.0" text="                              " />
+            <Label fx:id="lblResYear" layoutX="680.0" layoutY="406.0" text="                        " />
+            <Button fx:id="btnBuscar" layoutX="539.0" layoutY="96.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="39.0" prefWidth="79.0" text="Buscar" />
+         </children>
+      </Pane>
+      <Pane fx:id="cabecera" layoutX="237.0" layoutY="28.0" prefHeight="200.0" prefWidth="1397.0" AnchorPane.bottomAnchor="950.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="lblCabecera" layoutX="657.0" layoutY="22.0" text="Alta de películas" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
