@@ -33,6 +33,8 @@
 	-fx-border-color: black;
 	-fx-border-width: 2px;
 	-fx-border-radius: 30;
+	-fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
 }
 
 #lblContrasena{
@@ -50,6 +52,8 @@
 	-fx-border-color: black;
 	-fx-border-width: 2px;
 	-fx-border-radius: 30;
+	-fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
 }
 
 #lblRepetirContrasena{
@@ -67,11 +71,15 @@
 	-fx-border-color: black;
 	-fx-border-width: 2px;
 	-fx-border-radius: 30;
+	-fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
 }
 
 #btnRegistrarse{
 	-fx-background-color: blue;
 	-fx-background-radius: 50;
+	-fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
