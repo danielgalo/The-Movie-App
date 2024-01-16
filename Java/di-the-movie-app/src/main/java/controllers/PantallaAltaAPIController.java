@@ -14,7 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import models.Pelicula;
+import models.PeliculaDTO;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
 
@@ -71,7 +71,7 @@ public class PantallaAltaAPIController {
 	void btnAltaPressed(MouseEvent event) {
 		// Obtener pelicula
 		String titulo = txtTituloPelicula.getText();
-		Pelicula peli = TMDBApi.getPelicula(titulo, posicionPelicula);
+		PeliculaDTO peli = TMDBApi.getPelicula(titulo, posicionPelicula);
 
 		// TODO Insertarla en la base de datos
 
@@ -143,7 +143,7 @@ public class PantallaAltaAPIController {
 		// Consigo el titulo introducido
 		String tituloPelicula = txtTituloPelicula.getText();
 		// Obtengo pelicula
-		Pelicula pelicula = TMDBApi.getPelicula(tituloPelicula, posicionPelicula);
+		PeliculaDTO pelicula = TMDBApi.getPelicula(tituloPelicula, posicionPelicula);
 
 		if (pelicula != null) {
 
@@ -160,6 +160,7 @@ public class PantallaAltaAPIController {
 
 			// Mostrar la imagen en un ImageView
 			imgPelicula.setImage(image);
+
 		}
 
 	}

@@ -10,12 +10,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import models.Pelicula;
+import models.PeliculaDTO;
 
 /**
  * Clase usada para recibir datos de la API de The Movie Database
  */
 public class TMDBApi {
+
+	private static final String API_KEY = "1e5c1817e84de2c0de8d34bc91651a00";
 
 	/**
 	 * Constructor privado
@@ -35,16 +37,13 @@ public class TMDBApi {
 	 *                         resultados
 	 * @return Objeto Pelicula con la posición dada
 	 */
-	public static Pelicula getPelicula(String movieTitle, int posicionPelicula) {
-		Pelicula pelicula = null;
+	public static PeliculaDTO getPelicula(String movieTitle, int posicionPelicula) {
+		PeliculaDTO pelicula = null;
 
 		try {
-			String apiKey = "1e5c1817e84de2c0de8d34bc91651a00";
-
-			// Codificar el título para incluirlo en la URL de la solicitud
 			String encodedTitle = URLEncoder.encode(movieTitle, "UTF-8");
-
-			URL url = new URL("https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + encodedTitle);
+			URL url = new URL(
+					"https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY + "&query=" + encodedTitle);
 
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
@@ -62,20 +61,18 @@ public class TMDBApi {
 
 			// Utilizar GSON para parsear el JSON
 			JsonObject searchResult = JsonParser.parseString(response.toString()).getAsJsonObject();
-			results = searchResult.getAsJsonArray("results");
+			JsonArray results = searchResult.getAsJsonArray("results");
 
 			if (!results.isEmpty()) {
-				// Tomar el primer resultado
-				JsonObject firstResult = results.get(posicionPelicula).getAsJsonObject();
+				JsonObject result = results.get(posicionPelicula).getAsJsonObject();
 
-				// Obtengo datos
-				String title = firstResult.get("original_title").getAsString();
-				String overview = firstResult.get("overview").getAsString();
-				String releaseDate = firstResult.get("release_date").getAsString();
-				String posterPath = firstResult.get("poster_path").getAsString();
+				String title = result.get("original_title").getAsString();
+				String overview = result.get("overview").getAsString();
+				String releaseDate = result.get("release_date").getAsString();
+				String posterPath = result.get("poster_path").getAsString();
 				String urlImagen = "https://image.tmdb.org/t/p/w500" + posterPath;
 
-				pelicula = new Pelicula(title, overview, releaseDate, urlImagen);
+				pelicula = new PeliculaDTO(title, overview, releaseDate, urlImagen);
 
 			} else {
 				System.out.println("No se encontraron resultados para la búsqueda.");
