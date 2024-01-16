@@ -1,12 +1,8 @@
 #mainPane {
-	-fx-pref-width: 1440;
-	-fx-pref-height: 1024;
 	-fx-background-color: linear-gradient(#8FBBC9, #CEF3FF);
 }
 
 #subPane{
-	-fx-pref-width: 1068;
-	-fx-pref-height: 924;
 	-fx-background-color: #D9D9D9;
 	-fx-background-radius: 50;
 	-fx-border-color: black;
