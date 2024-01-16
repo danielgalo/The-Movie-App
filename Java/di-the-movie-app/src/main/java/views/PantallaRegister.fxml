@@ -12,48 +12,48 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/register-style.css" />
-      <GridPane prefHeight="1024.0" prefWidth="1440.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.6666259765625" minWidth="0.0" prefWidth="164.666748046875" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1097.333251953125" minWidth="10.0" prefWidth="1073.0000813802083" />
+      <GridPane id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/register-style.css">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.6666259765625" minWidth="0.0" prefWidth="164.666748046875" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1097.333251953125" minWidth="10.0" prefWidth="1073.0000813802083" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.333251953125" minWidth="10.0" prefWidth="200.333251953125" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="332.66668701171875" minHeight="0.0" prefHeight="32.666686058044434" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="946.6666666666667" minHeight="10.0" prefHeight="936.6666259765625" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="175.6666259765625" minHeight="0.0" prefHeight="49.333374023437614" vgrow="SOMETIMES" />
-        </rowConstraints>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="332.66668701171875" minHeight="0.0" prefHeight="32.666686058044434" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="946.6666666666667" minHeight="10.0" prefHeight="936.6666259765625" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="175.6666259765625" minHeight="0.0" prefHeight="49.333374023437614" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
             <Pane id="subPane" prefHeight="924.0" prefWidth="1068.0" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <GridPane prefHeight="924.0" prefWidth="1068.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.6666564941406" minWidth="10.0" prefWidth="127.99991861979167" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="849.3333409627279" minWidth="10.0" prefWidth="814.0" />
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.6666564941406" minWidth="10.0" prefWidth="127.99991861979167" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="849.3333409627279" minWidth="10.0" prefWidth="814.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.666748046875" minWidth="10.0" prefWidth="126.66666666666674" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints maxHeight="254.66669209798178" minHeight="10.0" prefHeight="254.66669209798178" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="222.3333536783854" minHeight="10.0" prefHeight="189.33330790201822" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="185.33331298828125" vgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="254.66669209798178" minHeight="10.0" prefHeight="254.66669209798178" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="222.3333536783854" minHeight="10.0" prefHeight="189.33330790201822" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="185.33331298828125" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="204.6666259765625" minHeight="10.0" prefHeight="184.66666666666663" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="147.6666259765625" minHeight="10.0" prefHeight="110.66670735677087" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                     </rowConstraints>
                      <children>
                         <GridPane GridPane.columnIndex="1">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.66657002766928" minWidth="10.0" prefWidth="188.66657002766928" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="620.6665700276692" minWidth="10.0" prefWidth="445.66666666666674" />
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.66657002766928" minWidth="10.0" prefWidth="188.66657002766928" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="620.6665700276692" minWidth="10.0" prefWidth="445.66666666666674" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.6666259765625" minWidth="10.0" prefWidth="179.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
                               <Label id="lblRegistro" alignment="CENTER" contentDisplay="CENTER" prefHeight="141.0" prefWidth="619.0" stylesheets="@../styles/register-style.css" text="Registro" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
@@ -175,7 +175,8 @@
                </children>
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
-               </effect></Pane>
+               </effect>
+            </Pane>
          </children>
       </GridPane>
    </children>
