@@ -1,13 +1,9 @@
 package controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.TMAMain;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,9 +12,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import utils.NavegacionPantallas;
 
 /**
  * Clase controller de la pantalla de login
@@ -49,30 +44,18 @@ public class PantallaLoginController {
 	@FXML
 	private PasswordField txtPassword;
 
+	/**
+	 * Navega a la pantalla de registro
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void btnRegistroPressed(MouseEvent event) {
 
-		// Navegar a pantalla de registro
-		try {
-			// Crear stage
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader();
-			// Cargar la clase
-			loader.setLocation(TMAMain.class.getResource("/views/PantallaRegister.fxml"));
-			// Crear la ventana
-			Pane ventana;
-			ventana = (Pane) loader.load();
-			Scene scene = new Scene(ventana);
-			// Añadirle los estilos
-			String urlCss = getClass().getResource("/styles/register-style.css").toExternalForm();
-			scene.getStylesheets().add(urlCss);
-			// Mostrar la pantalla
-			stage.setTitle("Pantalla de Registro");
-			stage.setScene(scene);
-			stage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla de Registro", "/views/PantallaRegister.fxml",
+				"/styles/register-style.css");
+
+		navegacion.navegaAPantalla();
 
 	}
 

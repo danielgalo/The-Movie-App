@@ -8,12 +8,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import models.Pelicula;
+import utils.NavegacionPantallas;
 import utils.TMDBApi;
 
 public class PantallaAltaAPIController {
@@ -59,6 +61,8 @@ public class PantallaAltaAPIController {
 
 	@FXML
 	private Pane panelPrincipal;
+	@FXML
+	private TextArea txtADescPeli;
 
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
@@ -94,7 +98,10 @@ public class PantallaAltaAPIController {
 
 	@FXML
 	void btnConsultaManualPressed(MouseEvent event) {
+		NavegacionPantallas navegacion = new NavegacionPantallas("Consulta Manual",
+				"/views/IntroduccionDatosManual.fxml", "/styles/introduccion-manual-style.css");
 
+		navegacion.navegaAPantalla();
 	}
 
 	@FXML
@@ -125,6 +132,8 @@ public class PantallaAltaAPIController {
 		assert txtTituloPelicula != null
 				: "fx:id=\"txtTituloPelicula\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
 
+		txtADescPeli.setWrapText(true);
+
 	}
 
 	/**
@@ -140,6 +149,7 @@ public class PantallaAltaAPIController {
 
 			lblResYear.setText(pelicula.getReleaseDate());
 			lblResTitulo.setText(pelicula.getTitulo());
+			txtADescPeli.setText(pelicula.getOverview());
 			InputStream stream = null;
 			try {
 				stream = new URL(pelicula.getImg()).openStream();

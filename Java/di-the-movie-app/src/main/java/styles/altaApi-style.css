@@ -42,9 +42,14 @@
 
 #cabecera{
 	-fx-background-color:black;
-	
-	
 }
+
+#txtADescPeli{
+	-fx-font-family: "Inter";
+	-fx-font-size: 14.0px;
+		
+}
+
 #lblCabecera {
     -fx-text-fill: white;
     -fx-alignment: center; 
