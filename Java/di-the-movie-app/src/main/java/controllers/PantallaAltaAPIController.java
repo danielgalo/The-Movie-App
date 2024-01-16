@@ -71,7 +71,7 @@ public class PantallaAltaAPIController {
 	void btnAltaPressed(MouseEvent event) {
 		// Obtener pelicula
 		String titulo = txtTituloPelicula.getText();
-		PeliculaDTO peli = TMDBApi.getPelicula(titulo, posicionPelicula);
+		PeliculaDTO peli = TMDBApi.getPeliculaByTitulo(titulo, posicionPelicula);
 
 		// TODO Insertarla en la base de datos
 
@@ -143,7 +143,7 @@ public class PantallaAltaAPIController {
 		// Consigo el titulo introducido
 		String tituloPelicula = txtTituloPelicula.getText();
 		// Obtengo pelicula
-		PeliculaDTO pelicula = TMDBApi.getPelicula(tituloPelicula, posicionPelicula);
+		PeliculaDTO pelicula = TMDBApi.getPeliculaByTitulo(tituloPelicula, posicionPelicula);
 
 		if (pelicula != null) {
 

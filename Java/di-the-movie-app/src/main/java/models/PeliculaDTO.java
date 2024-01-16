@@ -1,47 +1,54 @@
 package models;
 
-import java.util.List;
-
 /**
  * Clase pelicula. Objeto DTO usado para traer datos de películas desde la API
  */
 public class PeliculaDTO {
 
+	/** Titulo de la pelicula */
 	private String titulo;
+
+	/** Descripcion de la pelicula */
 	private String overview;
+
+	/** Fecha de lanzamiento de la pelicula */
 	private String releaseDate;
+
+	/** URL de la imagen de la pelicula */
 	private String img;
-	private List<GeneroDTO> genres;
+
+	/** IDs de los géneros de la película */
+	private int[] genreIds;
 
 	/**
-	 * Constructor con generos (prueba)
+	 * Constructor con todos los argumentos
 	 * 
 	 * @param titulo
 	 * @param overview
 	 * @param releaseDate
 	 * @param img
-	 * @param genres
+	 * @param genreIds
 	 */
-	public PeliculaDTO(String titulo, String overview, String releaseDate, String img, List<GeneroDTO> genres) {
+	public PeliculaDTO(String titulo, String overview, String releaseDate, String img, int[] genreIds) {
 		this.titulo = titulo;
 		this.overview = overview;
 		this.releaseDate = releaseDate;
 		this.img = img;
-		this.genres = genres;
+		this.genreIds = genreIds;
 	}
 
 	/**
-	 * @return the genres
+	 * @return the genreIds
 	 */
-	public List<GeneroDTO> getGenres() {
-		return genres;
+	public int[] getGenreIds() {
+		return genreIds;
 	}
 
 	/**
-	 * @param genres the genres to set
+	 * @param genreIds the genreIds to set
 	 */
-	public void setGenres(List<GeneroDTO> genres) {
-		this.genres = genres;
+	public void setGenreIds(int[] genreIds) {
+		this.genreIds = genreIds;
 	}
 
 	/**
