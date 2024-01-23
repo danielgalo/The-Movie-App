@@ -55,6 +55,7 @@ public class NavegacionPantallas {
 			stage.setTitle(tituloVentana);
 			stage.setScene(scene);
 			stage.show();
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

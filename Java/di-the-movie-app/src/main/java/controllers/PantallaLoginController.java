@@ -3,6 +3,8 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.hibernate.Session;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import persistence.HibernateUtil;
+import persistence.dao.UserDaoImpl;
+import persistence.entities.User;
 import utils.NavegacionPantallas;
 
 /**
@@ -39,6 +44,9 @@ public class PantallaLoginController {
 	private Label lblTitle;
 
 	@FXML
+	private Label lblInfo;
+
+	@FXML
 	private TextField txtCorreo;
 
 	@FXML
@@ -56,6 +64,43 @@ public class PantallaLoginController {
 				"/styles/register-style.css");
 
 		navegacion.navegaAPantalla();
+
+	}
+
+	/**
+	 * Acciones realizadas al pulsar el botón de Acceder. Dependiendo de los datos
+	 * introducidos, se busca al usuario en la base de datos. Si está accederá a la
+	 * pantalla principal, si no muestra un mensaje informativo
+	 * 
+	 * @param event
+	 */
+	@FXML
+	void btnAccederPressed(MouseEvent event) {
+
+		// TODO verificacion bbdd
+
+		// Recoger datos
+		String email = txtCorreo.getText();
+		String password = txtPassword.getText();
+
+		// Crear una sesion y DAO de usuario
+		Session session = HibernateUtil.getSession();
+		UserDaoImpl userDao = new UserDaoImpl(session);
+
+		// Recoger resultado (buscar al usuario por email)
+		User userFound = userDao.getUserByEmail(email);
+
+		// Si el usuario no es nulo (Se ha encontrado en la bbdd) y la contraseña del
+		// usuario encontrado coincide con la introducida, inicia sesion
+		if (userFound != null && userFound.getPassword().equals(password)) {
+
+			NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
+					"/views/PantallaPrincipal.fxml", "/styles/pantalla-principal-style.css");
+			navegacion.navegaAPantalla();
+
+		} else {
+			lblInfo.setText("Error de credenciales, comprueba los datos o registrate");
+		}
 
 	}
 

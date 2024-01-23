@@ -62,7 +62,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnAcceder" mnemonicParsing="false" prefHeight="94.0" prefWidth="480.0" text="Acceder" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="btnAcceder" mnemonicParsing="false" onMousePressed="#btnAccederPressed" prefHeight="94.0" prefWidth="480.0" text="Acceder" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="6">
@@ -80,6 +80,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="btnRegister" mnemonicParsing="false" onMousePressed="#btnRegistroPressed" prefHeight="101.0" prefWidth="480.0" text="Registrarse" GridPane.columnIndex="2" />
+                  <Label fx:id="lblInfo" text="         " GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
