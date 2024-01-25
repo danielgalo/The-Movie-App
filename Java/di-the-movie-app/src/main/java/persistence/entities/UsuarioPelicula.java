@@ -15,4 +15,26 @@ public class UsuarioPelicula {
 	@EmbeddedId
 	private UsuarioPeliculaId id;
 
+	/**
+	 * @param id
+	 */
+	public UsuarioPelicula(UsuarioPeliculaId id) {
+		super();
+		this.id = id;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public UsuarioPeliculaId getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(UsuarioPeliculaId id) {
+		this.id = id;
+	}
+
 }
