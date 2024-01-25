@@ -19,6 +19,7 @@ import persistence.HibernateUtil;
 import persistence.dao.UserDaoImpl;
 import persistence.entities.User;
 import utils.NavegacionPantallas;
+import utils.constants.Constantes;
 
 /**
  * Clase controller de la pantalla de login
@@ -55,13 +56,13 @@ public class PantallaLoginController {
 	/**
 	 * Navega a la pantalla de registro
 	 * 
-	 * @param event
+	 * @param event evento del mouse
 	 */
 	@FXML
 	void btnRegistroPressed(MouseEvent event) {
 
-		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla de Registro", "/views/PantallaRegister.fxml",
-				"/styles/register-style.css");
+		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla de Registro", Constantes.PANTALLA_REGISTRO,
+				Constantes.CSS_REGISTRO);
 
 		navegacion.navegaAPantalla();
 
@@ -98,7 +99,7 @@ public class PantallaLoginController {
 		if (userFound != null && userFound.getPassword().equals(password)) {
 
 			NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
-					"/views/PantallaPrincipal.fxml", "/styles/pantalla-principal-style.css");
+					Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
 			navegacion.navegaAPantalla();
 
 			// Cerrar pantalla actual

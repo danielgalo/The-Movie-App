@@ -2,13 +2,12 @@
 
 /* Fondo gradiente */
 .root {
-    -fx-background-color: linear-gradient(to top, #CEF3FF, #00789E);
+    -fx-background-color: #3B97B5;
 }
 
 
 /* Estilos generales de los botones */
 .button{
-	
 	-fx-font-family: "Inter";
 	-fx-text-fill:#FFFFFF;
 	-fx-font-size: 14.0px;
@@ -26,11 +25,13 @@
 }
 
 #panelPrincipal{
-	  -fx-background-color: rgba(217, 217, 217, 0.50);
+	-fx-background-color: rgba(217, 217, 217, 0.50);
+    -fx-border-radius:50.0;
+    -fx-background-radius: 50.0;
 }
 
-#panelInfoPelicula{
-	  -fx-background-color:rgba(217, 217, 217, 0.50);
+#panelInfoPelicula {
+    -fx-background-color: rgba(217, 217, 217, 0.65);
 }
 
 /* Boton de registro */
@@ -63,8 +64,6 @@
 	-fx-translate-x: 50%; 
     -fx-translate-y: 50%;
     -fx-alignment: CENTER;
-    
-    
 }
 
 #txtTituloPelicula {

@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import utils.NavegacionPantallas;
+import utils.constants.Constantes;
 
 public class PantallaPrincipalController {
 
@@ -54,7 +55,7 @@ public class PantallaPrincipalController {
 	void altaPeliculasPressed(MouseEvent event) {
 
 		NavegacionPantallas navegacion = new NavegacionPantallas("Alta de películas por API",
-				"/views/PantallaAltaAPI.fxml", "/styles/altaApi-style.css");
+				Constantes.PANTALLA_ALTA_API, Constantes.CSS_ALTA_API);
 
 		navegacion.navegaAPantalla();
 	}

@@ -9,14 +9,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import models.PeliculaDTO;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
+import utils.constants.Constantes;
 
+/**
+ * Controlador para la pantalla de alta de películas mediante la API.
+ */
 public class PantallaAltaAPIController {
 
 	@FXML
@@ -64,87 +70,119 @@ public class PantallaAltaAPIController {
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
 
+	// Imagen predeterminada cuando no hay imagen disponible
+	private static final Image EMPTY_IMAGE = new Image("/resources/found-icon-20.jpg");
+
+	/**
+	 * Maneja el evento cuando se presiona el botón "Alta". Obtiene la película
+	 * mediante la API y la inserta en la base de datos (TODO).
+	 *
+	 * @param event Evento del mouse.
+	 */
 	@FXML
 	void btnAltaPressed(MouseEvent event) {
-		// Obtener pelicula
+		// Obtener película
 		String titulo = txtTituloPelicula.getText();
 		PeliculaDTO peli = TMDBApi.getPeliculaByTitulo(titulo, posicionPelicula);
 
 		// TODO Insertarla en la base de datos
-
 	}
 
+	/**
+	 * Maneja el evento cuando se presiona el botón "Anterior". Muestra la película
+	 * anterior en la búsqueda.
+	 *
+	 * @param event Evento del mouse.
+	 */
 	@FXML
 	void btnAnteriorPressed(MouseEvent event) {
 		if (posicionPelicula > 0) {
 			posicionPelicula--;
 			setPelicula();
 		} else {
-			lblResTitulo.setText("No hay pelicula anterior");
+			lblResTitulo.setText("No hay película anterior");
+			imgPelicula.setImage(EMPTY_IMAGE);
+			lblDescripcion.setText("");
 		}
 	}
 
+	/**
+	 * Maneja el evento cuando se presiona el botón "Buscar". Inicia una nueva
+	 * búsqueda de películas.
+	 *
+	 * @param event Evento del mouse.
+	 */
 	@FXML
 	void btnBuscarPressed(MouseEvent event) {
-
 		posicionPelicula = 0;
-
 		setPelicula();
-
 	}
 
+	/**
+	 * Maneja el evento cuando se presiona el botón "Consulta Manual". Navega a la
+	 * pantalla de consulta manual.
+	 *
+	 * @param event Evento del mouse.
+	 */
 	@FXML
 	void btnConsultaManualPressed(MouseEvent event) {
-		NavegacionPantallas navegacion = new NavegacionPantallas("Consulta Manual",
-				"/views/IntroduccionDatosManual.fxml", "/styles/introduccion-manual-style.css");
-
+		NavegacionPantallas navegacion = new NavegacionPantallas("Consulta Manual", Constantes.PANTALLA_ALTA_MANUAL,
+				Constantes.CSS_ALTA_MANUAL);
 		navegacion.navegaAPantalla();
 	}
 
+	/**
+	 * Maneja el evento cuando se presiona el botón "Siguiente". Muestra la película
+	 * siguiente en la búsqueda.
+	 *
+	 * @param event Evento del mouse.
+	 */
 	@FXML
 	void btnSiguientePressed(MouseEvent event) {
 		if (posicionPelicula >= TMDBApi.getResultsLength()) {
-			lblResTitulo.setText("No hay pelicula siguiente.");
+			lblResTitulo.setText("No hay película siguiente.");
+			lblDescripcion.setText("");
+			imgPelicula.setImage(EMPTY_IMAGE);
 		} else {
 			posicionPelicula++;
 			setPelicula();
 		}
 	}
 
+	/**
+	 * Inicializa el controlador después de que se haya cargado la raíz del archivo
+	 * FXML. Configura la imagen predeterminada y realiza las asignaciones de los
+	 * elementos de la interfaz.
+	 */
 	@FXML
 	void initialize() {
-
-		imgPelicula.setImage(new Image("/resources/found-icon-20.jpg"));
-
-		assert btnAlta != null : "fx:id=\"btnAlta\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert btnAnterior != null
-				: "fx:id=\"btnAnterior\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert btnBuscar != null : "fx:id=\"btnBuscar\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert btnConsultaManual != null
-				: "fx:id=\"btnConsultaManual\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert btnSiguiente != null
-				: "fx:id=\"btnSiguiente\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert cabecera != null : "fx:id=\"cabecera\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert lblResTitulo != null
-				: "fx:id=\"lblResTitulo\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert txtTituloPelicula != null
-				: "fx:id=\"txtTituloPelicula\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-
+		imgPelicula.setImage(EMPTY_IMAGE);
 		lblDescripcion.setWrapText(true);
+
+		DropShadow shadow = new DropShadow();
+		shadow.setOffsetY(3);
+		shadow.setColor(new Color(0, 0, 0, 0.35));
+
+		panelPrincipal.setEffect(shadow);
+		btnAlta.setEffect(shadow);
+		btnAnterior.setEffect(shadow);
+		btnBuscar.setEffect(shadow);
+		btnSiguiente.setEffect(shadow);
+		btnConsultaManual.setEffect(shadow);
 
 	}
 
 	/**
-	 * Obtiene una pelicula de la API con el titulo introducido
+	 * Obtiene una película de la API con el título introducido y la muestra en la
+	 * interfaz.
 	 */
 	private void setPelicula() {
-		// Consigo el titulo introducido
+		// Consigo el título introducido
 		String tituloPelicula = txtTituloPelicula.getText();
-		// Obtengo pelicula
+		// Obtengo película
 		PeliculaDTO pelicula = TMDBApi.getPeliculaByTitulo(tituloPelicula, posicionPelicula);
 
 		if (pelicula != null) {
-
 			lblResTitulo.setText(pelicula.getTitulo() + "(" + pelicula.getReleaseDate() + ")");
 			lblDescripcion.setText(pelicula.getOverview());
 			InputStream stream = null;
@@ -157,9 +195,6 @@ public class PantallaAltaAPIController {
 
 			// Mostrar la imagen en un ImageView
 			imgPelicula.setImage(image);
-
 		}
-
 	}
-
 }
