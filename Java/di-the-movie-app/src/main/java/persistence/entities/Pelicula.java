@@ -53,9 +53,6 @@ public class Pelicula implements Serializable {
 	@JoinColumn(name = "company_id")
 	private Company company;
 
-	/** Usuarios en posesión de la pelicula */
-	private List<User> users;
-
 	/** Imagen del cartel de la pelicula */
 	@Column(name = "cartel")
 	private String cartel;
@@ -63,6 +60,10 @@ public class Pelicula implements Serializable {
 	/** Generos de la pelicula */
 	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
 	private List<GeneroPelicula> generoPelicula;
+
+	/** usuarios de la pelicula */
+	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
+	private List<UsuarioPelicula> usuarioPelicula;
 
 	/**
 	 * @return the generoPelicula

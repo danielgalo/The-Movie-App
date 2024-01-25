@@ -1,10 +1,14 @@
 package persistence.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -27,6 +31,10 @@ public class User {
 	/** Contraseña de usuario */
 	@Column(name = "password")
 	private String password;
+
+	/** Peliculas del usuario */
+	@OneToMany(mappedBy = "id.usuario", cascade = CascadeType.ALL)
+	private List<UsuarioPelicula> usuarioPelicula;
 
 	/**
 	 * 
