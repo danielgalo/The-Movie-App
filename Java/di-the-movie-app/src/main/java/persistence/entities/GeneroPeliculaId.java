@@ -2,9 +2,9 @@ package persistence.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 /**
  * La clase GeneroPeliculaId representa la clave primaria compuesta para la
