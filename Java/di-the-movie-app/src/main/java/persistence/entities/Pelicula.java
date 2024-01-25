@@ -1,5 +1,6 @@
 package persistence.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,10 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "peliculas")
-public class Pelicula {
+public class Pelicula implements Serializable {
+
+	/** Id serial */
+	private static final long serialVersionUID = 1L;
 
 	/** Id de la pelicula */
 	@Id
@@ -48,6 +52,9 @@ public class Pelicula {
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
+
+	/** Usuarios en posesión de la pelicula */
+	private List<User> users;
 
 	/** Imagen del cartel de la pelicula */
 	@Column(name = "cartel")

@@ -21,7 +21,6 @@
 		<mapping class="persistence.entities.Genero" />
 		<mapping class="persistence.entities.Localizacion" />
 		<mapping class="persistence.entities.Pelicula" />
-		<mapping class="persistence.entities.Usuario" />
 		<mapping class="persistence.entities.GeneroPelicula" />
 		<mapping class="persistence.entities.User" />
 	
