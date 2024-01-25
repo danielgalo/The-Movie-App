@@ -24,9 +24,6 @@
 		<mapping class="persistence.entities.GeneroPelicula" />
 		<mapping class="persistence.entities.UsuarioPelicula" />
 		<mapping class="persistence.entities.User" />
-	
-		
-
         
 	</session-factory>
 </hibernate-configuration>

@@ -4,7 +4,9 @@ import java.io.IOException;
 
 import application.TMAMain;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -59,5 +61,19 @@ public class NavegacionPantallas {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Cierra la ventana actual
+	 * 
+	 * @param event evento de ratón
+	 */
+	public static void cerrarVentanaActual(MouseEvent event) {
+		// Obtener la escena y la ventana actual
+		Scene scene = ((Node) event.getSource()).getScene();
+		Stage stage = (Stage) scene.getWindow();
+
+		// Cerrar la ventana actual
+		stage.close();
 	}
 }

@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,15 +53,13 @@ public class PantallaAltaAPIController {
 	private Label lblResTitulo;
 
 	@FXML
-	private Label lblResYear;
+	private Label lblDescripcion;
 
 	@FXML
 	private TextField txtTituloPelicula;
 
 	@FXML
 	private Pane panelPrincipal;
-	@FXML
-	private TextArea txtADescPeli;
 
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
@@ -116,6 +113,9 @@ public class PantallaAltaAPIController {
 
 	@FXML
 	void initialize() {
+
+		imgPelicula.setImage(new Image("/resources/found-icon-20.jpg"));
+
 		assert btnAlta != null : "fx:id=\"btnAlta\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
 		assert btnAnterior != null
 				: "fx:id=\"btnAnterior\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
@@ -127,12 +127,10 @@ public class PantallaAltaAPIController {
 		assert cabecera != null : "fx:id=\"cabecera\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
 		assert lblResTitulo != null
 				: "fx:id=\"lblResTitulo\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
-		assert lblResYear != null
-				: "fx:id=\"lblResYear\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
 		assert txtTituloPelicula != null
 				: "fx:id=\"txtTituloPelicula\" was not injected: check your FXML file 'PantallaAltaAPI.fxml'.";
 
-		txtADescPeli.setWrapText(true);
+		lblDescripcion.setWrapText(true);
 
 	}
 
@@ -147,9 +145,8 @@ public class PantallaAltaAPIController {
 
 		if (pelicula != null) {
 
-			lblResYear.setText(pelicula.getReleaseDate());
-			lblResTitulo.setText(pelicula.getTitulo());
-			txtADescPeli.setText(pelicula.getOverview());
+			lblResTitulo.setText(pelicula.getTitulo() + "(" + pelicula.getReleaseDate() + ")");
+			lblDescripcion.setText(pelicula.getOverview());
 			InputStream stream = null;
 			try {
 				stream = new URL(pelicula.getImg()).openStream();

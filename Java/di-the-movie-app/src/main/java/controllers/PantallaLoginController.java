@@ -65,6 +65,9 @@ public class PantallaLoginController {
 
 		navegacion.navegaAPantalla();
 
+		// Cerrar pantalla actual
+		NavegacionPantallas.cerrarVentanaActual(event);
+
 	}
 
 	/**
@@ -98,6 +101,9 @@ public class PantallaLoginController {
 					"/views/PantallaPrincipal.fxml", "/styles/pantalla-principal-style.css");
 			navegacion.navegaAPantalla();
 
+			// Cerrar pantalla actual
+			NavegacionPantallas.cerrarVentanaActual(event);
+
 		} else {
 			lblInfo.setText("Error de credenciales, comprueba los datos o registrate");
 		}
@@ -118,6 +124,9 @@ public class PantallaLoginController {
 		txtPassword.setEffect(shadow);
 		btnAcceder.setEffect(shadow);
 		btnRegister.setEffect(shadow);
+
+		lblInfo.setWrapText(true);
+		lblInfo.setCenterShape(true);
 
 	}
 
