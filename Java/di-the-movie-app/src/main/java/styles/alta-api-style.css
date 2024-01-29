@@ -34,6 +34,11 @@
     -fx-background-color: rgba(217, 217, 217, 0.65);
 }
 
+#lblDescripcion{
+		-fx-font-size: 14.0px;
+	    -fx-font-weight: 600; 
+}
+
 /* Boton de registro */
 #btnAlta{
 	

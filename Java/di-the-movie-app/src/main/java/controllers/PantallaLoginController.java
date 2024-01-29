@@ -80,35 +80,40 @@ public class PantallaLoginController {
 	 */
 	@FXML
 	void btnAccederPressed(MouseEvent event) {
+		try {
+			// Obtener la sesión de HibernateUtil
+			Session session = HibernateUtil.getSession();
 
-		// TODO verificacion bbdd
+			// Recoger datos
+			String email = txtCorreo.getText();
+			String password = txtPassword.getText();
 
-		// Recoger datos
-		String email = txtCorreo.getText();
-		String password = txtPassword.getText();
+			// Crear un DAO de usuario utilizando la sesión
+			UserDaoImpl userDao = new UserDaoImpl(session);
 
-		// Crear una sesion y DAO de usuario
-		Session session = HibernateUtil.getSession();
-		UserDaoImpl userDao = new UserDaoImpl(session);
+			// Recoger resultado (buscar al usuario por email)
+			User userFound = userDao.getUserByEmail(email);
 
-		// Recoger resultado (buscar al usuario por email)
-		User userFound = userDao.getUserByEmail(email);
+			// Si el usuario no es nulo (se ha encontrado en la bbdd) y la contraseña del
+			// usuario encontrado coincide con la introducida, inicia sesión
+			if (userFound != null && userFound.getPassword().equals(password)) {
 
-		// Si el usuario no es nulo (Se ha encontrado en la bbdd) y la contraseña del
-		// usuario encontrado coincide con la introducida, inicia sesion
-		if (userFound != null && userFound.getPassword().equals(password)) {
+				NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
+						Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
+				navegacion.navegaAPantalla();
 
-			NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
-					Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
-			navegacion.navegaAPantalla();
+				// Cerrar pantalla actual
+				NavegacionPantallas.cerrarVentanaActual(event);
 
-			// Cerrar pantalla actual
-			NavegacionPantallas.cerrarVentanaActual(event);
-
-		} else {
-			lblInfo.setText("Error de credenciales, comprueba los datos o registrate");
+			} else {
+				lblInfo.setText("Error de credenciales, comprueba los datos o regístrate");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Cerrar la sesión al finalizar
+			HibernateUtil.closeSession();
 		}
-
 	}
 
 	@FXML

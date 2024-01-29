@@ -7,10 +7,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.context.internal.ThreadLocalSessionContext;
 
 /**
- * Clase de utilodades para Hibernate
+ * Clase de utilidades para Hibernate
  */
 public class HibernateUtil {
 
@@ -21,24 +20,18 @@ public class HibernateUtil {
 	private static Session session;
 
 	/**
-	 * Constructor sobrecargado
+	 * Constructor privado para implementar el patrón Singleton
 	 */
 	private HibernateUtil() {
-
 	}
 
 	/**
-	 * Metodo que devuelve el objeto Session.
+	 * Método que devuelve el objeto Session.
 	 * 
-	 * @return
-	 *         <ul>
-	 *         <li>Si la sesi�n no est� creada: la crea y la abre.</li>
-	 *         <li>Si la sesi�n est� creada: simplemente devuelve la sesi�n
-	 *         abierta.</li>
-	 *         </ul>
+	 * @return Sesión abierta
 	 */
 	public static Session getSession() {
-		if (sessionFactory == null) {
+		if (session == null || !session.isOpen()) {
 			session = getSessionFactory().openSession();
 		}
 
@@ -46,39 +39,41 @@ public class HibernateUtil {
 	}
 
 	/**
-	 * Mtodo que cierra el objeto Session de HibernateUtil y el SessionFactory
+	 * Método que cierra el objeto Session de HibernateUtil y el SessionFactory
 	 */
 	public static void closeSession() {
-		Session session = ThreadLocalSessionContext.unbind(sessionFactory);
-		if (session != null) {
+		if (session != null && session.isOpen()) {
 			session.close();
 		}
-		closeSessionFactory(sessionFactory);
 	}
 
 	/**
-	 * 
-	 * @return the sessionFactory
+	 * @return El sessionFactory
 	 */
 	public static SessionFactory getSessionFactory() {
 		if (sessionFactory == null) {
-
-			StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure(new File("hibernate.cfg.xml"))
-					.build();
-			sessionFactory = new MetadataSources(sr).buildMetadata().buildSessionFactory();
+			initializeSessionFactory();
 		}
 		return sessionFactory;
 	}
 
 	/**
-	 * Cierra la factoria de sesiones
-	 * 
-	 * @param sessionFactory sesiones a cerrar
+	 * Inicializa el sessionFactory
 	 */
-	private static void closeSessionFactory(SessionFactory sessionFactory) {
-		if ((sessionFactory != null) && (sessionFactory.isClosed() == false)) {
-			sessionFactory.close();
+	private static synchronized void initializeSessionFactory() {
+		if (sessionFactory == null) {
+			StandardServiceRegistry sr = new StandardServiceRegistryBuilder().configure(new File("hibernate.cfg.xml"))
+					.build();
+			sessionFactory = new MetadataSources(sr).buildMetadata().buildSessionFactory();
 		}
 	}
 
+	/**
+	 * Cierra la factoría de sesiones
+	 */
+	public static synchronized void closeSessionFactory() {
+		if (sessionFactory != null && !sessionFactory.isClosed()) {
+			sessionFactory.close();
+		}
+	}
 }

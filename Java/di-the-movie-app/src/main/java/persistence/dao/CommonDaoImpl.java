@@ -4,7 +4,6 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 /**
  * Clase con el DAO generico, CommonDaoImpl
@@ -34,7 +33,7 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	 * Metodo insert, que inserta un objeto en la base de datos
 	 */
 	public void insert(final T paramT) {
-		if (session.getTransaction().getStatus() != TransactionStatus.ACTIVE) {
+		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
@@ -47,7 +46,7 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	 * Metodo que modifica un objeto de la base de datos
 	 */
 	public void update(final T paramT) {
-		if (!session.getTransaction().equals(TransactionStatus.ACTIVE)) {
+		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
@@ -59,7 +58,7 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	 * Metodo que elimina un objeto de la base de datos
 	 */
 	public void delete(final T paramT) {
-		if (!session.getTransaction().equals(TransactionStatus.ACTIVE)) {
+		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
@@ -72,10 +71,9 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<T> searchAll() {
-		if (!session.getTransaction().getStatus().equals(TransactionStatus.ACTIVE)) {
+		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
-
 		// Devuelve todos los objetos
 		return session.createQuery("FROM " + this.entityClass.getName()).list();
 	}

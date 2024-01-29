@@ -15,4 +15,12 @@ public interface GeneroDaoI {
 	 */
 	public Genero getGeneroByName(String nombre);
 
+	/**
+	 * Obtener género por id
+	 * 
+	 * @param id id del Género encontrado
+	 * @return género con el id
+	 */
+	public Genero getGeneroById(Long id);
+
 }

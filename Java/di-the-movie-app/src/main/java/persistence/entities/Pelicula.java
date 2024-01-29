@@ -37,7 +37,7 @@ public class Pelicula implements Serializable {
 	private String titulo;
 
 	/** Descripcion de la pelicula */
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", length = 1000)
 	private String overview;
 
 	/** Fecha de salida */
@@ -89,7 +89,7 @@ public class Pelicula implements Serializable {
 
 	/** Valoracion de la pelicula */
 	@Column(name = "valoracion_usuario")
-	private String valoracionUsuario;
+	private double valoracionUsuario;
 
 	/** Fecha de visualizacion del usuario */
 	@Column(name = "fecha_visualizacion_usuario")
@@ -233,14 +233,14 @@ public class Pelicula implements Serializable {
 	/**
 	 * @return the valoracionUsuario
 	 */
-	public String getValoracionUsuario() {
+	public double getValoracionUsuario() {
 		return valoracionUsuario;
 	}
 
 	/**
 	 * @param valoracionUsuario the valoracionUsuario to set
 	 */
-	public void setValoracionUsuario(String valoracionUsuario) {
+	public void setValoracionUsuario(double valoracionUsuario) {
 		this.valoracionUsuario = valoracionUsuario;
 	}
 

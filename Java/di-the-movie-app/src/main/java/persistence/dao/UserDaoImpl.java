@@ -1,15 +1,24 @@
 package persistence.dao;
 
-import java.util.List;
-
 import org.hibernate.Session;
 
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 import persistence.entities.User;
 
+/**
+ * Implementación DAO para la entidad User
+ */
 public class UserDaoImpl extends CommonDaoImpl<User> implements UserDaoI {
 
+	/** Sesion Hibernate */
 	private Session session;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param session Sesion Hibernate
+	 */
 	public UserDaoImpl(Session session) {
 		super(session);
 		this.session = session;
@@ -17,16 +26,17 @@ public class UserDaoImpl extends CommonDaoImpl<User> implements UserDaoI {
 
 	@Override
 	public User getUserByEmail(String email) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
 
-		String hql = "FROM User WHERE email = :email";
+		TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
+		query.setParameter("email", email);
 
-		List<User> results = session.createQuery(hql).setParameter("email", email).list();
-
-		// Si está vacío devuelve nulo, si no el primer resultado
-		if (results.isEmpty()) {
+		try {
+			return query.getSingleResult();
+		} catch (NoResultException e) {
 			return null;
-		} else {
-			return results.get(0);
 		}
 	}
 

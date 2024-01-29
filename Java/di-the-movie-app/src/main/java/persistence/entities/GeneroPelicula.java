@@ -22,6 +22,10 @@ public class GeneroPelicula implements Serializable {
 	@EmbeddedId
 	private GeneroPeliculaId id;
 
+	public GeneroPelicula(GeneroPeliculaId id) {
+		this.id = id;
+	}
+
 	/**
 	 * @return the id
 	 */

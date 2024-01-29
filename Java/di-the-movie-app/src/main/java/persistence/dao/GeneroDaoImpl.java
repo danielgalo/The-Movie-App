@@ -1,6 +1,7 @@
 package persistence.dao;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import persistence.entities.Genero;
 
@@ -26,9 +27,26 @@ public class GeneroDaoImpl extends CommonDaoImpl<Genero> implements GeneroDaoI {
 	@Override
 	public Genero getGeneroByName(String nombre) {
 
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
+
 		String hql = "FROM Genero WHERE titulo = :nombre";
 		return (Genero) session.createQuery(hql).setParameter("nombre", nombre);
 
+	}
+
+	@Override
+	public Genero getGeneroById(Long id) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
+
+		String hql = "FROM Genero WHERE id = :id";
+		Query<Genero> query = session.createQuery(hql);
+		query.setParameter("id", id);
+
+		return query.getSingleResult();
 	}
 
 }

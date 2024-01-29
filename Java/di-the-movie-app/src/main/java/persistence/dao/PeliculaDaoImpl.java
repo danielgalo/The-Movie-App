@@ -25,7 +25,9 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 
 	@Override
 	public List<Pelicula> searchMovieByTitle(String title) {
-
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
 		String hql = "FROM Pelicula WHERE titulo = :title";
 
 		return session.createQuery(hql).setParameter("title", title).list();

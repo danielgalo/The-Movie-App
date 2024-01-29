@@ -13,11 +13,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import models.GeneroDTO;
 import models.PeliculaDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import persistence.entities.Genero;
 
 /**
  * Clase usada para recibir datos de la API de The Movie Database
@@ -116,9 +116,9 @@ public class TMDBApi {
 	/**
 	 * Devuelve una lista con todos los géneros
 	 */
-	public static List<GeneroDTO> getAllGenres() {
+	public static List<Genero> getAllGenres() {
 
-		List<GeneroDTO> generos = new ArrayList<>();
+		List<Genero> generos = new ArrayList<>();
 
 		try {
 
@@ -131,8 +131,9 @@ public class TMDBApi {
 					.build();
 			Response response = client.newCall(request).execute();
 
-			JsonObject searchResult = JsonParser.parseString(response.toString()).getAsJsonObject();
-			results = searchResult.getAsJsonArray("results");
+			String responseBody = response.body().string();
+			JsonObject searchResult = JsonParser.parseString(responseBody).getAsJsonObject();
+			results = searchResult.getAsJsonArray("genres");
 
 			if (!results.isEmpty()) {
 
@@ -142,7 +143,9 @@ public class TMDBApi {
 					int id = result.get("id").getAsInt();
 					String name = result.get("name").getAsString();
 
-					GeneroDTO genero = new GeneroDTO(id, name);
+					Genero genero = new Genero();
+					genero.setId(Long.valueOf(id));
+					genero.setNombre(name);
 					generos.add(genero);
 
 				}

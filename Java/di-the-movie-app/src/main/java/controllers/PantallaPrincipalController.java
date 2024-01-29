@@ -5,7 +5,10 @@
 package controllers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import org.hibernate.Session;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,7 +16,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import persistence.HibernateUtil;
+import persistence.dao.GeneroDaoImpl;
+import persistence.entities.Genero;
 import utils.NavegacionPantallas;
+import utils.TMDBApi;
 import utils.constants.Constantes;
 
 public class PantallaPrincipalController {
@@ -83,17 +90,42 @@ public class PantallaPrincipalController {
 		exportBtn.setImage(new Image("/resources/btn-export.png"));
 		exitBtn.setImage(new Image("/resources/btn-exit.png"));
 
-		assert lblTitulo != null
-				: "fx:id=\"lblTitulo\" was not injected: check your FXML file 'PantallaPrincipal.fxml'.";
-		assert panelAltaPeliculas != null
-				: "fx:id=\"panelAltaPeliculas\" was not injected: check your FXML file 'PantallaPrincipal.fxml'.";
-		assert panelConsultaPeliculas != null
-				: "fx:id=\"panelConsultaPeliculas\" was not injected: check your FXML file 'PantallaPrincipal.fxml'.";
-		assert panelExportarPeliculas != null
-				: "fx:id=\"panelExportarPeliculas\" was not injected: check your FXML file 'PantallaPrincipal.fxml'.";
-		assert panelSalir != null
-				: "fx:id=\"panelSalir\" was not injected: check your FXML file 'PantallaPrincipal.fxml'.";
+		insertGenresIfAbsent();
 
+	}
+
+	/**
+	 * Inserta los géneros en la base de datos si hay
+	 */
+	private void insertGenresIfAbsent() {
+		Session session = null;
+
+		try {
+			// Obtener la sesión de HibernateUtil
+			session = HibernateUtil.getSession();
+
+			// Buscar si hay géneros
+			GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
+			List<Genero> generosEncontrados = generoDao.searchAll();
+
+			// Si no hay, insertarlos
+			if (generosEncontrados.isEmpty() || generosEncontrados == null) {
+				// Obtener todos los géneros
+				List<Genero> generos = TMDBApi.getAllGenres();
+
+				// Insertarlos
+				for (Genero gen : generos) {
+					generoDao.insert(gen);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			// Cerrar la sesión al finalizar
+			if (session != null) {
+				HibernateUtil.closeSession();
+			}
+		}
 	}
 
 }
