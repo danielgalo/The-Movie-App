@@ -17,24 +17,24 @@
             <Label layoutX="638.0" layoutY="28.0" text="Datos de la película" />
             <Label layoutX="20.0" layoutY="108.0" text="Título:" />
             <TextField fx:id="txtTituloPelicula" layoutX="134.0" layoutY="97.0" prefHeight="42.0" prefWidth="387.0" promptText="Introduce un título..." />
-            <Button fx:id="btnAnterior" layoutX="45.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnAnteriorPressed" prefHeight="39.0" prefWidth="79.0" text="Anterior" />
-            <Button fx:id="btnSiguiente" layoutX="134.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnSiguientePressed" prefHeight="39.0" prefWidth="79.0" text="Siguiente" />
+            <Button fx:id="btnAnterior" disable="true" layoutX="45.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnAnteriorPressed" prefHeight="39.0" prefWidth="79.0" text="Anterior" />
+            <Button fx:id="btnSiguiente" disable="true" layoutX="134.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnSiguientePressed" prefHeight="39.0" prefWidth="79.0" text="Siguiente" />
             <Button fx:id="btnConsultaManual" layoutX="1239.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnConsultaManualPressed" prefHeight="39.0" prefWidth="120.0" text="Consulta Manual" />
             <Button fx:id="btnBuscar" layoutX="539.0" layoutY="96.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="39.0" prefWidth="79.0" text="Buscar" />
             <Pane fx:id="panelInfoPelicula" layoutX="-1.0" layoutY="209.0" prefHeight="536.0" prefWidth="1391.0">
                <children>
-                  <Label fx:id="lblResTitulo" layoutX="14.0" layoutY="17.0" text="                      " />
+                  <Label fx:id="lblResTitulo" layoutX="14.0" layoutY="17.0" text="Título (Fecha de estreno)" />
                   <ImageView fx:id="imgPelicula" fitHeight="474.0" fitWidth="330.0" layoutX="12.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="lblDescripcion" layoutX="358.0" layoutY="56.0" prefHeight="454.0" prefWidth="452.0" text="                             " />
+                  <Label fx:id="lblDescripcion" layoutX="358.0" layoutY="56.0" prefHeight="454.0" prefWidth="452.0" text="Descripción de la película..." />
                   <Label layoutX="853.0" layoutY="31.0" text="Valora la película:" />
-                  <Spinner fx:id="spinnerValoracionUsuario" layoutX="1039.0" layoutY="34.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Spinner fx:id="spinnerValoracionUsuario" disable="true" layoutX="1039.0" layoutY="34.0" prefHeight="25.0" prefWidth="173.0" />
                   <Label layoutX="851.0" layoutY="105.0" text="Comentarios sobre la película:" />
-                  <TextArea fx:id="txtAreaComentarios" layoutX="858.0" layoutY="149.0" prefHeight="81.0" prefWidth="500.0" />
+                  <TextArea fx:id="txtAreaComentarios" disable="true" layoutX="858.0" layoutY="149.0" prefHeight="81.0" prefWidth="500.0" />
                   <Label layoutX="854.0" layoutY="251.0" text="Localización de la película:" />
-                  <TextField fx:id="txtLocalizacion" layoutX="1138.0" layoutY="256.0" prefHeight="25.0" prefWidth="218.0" />
-                  <Button fx:id="btnAlta" layoutX="1290.0" layoutY="476.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
+                  <TextField fx:id="txtLocalizacion" disable="true" layoutX="1138.0" layoutY="256.0" prefHeight="25.0" prefWidth="218.0" />
+                  <Button fx:id="btnAlta" disable="true" layoutX="1290.0" layoutY="476.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
                   <Label layoutX="853.0" layoutY="305.0" text="Fecha de visualización:" />
-                  <DatePicker fx:id="dateFechaVisUsuario" layoutX="1140.0" layoutY="307.0" prefHeight="25.0" prefWidth="212.0" promptText="Fecha en la que la has visto" />
+                  <DatePicker fx:id="dateFechaVisUsuario" disable="true" layoutX="1140.0" layoutY="307.0" prefHeight="25.0" prefWidth="212.0" promptText="Fecha en la que la has visto" />
                </children>
             </Pane>
          </children>

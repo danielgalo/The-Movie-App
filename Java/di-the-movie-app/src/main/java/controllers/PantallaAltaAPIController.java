@@ -89,13 +89,37 @@ public class PantallaAltaAPIController {
 
 	@FXML
 	private TextField txtLocalizacion;
+
 	@FXML
 	private DatePicker dateFechaVisUsuario;
+
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
 
 	// Imagen predeterminada cuando no hay imagen disponible
 	private static final Image EMPTY_IMAGE = new Image("/resources/found-icon-20.jpg");
+
+	/**
+	 * Inicializa el controlador después de que se haya cargado la raíz del archivo
+	 * FXML. Configura la imagen predeterminada y realiza las asignaciones de los
+	 * elementos de la interfaz.
+	 */
+	@FXML
+	void initialize() {
+
+		// Inicializar imagen por defecto
+		imgPelicula.setImage(EMPTY_IMAGE);
+		lblDescripcion.setWrapText(true);
+
+		// Configurar el SpinnerValueFactory para permitir valores de 0 a 10 con
+		// incrementos de 0.5
+		SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);
+		spinnerValoracionUsuario.setValueFactory(valueFactory);
+
+		// Aplicar efectos de sombra a componentes
+		aplicaEfectos();
+
+	}
 
 	/**
 	 * Maneja el evento cuando se presiona el botón "Alta". Obtiene la película
@@ -105,6 +129,15 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnAltaPressed(MouseEvent event) {
+
+		// Inserta la pelicula
+		insertPelicula();
+	}
+
+	/**
+	 * Inserta la película que aparece en la pantalla en la base de datos
+	 */
+	private void insertPelicula() {
 		Session session = null;
 
 		try {
@@ -126,6 +159,7 @@ public class PantallaAltaAPIController {
 			pelicula.setOverview(peliDto.getOverview());
 			pelicula.setReleaseDate(peliDto.getReleaseDate());
 			pelicula.setCartel(peliDto.getImg());
+			pelicula.setComentariosUsuario(txtAreaComentarios.getText());
 
 			System.out.println("LONGITUD DESCRIPCION: " + peliDto.getOverview().length());
 
@@ -155,6 +189,23 @@ public class PantallaAltaAPIController {
 	}
 
 	/**
+	 * Habilita elementos de input para insertar películas, antes de buscarla
+	 * 
+	 * 
+	 */
+	private void habilitaElementosInput() {
+
+		spinnerValoracionUsuario.setDisable(false);
+		txtAreaComentarios.setDisable(false);
+		txtLocalizacion.setDisable(false);
+		dateFechaVisUsuario.setDisable(false);
+		btnAlta.setDisable(false);
+		btnSiguiente.setDisable(false);
+		btnAnterior.setDisable(false);
+
+	}
+
+	/**
 	 * Maneja el evento cuando se presiona el botón "Anterior". Muestra la película
 	 * anterior en la búsqueda.
 	 *
@@ -163,12 +214,18 @@ public class PantallaAltaAPIController {
 	@FXML
 	void btnAnteriorPressed(MouseEvent event) {
 		if (posicionPelicula > 0) {
+
+			btnAlta.setDisable(false);
+
 			posicionPelicula--;
 			setPelicula();
+
 		} else {
 			lblResTitulo.setText("No hay película anterior");
 			imgPelicula.setImage(EMPTY_IMAGE);
 			lblDescripcion.setText("");
+			btnAlta.setDisable(true);
+
 		}
 	}
 
@@ -180,6 +237,11 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnBuscarPressed(MouseEvent event) {
+
+		// Hablilita elementos para insertar en base de datos
+		habilitaElementosInput();
+
+		// Mostrar película
 		posicionPelicula = 0;
 		setPelicula();
 	}
@@ -206,35 +268,19 @@ public class PantallaAltaAPIController {
 	@FXML
 	void btnSiguientePressed(MouseEvent event) {
 		if (posicionPelicula >= TMDBApi.getResultsLength()) {
+
 			lblResTitulo.setText("No hay película siguiente.");
 			lblDescripcion.setText("");
 			imgPelicula.setImage(EMPTY_IMAGE);
+
+			btnAlta.setDisable(true);
+
 		} else {
+
+			btnAlta.setDisable(false);
 			posicionPelicula++;
 			setPelicula();
 		}
-	}
-
-	/**
-	 * Inicializa el controlador después de que se haya cargado la raíz del archivo
-	 * FXML. Configura la imagen predeterminada y realiza las asignaciones de los
-	 * elementos de la interfaz.
-	 */
-	@FXML
-	void initialize() {
-
-		// Inicializar imagen por defecto
-		imgPelicula.setImage(EMPTY_IMAGE);
-		lblDescripcion.setWrapText(true);
-
-		// Configurar el SpinnerValueFactory para permitir valores de 0 a 10 con
-		// incrementos de 0.5
-		SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);
-		spinnerValoracionUsuario.setValueFactory(valueFactory);
-
-		// Aplicar efectos de sombra a componentes
-		aplicaEfectos();
-
 	}
 
 	/**
