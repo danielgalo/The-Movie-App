@@ -18,6 +18,7 @@ import dto.PeliculaDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import persistence.entities.Company;
 import persistence.entities.Genero;
 
 /**
@@ -146,7 +147,10 @@ public class TMDBApi {
 					detalles.setAdult(result.get("adult").getAsBoolean());
 					detalles.setBudget(result.get("budget").getAsInt());
 					detalles.setId(result.get("id").getAsInt());
-					// TODO
+
+					JsonArray jsonProductions = result.getAsJsonArray("production_companies");
+					List<Company> productionCompanies = new ArrayList<>();
+
 				}
 			}
 
