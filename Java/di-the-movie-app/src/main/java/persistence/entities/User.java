@@ -1,8 +1,8 @@
 package persistence.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +16,12 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/** Id del usuario */
 	@Id
@@ -32,15 +37,29 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	/** Peliculas del usuario */
-	@OneToMany(mappedBy = "id.usuario", cascade = CascadeType.ALL)
-	private List<UsuarioPelicula> usuarioPelicula;
+	/** Peliculas de la compañia */
+	@OneToMany(mappedBy = "usuario")
+	private List<Pelicula> peliculas;
 
 	/**
 	 * 
 	 */
 	public User() {
 
+	}
+
+	/**
+	 * @return the peliculas
+	 */
+	public List<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+	/**
+	 * @param peliculas the peliculas to set
+	 */
+	public void setPeliculas(List<Pelicula> peliculas) {
+		this.peliculas = peliculas;
 	}
 
 	/**

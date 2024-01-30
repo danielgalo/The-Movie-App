@@ -13,7 +13,7 @@
 		<property name="hibernate.default_schema">hibernate_tarea02</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">validate</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<mapping class="persistence.entities.Actor" />
 		<mapping class="persistence.entities.Company" />
@@ -22,7 +22,6 @@
 		<mapping class="persistence.entities.Localizacion" />
 		<mapping class="persistence.entities.Pelicula" />
 		<mapping class="persistence.entities.GeneroPelicula" />
-		<mapping class="persistence.entities.UsuarioPelicula" />
 		<mapping class="persistence.entities.User" />
         
 	</session-factory>

@@ -13,7 +13,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import models.PeliculaDTO;
+import dto.DetallesDTO;
+import dto.PeliculaDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -111,6 +112,49 @@ public class TMDBApi {
 		}
 
 		return pelicula;
+	}
+
+	/**
+	 * Devuelve los detalles de una película por su id
+	 * 
+	 * @param id id de la película a obtener los detalles
+	 * @return Objeto detalles con los detalles de la película
+	 */
+	public static DetallesDTO getDetallesById(int id) {
+
+		DetallesDTO detalles = null;
+
+		try {
+			OkHttpClient client = new OkHttpClient();
+
+			Request request = new Request.Builder().url("https://api.themoviedb.org/3/movie/" + id + "?language=en-US")
+					.get().addHeader("accept", "application/json")
+					.addHeader("Authorization",
+							"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZTVjMTgxN2U4NGRlMmMwZGU4ZDM0YmM5MTY1MWEwMCIsInN1YiI6IjY1NmVlZDEzNjUxN2Q2MDBjYzQzMWQyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ISS3oHobccfNtISmXqBs_dPb3jOm0s9LDQdbN7t1fEQ")
+					.build();
+			Response response = client.newCall(request).execute();
+
+			String responseBody = response.body().string();
+			JsonObject searchResult = JsonParser.parseString(responseBody).getAsJsonObject();
+			results = searchResult.getAsJsonArray("details");
+
+			if (!results.isEmpty()) {
+
+				for (int i = 0; i < results.size(); i++) {
+					JsonObject result = results.get(i).getAsJsonObject();
+					detalles = new DetallesDTO();
+					detalles.setAdult(result.get("adult").getAsBoolean());
+					detalles.setBudget(result.get("budget").getAsInt());
+					detalles.setId(result.get("id").getAsInt());
+					// TODO
+				}
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return detalles;
+
 	}
 
 	/**

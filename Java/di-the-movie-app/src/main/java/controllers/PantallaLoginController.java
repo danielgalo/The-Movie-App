@@ -53,6 +53,8 @@ public class PantallaLoginController {
 	@FXML
 	private PasswordField txtPassword;
 
+	public static User currentUser;
+
 	/**
 	 * Navega a la pantalla de registro
 	 * 
@@ -92,11 +94,11 @@ public class PantallaLoginController {
 			UserDaoImpl userDao = new UserDaoImpl(session);
 
 			// Recoger resultado (buscar al usuario por email)
-			User userFound = userDao.getUserByEmail(email);
+			currentUser = userDao.getUserByEmail(email);
 
 			// Si el usuario no es nulo (se ha encontrado en la bbdd) y la contraseña del
 			// usuario encontrado coincide con la introducida, inicia sesión
-			if (userFound != null && userFound.getPassword().equals(password)) {
+			if (currentUser != null && currentUser.getPassword().equals(password)) {
 
 				NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
 						Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);

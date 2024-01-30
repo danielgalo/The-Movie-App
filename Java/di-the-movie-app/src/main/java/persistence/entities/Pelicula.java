@@ -42,7 +42,7 @@ public class Pelicula implements Serializable {
 
 	/** Fecha de salida */
 	@Column(name = "release_date")
-	private String releaseDate;
+	private Date releaseDate;
 
 	/** Año de la pelicula */
 	@Column(name = "year")
@@ -61,23 +61,10 @@ public class Pelicula implements Serializable {
 	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
 	private List<GeneroPelicula> generoPelicula;
 
-	/** usuarios de la pelicula */
-	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
-	private List<UsuarioPelicula> usuarioPelicula;
-
-	/**
-	 * @return the generoPelicula
-	 */
-	public List<GeneroPelicula> getGeneroPelicula() {
-		return generoPelicula;
-	}
-
-	/**
-	 * @param generoPelicula the generoPelicula to set
-	 */
-	public void setGeneroPelicula(List<GeneroPelicula> generoPelicula) {
-		this.generoPelicula = generoPelicula;
-	}
+	/** Usuario asociadad */
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User usuario;
 
 	/** Generos de la pelicula */
 	@ManyToMany(mappedBy = "peliculas")
@@ -103,6 +90,20 @@ public class Pelicula implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "localizacion_id")
 	private Localizacion localizacion;
+
+	/**
+	 * @return the generoPelicula
+	 */
+	public List<GeneroPelicula> getGeneroPelicula() {
+		return generoPelicula;
+	}
+
+	/**
+	 * @param generoPelicula the generoPelicula to set
+	 */
+	public void setGeneroPelicula(List<GeneroPelicula> generoPelicula) {
+		this.generoPelicula = generoPelicula;
+	}
 
 	/**
 	 * @return the id
@@ -149,14 +150,14 @@ public class Pelicula implements Serializable {
 	/**
 	 * @return the releaseDate
 	 */
-	public String getReleaseDate() {
+	public Date getReleaseDate() {
 		return releaseDate;
 	}
 
 	/**
 	 * @param releaseDate the releaseDate to set
 	 */
-	public void setReleaseDate(String releaseDate) {
+	public void setReleaseDate(Date releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -284,6 +285,20 @@ public class Pelicula implements Serializable {
 	 */
 	public void setLocalizacion(Localizacion localizacion) {
 		this.localizacion = localizacion;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public User getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
 	}
 
 }
