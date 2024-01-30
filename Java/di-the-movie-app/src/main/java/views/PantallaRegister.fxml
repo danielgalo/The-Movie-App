@@ -70,7 +70,7 @@
                         </GridPane>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <TextField id="txtEmail" layoutX="3.0" layoutY="58.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                              <TextField id="txtEmail" fx:id="txtEmail" layoutX="3.0" layoutY="58.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                                        <color>
@@ -95,7 +95,7 @@
                         </Pane>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <TextField id="txtContrasena" layoutX="3.0" layoutY="51.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                              <TextField id="txtContrasena" fx:id="txtContrasena" layoutX="3.0" layoutY="51.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                                        <color>
@@ -120,7 +120,7 @@
                         </Pane>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/pantalla-principal-style.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <TextField id="txtRepetirContrasena" layoutX="3.0" layoutY="62.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
+                              <TextField id="txtRepetirContrasena" fx:id="txtRepetirContrasena" layoutX="3.0" layoutY="62.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                                        <color>
@@ -155,7 +155,7 @@
                               <RowConstraints maxHeight="32.666748046875" minHeight="10.0" prefHeight="16.666748046875" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMousePressed="#btnRegistrarsePressed" prefHeight="70.0" prefWidth="232.0" stylesheets="@../styles/register-style.css" text="Registrarse" GridPane.columnIndex="1">
+                              <Button id="btnRegistrarse" fx:id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMousePressed="#btnRegistrarsePressed" prefHeight="70.0" prefWidth="232.0" stylesheets="@../styles/register-style.css" text="Registrarse" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
