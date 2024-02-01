@@ -289,6 +289,7 @@ public class PantallaAltaAPIController {
 		NavegacionPantallas navegacion = new NavegacionPantallas("Consulta Manual", Constantes.PANTALLA_ALTA_MANUAL,
 				Constantes.CSS_ALTA_MANUAL);
 		navegacion.navegaAPantalla();
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	/**

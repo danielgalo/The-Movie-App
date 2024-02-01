@@ -17,11 +17,6 @@
 	-fx-text-fill: white;
 }
 
-#lblExplicacion{
-	-fx-font-family: System;
-	-fx-font-size: 50;
-}
-
 #lblTitulo{
 	-fx-font-family: System;
 	-fx-font-size: 30;
@@ -46,28 +41,8 @@
 	-fx-font-weight: bold;
 }
 
-#txtTitulo{
-	-fx-pref-width: 810;
-	-fx-pref-height: 64;
-	-fx-border-color: black;
-	-fx-border-width: 2px;
-}
-
-#txtDescripcion{
-	-fx-pref-width: 810;
-	-fx-pref-height: 64;
-	-fx-border-color: black;
-	-fx-border-width: 2px;
-}
-
-#txtFechaEstreno{
-	-fx-pref-width: 810;
-	-fx-pref-height: 64;
-	-fx-border-color: black;
-	-fx-border-width: 2px;
-}
-
-#txtPoster{
+#txtField{
+	-fx-font-size: 24px;
 	-fx-pref-width: 810;
 	-fx-pref-height: 64;
 	-fx-border-color: black;
@@ -75,6 +50,7 @@
 }
 
 #btnAlta{
+	-fx-font-size: 50px;
 	-fx-background-color: blue;
 	-fx-background-radius: 60;
 	-fx-text-fill: white;
@@ -82,4 +58,24 @@
 	-fx-border-color: black;
 	-fx-border-width: 3px;
 	-fx-border-radius: 60;
+}
+
+#btnAlta:hover{
+	-fx-background-color: lightblue;
+}
+
+#btnVolver{
+	-fx-font-size: 24px;
+	-fx-background-color: black;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: white;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}
+
+#btnVolver:hover{
+	-fx-border-color: blue;
+	-fx-text-fill: blue;
 }

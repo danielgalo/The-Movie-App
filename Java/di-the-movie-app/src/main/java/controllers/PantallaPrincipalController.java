@@ -65,6 +65,7 @@ public class PantallaPrincipalController {
 				Constantes.PANTALLA_ALTA_API, Constantes.CSS_ALTA_API);
 
 		navegacion.navegaAPantalla();
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	@FXML
