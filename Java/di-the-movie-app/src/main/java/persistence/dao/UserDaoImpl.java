@@ -25,13 +25,14 @@ public class UserDaoImpl extends CommonDaoImpl<User> implements UserDaoI {
 	}
 
 	@Override
-	public User getUserByEmail(String email) {
+	public User getUser(String email, String password) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
-		TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email", User.class);
+		TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email and password = :password", User.class);
 		query.setParameter("email", email);
+		query.setParameter("password", password);
 
 		try {
 			return query.getSingleResult();

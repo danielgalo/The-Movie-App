@@ -82,3 +82,7 @@
 	-fx-border-width: 3px;
 	-fx-border-radius: 50;
 }
+
+#btnRegistrarse:hover{
+	-fx-background-color: lightblue;
+}

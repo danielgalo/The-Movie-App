@@ -92,12 +92,11 @@ public class PantallaLoginController {
 			UserDaoImpl userDao = new UserDaoImpl(session);
 
 			// Recoger resultado (buscar al usuario por email)
-			User userFound = userDao.getUserByEmail(email);
+			User userFound = userDao.getUser(email, password);
 
 			// Si el usuario no es nulo (se ha encontrado en la bbdd) y la contraseña del
 			// usuario encontrado coincide con la introducida, inicia sesión
-			if (userFound != null && userFound.getPassword().equals(password)) {
-
+			if (userFound != null) {
 				NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
 						Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
 				navegacion.navegaAPantalla();

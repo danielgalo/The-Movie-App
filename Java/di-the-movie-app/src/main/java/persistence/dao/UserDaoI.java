@@ -13,6 +13,6 @@ public interface UserDaoI {
 	 * @param email email del usuario
 	 * @return usuario con el email aportado
 	 */
-	public User getUserByEmail(final String email);
+	public User getUser(final String email, final String password);
 
 }

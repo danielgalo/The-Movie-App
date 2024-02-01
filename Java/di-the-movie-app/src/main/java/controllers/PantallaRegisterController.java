@@ -47,13 +47,21 @@ public class PantallaRegisterController {
 	
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
-		Session session = HibernateUtil.getSession();
-		User user = new User(txtEmail.getText(), txtContrasena.getText());
-		session.persist(user);
-		
-		NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_PANTALLA_PRINCIPAL);
-		pantallaLogin.navegaAPantalla();
-		NavegacionPantallas.cerrarVentanaActual(e);
+		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank() && !txtRepetirContrasena.getText().isBlank()) {
+			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {				
+				Session session = HibernateUtil.getSession();
+				User user = new User(txtEmail.getText(), txtContrasena.getText());
+				session.persist(user);
+				
+				NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_PANTALLA_PRINCIPAL);
+				pantallaLogin.navegaAPantalla();
+				NavegacionPantallas.cerrarVentanaActual(e);
+			} else {
+				System.out.println(1);
+			}
+		} else {
+			System.out.println(2);
+		}
 	}
 
 }

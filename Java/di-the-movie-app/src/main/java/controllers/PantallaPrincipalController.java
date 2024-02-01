@@ -79,7 +79,9 @@ public class PantallaPrincipalController {
 
 	@FXML
 	void panelSalirPressed(MouseEvent event) {
-
+		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_LOGIN);
+		navegacion.navegaAPantalla();
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
