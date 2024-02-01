@@ -1,4 +1,4 @@
-package models;
+package dto;
 
 /**
  * Clase pelicula. Objeto DTO usado para traer datos de películas desde la API

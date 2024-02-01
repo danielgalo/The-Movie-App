@@ -3,12 +3,17 @@ package controllers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.hibernate.Session;
 
+import dto.PeliculaDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -23,13 +28,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import models.PeliculaDTO;
 import persistence.HibernateUtil;
 import persistence.dao.GeneroDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.GeneroPelicula;
 import persistence.entities.GeneroPeliculaId;
 import persistence.entities.Pelicula;
+import persistence.entities.User;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
 import utils.constants.Constantes;
@@ -144,40 +149,62 @@ public class PantallaAltaAPIController {
 			// Obtener la sesión de HibernateUtil
 			session = HibernateUtil.getSession();
 
-			// Obtener película
+			// Obtener película por el título introducido
 			String titulo = txtTituloPelicula.getText();
 			PeliculaDTO peliDto = TMDBApi.getPeliculaByTitulo(titulo, posicionPelicula);
 
-			// Sesion hibernate
+			// Obtener usuario realizador de la búsqueda
+			User usuario = PantallaLoginController.currentUser;
+
+			// DAOs de Genero y Pelicula
 			GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
 			PeliculaDaoImpl peliDao = new PeliculaDaoImpl(session);
 
+			// Entidad pelicula a insertar
 			Pelicula pelicula = new Pelicula();
+
+			// Patrón de formato para fechas
+			String pattern = "yyyy-MM-dd";
+			SimpleDateFormat releaseDateFormat = new SimpleDateFormat(pattern);
+
+			// Obtener la fecha de lanzamiento
+			Date releaseDate = releaseDateFormat.parse(peliDto.getReleaseDate());
+
+			// Obtener el año de lanzamiento
+			SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy");
+			int year = Integer.parseInt(yearDateFormat.format(releaseDate));
+
+			// Obtener fecha de visualización
+			LocalDate localDate = dateFechaVisUsuario.getValue();
+			Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
 			// Datos de la entidad pelicula a insertar
 			pelicula.setTitulo(peliDto.getTitulo());
 			pelicula.setOverview(peliDto.getOverview());
-			pelicula.setReleaseDate(peliDto.getReleaseDate());
+			pelicula.setReleaseDate(releaseDate);
 			pelicula.setCartel(peliDto.getImg());
 			pelicula.setComentariosUsuario(txtAreaComentarios.getText());
-
-			System.out.println("LONGITUD DESCRIPCION: " + peliDto.getOverview().length());
+			pelicula.setValoracionUsuario(spinnerValoracionUsuario.getValue());
+			pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
+			pelicula.setYear(year);
+			pelicula.setUsuario(usuario);
 
 			// Conseguir géneros
 			List<GeneroPelicula> generosPelicula = new ArrayList<>();
 
 			// Obtener todos los géneros de la película
 			for (int generoId : peliDto.getGenreIds()) {
-
 				GeneroPelicula gp = new GeneroPelicula(
 						new GeneroPeliculaId(pelicula, generoDao.getGeneroById(Long.valueOf(generoId))));
 				generosPelicula.add(gp);
 			}
 
+			// Asociar géneros a la película
 			pelicula.setGeneroPelicula(generosPelicula);
 
 			// Insertar película
 			peliDao.insert(pelicula);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -190,8 +217,6 @@ public class PantallaAltaAPIController {
 
 	/**
 	 * Habilita elementos de input para insertar películas, antes de buscarla
-	 * 
-	 * 
 	 */
 	private void habilitaElementosInput() {
 
@@ -213,14 +238,20 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnAnteriorPressed(MouseEvent event) {
+
 		if (posicionPelicula > 0) {
 
-			btnAlta.setDisable(false);
+			// Habilitar botón de alta si está deshabilitado, mostrar película
+			if (btnAlta.isDisabled()) {
+				btnAlta.setDisable(false);
+			}
 
 			posicionPelicula--;
 			setPelicula();
 
 		} else {
+
+			// Informar si no hay película, deshabilitar botón de alta
 			lblResTitulo.setText("No hay película anterior");
 			imgPelicula.setImage(EMPTY_IMAGE);
 			lblDescripcion.setText("");
@@ -244,6 +275,7 @@ public class PantallaAltaAPIController {
 		// Mostrar película
 		posicionPelicula = 0;
 		setPelicula();
+
 	}
 
 	/**
@@ -267,17 +299,22 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnSiguientePressed(MouseEvent event) {
+
 		if (posicionPelicula >= TMDBApi.getResultsLength()) {
 
+			// Informar si no hay película, deshabilitar botón de alta
 			lblResTitulo.setText("No hay película siguiente.");
 			lblDescripcion.setText("");
 			imgPelicula.setImage(EMPTY_IMAGE);
-
 			btnAlta.setDisable(true);
 
 		} else {
 
-			btnAlta.setDisable(false);
+			// Habilitar botón de alta si está deshabilitado, mostrar película
+			if (btnAlta.isDisabled()) {
+				btnAlta.setDisable(false);
+			}
+
 			posicionPelicula++;
 			setPelicula();
 		}

@@ -14,6 +14,7 @@
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
+
 		
 		<mapping class="persistence.entities.Actor" />
 		<mapping class="persistence.entities.Company" />
@@ -22,7 +23,6 @@
 		<mapping class="persistence.entities.Localizacion" />
 		<mapping class="persistence.entities.Pelicula" />
 		<mapping class="persistence.entities.GeneroPelicula" />
-		<mapping class="persistence.entities.UsuarioPelicula" />
 		<mapping class="persistence.entities.User" />
         
 	</session-factory>
