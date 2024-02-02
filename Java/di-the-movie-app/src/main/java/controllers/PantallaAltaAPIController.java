@@ -134,9 +134,11 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnAltaPressed(MouseEvent event) {
-
-		// Inserta la pelicula
-		insertPelicula();
+		//Si el valor de la fecha de visualización (campo obligatorio) no es nulo
+		if (dateFechaVisUsuario.getValue() != null) {
+			// Inserta la pelicula
+			insertPelicula();			
+		}
 	}
 
 	/**

@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/alta-api-style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaAltaAPIController">
    <children>
@@ -19,7 +20,7 @@
             <TextField fx:id="txtTituloPelicula" layoutX="134.0" layoutY="97.0" prefHeight="42.0" prefWidth="387.0" promptText="Introduce un título..." />
             <Button fx:id="btnAnterior" disable="true" layoutX="45.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnAnteriorPressed" prefHeight="39.0" prefWidth="79.0" text="Anterior" />
             <Button fx:id="btnSiguiente" disable="true" layoutX="134.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnSiguientePressed" prefHeight="39.0" prefWidth="79.0" text="Siguiente" />
-            <Button fx:id="btnConsultaManual" layoutX="1239.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnConsultaManualPressed" prefHeight="39.0" prefWidth="120.0" text="Consulta Manual" />
+            <Button fx:id="btnConsultaManual" layoutX="1239.0" layoutY="795.0" mnemonicParsing="false" onMousePressed="#btnConsultaManualPressed" prefHeight="39.0" prefWidth="120.0" text="Alta Manual" />
             <Button fx:id="btnBuscar" layoutX="539.0" layoutY="96.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="39.0" prefWidth="79.0" text="Buscar" />
             <Pane fx:id="panelInfoPelicula" layoutX="-1.0" layoutY="209.0" prefHeight="536.0" prefWidth="1391.0">
                <children>
@@ -35,6 +36,11 @@
                   <Button fx:id="btnAlta" disable="true" layoutX="1290.0" layoutY="476.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
                   <Label layoutX="853.0" layoutY="305.0" text="Fecha de visualización:" />
                   <DatePicker fx:id="dateFechaVisUsuario" disable="true" layoutX="1140.0" layoutY="307.0" prefHeight="25.0" prefWidth="212.0" promptText="Fecha en la que la has visto" />
+                  <Label layoutX="1140.0" layoutY="332.0" prefHeight="12.0" prefWidth="193.0" text="*Campo obligatorio" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

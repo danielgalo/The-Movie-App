@@ -51,20 +51,25 @@ public class PantallaRegisterController {
 	
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
+		//Si los campos no están vacíos
 		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank() && !txtRepetirContrasena.getText().isBlank()) {
-			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {				
+			//Y las contraseñas coinciden
+			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {
+			//TODO Ver si el usuario ya existe???
 				Session session = HibernateUtil.getSession();
+				//Crea un usuario con los datos de los campos
 				User user = new User(txtEmail.getText(), txtContrasena.getText());
+				//Guardalo en la base de datos
 				session.persist(user);
-				
+				//Y vuelve a la pantalla de login
 				NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_PANTALLA_PRINCIPAL);
 				pantallaLogin.navegaAPantalla();
 				NavegacionPantallas.cerrarVentanaActual(e);
 			} else {
-				System.out.println(1);
+				//TODO mensaje error
 			}
 		} else {
-			System.out.println(2);
+			//TODO mensaje error
 		}
 	}
 

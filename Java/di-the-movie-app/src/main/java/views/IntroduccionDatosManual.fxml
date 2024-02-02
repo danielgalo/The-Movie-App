@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -32,7 +33,7 @@
             </Pane>
             <Pane id="subPane" layoutX="50.0" layoutY="149.0" prefHeight="810.0" prefWidth="1340.0" stylesheets="@../styles/introduccion-manual-style.css">
                <children>
-                  <Label layoutX="142.0" layoutY="64.0" stylesheets="@../styles/introduccion-manual-style.css" text="Rellenar los campos con los datos de la película">
+                  <Label layoutX="142.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Rellenar los campos con los datos de la película">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>
@@ -44,7 +45,7 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <Label id="lblTitulo" layoutX="30.0" layoutY="230.0" stylesheets="@../styles/introduccion-manual-style.css" text="Título:">
+                  <Label id="lblTitulo" layoutX="30.0" layoutY="130.0" stylesheets="@../styles/introduccion-manual-style.css" text="Título:">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
@@ -97,7 +98,7 @@
                         <Font size="50.0" />
                      </font>
                   </Button>
-                  <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                  <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="120.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
                         <DropShadow offsetY="4.0">
                            <color>
@@ -133,6 +134,19 @@
                         </DropShadow>
                      </effect>
                   </TextField>
+                  <Label id="lblTitulo" layoutX="30.0" layoutY="230.0" stylesheets="@../styles/introduccion-manual-style.css" text="Género:">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <ChoiceBox id="txtField" fx:id="cmbGenero" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css" />
                </children>
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />

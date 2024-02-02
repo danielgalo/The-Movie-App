@@ -43,8 +43,6 @@
 
 #txtField{
 	-fx-font-size: 24px;
-	-fx-pref-width: 810;
-	-fx-pref-height: 64;
 	-fx-border-color: black;
 	-fx-border-width: 2px;
 	-fx-background-radius: 60;

@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
@@ -29,10 +29,19 @@ public class PantallaIntroduccionManualController {
 
     @FXML
     private TextField txtUrl;
+    
+    @FXML
+    private ChoiceBox<String> cmbGenero;
+    
+    @FXML
+    void initialize() {
+    	String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
+    	cmbGenero.getItems().addAll(generos);
+    }
 
     @FXML
     void btnAltaPressed(MouseEvent event) {
-    	
+    	//TODO
     }
 
     @FXML
