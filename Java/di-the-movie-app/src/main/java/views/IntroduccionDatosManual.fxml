@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaIntroduccionManualController">
    <children>
       <Pane id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/introduccion-manual-style.css">
          <children>
@@ -21,10 +22,12 @@
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Button id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/introduccion-manual-style.css" text="Menú" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="53.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="53.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="53.0" layoutY="70.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
+                  <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/introduccion-manual-style.css" text="Menú" />
+                  <ImageView fx:id="imgVector" fitHeight="41.0" fitWidth="75.0" layoutX="39.0" layoutY="39.0" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed">
+                     <image>
+                        <Image url="@../resources/vector.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Pane id="subPane" layoutX="50.0" layoutY="149.0" prefHeight="810.0" prefWidth="1340.0" stylesheets="@../styles/introduccion-manual-style.css">
@@ -89,19 +92,12 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <Button id="btnAlta" layoutX="510.0" layoutY="659.0" mnemonicParsing="false" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
+                  <Button id="btnAlta" fx:id="btnAlta" layoutX="510.0" layoutY="659.0" mnemonicParsing="false" onMouseEntered="#btnAltaEntered" onMouseExited="#btnAltaExited" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
                      <font>
                         <Font size="50.0" />
                      </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.34210526943206787" green="0.34210526943206787" blue="0.34210526943206787" />
-                           </color>
-                        </DropShadow>
-                     </effect>
                   </Button>
-                  <TextField id="txtField" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                  <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
                         <DropShadow offsetY="4.0">
                            <color>
@@ -110,7 +106,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <TextField id="txtField" layoutX="500.0" layoutY="320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                  <TextField id="txtField" fx:id="txtDescripcion" layoutX="500.0" layoutY="320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
                         <DropShadow offsetY="4.0">
                            <color>
@@ -119,7 +115,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <TextField id="txtField" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                  <TextField id="txtField" fx:id="txtFechaEstreno" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
                         <DropShadow offsetY="4.0">
                            <color>
@@ -128,7 +124,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <TextField id="txtField" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                  <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
                         <DropShadow offsetY="4.0">
                            <color>

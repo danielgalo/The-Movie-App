@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import utils.NavegacionPantallas;
 import utils.constants.Constantes;
 
 /**
@@ -14,27 +15,9 @@ public class TMAMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-
-		try {
-
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(TMAMain.class.getResource(Constantes.PANTALLA_LOGIN));
-			Pane ventana = (Pane) loader.load();
-
-			Scene scene = new Scene(ventana);
-
-			String urlCss = getClass().getResource(Constantes.CSS_LOGIN).toExternalForm();
-
-			scene.getStylesheets().add(urlCss);
-
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_PANTALLA_PRINCIPAL);
+		pantallaLogin.navegaAPantalla();
 	}
-
 	/**
 	 * Método principal
 	 * 

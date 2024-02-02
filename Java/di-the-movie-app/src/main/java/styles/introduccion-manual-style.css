@@ -47,6 +47,8 @@
 	-fx-pref-height: 64;
 	-fx-border-color: black;
 	-fx-border-width: 2px;
+	-fx-background-radius: 60;
+	-fx-border-radius: 60;
 }
 
 #btnAlta{
@@ -60,10 +62,6 @@
 	-fx-border-radius: 60;
 }
 
-#btnAlta:hover{
-	-fx-background-color: lightblue;
-}
-
 #btnVolver{
 	-fx-font-size: 24px;
 	-fx-background-color: black;
@@ -73,9 +71,4 @@
 	-fx-border-color: white;
 	-fx-border-width: 3px;
 	-fx-border-radius: 60;
-}
-
-#btnVolver:hover{
-	-fx-border-color: blue;
-	-fx-text-fill: blue;
 }

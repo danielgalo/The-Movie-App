@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import persistence.HibernateUtil;
@@ -44,6 +45,9 @@ public class PantallaRegisterController {
 
 	@FXML
 	private Button btnRegistrarse;
+	
+	@FXML
+  private ImageView imgVector;
 	
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
