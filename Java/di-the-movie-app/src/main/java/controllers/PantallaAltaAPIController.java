@@ -198,93 +198,22 @@ public class PantallaAltaAPIController {
 			Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
 			// Datos de la entidad pelicula a insertar
-			pelicula.setTitulo(peliDto.getTitulo());
-			pelicula.setOverview(peliDto.getOverview());
-			pelicula.setReleaseDate(releaseDate);
-			pelicula.setCartel(peliDto.getImg());
-			pelicula.setComentariosUsuario(txtAreaComentarios.getText());
-			pelicula.setValoracionUsuario(spinnerValoracionUsuario.getValue());
-			pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
-			pelicula.setYear(year);
-			pelicula.setUsuario(usuario);
-			pelicula.setValoracion(peliDto.getVoteAverage());
+			setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion);
 
-			// Conseguir géneros
-			List<GeneroPelicula> generosPelicula = new ArrayList<>();
-
-			// Obtener todos los géneros de la película
-			for (int generoId : peliDto.getGenreIds()) {
-				GeneroPelicula gp = new GeneroPelicula(
-						new GeneroPeliculaId(pelicula, generoDao.getGeneroById(Long.valueOf(generoId))));
-				generosPelicula.add(gp);
-			}
+			// Conseguir géneros para la pelicula
+			List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
 
 			Long peliculaIdApi = peliDto.getId();
 
-			// Buscar detalles de la película
-			DetallesDTO detallesPeli = TMDBApi.getDetallesById(peliculaIdApi);
+			// Conseguir las compañias para la pelicula
+			List<CompanyPelicula> compsPelis = setCompaniesPelicula(compDao, pelicula, peliculaIdApi);
 
-			List<Company> comps = detallesPeli.getProductionCompanies();
-			List<CompanyPelicula> compsPelis = new ArrayList<>();
+			// Conseguir actores para la pelicula
+			List<ActoresPeliculas> actoresPelis = setActoresPelicula(peliDto, actorDao, pelicula, peliculaIdApi);
 
-			// Por cada compañía de la película dentro de los detalles, asociarla a la
-			// película para la tabla company_pelicula e insertarla en su propia tabla
-			for (Company company : comps) {
-
-				compDao.insert(company);
-
-				CompanyPelicula compPeli = new CompanyPelicula(new CompanyPeliculaId(pelicula, company));
-				compsPelis.add(compPeli);
-			}
-
-			// Por cada actor de la película dentro de los creditos, asociarla a la
-			// película para la tabla actores_peliculas e insertarla en su propia tablas
-			List<ActoresPeliculas> actoresPelis = new ArrayList<>();
-			List<PersonaCreditosDTO> actores = TMDBApi.getActoresByPeliculaId(peliculaIdApi);
-
-			// Si hay actores
-			if (actores != null && !actores.isEmpty()) {
-				// Obtener actores de la pelicula, insertarlos
-				for (PersonaCreditosDTO personaCreditosDTO : actores) {
-
-					// Conseguir actor
-					Actor actor = new Actor();
-					actor.setNombre(personaCreditosDTO.getName());
-
-					// Insertarlo
-					actorDao.insert(actor);
-
-					// Relacion con pelicula
-					ActoresPeliculas ap = new ActoresPeliculas(new ActoresPeliculasId(pelicula, actor));
-					actoresPelis.add(ap);
-
-				}
-			} else {
-				System.out.println("----------No hay actores-------------" + "pelicula: " + peliDto.getTitulo());
-			}
-
-			// Por cada director de la película dentro de los creditos, asociarla a la
-			// película para la tabla directores_peliculas e insertarla en su propia tablas
-			List<DirectoresPeliculas> directoresPelis = new ArrayList<>();
-			List<PersonaCreditosDTO> directores = TMDBApi.getDirectoresByPeliculaId(peliculaIdApi);
-
-			// Si hay directores
-			if (directores != null && !directores.isEmpty()) {
-				// Obtener actores de la pelicula, insertarlos
-				for (PersonaCreditosDTO personaCreditosDTO : directores) {
-
-					Director director = new Director();
-					director.setNombre(personaCreditosDTO.getName());
-					directorDao.insert(director);
-
-					DirectoresPeliculas dp = new DirectoresPeliculas(new DirectoresPeliculasId(pelicula, director));
-					directoresPelis.add(dp);
-
-				}
-
-			} else {
-				System.out.println("----------No hay directores-------------" + "pelicula: " + peliDto.getTitulo());
-			}
+			// Conseguir directores para la pelicula
+			List<DirectoresPeliculas> directoresPelis = setDirectoresPelicula(peliDto, directorDao, pelicula,
+					peliculaIdApi);
 
 			// Asociar directores a la peícula
 			pelicula.setDirectoresPelicula(directoresPelis);
@@ -309,6 +238,155 @@ public class PantallaAltaAPIController {
 				HibernateUtil.closeSession();
 			}
 		}
+	}
+
+	/**
+	 * Inserta los directores de la película y los asocia a las tablas
+	 * correspondientes
+	 * 
+	 * @param peliDto       DTO de peli con datos del JSON dado por la API
+	 * @param directorDao   DAO del director
+	 * @param pelicula      entidad pelicula a asignar los directores
+	 * @param peliculaIdApi id de la pelicula dentro de la API
+	 * @return Lista de la relación entre directores y películas
+	 */
+	private List<DirectoresPeliculas> setDirectoresPelicula(PeliculaDTO peliDto, DirectorDaoImpl directorDao,
+			Pelicula pelicula, Long peliculaIdApi) {
+		// Por cada director de la película dentro de los creditos, asociarla a la
+		// película para la tabla directores_peliculas e insertarla en su propia tablas
+		List<DirectoresPeliculas> directoresPelis = new ArrayList<>();
+		List<PersonaCreditosDTO> directores = TMDBApi.getDirectoresByPeliculaId(peliculaIdApi);
+
+		// Si hay directores
+		if (directores != null && !directores.isEmpty()) {
+			// Obtener actores de la pelicula, insertarlos
+			for (PersonaCreditosDTO personaCreditosDTO : directores) {
+
+				Director director = new Director();
+				director.setNombre(personaCreditosDTO.getName());
+				directorDao.insert(director);
+
+				DirectoresPeliculas dp = new DirectoresPeliculas(new DirectoresPeliculasId(pelicula, director));
+				directoresPelis.add(dp);
+
+			}
+
+		} else {
+			System.out.println("----------No hay directores-------------" + "pelicula: " + peliDto.getTitulo());
+		}
+		return directoresPelis;
+	}
+
+	/**
+	 * Inserta los actores de la película y los asocia a las tablas correspondientes
+	 * 
+	 * @param peliDto       DTO de peli con datos del JSON dado por la API
+	 * @param actorDao      DAO del actor
+	 * @param pelicula      entidad pelicula a asignar los directores
+	 * @param peliculaIdApi id de la pelicula dentro de la API
+	 * @return Lista de la relación entre actores y películas
+	 */
+	private List<ActoresPeliculas> setActoresPelicula(PeliculaDTO peliDto, ActorDaoImpl actorDao, Pelicula pelicula,
+			Long peliculaIdApi) {
+		// Por cada actor de la película dentro de los creditos, asociarla a la
+		// película para la tabla actores_peliculas e insertarla en su propia tablas
+		List<ActoresPeliculas> actoresPelis = new ArrayList<>();
+		List<PersonaCreditosDTO> actores = TMDBApi.getActoresByPeliculaId(peliculaIdApi);
+
+		// Si hay actores
+		if (actores != null && !actores.isEmpty()) {
+			// Obtener actores de la pelicula, insertarlos
+			for (PersonaCreditosDTO personaCreditosDTO : actores) {
+
+				// Conseguir actor
+				Actor actor = new Actor();
+				actor.setNombre(personaCreditosDTO.getName());
+
+				// Insertarlo
+				actorDao.insert(actor);
+
+				// Relacion con pelicula
+				ActoresPeliculas ap = new ActoresPeliculas(new ActoresPeliculasId(pelicula, actor));
+				actoresPelis.add(ap);
+
+			}
+		} else {
+			System.out.println("----------No hay actores-------------" + "pelicula: " + peliDto.getTitulo());
+		}
+		return actoresPelis;
+	}
+
+	/**
+	 * Inserta las compañías de la película y las asocia a las tablas
+	 * correspondientes
+	 * 
+	 * @param compDao       DAO de la compañia
+	 * @param pelicula      entidad pelicula a asignar los directores
+	 * @param peliculaIdApi id de la pelicula dentro de la API
+	 * @return Lista de la relación entre compañia y películas
+	 */
+	private List<CompanyPelicula> setCompaniesPelicula(CompanyDaoImpl compDao, Pelicula pelicula, Long peliculaIdApi) {
+		DetallesDTO detallesPeli = TMDBApi.getDetallesById(peliculaIdApi);
+
+		List<Company> comps = detallesPeli.getProductionCompanies();
+		List<CompanyPelicula> compsPelis = new ArrayList<>();
+
+		// Por cada compañía de la película dentro de los detalles, asociarla a la
+		// película para la tabla company_pelicula e insertarla en su propia tabla
+		for (Company company : comps) {
+
+			compDao.insert(company);
+
+			CompanyPelicula compPeli = new CompanyPelicula(new CompanyPeliculaId(pelicula, company));
+			compsPelis.add(compPeli);
+		}
+		return compsPelis;
+	}
+
+	/**
+	 * Asocia los géneros ya existentes en la base de datos a las películas
+	 * correspondientes
+	 * 
+	 * @param peliDto   DTO de la pelicula con datos del JSON obtenido por la API
+	 * @param generoDao DAO de genero
+	 * @param pelicula  pelicula a asociar los géneros
+	 * @return Lista con la relación entre generos y peliculas
+	 */
+	private List<GeneroPelicula> setGenerosPelicula(PeliculaDTO peliDto, GeneroDaoImpl generoDao, Pelicula pelicula) {
+		List<GeneroPelicula> generosPelicula = new ArrayList<>();
+
+		// Obtener todos los géneros de la película
+		for (int generoId : peliDto.getGenreIds()) {
+			GeneroPelicula gp = new GeneroPelicula(
+					new GeneroPeliculaId(pelicula, generoDao.getGeneroById(Long.valueOf(generoId))));
+			generosPelicula.add(gp);
+		}
+		return generosPelicula;
+	}
+
+	/**
+	 * Asocia datos no dependientes de otras entidades a la entidad película
+	 * 
+	 * @param peliDto            DTO de la pelicula con datos del JSON obtenido por
+	 *                           la API
+	 * @param usuario            Usuario actual
+	 * @param pelicula           entidad pelicula
+	 * @param releaseDate        fecha de lanzamiento de la pelicula
+	 * @param year               año de lanzamiento de la pelicula
+	 * @param fechaVisualizacion fecha en el que el usuario ha visto la pelicula
+	 */
+	private void setDatosPelicula(PeliculaDTO peliDto, User usuario, Pelicula pelicula, Date releaseDate, int year,
+			Date fechaVisualizacion) {
+		pelicula.setTitulo(peliDto.getTitulo());
+		pelicula.setOverview(peliDto.getOverview());
+		pelicula.setReleaseDate(releaseDate);
+		pelicula.setCartel(peliDto.getImg());
+		pelicula.setComentariosUsuario(txtAreaComentarios.getText());
+		pelicula.setValoracionUsuario(spinnerValoracionUsuario.getValue());
+		pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
+		pelicula.setYear(year);
+		pelicula.setUsuario(usuario);
+		pelicula.setValoracion(peliDto.getVoteAverage());
 	}
 
 	/**
