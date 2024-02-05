@@ -13,7 +13,9 @@ import java.util.ResourceBundle;
 
 import org.hibernate.Session;
 
+import dto.DetallesDTO;
 import dto.PeliculaDTO;
+import dto.PersonaCreditosDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -29,8 +31,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
+import persistence.dao.ActorDaoImpl;
+import persistence.dao.CompanyDaoImpl;
+import persistence.dao.DirectorDaoImpl;
 import persistence.dao.GeneroDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
+import persistence.entities.Actor;
+import persistence.entities.ActoresPeliculas;
+import persistence.entities.ActoresPeliculasId;
+import persistence.entities.Company;
+import persistence.entities.CompanyPelicula;
+import persistence.entities.CompanyPeliculaId;
+import persistence.entities.Director;
+import persistence.entities.DirectoresPeliculas;
+import persistence.entities.DirectoresPeliculasId;
 import persistence.entities.GeneroPelicula;
 import persistence.entities.GeneroPeliculaId;
 import persistence.entities.Pelicula;
@@ -134,10 +148,10 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnAltaPressed(MouseEvent event) {
-		//Si el valor de la fecha de visualización (campo obligatorio) no es nulo
+		// Si el valor de la fecha de visualización (campo obligatorio) no es nulo
 		if (dateFechaVisUsuario.getValue() != null) {
 			// Inserta la pelicula
-			insertPelicula();			
+			insertPelicula();
 		}
 	}
 
@@ -158,9 +172,12 @@ public class PantallaAltaAPIController {
 			// Obtener usuario realizador de la búsqueda
 			User usuario = PantallaLoginController.currentUser;
 
-			// DAOs de Genero y Pelicula
+			// DAOs de entidades
 			GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
 			PeliculaDaoImpl peliDao = new PeliculaDaoImpl(session);
+			CompanyDaoImpl compDao = new CompanyDaoImpl(session);
+			ActorDaoImpl actorDao = new ActorDaoImpl(session);
+			DirectorDaoImpl directorDao = new DirectorDaoImpl(session);
 
 			// Entidad pelicula a insertar
 			Pelicula pelicula = new Pelicula();
@@ -190,6 +207,7 @@ public class PantallaAltaAPIController {
 			pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
 			pelicula.setYear(year);
 			pelicula.setUsuario(usuario);
+			pelicula.setValoracion(peliDto.getVoteAverage());
 
 			// Conseguir géneros
 			List<GeneroPelicula> generosPelicula = new ArrayList<>();
@@ -201,8 +219,84 @@ public class PantallaAltaAPIController {
 				generosPelicula.add(gp);
 			}
 
+			Long peliculaIdApi = peliDto.getId();
+
+			// Buscar detalles de la película
+			DetallesDTO detallesPeli = TMDBApi.getDetallesById(peliculaIdApi);
+
+			List<Company> comps = detallesPeli.getProductionCompanies();
+			List<CompanyPelicula> compsPelis = new ArrayList<>();
+
+			// Por cada compañía de la película dentro de los detalles, asociarla a la
+			// película para la tabla company_pelicula e insertarla en su propia tabla
+			for (Company company : comps) {
+
+				compDao.insert(company);
+
+				CompanyPelicula compPeli = new CompanyPelicula(new CompanyPeliculaId(pelicula, company));
+				compsPelis.add(compPeli);
+			}
+
+			// Por cada actor de la película dentro de los creditos, asociarla a la
+			// película para la tabla actores_peliculas e insertarla en su propia tablas
+			List<ActoresPeliculas> actoresPelis = new ArrayList<>();
+			List<PersonaCreditosDTO> actores = TMDBApi.getActoresByPeliculaId(peliculaIdApi);
+
+			// Si hay actores
+			if (actores != null && !actores.isEmpty()) {
+				// Obtener actores de la pelicula, insertarlos
+				for (PersonaCreditosDTO personaCreditosDTO : actores) {
+
+					// Conseguir actor
+					Actor actor = new Actor();
+					actor.setNombre(personaCreditosDTO.getName());
+
+					// Insertarlo
+					actorDao.insert(actor);
+
+					// Relacion con pelicula
+					ActoresPeliculas ap = new ActoresPeliculas(new ActoresPeliculasId(pelicula, actor));
+					actoresPelis.add(ap);
+
+				}
+			} else {
+				System.out.println("----------No hay actores-------------" + "pelicula: " + peliDto.getTitulo());
+			}
+
+			// Por cada director de la película dentro de los creditos, asociarla a la
+			// película para la tabla directores_peliculas e insertarla en su propia tablas
+			List<DirectoresPeliculas> directoresPelis = new ArrayList<>();
+			List<PersonaCreditosDTO> directores = TMDBApi.getDirectoresByPeliculaId(peliculaIdApi);
+
+			// Si hay directores
+			if (directores != null && !directores.isEmpty()) {
+				// Obtener actores de la pelicula, insertarlos
+				for (PersonaCreditosDTO personaCreditosDTO : directores) {
+
+					Director director = new Director();
+					director.setNombre(personaCreditosDTO.getName());
+					directorDao.insert(director);
+
+					DirectoresPeliculas dp = new DirectoresPeliculas(new DirectoresPeliculasId(pelicula, director));
+					directoresPelis.add(dp);
+
+				}
+
+			} else {
+				System.out.println("----------No hay directores-------------" + "pelicula: " + peliDto.getTitulo());
+			}
+
+			// Asociar directores a la peícula
+			pelicula.setDirectoresPelicula(directoresPelis);
+
+			// Asociar actores a la película
+			pelicula.setActoresPeliculas(actoresPelis);
+
 			// Asociar géneros a la película
 			pelicula.setGeneroPelicula(generosPelicula);
+
+			// Asociar compañias a la pelicula
+			pelicula.setCompPelicula(compsPelis);
 
 			// Insertar película
 			peliDao.insert(pelicula);
@@ -350,7 +444,7 @@ public class PantallaAltaAPIController {
 		PeliculaDTO pelicula = TMDBApi.getPeliculaByTitulo(tituloPelicula, posicionPelicula);
 
 		if (pelicula != null) {
-			lblResTitulo.setText(pelicula.getTitulo() + "(" + pelicula.getReleaseDate() + ")");
+			lblResTitulo.setText(pelicula.getTitulo() + " (" + pelicula.getReleaseDate() + ")");
 			lblDescripcion.setText(pelicula.getOverview());
 			InputStream stream = null;
 			try {

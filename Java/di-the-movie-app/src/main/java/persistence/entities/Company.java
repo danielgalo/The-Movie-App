@@ -2,6 +2,7 @@ package persistence.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,44 +24,40 @@ public class Company {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/** NIF de la compañía */
-	@Column(name = "NIF")
-	private String nif;
-
 	/** Nombre de la compañía */
 	@Column(name = "name")
 	private String name;
 
-	/** Peliculas de la compañia */
-	@OneToMany(mappedBy = "company")
-	private List<Pelicula> movies;
+	/** Generos de la pelicula */
+	@OneToMany(mappedBy = "id.company", cascade = CascadeType.ALL)
+	private List<CompanyPelicula> compPelicula;
 
 	/**
-	 * @return the movies
+	 * @return the id
 	 */
-	public List<Pelicula> getMovies() {
-		return movies;
+	public Long getId() {
+		return id;
 	}
 
 	/**
-	 * @param movies the movies to set
+	 * @param id the id to set
 	 */
-	public void setMovies(List<Pelicula> movies) {
-		this.movies = movies;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
-	 * @return the nif
+	 * @return the compPelicula
 	 */
-	public String getNif() {
-		return nif;
+	public List<CompanyPelicula> getCompPelicula() {
+		return compPelicula;
 	}
 
 	/**
-	 * @param nif the nif to set
+	 * @param compPelicula the compPelicula to set
 	 */
-	public void setNif(String nif) {
-		this.nif = nif;
+	public void setCompPelicula(List<CompanyPelicula> compPelicula) {
+		this.compPelicula = compPelicula;
 	}
 
 	/**

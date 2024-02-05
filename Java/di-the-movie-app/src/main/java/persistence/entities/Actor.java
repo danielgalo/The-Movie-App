@@ -1,16 +1,14 @@
 package persistence.entities;
 
-import java.util.Date;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 /**
@@ -30,18 +28,9 @@ public class Actor {
 	@Column(name = "nombre")
 	private String nombre;
 
-	/** Apellidos del actor */
-	@Column(name = "apellidos")
-	private String apellidos;
-
-	/** Fecha de nacimiento del actor */
-	@Column(name = "fecha_nacimiento")
-	private Date fechaNacimiento;
-
-	/** Peliculas del actor */
-	@ManyToMany
-	@JoinTable(name = "actor_pelicula", joinColumns = @JoinColumn(name = "actor_id"), inverseJoinColumns = @JoinColumn(name = "pelicula_id"))
-	private List<Pelicula> peliculas;
+	/** Generos de la pelicula */
+	@OneToMany(mappedBy = "id.actor", cascade = CascadeType.ALL)
+	private List<ActoresPeliculas> actoresPeliculas;
 
 	/**
 	 * @return the id
@@ -72,45 +61,17 @@ public class Actor {
 	}
 
 	/**
-	 * @return the apellidos
+	 * @return the actoresPeliculas
 	 */
-	public String getApellidos() {
-		return apellidos;
+	public List<ActoresPeliculas> getActoresPeliculas() {
+		return actoresPeliculas;
 	}
 
 	/**
-	 * @param apellidos the apellidos to set
+	 * @param actoresPeliculas the actoresPeliculas to set
 	 */
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	/**
-	 * @return the fechaNacimiento
-	 */
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	/**
-	 * @param fechaNacimiento the fechaNacimiento to set
-	 */
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	/**
-	 * @return the peliculas
-	 */
-	public List<Pelicula> getPeliculas() {
-		return peliculas;
-	}
-
-	/**
-	 * @param peliculas the peliculas to set
-	 */
-	public void setPeliculas(List<Pelicula> peliculas) {
-		this.peliculas = peliculas;
+	public void setActoresPeliculas(List<ActoresPeliculas> actoresPeliculas) {
+		this.actoresPeliculas = actoresPeliculas;
 	}
 
 }

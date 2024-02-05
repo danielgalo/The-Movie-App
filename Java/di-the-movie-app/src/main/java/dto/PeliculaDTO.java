@@ -20,21 +20,58 @@ public class PeliculaDTO {
 	/** IDs de los géneros de la película */
 	private int[] genreIds;
 
+	/** ID de la pelicula */
+	private Long id;
+
+	/** Votacion promedia */
+	private double voteAverage;
+
 	/**
-	 * Constructor con todos los argumentos
-	 * 
 	 * @param titulo
 	 * @param overview
 	 * @param releaseDate
 	 * @param img
 	 * @param genreIds
+	 * @param id
+	 * @param voteAverage
 	 */
-	public PeliculaDTO(String titulo, String overview, String releaseDate, String img, int[] genreIds) {
+	public PeliculaDTO(String titulo, String overview, String releaseDate, String img, int[] genreIds, Long id,
+			double voteAverage) {
 		this.titulo = titulo;
 		this.overview = overview;
 		this.releaseDate = releaseDate;
 		this.img = img;
 		this.genreIds = genreIds;
+		this.id = id;
+		this.voteAverage = voteAverage;
+	}
+
+	/**
+	 * @return the voteAverage
+	 */
+	public double getVoteAverage() {
+		return voteAverage;
+	}
+
+	/**
+	 * @param voteAverage the voteAverage to set
+	 */
+	public void setVoteAverage(double voteAverage) {
+		this.voteAverage = voteAverage;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
