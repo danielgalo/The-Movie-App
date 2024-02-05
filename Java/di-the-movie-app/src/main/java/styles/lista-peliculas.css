@@ -1,0 +1,54 @@
+#mainPane{
+	-fx-background-color: linear-gradient(#8FBBC9, #CEF3FF);
+}
+
+#cabecera{
+	-fx-background-color: black;
+}
+
+#lblCabecera{
+	-fx-font-family: System;
+	-fx-font-size: 50;
+	-fx-text-fill: white;
+}
+
+#btnVolver{
+	-fx-font-size: 24px;
+	-fx-background-color: black;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: white;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}
+
+#btnFiltrar{
+	-fx-font-size: 24px;
+	-fx-background-color: #717171;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}
+
+#barraBusqueda{
+	-fx-font-size: 24px;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-background-radius: 60;
+	-fx-border-radius: 60;
+}
+
+#btnBuscar{
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-background-color: #0036F8;
+	-fx-font-size: 24px;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-background-radius: 60;
+	-fx-border-radius: 60;
+}

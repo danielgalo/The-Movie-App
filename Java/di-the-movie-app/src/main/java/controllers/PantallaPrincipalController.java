@@ -70,7 +70,9 @@ public class PantallaPrincipalController {
 
 	@FXML
 	void consultaPeliculasPressed(MouseEvent event) {
-
+		NavegacionPantallas navegacion = new NavegacionPantallas("Listado de películas", Constantes.PANTALLA_LISTA_PELICULAS, Constantes.CSS_LISTA_PELICULAS);
+		navegacion.navegaAPantalla();
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	@FXML
