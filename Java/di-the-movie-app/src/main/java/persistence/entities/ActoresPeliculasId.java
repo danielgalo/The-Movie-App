@@ -38,6 +38,13 @@ public class ActoresPeliculasId implements Serializable {
 	@JoinColumn(name = "id_actor")
 	private Actor actor;
 
+	/**
+	 * Constructor vacío
+	 */
+	public ActoresPeliculasId() {
+		// La librería Jackson necesita constructor vacío
+	}
+
 	public ActoresPeliculasId(Pelicula pelicula, Actor actor) {
 		this.pelicula = pelicula;
 		this.actor = actor;

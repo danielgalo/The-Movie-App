@@ -1,10 +1,15 @@
 package controllers;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.hibernate.Session;
+
+import com.alibaba.fastjson.JSON;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -141,8 +146,13 @@ public class PantallaExportacionPeliculasController {
 	@FXML
 	void btnExportarPressed(MouseEvent event) {
 
+		// Resetear mensaje de error
 		if (!lblError.getText().isBlank()) {
 			lblError.setText("");
+		}
+		// Resetear mensaje de información
+		if (!lblInfo.getText().isBlank()) {
+			lblInfo.setText("");
 		}
 
 		Session session = null;
@@ -155,58 +165,33 @@ public class PantallaExportacionPeliculasController {
 			// Si se ha filtrado por año
 			if (rdbtnYear.isSelected()) {
 
-				String yearInput = txtYear.getText();
+				// Habilitar textField, deshabilitar los demás
+				txtYear.setDisable(false);
+				ControllerUtils.disableTextFields(txtGenero, txtTitulo);
 
-				// Si el input es correcto
-				if (yearInput.matches("\\d+")) {
-
-					List<Pelicula> peliculasPorYear = null;
-					int year = Integer.parseInt(yearInput);
-
-					/**
-					 * Bloques de if, en donde se igualará la lista a los métodos de peliDao
-					 * dependiendo si se elige en el cbox mayorque, exacto...
-					 */
-
-					// Una vez asignada la lista
-					exportList(peliculasPorYear);
-
-				} else {
-					showError("| El año no es correcto |");
-				}
+				exportByYear();
 
 				// Si se ha seleccionado genero
 			} else if (rdBtnGenero.isSelected()) {
+				// Habilitar textField, deshabilitar los demás
+				txtGenero.setDisable(false);
+				ControllerUtils.disableTextFields(txtYear, txtTitulo);
 
-				String generoInput = txtGenero.getText();
-				List<Pelicula> peliculasPorGenero = null;
-
-				if (!generoInput.isBlank()) {
-					// peliculasPorGenero = peliDao.searchMoviesByGenre(generoInput);
-					exportList(peliculasPorGenero);
-
-				} else {
-					showError("| El género no puede estar vacío |");
-				}
+				exportByGenero();
 
 				// Si se ha seleccionado por titulo
 			} else if (rdBtnTitulo.isSelected()) {
-				String tituloInput = txtTitulo.getText();
-				List<Pelicula> peliculasPorTitulo = null;
+				// Habilitar textField, deshabilitar los demás
+				txtTitulo.setDisable(false);
+				ControllerUtils.disableTextFields(txtYear, txtGenero);
 
-				if (!tituloInput.isBlank()) {
-					peliculasPorTitulo = peliDao.searchMovieByTitle(tituloInput);
-					exportList(peliculasPorTitulo);
-				} else {
-					showError("| El título no puede estar vacío |");
-				}
+				exportByTitulo(peliDao);
 
 				// Si se ha seleccionado sin filtro
 			} else if (rdBtnTodo.isSelected()) {
 
-				List<Pelicula> allPeliculas = null;
-				allPeliculas = peliDao.searchAll();
-				exportList(allPeliculas);
+				ControllerUtils.disableTextFields(txtGenero, txtTitulo, txtYear);
+				exportAll(peliDao);
 
 				// Si no se ha seleccionado nada
 			} else {
@@ -222,6 +207,71 @@ public class PantallaExportacionPeliculasController {
 			}
 		}
 
+	}
+
+	/**
+	 * @param peliDao
+	 */
+	private void exportAll(PeliculaDaoImpl peliDao) {
+		List<Pelicula> allPeliculas = null;
+		allPeliculas = peliDao.searchAll();
+		exportList(allPeliculas);
+	}
+
+	/**
+	 * @param peliDao
+	 */
+	private void exportByTitulo(PeliculaDaoImpl peliDao) {
+		String tituloInput = txtTitulo.getText();
+		List<Pelicula> peliculasPorTitulo = null;
+
+		if (!tituloInput.isBlank()) {
+			peliculasPorTitulo = peliDao.searchMovieByTitle(tituloInput);
+			exportList(peliculasPorTitulo);
+		} else {
+			showError("| El título no puede estar vacío |");
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private void exportByGenero() {
+		String generoInput = txtGenero.getText();
+		List<Pelicula> peliculasPorGenero = null;
+
+		if (!generoInput.isBlank()) {
+			// peliculasPorGenero = peliDao.searchMoviesByGenre(generoInput);
+			exportList(peliculasPorGenero);
+
+		} else {
+			showError("| El género no puede estar vacío |");
+		}
+	}
+
+	/**
+	 * Exporta las películas de la base de datos filtrando por año
+	 */
+	private void exportByYear() {
+		String yearInput = txtYear.getText();
+
+		// Si el input es correcto
+		if (yearInput.matches("\\d+")) {
+
+			List<Pelicula> peliculasPorYear = null;
+			int year = Integer.parseInt(yearInput);
+
+			/**
+			 * Bloques de if, en donde se igualará la lista a los métodos de peliDao
+			 * dependiendo si se elige en el cbox mayorque, exacto...
+			 */
+
+			// Una vez asignada la lista
+			exportList(peliculasPorYear);
+
+		} else {
+			showError("| El año no es correcto |");
+		}
 	}
 
 	/**
@@ -248,20 +298,54 @@ public class PantallaExportacionPeliculasController {
 		}
 	}
 
+	/**
+	 * Muestra en el label de informacion un mensaje
+	 * 
+	 * @param message mensaje a mostrar
+	 */
 	private void showInfo(String message) {
 		lblInfo.setText(lblInfo.getText() + message);
 	}
 
+	/**
+	 * Muestra un mensaje en el label de error
+	 * 
+	 * @param message
+	 */
 	private void showError(String message) {
 		lblError.setText(lblError.getText() + message);
 	}
 
+	/**
+	 * Exporta los objetos de una lista a un fichero JSON
+	 * 
+	 * @param peliculas  Lista de películas a exportar
+	 * @param directorio directorio en el que se generará el fichero JSON
+	 */
 	private void exportJSON(List<Pelicula> peliculas, String directorio) {
 
-		// TODO Auto-generated method stub
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(directorio))) {
+			// Convertir la lista de películas a una cadena JSON
+			String jsonString = JSON.toJSONString(peliculas, true);
 
+			// Escribir la cadena JSON en el archivo
+			writer.write(jsonString);
+
+			showInfo("JSON creado en: " + directorio);
+		} catch (IOException e) {
+			showError("Error creando JSON." + e.getLocalizedMessage());
+			System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+		}
 	}
 
+	// Método para crear un ObjectMapper con límite de anidamiento
+
+	/**
+	 * Exporta los objetos de una lista a un fichero CSV
+	 * 
+	 * @param peliculas  Lista de películas a exportar
+	 * @param directorio directorio en el que se generará el fichero CSV
+	 */
 	private void exportCSV(List<Pelicula> peliculas, String directorio) {
 		// TODO Auto-generated method stub
 

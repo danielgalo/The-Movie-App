@@ -29,6 +29,13 @@ public class ActoresPeliculas implements Serializable {
 	}
 
 	/**
+	 * Constructor vacío
+	 */
+	public ActoresPeliculas() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * @return the id
 	 */
 	public ActoresPeliculasId getId() {

@@ -48,6 +48,13 @@ public class DirectoresPeliculasId implements Serializable {
 	}
 
 	/**
+	 * Constructor vacío
+	 */
+	public DirectoresPeliculasId() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * @return the pelicula
 	 */
 	public Pelicula getPelicula() {

@@ -22,6 +22,13 @@ public class DirectoresPeliculas implements Serializable {
 	private DirectoresPeliculasId id;
 
 	/**
+	 * Constructor vacío
+	 */
+	public DirectoresPeliculas() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * @param id
 	 */
 	public DirectoresPeliculas(DirectoresPeliculasId id) {

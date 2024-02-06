@@ -27,6 +27,13 @@ public class GeneroPelicula implements Serializable {
 	}
 
 	/**
+	 * Constructor vacío
+	 */
+	public GeneroPelicula() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * @return the id
 	 */
 	public GeneroPeliculaId getId() {

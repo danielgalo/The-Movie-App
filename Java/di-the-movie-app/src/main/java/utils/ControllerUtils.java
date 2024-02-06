@@ -20,6 +20,19 @@ public class ControllerUtils {
 	}
 
 	/**
+	 * Deshabilita uno o varios text fields
+	 * 
+	 * @param fields
+	 */
+	public static void disableTextFields(TextField... fields) {
+
+		for (TextField textField : fields) {
+			textField.setDisable(true);
+		}
+
+	}
+
+	/**
 	 * Agrega efecto de sombra a Panes
 	 * 
 	 * @param shadow efecto de sombra a agregar

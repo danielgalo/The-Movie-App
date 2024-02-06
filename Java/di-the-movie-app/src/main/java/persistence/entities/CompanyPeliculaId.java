@@ -40,6 +40,13 @@ public class CompanyPeliculaId implements Serializable {
 	private Company company;
 
 	/**
+	 * Constructor vacío
+	 */
+	public CompanyPeliculaId() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * Constructor
 	 * 
 	 * @param pelicula

@@ -32,6 +32,13 @@ public class CompanyPelicula implements Serializable {
 	}
 
 	/**
+	 * Constructor vacío
+	 */
+	public CompanyPelicula() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * @return the id
 	 */
 	public CompanyPeliculaId getId() {
