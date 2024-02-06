@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
 import persistence.dao.UserDaoImpl;
 import persistence.entities.User;
+import utils.ControllerUtils;
 import utils.NavegacionPantallas;
 import utils.constants.Constantes;
 
@@ -127,11 +128,10 @@ public class PantallaLoginController {
 		shadow.setOffsetY(3);
 		shadow.setColor(new Color(0, 0, 0, 0.35));
 
-		lblTitle.setEffect(shadow);
-		txtCorreo.setEffect(shadow);
-		txtPassword.setEffect(shadow);
-		btnAcceder.setEffect(shadow);
-		btnRegister.setEffect(shadow);
+		// Aplicar efectos de sombra
+		ControllerUtils.setShadowLabels(shadow, lblTitle);
+		ControllerUtils.setShadowTxtFields(shadow, txtCorreo, txtPassword);
+		ControllerUtils.setShadowButtons(shadow, btnAcceder, btnRegister);
 
 		lblInfo.setWrapText(true);
 		lblInfo.setCenterShape(true);

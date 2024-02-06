@@ -1,0 +1,98 @@
+/** Styles de la pantalla de login */
+
+/* Fondo gradiente */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #8FBBC9, #2387C2);}
+
+
+/* Estilos generales de los botones */
+.button {
+    -fx-font-family: "Inter";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 28.0px; /* Tamaño de la fuente más grande */
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 30.0;
+    -fx-background-radius: 30.0;
+    -fx-padding: 10.0 20.0; /* Relleno ajustado para hacer los botones más grandes */
+    -fx-background-color: #000000;
+}
+#btnVolver{
+	-fx-font-size: 24px;
+	-fx-background-color: black;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: white;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}
+
+#lblError{
+	-fx-font-family: "Inter";
+	-fx-text-fill:red;
+	-fx-font-size: 15px;
+	-fx-font-weight: 800;
+}
+
+#lblInfo{
+	-fx-font-family: "Inter";
+	-fx-text-fill:green;
+	-fx-font-size: 15px;
+	-fx-font-weight: 800;
+}
+
+.label{
+		-fx-font-size: 25.0px;
+	    -fx-font-weight: 700; 
+	
+}
+
+#panelCentral{
+	-fx-background-color: rgba(217, 217, 217, 0.50);
+    -fx-border-radius:50.0;
+    -fx-background-radius: 50.0;
+}
+
+
+
+/* Hover del boton de registro */
+.button:hover{
+	-fx-background-color:#000AFF;
+}
+
+#panelSuperior{
+	-fx-background-color:black;
+}
+
+
+#lblCabecera {
+    -fx-text-fill: white;
+    -fx-alignment: center; 
+    -fx-font-size: 30px;
+    -fx-font-weight: 700; 
+    -fx-text-alignment: center;
+	-fx-translate-x: 50%; 
+    -fx-translate-y: 50%;
+    -fx-alignment: CENTER;
+}
+/* Password field */
+.text-field{
+    -fx-border-radius: 15; 
+    -fx-background-radius: 15; 
+    -fx-font-family: "Inter";
+	-fx-font-size: 20.0px;
+}
+.radio-button {
+    /* Estilos comunes para todos los RadioButtons */
+    -fx-font-size: 22px;
+    -fx-text-fill: #333333;
+    -fx-background-color: transparent;
+    -fx-font-weight: 700; 
+    
+}
+
+.radio-button:selected {
+    /* Estilo cuando el RadioButton está seleccionado */
+    -fx-text-fill: #007bff; /* Color del texto cuando está seleccionado */
+}
+

@@ -35,6 +35,7 @@ import persistence.dao.ActorDaoImpl;
 import persistence.dao.CompanyDaoImpl;
 import persistence.dao.DirectorDaoImpl;
 import persistence.dao.GeneroDaoImpl;
+import persistence.dao.LocalizacionDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.Actor;
 import persistence.entities.ActoresPeliculas;
@@ -47,8 +48,10 @@ import persistence.entities.DirectoresPeliculas;
 import persistence.entities.DirectoresPeliculasId;
 import persistence.entities.GeneroPelicula;
 import persistence.entities.GeneroPeliculaId;
+import persistence.entities.Localizacion;
 import persistence.entities.Pelicula;
 import persistence.entities.User;
+import utils.ControllerUtils;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
 import utils.constants.Constantes;
@@ -95,6 +98,12 @@ public class PantallaAltaAPIController {
 	private Label lblDescripcion;
 
 	@FXML
+	private Label lblDatosPelicula;
+
+	@FXML
+	private Label lblTituloIntroducir;
+
+	@FXML
 	private TextField txtTituloPelicula;
 
 	@FXML
@@ -112,10 +121,13 @@ public class PantallaAltaAPIController {
 	@FXML
 	private DatePicker dateFechaVisUsuario;
 
+	@FXML
+	private Button btnVolver;
+
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
 
-	// Imagen predeterminada cuando no hay imagen disponible
+	/** Imagen predeterminada cuando no hay imagen disponible */
 	private static final Image EMPTY_IMAGE = new Image("/resources/found-icon-20.jpg");
 
 	/**
@@ -135,8 +147,16 @@ public class PantallaAltaAPIController {
 		SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);
 		spinnerValoracionUsuario.setValueFactory(valueFactory);
 
+		DropShadow shadow = new DropShadow();
+		shadow.setOffsetY(3);
+		shadow.setColor(new Color(0, 0, 0, 0.35));
+
+		ControllerUtils.setShadowLabels(shadow, lblCabecera, lblTituloIntroducir, lblDatosPelicula);
+		ControllerUtils.setShadowTxtFields(shadow, txtTituloPelicula);
+		ControllerUtils.setShadowButtons(shadow, btnAlta, btnAnterior, btnBuscar, btnSiguiente, btnConsultaManual);
+		ControllerUtils.setShadowPanes(shadow, panelPrincipal);
+
 		// Aplicar efectos de sombra a componentes
-		aplicaEfectos();
 
 	}
 
@@ -153,6 +173,21 @@ public class PantallaAltaAPIController {
 			// Inserta la pelicula
 			insertPelicula();
 		}
+	}
+
+	/**
+	 * Maneja el evento cuando se presiona el botón "Volver". Vuelve al menú
+	 * principal
+	 *
+	 * @param event Evento del mouse.
+	 */
+	@FXML
+	void btnVolverPressed(MouseEvent event) {
+		NavegacionPantallas pantallaPrincipal = new NavegacionPantallas("Pantalla Principal",
+				Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
+		pantallaPrincipal.navegaAPantalla();
+
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	/**
@@ -178,6 +213,7 @@ public class PantallaAltaAPIController {
 			CompanyDaoImpl compDao = new CompanyDaoImpl(session);
 			ActorDaoImpl actorDao = new ActorDaoImpl(session);
 			DirectorDaoImpl directorDao = new DirectorDaoImpl(session);
+			LocalizacionDaoImpl locDao = new LocalizacionDaoImpl(session);
 
 			// Entidad pelicula a insertar
 			Pelicula pelicula = new Pelicula();
@@ -203,6 +239,7 @@ public class PantallaAltaAPIController {
 			// Conseguir géneros para la pelicula
 			List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
 
+			// Id en la API de la pelicula
 			Long peliculaIdApi = peliDto.getId();
 
 			// Conseguir las compañias para la pelicula
@@ -214,6 +251,9 @@ public class PantallaAltaAPIController {
 			// Conseguir directores para la pelicula
 			List<DirectoresPeliculas> directoresPelis = setDirectoresPelicula(peliDto, directorDao, pelicula,
 					peliculaIdApi);
+
+			// Asignar localizacion a pelicula
+			setLocalizacionPelicula(locDao, pelicula);
 
 			// Asociar directores a la peícula
 			pelicula.setDirectoresPelicula(directoresPelis);
@@ -236,6 +276,37 @@ public class PantallaAltaAPIController {
 			// Cerrar la sesión al finalizar
 			if (session != null) {
 				HibernateUtil.closeSession();
+			}
+		}
+	}
+
+	/**
+	 * Busca una localizacion en la base de datos, si existe se asigna a la
+	 * película, si no se crea e inserta y se asigna a la película
+	 * 
+	 * @param locDao   DAO de la entidad Localizacion
+	 * @param pelicula Pelicula a asignar la localizacion
+	 */
+	private void setLocalizacionPelicula(LocalizacionDaoImpl locDao, Pelicula pelicula) {
+		// Obtener input de localización
+		String inputLoc = txtLocalizacion.getText();
+		Localizacion localizacionPeli = null;
+
+		// Si se ha introducido algo, buscar localizacion
+		if (inputLoc != null && !inputLoc.isBlank()) {
+
+			localizacionPeli = locDao.getLocalizacionByNombre(inputLoc);
+
+			if (localizacionPeli == null) {
+				// Si no se encuentra, insertarla
+				Localizacion nuevaLoc = new Localizacion();
+				nuevaLoc.setNombre(inputLoc);
+				pelicula.setLocalizacion(nuevaLoc);
+				locDao.insert(nuevaLoc);
+
+			} else {
+				// Si ya está
+				pelicula.setLocalizacion(localizacionPeli);
 			}
 		}
 	}
@@ -493,22 +564,6 @@ public class PantallaAltaAPIController {
 			posicionPelicula++;
 			setPelicula();
 		}
-	}
-
-	/**
-	 * Aplica efectos a los componentes de la pantalla
-	 */
-	private void aplicaEfectos() {
-		DropShadow shadow = new DropShadow();
-		shadow.setOffsetY(3);
-		shadow.setColor(new Color(0, 0, 0, 0.35));
-
-		panelPrincipal.setEffect(shadow);
-		btnAlta.setEffect(shadow);
-		btnAnterior.setEffect(shadow);
-		btnBuscar.setEffect(shadow);
-		btnSiguiente.setEffect(shadow);
-		btnConsultaManual.setEffect(shadow);
 	}
 
 	/**

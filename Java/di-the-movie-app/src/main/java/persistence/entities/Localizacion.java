@@ -24,7 +24,7 @@ public class Localizacion {
 
 	/** Nombre de la localizacion */
 	@Column(name = "localizacion")
-	private String nombreLocalizacion;
+	private String nombre;
 
 	@OneToMany(mappedBy = "localizacion")
 	private List<Pelicula> peliculas;
@@ -33,14 +33,14 @@ public class Localizacion {
 	 * @return the nombreLocalizacion
 	 */
 	public String getNombreLocalizacion() {
-		return nombreLocalizacion;
+		return nombre;
 	}
 
 	/**
 	 * @param nombreLocalizacion the nombreLocalizacion to set
 	 */
-	public void setNombreLocalizacion(String nombreLocalizacion) {
-		this.nombreLocalizacion = nombreLocalizacion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }
