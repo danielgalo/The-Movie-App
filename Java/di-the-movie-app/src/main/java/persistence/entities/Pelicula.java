@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -77,10 +76,6 @@ public class Pelicula implements Serializable {
 	@Column(name = "valoracion_usuario")
 	private double valoracionUsuario;
 
-	/** Valoracion de la pelicula por el usuario */
-	@Column(name = "valoracion")
-	private double valoracion;
-
 	/** Fecha de visualizacion del usuario */
 	@Column(name = "fecha_visualizacion_usuario")
 	private Date fechaVisualizacionUsuario;
@@ -105,14 +100,14 @@ public class Pelicula implements Serializable {
 	 * @return the valoracion
 	 */
 	public double getValoracion() {
-		return valoracion;
+		return valoracionUsuario;
 	}
 
 	/**
 	 * @param valoracion the valoracion to set
 	 */
 	public void setValoracion(double valoracion) {
-		this.valoracion = valoracion;
+		this.valoracionUsuario = valoracion;
 	}
 
 	/**
