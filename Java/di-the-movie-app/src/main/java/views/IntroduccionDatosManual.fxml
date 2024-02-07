@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -100,7 +101,7 @@
                   </Button>
                   <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="120.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
-                        <DropShadow offsetY="4.0">
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                            <color>
                               <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
                            </color>
@@ -109,16 +110,7 @@
                   </TextField>
                   <TextField id="txtField" fx:id="txtDescripcion" layoutX="500.0" layoutY="320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
-                        <DropShadow offsetY="4.0">
-                           <color>
-                              <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </TextField>
-                  <TextField id="txtField" fx:id="txtFechaEstreno" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow offsetY="4.0">
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                            <color>
                               <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
                            </color>
@@ -127,7 +119,7 @@
                   </TextField>
                   <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
                      <effect>
-                        <DropShadow offsetY="4.0">
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                            <color>
                               <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
                            </color>
@@ -146,7 +138,23 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <ChoiceBox id="txtField" fx:id="cmbGenero" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css" />
+                  <ChoiceBox id="txtField" fx:id="cmbGenero" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.41228070855140686" green="0.41228070855140686" blue="0.41228070855140686" />
+                           </color>
+                        </DropShadow>
+                     </effect></ChoiceBox>
+                  <DatePicker id="fechaEstreno" fx:id="dateFechaEstreno" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.37719297409057617" green="0.36787956953048706" blue="0.36787956953048706" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </DatePicker>
                </children>
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />

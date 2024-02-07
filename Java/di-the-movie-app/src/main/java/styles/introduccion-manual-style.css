@@ -49,6 +49,12 @@
 	-fx-border-radius: 60;
 }
 
+#fechaEstreno{
+	-fx-font-size: 24px;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
 #btnAlta{
 	-fx-font-size: 50px;
 	-fx-background-color: blue;
