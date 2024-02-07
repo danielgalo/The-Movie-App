@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -65,21 +66,12 @@ public class Pelicula implements Serializable {
 	private User usuario;
 
 	/** Directores de la pelicula */
-<<<<<<< HEAD
-	@ManyToMany(mappedBy = "peliculas")
-	private List<Director> directores;
-
-	/** Actores de la pelicula */
-	@ManyToMany(mappedBy = "peliculas")
-	private List<Actor> actores;
-=======
 	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
 	private List<DirectoresPeliculas> directoresPelicula;
 
 	/** Generos de la pelicula */
 	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
 	private List<ActoresPeliculas> actoresPeliculas;
->>>>>>> 27e8e328f37e79bb02908e5f43c0c1b85de6c0fd
 
 	/** Valoracion de la pelicula por el usuario */
 	@Column(name = "valoracion_usuario")

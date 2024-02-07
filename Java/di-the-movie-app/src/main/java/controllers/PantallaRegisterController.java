@@ -59,7 +59,6 @@ public class PantallaRegisterController {
 				&& !txtRepetirContrasena.getText().isBlank()) {
 			// Y las contraseñas coinciden
 			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {
-				// TODO Ver si el usuario ya existe???
 				Session session = HibernateUtil.getSession();
 				// Crea un usuario con los datos de los campos
 				User user = new User(txtEmail.getText(), txtContrasena.getText());
@@ -71,17 +70,10 @@ public class PantallaRegisterController {
 				pantallaLogin.navegaAPantalla();
 				NavegacionPantallas.cerrarVentanaActual(e);
 			} else {
-<<<<<<< HEAD
 				lblErrores.setText("Las contraseñas no coinciden, compruebe e intente de nuevo.");
 			}
 		} else {
 			lblErrores.setText("Todos los campos deben rellenarse, compruebe e intente de nuevo.");
-=======
-				// TODO mensaje error
-			}
-		} else {
-			// TODO mensaje error
->>>>>>> 27e8e328f37e79bb02908e5f43c0c1b85de6c0fd
 		}
 	}
 
