@@ -124,6 +124,12 @@ public class PantallaAltaAPIController {
 	@FXML
 	private Button btnVolver;
 
+	@FXML
+	private Label lblError;
+
+	@FXML
+	private Label lblInfo;
+
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
 
@@ -172,6 +178,8 @@ public class PantallaAltaAPIController {
 		if (dateFechaVisUsuario.getValue() != null) {
 			// Inserta la pelicula
 			insertPelicula();
+		} else {
+			showError("La fecha de visualización es obligatoria");
 		}
 	}
 
@@ -204,73 +212,79 @@ public class PantallaAltaAPIController {
 			String titulo = txtTituloPelicula.getText();
 			PeliculaDTO peliDto = TMDBApi.getPeliculaByTitulo(titulo, posicionPelicula);
 
-			// Obtener usuario realizador de la búsqueda
-			User usuario = PantallaLoginController.currentUser;
+			if (peliDto != null) {
 
-			// DAOs de entidades
-			GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
-			PeliculaDaoImpl peliDao = new PeliculaDaoImpl(session);
-			CompanyDaoImpl compDao = new CompanyDaoImpl(session);
-			ActorDaoImpl actorDao = new ActorDaoImpl(session);
-			DirectorDaoImpl directorDao = new DirectorDaoImpl(session);
-			LocalizacionDaoImpl locDao = new LocalizacionDaoImpl(session);
+				// Obtener usuario realizador de la búsqueda
+				User usuario = PantallaLoginController.currentUser;
 
-			// Entidad pelicula a insertar
-			Pelicula pelicula = new Pelicula();
+				// DAOs de entidades
+				GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
+				PeliculaDaoImpl peliDao = new PeliculaDaoImpl(session);
+				CompanyDaoImpl compDao = new CompanyDaoImpl(session);
+				ActorDaoImpl actorDao = new ActorDaoImpl(session);
+				DirectorDaoImpl directorDao = new DirectorDaoImpl(session);
+				LocalizacionDaoImpl locDao = new LocalizacionDaoImpl(session);
 
-			// Patrón de formato para fechas
-			String pattern = "yyyy-MM-dd";
-			SimpleDateFormat releaseDateFormat = new SimpleDateFormat(pattern);
+				// Entidad pelicula a insertar
+				Pelicula pelicula = new Pelicula();
 
-			// Obtener la fecha de lanzamiento
-			Date releaseDate = releaseDateFormat.parse(peliDto.getReleaseDate());
+				// Patrón de formato para fechas
+				String pattern = "yyyy-MM-dd";
+				SimpleDateFormat releaseDateFormat = new SimpleDateFormat(pattern);
 
-			// Obtener el año de lanzamiento
-			SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy");
-			int year = Integer.parseInt(yearDateFormat.format(releaseDate));
+				// Obtener la fecha de lanzamiento
+				Date releaseDate = releaseDateFormat.parse(peliDto.getReleaseDate());
+				// Obtener el año de lanzamiento
+				SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy");
+				int year = Integer.parseInt(yearDateFormat.format(releaseDate));
 
-			// Obtener fecha de visualización
-			LocalDate localDate = dateFechaVisUsuario.getValue();
-			Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+				// Obtener fecha de visualización
+				LocalDate localDate = dateFechaVisUsuario.getValue();
+				Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-			// Datos de la entidad pelicula a insertar
-			setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion);
+				// Datos de la entidad pelicula a insertar
+				setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion);
 
-			// Conseguir géneros para la pelicula
-			List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
+				// Conseguir géneros para la pelicula
+				List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
 
-			// Id en la API de la pelicula
-			Long peliculaIdApi = peliDto.getId();
+				// Id en la API de la pelicula
+				Long peliculaIdApi = peliDto.getId();
+				// Conseguir las compañias para la pelicula
+				List<CompanyPelicula> compsPelis = setCompaniesPelicula(compDao, pelicula, peliculaIdApi);
 
-			// Conseguir las compañias para la pelicula
-			List<CompanyPelicula> compsPelis = setCompaniesPelicula(compDao, pelicula, peliculaIdApi);
+				// Conseguir actores para la pelicula
+				List<ActoresPeliculas> actoresPelis = setActoresPelicula(peliDto, actorDao, pelicula, peliculaIdApi);
 
-			// Conseguir actores para la pelicula
-			List<ActoresPeliculas> actoresPelis = setActoresPelicula(peliDto, actorDao, pelicula, peliculaIdApi);
+				// Conseguir directores para la pelicula
+				List<DirectoresPeliculas> directoresPelis = setDirectoresPelicula(peliDto, directorDao, pelicula,
+						peliculaIdApi);
 
-			// Conseguir directores para la pelicula
-			List<DirectoresPeliculas> directoresPelis = setDirectoresPelicula(peliDto, directorDao, pelicula,
-					peliculaIdApi);
+				// Asignar localizacion a pelicula
+				setLocalizacionPelicula(locDao, pelicula);
+				// Asociar directores a la peícula
+				pelicula.setDirectoresPelicula(directoresPelis);
+				// Asociar actores a la película
+				pelicula.setActoresPeliculas(actoresPelis);
+				// Asociar géneros a la película
+				pelicula.setGeneroPelicula(generosPelicula);
+				// Asociar compañias a la pelicula
+				pelicula.setCompPelicula(compsPelis);
+				// Insertar película
+				peliDao.insert(pelicula);
 
-			// Asignar localizacion a pelicula
-			setLocalizacionPelicula(locDao, pelicula);
-
-			// Asociar directores a la peícula
-			pelicula.setDirectoresPelicula(directoresPelis);
-
-			// Asociar actores a la película
-			pelicula.setActoresPeliculas(actoresPelis);
-
-			// Asociar géneros a la película
-			pelicula.setGeneroPelicula(generosPelicula);
-
-			// Asociar compañias a la pelicula
-			pelicula.setCompPelicula(compsPelis);
-
-			// Insertar película
-			peliDao.insert(pelicula);
+				// Mostrar mensaje de confirmación
+				showInfo("Película dada de alta correctamente");
+			} else {
+				showError("No se pudo encontrar la película");
+			}
+			// Si hay error, quitarlo
+			if (!lblError.getText().isBlank()) {
+				lblError.setText("");
+			}
 
 		} catch (Exception e) {
+			showError("Ocurrió un problema dando de alta la película");
 			e.printStackTrace();
 		} finally {
 			// Cerrar la sesión al finalizar
@@ -577,6 +591,10 @@ public class PantallaAltaAPIController {
 		PeliculaDTO pelicula = TMDBApi.getPeliculaByTitulo(tituloPelicula, posicionPelicula);
 
 		if (pelicula != null) {
+			// Si hay error, quitarlo
+			if (!lblError.getText().isBlank()) {
+				lblError.setText("");
+			}
 			lblResTitulo.setText(pelicula.getTitulo() + " (" + pelicula.getReleaseDate() + ")");
 			lblDescripcion.setText(pelicula.getOverview());
 			InputStream stream = null;
@@ -589,6 +607,26 @@ public class PantallaAltaAPIController {
 
 			// Mostrar la imagen en un ImageView
 			imgPelicula.setImage(image);
+		} else {
+			showError("No se pudo encontrar la película");
 		}
+	}
+
+	/**
+	 * Muestra un mensaje de error
+	 * 
+	 * @param message
+	 */
+	private void showError(String message) {
+		lblError.setText(message);
+	}
+
+	/**
+	 * Muestra un mensaje de información
+	 * 
+	 * @param message
+	 */
+	private void showInfo(String message) {
+		lblInfo.setText(message);
 	}
 }

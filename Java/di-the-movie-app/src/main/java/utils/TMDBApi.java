@@ -109,6 +109,7 @@ public class TMDBApi {
 				}
 
 			} else {
+				pelicula = null;
 				System.out.println("No se encontraron resultados para la búsqueda.");
 			}
 

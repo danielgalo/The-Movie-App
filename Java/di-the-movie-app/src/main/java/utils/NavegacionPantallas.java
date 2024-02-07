@@ -56,6 +56,10 @@ public class NavegacionPantallas {
 			// Mostrar la pantalla
 			stage.setTitle(tituloVentana);
 			stage.setScene(scene);
+
+			// Hacer que la ventana no se pueda cambiar de tamaño
+			stage.setResizable(false);
+
 			stage.show();
 
 		} catch (IOException e) {
