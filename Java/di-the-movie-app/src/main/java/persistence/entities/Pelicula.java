@@ -36,7 +36,7 @@ public class Pelicula implements Serializable {
 	private String titulo;
 
 	/** Descripcion de la pelicula */
-	@Column(name = "descripcion", length = 1000)
+	@Column(name = "descripcion", length = 10000)
 	private String overview;
 
 	/** Fecha de salida */

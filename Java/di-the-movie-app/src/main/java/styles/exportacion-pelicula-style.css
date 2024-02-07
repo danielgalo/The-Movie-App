@@ -46,7 +46,16 @@
 	    -fx-font-weight: 700; 
 	
 }
-
+.combo-box .list-view {
+    -fx-font-family: "Inter";
+    -fx-font-size: 12.0px;
+}
+#cboxFiltroYear{
+	-fx-border-radius: 15; 
+    -fx-background-radius: 15; 
+    -fx-font-family: "Inter";
+	-fx-font-size: 12.0px;
+}
 #panelCentral{
 	-fx-background-color: rgba(217, 217, 217, 0.50);
     -fx-border-radius:50.0;

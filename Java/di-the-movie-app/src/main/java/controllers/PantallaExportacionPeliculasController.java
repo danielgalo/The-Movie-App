@@ -4,13 +4,16 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.hibernate.Session;
 
 import com.alibaba.fastjson.JSON;
+import com.opencsv.CSVWriter;
 
+import dto.PeliculaDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -31,6 +34,12 @@ import utils.constants.Constantes;
 
 public class PantallaExportacionPeliculasController {
 
+	private static final String YEAR_MAYOR_QUE = "Mayor que";
+
+	private static final String YEAR_MENOR_QUE = "Menor que";
+
+	private static final String YEAR_EXACTO = "Año exacto";
+
 	@FXML
 	private ResourceBundle resources;
 
@@ -41,7 +50,7 @@ public class PantallaExportacionPeliculasController {
 	private Button btnExportar;
 
 	@FXML
-	private ChoiceBox<?> cboxFiltroYear;
+	private ChoiceBox<String> cboxFiltroYear;
 
 	@FXML
 	private Label lblCabecera;
@@ -122,6 +131,14 @@ public class PantallaExportacionPeliculasController {
 		rdbtnJSON.setToggleGroup(grupoFormatoExp);
 		rdbtnCSV.setToggleGroup(grupoFormatoExp);
 
+		// Añadir elementos al choice box
+		cboxFiltroYear.getItems().addAll(YEAR_EXACTO, YEAR_MENOR_QUE, YEAR_MAYOR_QUE);
+
+		// Valor por defecto de la choice box
+		cboxFiltroYear.setValue(YEAR_EXACTO);
+
+		lblInfo.setWrapText(true);
+
 	}
 
 	/**
@@ -165,32 +182,21 @@ public class PantallaExportacionPeliculasController {
 			// Si se ha filtrado por año
 			if (rdbtnYear.isSelected()) {
 
-				// Habilitar textField, deshabilitar los demás
-				txtYear.setDisable(false);
-				ControllerUtils.disableTextFields(txtGenero, txtTitulo);
-
-				exportByYear();
+				exportByYear(peliDao);
 
 				// Si se ha seleccionado genero
 			} else if (rdBtnGenero.isSelected()) {
-				// Habilitar textField, deshabilitar los demás
-				txtGenero.setDisable(false);
-				ControllerUtils.disableTextFields(txtYear, txtTitulo);
 
-				exportByGenero();
+				exportByGenero(peliDao);
 
 				// Si se ha seleccionado por titulo
 			} else if (rdBtnTitulo.isSelected()) {
-				// Habilitar textField, deshabilitar los demás
-				txtTitulo.setDisable(false);
-				ControllerUtils.disableTextFields(txtYear, txtGenero);
 
 				exportByTitulo(peliDao);
 
 				// Si se ha seleccionado sin filtro
 			} else if (rdBtnTodo.isSelected()) {
 
-				ControllerUtils.disableTextFields(txtGenero, txtTitulo, txtYear);
 				exportAll(peliDao);
 
 				// Si no se ha seleccionado nada
@@ -210,6 +216,8 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
+	 * Exporta todas las películas
+	 * 
 	 * @param peliDao
 	 */
 	private void exportAll(PeliculaDaoImpl peliDao) {
@@ -219,6 +227,8 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
+	 * Exporta películas por su título
+	 * 
 	 * @param peliDao
 	 */
 	private void exportByTitulo(PeliculaDaoImpl peliDao) {
@@ -234,14 +244,21 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
+	 * Exporta películas por su genero
+	 * 
+	 * @param peliDao
 	 * 
 	 */
-	private void exportByGenero() {
+	private void exportByGenero(PeliculaDaoImpl peliDao) {
 		String generoInput = txtGenero.getText();
 		List<Pelicula> peliculasPorGenero = null;
 
 		if (!generoInput.isBlank()) {
-			// peliculasPorGenero = peliDao.searchMoviesByGenre(generoInput);
+			peliculasPorGenero = peliDao.searcyMoviesByGenre(generoInput);
+
+			for (Pelicula pelicula : peliculasPorGenero) {
+				System.out.println("------------------" + pelicula.getTitulo());
+			}
 			exportList(peliculasPorGenero);
 
 		} else {
@@ -251,8 +268,10 @@ public class PantallaExportacionPeliculasController {
 
 	/**
 	 * Exporta las películas de la base de datos filtrando por año
+	 * 
+	 * @param peliDao
 	 */
-	private void exportByYear() {
+	private void exportByYear(PeliculaDaoImpl peliDao) {
 		String yearInput = txtYear.getText();
 
 		// Si el input es correcto
@@ -261,10 +280,22 @@ public class PantallaExportacionPeliculasController {
 			List<Pelicula> peliculasPorYear = null;
 			int year = Integer.parseInt(yearInput);
 
-			/**
-			 * Bloques de if, en donde se igualará la lista a los métodos de peliDao
-			 * dependiendo si se elige en el cbox mayorque, exacto...
-			 */
+			String filtro = cboxFiltroYear.getValue();
+
+			// Dependiendo de la opción elegida en el choice box
+			if (filtro.equals(YEAR_EXACTO)) {
+
+				peliculasPorYear = peliDao.searchByExactYear(year);
+
+			} else if (filtro.equals(YEAR_MAYOR_QUE)) {
+
+				peliculasPorYear = peliDao.searchByGreaterYear(year);
+
+			} else if (filtro.equals(YEAR_MENOR_QUE)) {
+
+				peliculasPorYear = peliDao.searchByEarlierYear(year);
+
+			}
 
 			// Una vez asignada la lista
 			exportList(peliculasPorYear);
@@ -275,6 +306,8 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
+	 * Exporta una lista a CSV o JSON según sea elegido
+	 * 
 	 * @param peliculas
 	 * 
 	 */
@@ -325,20 +358,50 @@ public class PantallaExportacionPeliculasController {
 	private void exportJSON(List<Pelicula> peliculas, String directorio) {
 
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(directorio))) {
+
+			List<PeliculaDTO> pelisDTO = new ArrayList<>();
+
+			// Convertir las entidades a DTO, para evitar anidaciones al escribir en JSON
+			peliculaEntityToDTO(peliculas, pelisDTO);
+
 			// Convertir la lista de películas a una cadena JSON
-			String jsonString = JSON.toJSONString(peliculas, true);
+			String jsonString = JSON.toJSONString(pelisDTO, true);
 
 			// Escribir la cadena JSON en el archivo
 			writer.write(jsonString);
 
 			showInfo("JSON creado en: " + directorio);
 		} catch (IOException e) {
-			showError("Error creando JSON." + e.getLocalizedMessage());
+			showError("Error creando JSON.");
 			System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
 		}
 	}
 
-	// Método para crear un ObjectMapper con límite de anidamiento
+	/**
+	 * Convierte de una lista de Entidades Pelicula a Objetos DTO, y los añade a la
+	 * lista de objetos DTO.
+	 * 
+	 * @param peliculas Lista de Entidades Películas
+	 * @param pelisDTO  Lista de DTOs Películas
+	 */
+	private void peliculaEntityToDTO(List<Pelicula> peliculas, List<PeliculaDTO> pelisDTO) {
+		for (Pelicula pelicula : peliculas) {
+
+			String titulo = pelicula.getTitulo();
+			String overview = pelicula.getOverview();
+			String releaseDate = pelicula.getReleaseDate().toString();
+			String img = pelicula.getCartel();
+			double voteAverage = pelicula.getValoracion();
+			String comentariosUsuario = pelicula.getComentariosUsuario();
+			String fechaVisualizacion = pelicula.getFechaVisualizacionUsuario().toString();
+			double valoracionUsuario = pelicula.getValoracionUsuario();
+
+			PeliculaDTO peliDto = new PeliculaDTO(titulo, overview, releaseDate, img, voteAverage, comentariosUsuario,
+					fechaVisualizacion, valoracionUsuario);
+			pelisDTO.add(peliDto);
+
+		}
+	}
 
 	/**
 	 * Exporta los objetos de una lista a un fichero CSV
@@ -347,7 +410,30 @@ public class PantallaExportacionPeliculasController {
 	 * @param directorio directorio en el que se generará el fichero CSV
 	 */
 	private void exportCSV(List<Pelicula> peliculas, String directorio) {
-		// TODO Auto-generated method stub
+
+		// Convertir la lista de entidades en DTO
+		List<PeliculaDTO> pelisDTO = new ArrayList<>();
+		peliculaEntityToDTO(peliculas, pelisDTO);
+
+		for (PeliculaDTO peliDTO : pelisDTO) {
+			// Crear objetos para escribir en el archivo CSV
+			try (CSVWriter writer = new CSVWriter(new FileWriter(directorio))) {
+				// Crear lista de objetos para escribir en el archivo CSV
+				List<String[]> data = new ArrayList<>();
+				data.add(new String[] { "titulo", "overview", "releaseDate", "img", "voteAverage", "comentariosUsuario",
+						"fechaVisualizacion", "valoracionUsuario" });
+				data.add(new String[] { peliDTO.getTitulo(), peliDTO.getOverview(), peliDTO.getReleaseDate(),
+						peliDTO.getImg(), String.valueOf(peliDTO.getVoteAverage()), peliDTO.getComentariosUsuario(),
+						peliDTO.getFechaVisualizacion(), String.valueOf(peliDTO.getValoracionUsuario()) });
+
+				// Escribir datos en el archivo CSV
+				writer.writeAll(data);
+				showInfo("CSV escrito en: " + directorio);
+			} catch (IOException e) {
+				showError("Error escribiendo el archivo CSV");
+				e.printStackTrace();
+			}
+		}
 
 	}
 }

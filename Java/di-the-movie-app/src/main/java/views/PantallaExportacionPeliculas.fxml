@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/exportacion-pelicula-style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaExportacionPeliculasController">
    <children>
       <BorderPane layoutX="200.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -91,15 +90,15 @@
                               </RadioButton>
                            </children>
                         </Pane>
-                        <TextField fx:id="txtYear" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="txtTitulo" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="txtGenero" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="txtYear" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtTitulo" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtGenero" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label fx:id="lblDirectorioExp" prefHeight="36.0" prefWidth="325.0" text="Directorio de exportación:" GridPane.halignment="RIGHT" GridPane.rowIndex="12" />
                         <TextField fx:id="txtDirectorio" promptText="C:\Usuario\usuario\documentos\peliculas.json" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                         <Button fx:id="btnExportar" mnemonicParsing="false" onMousePressed="#btnExportarPressed" text="Exportar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
-                        <ChoiceBox fx:id="cboxFiltroYear" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <ChoiceBox fx:id="cboxFiltroYear" prefHeight="52.0" prefWidth="186.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
                         <Label fx:id="lblError" prefHeight="36.0" prefWidth="554.0" text="  " GridPane.columnIndex="1" GridPane.rowIndex="13" />
-                        <Label fx:id="lblInfo" prefHeight="36.0" prefWidth="285.0" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                        <Label fx:id="lblInfo" prefHeight="54.0" prefWidth="313.0" GridPane.columnIndex="2" GridPane.rowIndex="13" />
                      </children>
                   </GridPane>
                </children>

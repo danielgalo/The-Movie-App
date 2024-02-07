@@ -1,7 +1,8 @@
 package dto;
 
 /**
- * Clase pelicula. Objeto DTO usado para traer datos de películas desde la API
+ * Clase pelicula. Objeto DTO usado para traer datos de películas desde la API y
+ * para exportar peliculas a archivos
  */
 public class PeliculaDTO {
 
@@ -26,7 +27,38 @@ public class PeliculaDTO {
 	/** Votacion promedia */
 	private double voteAverage;
 
+	private String comentariosUsuario;
+
+	private String fechaVisualizacion;
+	private double valoracionUsuario;
+
 	/**
+	 * Constructor específico para usar en exportación a ficheros
+	 * 
+	 * @param titulo
+	 * @param overview
+	 * @param releaseDate
+	 * @param img
+	 * @param voteAverage
+	 * @param comentariosUsuario
+	 * @param fechaVisualizacion
+	 * @param valoracionUsuario
+	 */
+	public PeliculaDTO(String titulo, String overview, String releaseDate, String img, double voteAverage,
+			String comentariosUsuario, String fechaVisualizacion, double valoracionUsuario) {
+		this.titulo = titulo;
+		this.overview = overview;
+		this.releaseDate = releaseDate;
+		this.img = img;
+		this.voteAverage = voteAverage;
+		this.comentariosUsuario = comentariosUsuario;
+		this.fechaVisualizacion = fechaVisualizacion;
+		this.valoracionUsuario = valoracionUsuario;
+	}
+
+	/**
+	 * Constructor con generos e id de la pelicula
+	 * 
 	 * @param titulo
 	 * @param overview
 	 * @param releaseDate
@@ -95,7 +127,6 @@ public class PeliculaDTO {
 	 * @param overview
 	 * @param releaseDate
 	 * @param img
-	 * @param genres
 	 */
 	public PeliculaDTO(String titulo, String overview, String releaseDate, String img) {
 		this.titulo = titulo;
@@ -110,6 +141,48 @@ public class PeliculaDTO {
 	 */
 	public String getTitulo() {
 		return titulo;
+	}
+
+	/**
+	 * @return the comentariosUsuario
+	 */
+	public String getComentariosUsuario() {
+		return comentariosUsuario;
+	}
+
+	/**
+	 * @param comentariosUsuario the comentariosUsuario to set
+	 */
+	public void setComentariosUsuario(String comentariosUsuario) {
+		this.comentariosUsuario = comentariosUsuario;
+	}
+
+	/**
+	 * @return the fechaVisualizacion
+	 */
+	public String getFechaVisualizacion() {
+		return fechaVisualizacion;
+	}
+
+	/**
+	 * @param fechaVisualizacion the fechaVisualizacion to set
+	 */
+	public void setFechaVisualizacion(String fechaVisualizacion) {
+		this.fechaVisualizacion = fechaVisualizacion;
+	}
+
+	/**
+	 * @return the valoracionUsuario
+	 */
+	public double getValoracionUsuario() {
+		return valoracionUsuario;
+	}
+
+	/**
+	 * @param valoracionUsuario the valoracionUsuario to set
+	 */
+	public void setValoracionUsuario(double valoracionUsuario) {
+		this.valoracionUsuario = valoracionUsuario;
 	}
 
 	/**
