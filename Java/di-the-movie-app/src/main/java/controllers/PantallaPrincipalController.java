@@ -70,19 +70,24 @@ public class PantallaPrincipalController {
 
 	@FXML
 	void consultaPeliculasPressed(MouseEvent event) {
-		NavegacionPantallas navegacion = new NavegacionPantallas("Listado de películas", Constantes.PANTALLA_LISTA_PELICULAS, Constantes.CSS_LISTA_PELICULAS);
+		NavegacionPantallas navegacion = new NavegacionPantallas("Listado de películas",
+				Constantes.PANTALLA_LISTA_PELICULAS, Constantes.CSS_LISTA_PELICULAS);
 		navegacion.navegaAPantalla();
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	@FXML
 	void exportarPeliculasPressed(MouseEvent event) {
-
+		NavegacionPantallas navegacion = new NavegacionPantallas("Exportación de Películas",
+				Constantes.PANTALLA_EXPORTACION_PELICULAS, Constantes.CSS_EXPORTACION_PELICULAS);
+		navegacion.navegaAPantalla();
+		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
 	@FXML
 	void panelSalirPressed(MouseEvent event) {
-		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_LOGIN);
+		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN,
+				Constantes.CSS_LOGIN);
 		navegacion.navegaAPantalla();
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}

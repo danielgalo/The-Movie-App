@@ -24,6 +24,17 @@
 	
 }
 
+#btnVolver{
+	-fx-font-size: 24px;
+	-fx-background-color: black;
+	-fx-background-radius: 60;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: white;
+	-fx-border-width: 3px;
+	-fx-border-radius: 60;
+}
+
 #panelPrincipal{
 	-fx-background-color: rgba(217, 217, 217, 0.50);
     -fx-border-radius:50.0;
@@ -72,7 +83,6 @@
 }
 
 #txtTituloPelicula {
-    -fx-border-color: #000000;
     -fx-border-radius: 15;
     -fx-background-radius: 15; 
     -fx-font-family: "Inter";

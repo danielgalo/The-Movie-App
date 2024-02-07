@@ -1,416 +1,2116 @@
-{
-	"page": 1,
-	"results": [
-		{
-			"adult": false,
-			"backdrop_path": "/4qCqAdHcNKeAHcK8tJ8wNJZa9cx.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 11,
-			"original_language": "en",
-			"original_title": "Star Wars",
-			"overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
-			"popularity": 104.118,
-			"poster_path": "/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
-			"release_date": "1977-05-25",
-			"title": "Star Wars",
-			"video": false,
-			"vote_average": 8.205,
-			"vote_count": 19541
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/epVMXf10WqFkONzKR8V76Ypj5Y3.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 181808,
-			"original_language": "en",
-			"original_title": "Star Wars: The Last Jedi",
-			"overview": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.",
-			"popularity": 180.342,
-			"poster_path": "/kOVEVeg59E0wsnXmF9nrh6OmWII.jpg",
-			"release_date": "2017-12-13",
-			"title": "Star Wars: The Last Jedi",
-			"video": false,
-			"vote_average": 6.814,
-			"vote_count": 14561
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/6t8ES1d12OzWyCGxBeDYLHoaDrT.jpg",
-			"genre_ids": [
-				28,
-				12,
-				878
-			],
-			"id": 330459,
-			"original_language": "en",
-			"original_title": "Rogue One: A Star Wars Story",
-			"overview": "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.",
-			"popularity": 78.428,
-			"poster_path": "/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
-			"release_date": "2016-12-14",
-			"title": "Rogue One: A Star Wars Story",
-			"video": false,
-			"vote_average": 7.489,
-			"vote_count": 14575
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/8BTsTfln4jlQrLXUBquXJ0ASQy9.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 140607,
-			"original_language": "en",
-			"original_title": "Star Wars: The Force Awakens",
-			"overview": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
-			"popularity": 60.847,
-			"poster_path": "/wqnLdwVXoBjKibFRR5U3y0aDUhs.jpg",
-			"release_date": "2015-12-15",
-			"title": "Star Wars: The Force Awakens",
-			"video": false,
-			"vote_average": 7.287,
-			"vote_count": 18613
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/iflKt34Ck2JpY2PY9wW1zwdJgJi.jpg",
-			"genre_ids": [
-				16,
-				878,
-				12,
-				10751
-			],
-			"id": 782054,
-			"original_language": "ja",
-			"original_title": "映画ドラえもん のび太の宇宙小戦争 2021",
-			"overview": "One day during summer vacation, a palm-sized alien named Papi appears from a small rocket that Nobita picks up. He is the president of Pirika, a small planet in outer space, and has come to Earth to escape the rebels. Doraemon and his friends are puzzled by Papi’s small size, but as they play together using the secret tool “Small Light”, they gradually become friends. However, a whale-shaped space battleship comes to earth and attacks Doraemon, Nobita and the others in order to capture Papi. Feeling responsible for getting everyone involved, Papi tries to stand up to the rebels. Doraemon and his friends leave for the planet Pirika to protect their dear friend and his home.",
-			"popularity": 21.908,
-			"poster_path": "/48gKZioIDeUOI0afbYv3kh9u9RQ.jpg",
-			"release_date": "2022-03-04",
-			"title": "Doraemon: Nobita's Little Star Wars 2021",
-			"video": false,
-			"vote_average": 5.976,
-			"vote_count": 104
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 181812,
-			"original_language": "en",
-			"original_title": "Star Wars: The Rise of Skywalker",
-			"overview": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
-			"popularity": 96.141,
-			"poster_path": "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
-			"release_date": "2019-12-18",
-			"title": "Star Wars: The Rise of Skywalker",
-			"video": false,
-			"vote_average": 6.351,
-			"vote_count": 9261
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/hDvk6O2vehwsZBdNsMSGmAVdiUn.jpg",
-			"genre_ids": [
-				878,
-				12,
-				28
-			],
-			"id": 348350,
-			"original_language": "en",
-			"original_title": "Solo: A Star Wars Story",
-			"overview": "Through a series of daring escapades deep within a dark and dangerous criminal underworld, Han Solo meets his mighty future copilot Chewbacca and encounters the notorious gambler Lando Calrissian.",
-			"popularity": 49.992,
-			"poster_path": "/4oD6VEccFkorEBTEDXtpLAaz0Rl.jpg",
-			"release_date": "2018-05-15",
-			"title": "Solo: A Star Wars Story",
-			"video": false,
-			"vote_average": 6.6,
-			"vote_count": 8047
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/5vDuLrjJXFS9PTF7Q1xzobmYKR9.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 1895,
-			"original_language": "en",
-			"original_title": "Star Wars: Episode III - Revenge of the Sith",
-			"overview": "The evil Darth Sidious enacts his final plan for unlimited power -- and the heroic Jedi Anakin Skywalker must choose a side.",
-			"popularity": 36.62,
-			"poster_path": "/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg",
-			"release_date": "2005-05-17",
-			"title": "Star Wars: Episode III - Revenge of the Sith",
-			"video": false,
-			"vote_average": 7.417,
-			"vote_count": 12994
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/abwxHfymXGAbbH3lo9PDEJEfvtW.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 1894,
-			"original_language": "en",
-			"original_title": "Star Wars: Episode II - Attack of the Clones",
-			"overview": "Following an assassination attempt on Senator Padmé Amidala, Jedi Knights Anakin Skywalker and Obi-Wan Kenobi investigate a mysterious plot that could change the galaxy forever.",
-			"popularity": 36.742,
-			"poster_path": "/oZNPzxqM2s5DyVWab09NTQScDQt.jpg",
-			"release_date": "2002-05-15",
-			"title": "Star Wars: Episode II - Attack of the Clones",
-			"video": false,
-			"vote_average": 6.6,
-			"vote_count": 12529
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/sQUiouw94zhoG6LDEj9h8cPb61N.jpg",
-			"genre_ids": [
-				12,
-				28,
-				878
-			],
-			"id": 1893,
-			"original_language": "en",
-			"original_title": "Star Wars: Episode I - The Phantom Menace",
-			"overview": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
-			"popularity": 45.592,
-			"poster_path": "/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
-			"release_date": "1999-05-19",
-			"title": "Star Wars: Episode I - The Phantom Menace",
-			"video": false,
-			"vote_average": 6.5,
-			"vote_count": 13810
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/dUkCHy02dtFWQwyCKQKlf1sRm0D.jpg",
-			"genre_ids": [
-				16,
-				12,
-				10751,
-				14,
-				878
-			],
-			"id": 161704,
-			"original_language": "ja",
-			"original_title": "映画ドラえもん のび太の宇宙小戦争",
-			"overview": "Papi, the tiny president of a faraway planet, escapes to Earth to avoid being captured by the military forces that took over. Despite being welcomed by Doraemon, Nobita and their friends, the little alien notices that his enemies have also reached this world and doesn't want to get his human friends involved in this war. Doraemon, Nobita, Gian, Suneo, and Shizuka start a big adventure as they try to hide and protect Papi.",
-			"popularity": 9.308,
-			"poster_path": "/oLXqorJ3CtXkR90wCBkg4WnITL3.jpg",
-			"release_date": "1985-03-16",
-			"title": "Doraemon: Nobita's Little Star Wars",
-			"video": false,
-			"vote_average": 6.8,
-			"vote_count": 35
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/uNjBnOmdjZoiWTLQ938YJZ1cYVU.jpg",
-			"genre_ids": [
-				16,
-				35,
-				10751,
-				878,
-				12,
-				10770
-			],
-			"id": 392216,
-			"original_language": "en",
-			"original_title": "Phineas and Ferb: Star Wars",
-			"overview": "Phineas and Ferb become the galaxy's unlikeliest last hope when they must return the Death Star plans to the Rebel Alliance.",
-			"popularity": 13.044,
-			"poster_path": "/2XGlp5x232CeZM0PVjMMYQcXViA.jpg",
-			"release_date": "2014-07-26",
-			"title": "Phineas and Ferb: Star Wars",
-			"video": false,
-			"vote_average": 7.065,
-			"vote_count": 186
-		},
-		{
-			"adult": false,
-			"backdrop_path": null,
-			"genre_ids": [
-				99
-			],
-			"id": 432134,
-			"original_language": "en",
-			"original_title": "Star Wars: Heroes & Villains",
-			"overview": "A look at the creation and filming of the various heroes and villains from all six Star Wars movies, leading up to the release of Star Wars: Episode III - Revenge of the Sith.",
-			"popularity": 1.083,
-			"poster_path": "/9ReI6qt3bvsIxUZkDpOzaCpiLwx.jpg",
-			"release_date": "2005-05-03",
-			"title": "Star Wars: Heroes & Villains",
-			"video": false,
-			"vote_average": 7.2,
-			"vote_count": 20
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/xEdnGUc8KeZ7h0eEgSN3ERhjgL0.jpg",
-			"genre_ids": [
-				16,
-				28,
-				878,
-				12
-			],
-			"id": 12180,
-			"original_language": "en",
-			"original_title": "Star Wars: The Clone Wars",
-			"overview": "As the Clone Wars sweep through the galaxy, the heroic Jedi Knights struggle to maintain order and restore peace. More and more systems are falling prey to the forces of the dark side as the Galactic Republic slips further and further under the sway of the Separatists and their never-ending droid army. Anakin Skywalker and his Padawan learner Ahsoka Tano find themselves on a mission with far-reaching consequences, one that brings them face-to-face with crime lord Jabba the Hutt. But Count Dooku and his sinister agents, including the nefarious Asajj Ventress, will stop at nothing to ensure that Anakin and Ahsoka fail at their quest. Meanwhile, on the front lines of the Clone Wars, Obi-Wan Kenobi and Master Yoda lead the massive clone army in a valiant effort to resist the forces of the dark side...",
-			"popularity": 15.233,
-			"poster_path": "/iJQfixW818LUdSXlCDL3JZm0S0g.jpg",
-			"release_date": "2008-08-05",
-			"title": "Star Wars: The Clone Wars",
-			"video": false,
-			"vote_average": 6.114,
-			"vote_count": 1880
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/1Lhc32P0a62BgMFgd20wXR1osR3.jpg",
-			"genre_ids": [
-				16,
-				10751,
-				878,
-				12,
-				35
-			],
-			"id": 732670,
-			"original_language": "en",
-			"original_title": "LEGO Star Wars Holiday Special",
-			"overview": "As her friends prep for a Life Day holiday celebration, Rey journeys with BB-8 on a quest to gain a deeper knowledge of the Force at a mysterious Jedi Temple. There, she embarks on a cross-timeline adventure through beloved moments in Star Wars history, coming into contact with iconic heroes and villains from all eras of the saga. But will she make it back in time for the Life Day feast?",
-			"popularity": 15.254,
-			"poster_path": "/zyzJSI7UZZzz5Toj10rYGF5689z.jpg",
-			"release_date": "2020-11-17",
-			"title": "LEGO Star Wars Holiday Special",
-			"video": false,
-			"vote_average": 6.551,
-			"vote_count": 302
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/ae9xlnkS2qb5Dy9Mtlu68AWh42O.jpg",
-			"genre_ids": [
-				14,
-				878,
-				10751,
-				10770
-			],
-			"id": 74849,
-			"original_language": "en",
-			"original_title": "The Star Wars Holiday Special",
-			"overview": "Luke Skywalker and Han Solo battle evil Imperial forces to help Chewbacca reach his imperiled family on the Wookiee planet - in time for Life Day, their most important day of the year!",
-			"popularity": 20.837,
-			"poster_path": "/eRSKviGcTqHd34vCLjcztJF6Eaw.jpg",
-			"release_date": "1978-12-01",
-			"title": "The Star Wars Holiday Special",
-			"video": false,
-			"vote_average": 3.34,
-			"vote_count": 432
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/c8XIFuJCPTtTJdSRpqnUoMr6eK1.jpg",
-			"genre_ids": [
-				878,
-				28
-			],
-			"id": 667574,
-			"original_language": "en",
-			"original_title": "Battle Star Wars",
-			"overview": "When the leader of the evil Coalition threatens to destroy a Rebel planet for its resources, his daughter will have no choice but to join the Rebel side and fight for what is right.",
-			"popularity": 3.128,
-			"poster_path": "/ocA0ECiFoB4d1HITyEDQlLk7x84.jpg",
-			"release_date": "2020-01-28",
-			"title": "Battle Star Wars",
-			"video": false,
-			"vote_average": 5.135,
-			"vote_count": 37
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/98CXGiN2bIh6HUnRjFNGgA9o4FZ.jpg",
-			"genre_ids": [
-				99
-			],
-			"id": 956879,
-			"original_language": "fr",
-			"original_title": "Dans l’ombre du Star Wars Kid",
-			"overview": "Ghyslain Raza, better known as the “Star Wars Kid,” breaks his silence to reflect on our hunger for content and the right to be forgotten in the digital age.",
-			"popularity": 1.809,
-			"poster_path": "/zspMlOFJ76g5KyfmucgnvnkJnuN.jpg",
-			"release_date": "2022-03-30",
-			"title": "Star Wars Kid: The Rise of the Digital Shadows",
-			"video": false,
-			"vote_average": 7.6,
-			"vote_count": 9
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/f53Jujiap580mgfefID0T0g2e17.jpg",
-			"genre_ids": [
-				16,
-				10751,
-				878,
-				35,
-				10770
-			],
-			"id": 857702,
-			"original_language": "en",
-			"original_title": "LEGO Star Wars Terrifying Tales",
-			"overview": "Poe Dameron and BB-8 must face the greedy crime boss Graballa the Hutt, who has purchased Darth Vader’s castle and is renovating it into the galaxy’s first all-inclusive Sith-inspired luxury hotel.",
-			"popularity": 19.206,
-			"poster_path": "/fYiaBZDjyXjvlY6EDZMAxIhBO1I.jpg",
-			"release_date": "2021-10-01",
-			"title": "LEGO Star Wars Terrifying Tales",
-			"video": false,
-			"vote_average": 6.783,
-			"vote_count": 224
-		},
-		{
-			"adult": false,
-			"backdrop_path": "/vV5knD9jlW8QaOhCgf4129hbIIh.jpg",
-			"genre_ids": [
-				16,
-				10751,
-				878,
-				35,
-				10770
-			],
-			"id": 980804,
-			"original_language": "en",
-			"original_title": "LEGO Star Wars Summer Vacation",
-			"overview": "Looking for a much-needed break, Finn arranges a surprise vacation for his friends Rey, Poe, Rose, Chewie, BB-8, R2-D2, and C-3PO, aboard the luxurious Halcyon. However, Finn's plan to have one last hurrah together quickly goes awry.",
-			"popularity": 13.867,
-			"poster_path": "/2SatEFCs04oFRqkZuY1fODYXeFI.jpg",
-			"release_date": "2022-08-05",
-			"title": "LEGO Star Wars Summer Vacation",
-			"video": false,
-			"vote_average": 6.0,
-			"vote_count": 68
-		}
-	],
-	"total_pages": 10,
-	"total_results": 188
-}
+[
+	{
+		"actoresPeliculas":[
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[0]"}
+						],
+						"id":1,
+						"nombre":"Owen Wilson"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[1]"}
+						],
+						"id":2,
+						"nombre":"Larry the Cable Guy"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[2]"}
+						],
+						"id":3,
+						"nombre":"Bonnie Hunt"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[3]"}
+						],
+						"id":4,
+						"nombre":"Paul Newman"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[4]"}
+						],
+						"id":5,
+						"nombre":"Tony Shalhoub"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[5]"}
+						],
+						"id":6,
+						"nombre":"Cheech Marin"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[6]"}
+						],
+						"id":7,
+						"nombre":"Michael Wallis"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[7]"}
+						],
+						"id":8,
+						"nombre":"George Carlin"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[8]"}
+						],
+						"id":9,
+						"nombre":"Paul Dooley"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[9]"}
+						],
+						"id":10,
+						"nombre":"Jenifer Lewis"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[10]"}
+						],
+						"id":11,
+						"nombre":"Guido Quaroni"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[11]"}
+						],
+						"id":12,
+						"nombre":"Richard Petty"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[12]"}
+						],
+						"id":13,
+						"nombre":"Michael Keaton"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[13]"}
+						],
+						"id":14,
+						"nombre":"Katherine Helmond"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[14]"}
+						],
+						"id":15,
+						"nombre":"John Ratzenberger"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[15]"}
+						],
+						"id":16,
+						"nombre":"Jeremy Piven"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[16]"}
+						],
+						"id":17,
+						"nombre":"Dale Earnhardt Jr."
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[17]"}
+						],
+						"id":18,
+						"nombre":"Mario Andretti"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[18]"}
+						],
+						"id":19,
+						"nombre":"Michael Schumacher"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[19]"}
+						],
+						"id":20,
+						"nombre":"Jay Leno"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[20]"}
+						],
+						"id":21,
+						"nombre":"Tom Hanks"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[21]"}
+						],
+						"id":22,
+						"nombre":"Tim Allen"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[22]"}
+						],
+						"id":23,
+						"nombre":"Billy Crystal"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[23]"}
+						],
+						"id":24,
+						"nombre":"John Goodman"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[24]"}
+						],
+						"id":25,
+						"nombre":"Dave Foley"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[25]"}
+						],
+						"id":26,
+						"nombre":"Bob Costas"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[26]"}
+						],
+						"id":27,
+						"nombre":"Darrell Waltrip"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[27]"}
+						],
+						"id":28,
+						"nombre":"Richard Kind"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[28]"}
+						],
+						"id":29,
+						"nombre":"Edie McClurg"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[29]"}
+						],
+						"id":30,
+						"nombre":"Humpy Wheeler"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[30]"}
+						],
+						"id":31,
+						"nombre":"Tom Magliozzi"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[31]"}
+						],
+						"id":32,
+						"nombre":"Ray Magliozzi"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[32]"}
+						],
+						"id":33,
+						"nombre":"Lynda Petty"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[33]"}
+						],
+						"id":34,
+						"nombre":"Mike Nelson"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[34]"}
+						],
+						"id":35,
+						"nombre":"Jan Rabson"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[35]"}
+						],
+						"id":36,
+						"nombre":"Lou Romano"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[36]"}
+						],
+						"id":37,
+						"nombre":"Elissa Knight"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[37]"}
+						],
+						"id":38,
+						"nombre":"Larry Benton"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[38]"}
+						],
+						"id":39,
+						"nombre":"Douglas Keever"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[39]"}
+						],
+						"id":40,
+						"nombre":"Sherry Lynn"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[40]"}
+						],
+						"id":41,
+						"nombre":"Mickie McGowan"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[41]"}
+						],
+						"id":42,
+						"nombre":"Jack Angel"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[42]"}
+						],
+						"id":43,
+						"nombre":"Michael Bell"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[43]"}
+						],
+						"id":44,
+						"nombre":"Bob Bergen"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[44]"}
+						],
+						"id":45,
+						"nombre":"Susan Blu"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[45]"}
+						],
+						"id":46,
+						"nombre":"Andrea Boerries"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[46]"}
+						],
+						"id":47,
+						"nombre":"Marco Boerries"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[47]"}
+						],
+						"id":48,
+						"nombre":"Rodger Bumpass"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[48]"}
+						],
+						"id":49,
+						"nombre":"Richard Cawood"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[49]"}
+						],
+						"id":50,
+						"nombre":"Kathy Coates"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[50]"}
+						],
+						"id":51,
+						"nombre":"John Cygan"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[51]"}
+						],
+						"id":52,
+						"nombre":"Jennifer Darling"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[52]"}
+						],
+						"id":53,
+						"nombre":"Paul Eiding"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[53]"}
+						],
+						"id":54,
+						"nombre":"Bill Farmer"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[54]"}
+						],
+						"id":55,
+						"nombre":"Teresa Ganzel"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[55]"}
+						],
+						"id":56,
+						"nombre":"Jess Harnell"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[56]"}
+						],
+						"id":57,
+						"nombre":"Danny Mann"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[57]"}
+						],
+						"id":58,
+						"nombre":"Laraine Newman"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[58]"}
+						],
+						"id":59,
+						"nombre":"Teddy Newton"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[59]"}
+						],
+						"id":60,
+						"nombre":"Colleen O'Shaughnessey"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[60]"}
+						],
+						"id":61,
+						"nombre":"Bob Peterson"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[61]"}
+						],
+						"id":62,
+						"nombre":"Steve Purcell"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[62]"}
+						],
+						"id":63,
+						"nombre":"Matt Staudt"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[63]"}
+						],
+						"id":64,
+						"nombre":"Jim Ward"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[64]"}
+						],
+						"id":65,
+						"nombre":"Colette Whitaker"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"actor":{
+						"actoresPeliculas":[
+							{"$ref":"$[0].actoresPeliculas[65]"}
+						],
+						"id":66,
+						"nombre":"Frank Welker"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			}
+		],
+		"cartel":"https://image.tmdb.org/t/p/w500/nqii8TqllZRainaNhQkJLNoSbMv.jpg",
+		"comentariosUsuario":"La meon peli ",
+		"compPelicula":[
+			{
+				"id":{
+					"company":{
+						"compPelicula":[
+							{"$ref":"$[0].compPelicula[0]"}
+						],
+						"id":1,
+						"name":"Pixar"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"company":{
+						"compPelicula":[
+							{"$ref":"$[0].compPelicula[1]"}
+						],
+						"id":2,
+						"name":"Walt Disney Pictures"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			}
+		],
+		"directoresPelicula":[
+			{
+				"id":{
+					"director":{
+						"directoresPelicula":[
+							{"$ref":"$[0].directoresPelicula[0]"}
+						],
+						"id":1,
+						"nombre":"Artie Kempner"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			}
+		],
+		"fechaVisualizacionUsuario":1707951600000,
+		"generoPelicula":[
+			{
+				"id":{
+					"genero":{
+						"generoPelicula":[
+							{"$ref":"$[0].generoPelicula[0]"}
+						],
+						"id":12,
+						"nombre":"Aventura"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"genero":{
+						"generoPelicula":[
+							{"$ref":"$[0].generoPelicula[1]"}
+						],
+						"id":16,
+						"nombre":"Animación"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"genero":{
+						"generoPelicula":[
+							{"$ref":"$[0].generoPelicula[2]"},
+							{
+								"id":{
+									"genero":{"$ref":"$[0].generoPelicula[2].id.genero"},
+									"pelicula":{
+										"actoresPeliculas":[
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[0]"}
+														],
+														"id":147,
+														"nombre":"Jeremy London"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[1]"}
+														],
+														"id":148,
+														"nombre":"William Forsythe"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[2]"}
+														],
+														"id":149,
+														"nombre":"Amber Reign Smith"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[3]"}
+														],
+														"id":150,
+														"nombre":"Elena Sanchez"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[4]"}
+														],
+														"id":151,
+														"nombre":"Miles Doleac"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"actor":{
+														"actoresPeliculas":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.actoresPeliculas[5]"}
+														],
+														"id":152,
+														"nombre":"Yohance Myles"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											}
+										],
+										"cartel":"https://image.tmdb.org/t/p/w500/yIC2x9ZRME24kaEhx2Hrd1oZn9e.jpg",
+										"comentariosUsuario":"sdadas",
+										"compPelicula":[
+											{
+												"id":{
+													"company":{
+														"compPelicula":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.compPelicula[0]"}
+														],
+														"id":6,
+														"name":"Historia Films"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											}
+										],
+										"directoresPelicula":[
+											{
+												"id":{
+													"director":{
+														"directoresPelicula":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.directoresPelicula[0]"}
+														],
+														"id":3,
+														"nombre":"James V. Bulian"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											}
+										],
+										"fechaVisualizacionUsuario":1707346800000,
+										"generoPelicula":[
+											{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1]"},
+											{
+												"id":{
+													"genero":{
+														"generoPelicula":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.generoPelicula[1]"}
+														],
+														"id":53,
+														"nombre":"Suspense"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											},
+											{
+												"id":{
+													"genero":{
+														"generoPelicula":[
+															{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.generoPelicula[2]"}
+														],
+														"id":10402,
+														"nombre":"Música"
+													},
+													"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+												}
+											}
+										],
+										"id":3,
+										"localizacion":{
+											"nombreLocalizacion":"asdsa"
+										},
+										"overview":"A woman in a troubled marriage falls for a former teen heartthrob who's fallen from industry favor, while having nagging (and empowering) hallucinations about fronting an 1980s new wave band.",
+										"releaseDate":1698966000000,
+										"titulo":"Open",
+										"usuario":{
+											"email":"a",
+											"id":1,
+											"password":"a",
+											"peliculas":[
+												{"$ref":"$[0]"},
+												{
+													"actoresPeliculas":[
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[0]"}
+																	],
+																	"id":67,
+																	"nombre":"Tobey Maguire"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[1]"}
+																	],
+																	"id":68,
+																	"nombre":"Willem Dafoe"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[2]"}
+																	],
+																	"id":69,
+																	"nombre":"Kirsten Dunst"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[3]"}
+																	],
+																	"id":70,
+																	"nombre":"James Franco"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[4]"}
+																	],
+																	"id":71,
+																	"nombre":"Cliff Robertson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[5]"}
+																	],
+																	"id":72,
+																	"nombre":"Rosemary Harris"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[6]"}
+																	],
+																	"id":73,
+																	"nombre":"J.K. Simmons"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[7]"}
+																	],
+																	"id":74,
+																	"nombre":"Joe Manganiello"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[8]"}
+																	],
+																	"id":75,
+																	"nombre":"Gerry Becker"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[9]"}
+																	],
+																	"id":76,
+																	"nombre":"Bill Nunn"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[10]"}
+																	],
+																	"id":77,
+																	"nombre":"Jack Betts"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[11]"}
+																	],
+																	"id":78,
+																	"nombre":"Stanley Anderson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[12]"}
+																	],
+																	"id":79,
+																	"nombre":"Ron Perkins"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[13]"}
+																	],
+																	"id":80,
+																	"nombre":"Michael Papajohn"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[14]"}
+																	],
+																	"id":81,
+																	"nombre":"K.K. Dodds"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[15]"}
+																	],
+																	"id":82,
+																	"nombre":"Ted Raimi"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[16]"}
+																	],
+																	"id":83,
+																	"nombre":"Bruce Campbell"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[17]"}
+																	],
+																	"id":84,
+																	"nombre":"Elizabeth Banks"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[18]"}
+																	],
+																	"id":85,
+																	"nombre":"John Paxton"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[19]"}
+																	],
+																	"id":86,
+																	"nombre":"Tim DeZarn"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[20]"}
+																	],
+																	"id":87,
+																	"nombre":"Taylor Gilbert"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[21]"}
+																	],
+																	"id":88,
+																	"nombre":"Randy Savage"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[22]"}
+																	],
+																	"id":89,
+																	"nombre":"Larry Joshua"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[23]"}
+																	],
+																	"id":90,
+																	"nombre":"Timothy Patrick Quill"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[24]"}
+																	],
+																	"id":91,
+																	"nombre":"Lisa Danielle"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[25]"}
+																	],
+																	"id":92,
+																	"nombre":"Natalie T. Yeo"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[26]"}
+																	],
+																	"id":93,
+																	"nombre":"Erica D. Porter"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[27]"}
+																	],
+																	"id":94,
+																	"nombre":"Kristen Davidson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[28]"}
+																	],
+																	"id":95,
+																	"nombre":"Jason Padgett"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[29]"}
+																	],
+																	"id":96,
+																	"nombre":"Shan Omar Huey"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[30]"}
+																	],
+																	"id":97,
+																	"nombre":"Evan Arnold"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[31]"}
+																	],
+																	"id":98,
+																	"nombre":"Jill Sayre"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[32]"}
+																	],
+																	"id":99,
+																	"nombre":"Jim Ward"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[33]"}
+																	],
+																	"id":100,
+																	"nombre":"David Holcomb"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[34]"}
+																	],
+																	"id":101,
+																	"nombre":"Octavia Spencer"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[35]"}
+																	],
+																	"id":102,
+																	"nombre":"Brad Grunberg"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[36]"}
+																	],
+																	"id":103,
+																	"nombre":"Deborah Wakeham"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[37]"}
+																	],
+																	"id":104,
+																	"nombre":"Rachael Bruce"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[38]"}
+																	],
+																	"id":105,
+																	"nombre":"Mackenzie Bryce"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[39]"}
+																	],
+																	"id":106,
+																	"nombre":"Julia Barrie"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[40]"}
+																	],
+																	"id":107,
+																	"nombre":"Macy Gray"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[41]"}
+																	],
+																	"id":108,
+																	"nombre":"Myk Watford"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[42]"}
+																	],
+																	"id":109,
+																	"nombre":"Bill Calvert"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[43]"}
+																	],
+																	"id":110,
+																	"nombre":"Sylva Kelegian"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[44]"}
+																	],
+																	"id":111,
+																	"nombre":"Kristen Marie Holly"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[45]"}
+																	],
+																	"id":112,
+																	"nombre":"Ajay Mehta"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[46]"}
+																	],
+																	"id":113,
+																	"nombre":"Peter Appel"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[47]"}
+																	],
+																	"id":114,
+																	"nombre":"Scott Spiegel"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[48]"}
+																	],
+																	"id":115,
+																	"nombre":"Matt Smith"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[49]"}
+																	],
+																	"id":116,
+																	"nombre":"Sara Ramirez"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[50]"}
+																	],
+																	"id":117,
+																	"nombre":"Lucy Lawless"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[51]"}
+																	],
+																	"id":118,
+																	"nombre":"Jayce Bartok"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[52]"}
+																	],
+																	"id":119,
+																	"nombre":"Maribel González"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[53]"}
+																	],
+																	"id":120,
+																	"nombre":"Amy Bouril"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[54]"}
+																	],
+																	"id":121,
+																	"nombre":"Joseph D'Onofrio"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[55]"}
+																	],
+																	"id":122,
+																	"nombre":"Jim Norton"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[56]"}
+																	],
+																	"id":123,
+																	"nombre":"Corey Mendell Parker"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[57]"}
+																	],
+																	"id":124,
+																	"nombre":"Ashley Edner"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[58]"}
+																	],
+																	"id":125,
+																	"nombre":"William Joseph Firth"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[59]"}
+																	],
+																	"id":126,
+																	"nombre":"Alex Black"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[60]"}
+																	],
+																	"id":127,
+																	"nombre":"Laura Gray"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[61]"}
+																	],
+																	"id":128,
+																	"nombre":"Joe Virzi"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[62]"}
+																	],
+																	"id":129,
+																	"nombre":"Michael Edward Thomas"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[63]"}
+																	],
+																	"id":130,
+																	"nombre":"Jeanie Fox"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[64]"}
+																	],
+																	"id":131,
+																	"nombre":"Robert Kerman"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[65]"}
+																	],
+																	"id":132,
+																	"nombre":"Una Damon"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[66]"}
+																	],
+																	"id":133,
+																	"nombre":"Peter Aylward"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[67]"}
+																	],
+																	"id":134,
+																	"nombre":"Jillian Clare"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[68]"}
+																	],
+																	"id":135,
+																	"nombre":"Chris Coppola"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[69]"}
+																	],
+																	"id":136,
+																	"nombre":"Jesse Heiman"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[70]"}
+																	],
+																	"id":137,
+																	"nombre":"Leroy Patterson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[71]"}
+																	],
+																	"id":138,
+																	"nombre":"Benny Urquidez"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[72]"}
+																	],
+																	"id":139,
+																	"nombre":"Scott L. Schwartz"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[73]"}
+																	],
+																	"id":140,
+																	"nombre":"Jophery C. Brown"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[74]"}
+																	],
+																	"id":141,
+																	"nombre":"Brian J. Williams"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[75]"}
+																	],
+																	"id":142,
+																	"nombre":"Tia Dionne Hodge"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[76]"}
+																	],
+																	"id":143,
+																	"nombre":"Andray Johnson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[77]"}
+																	],
+																	"id":144,
+																	"nombre":"Martin Pfefferkorn"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[78]"}
+																	],
+																	"id":145,
+																	"nombre":"Lindsay Thompson"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"actor":{
+																	"actoresPeliculas":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].actoresPeliculas[79]"}
+																	],
+																	"id":146,
+																	"nombre":"Pete Macnamara"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														}
+													],
+													"cartel":"https://image.tmdb.org/t/p/w500/2ufIbl01RhJ9QkSUxD0UjDakxvk.jpg",
+													"comentariosUsuario":"La meon peli ",
+													"compPelicula":[
+														{
+															"id":{
+																"company":{
+																	"compPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].compPelicula[0]"}
+																	],
+																	"id":3,
+																	"name":"Marvel Enterprises"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"company":{
+																	"compPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].compPelicula[1]"}
+																	],
+																	"id":4,
+																	"name":"Laura Ziskin Productions"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"company":{
+																	"compPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].compPelicula[2]"}
+																	],
+																	"id":5,
+																	"name":"Columbia Pictures"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														}
+													],
+													"directoresPelicula":[
+														{
+															"id":{
+																"director":{
+																	"directoresPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].directoresPelicula[0]"}
+																	],
+																	"id":2,
+																	"nombre":"Sam Raimi"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														}
+													],
+													"fechaVisualizacionUsuario":1707951600000,
+													"generoPelicula":[
+														{
+															"id":{
+																"genero":{
+																	"generoPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].generoPelicula[0]"}
+																	],
+																	"id":28,
+																	"nombre":"Acción"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														},
+														{
+															"id":{
+																"genero":{
+																	"generoPelicula":[
+																		{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].generoPelicula[1]"}
+																	],
+																	"id":878,
+																	"nombre":"Ciencia ficción"
+																},
+																"pelicula":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"}
+															}
+														}
+													],
+													"id":2,
+													"localizacion":{
+														"nombreLocalizacion":"Mi casa"
+													},
+													"overview":"Peter Parker es un joven y tímido estudiante que vive con su tía May y su tío Ben desde la muerte de sus padres. Un día es mordido por una araña que ha sido modificada genéticamente, descubriendo al día siguiente que posee unos poderes poco habituales: tiene la fuerza y agilidad de una araña.",
+													"releaseDate":1020204000000,
+													"titulo":"Spider-Man",
+													"usuario":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario"},
+													"valoracion":7.289,
+													"valoracionUsuario":10.0,
+													"year":2002
+												},
+												{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+											]
+										},
+										"valoracion":6.125,
+										"valoracionUsuario":2.5,
+										"year":2023
+									}
+								}
+							}
+						],
+						"id":35,
+						"nombre":"Comedia"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			},
+			{
+				"id":{
+					"genero":{
+						"generoPelicula":[
+							{"$ref":"$[0].generoPelicula[3]"}
+						],
+						"id":10751,
+						"nombre":"Familia"
+					},
+					"pelicula":{"$ref":"$[0]"}
+				}
+			}
+		],
+		"id":1,
+		"localizacion":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1].localizacion"},
+		"overview":"El aspirante a campeón de carreras Rayo McQueen está sobre la vía rápida al éxito, la fama y todo lo que él había soñado, hasta que por error toma un desvío inesperado en la polvorienta y solitaria Ruta 66. Su actitud arrogante se desvanece cuando llega a una pequeña comunidad olvidada que le enseña las cosas importantes de la vida que había olvidado.",
+		"releaseDate":1149717600000,
+		"titulo":"Cars",
+		"usuario":{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario"},
+		"valoracion":6.951,
+		"valoracionUsuario":10.0,
+		"year":2006
+	},
+	{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula.usuario.peliculas[1]"},
+	{"$ref":"$[0].generoPelicula[2].id.genero.generoPelicula[1].id.pelicula"}
+]

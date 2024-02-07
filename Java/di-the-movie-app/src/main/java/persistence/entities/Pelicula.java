@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -48,10 +47,9 @@ public class Pelicula implements Serializable {
 	@Column(name = "year")
 	private int year;
 
-	/** Compañia asociadad */
-	@ManyToOne
-	@JoinColumn(name = "company_id")
-	private Company company;
+	/** Compañias de la pelicula */
+	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
+	private List<CompanyPelicula> compPelicula;
 
 	/** Imagen del cartel de la pelicula */
 	@Column(name = "cartel")
@@ -67,16 +65,29 @@ public class Pelicula implements Serializable {
 	private User usuario;
 
 	/** Directores de la pelicula */
+<<<<<<< HEAD
 	@ManyToMany(mappedBy = "peliculas")
 	private List<Director> directores;
 
 	/** Actores de la pelicula */
 	@ManyToMany(mappedBy = "peliculas")
 	private List<Actor> actores;
+=======
+	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
+	private List<DirectoresPeliculas> directoresPelicula;
 
-	/** Valoracion de la pelicula */
+	/** Generos de la pelicula */
+	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
+	private List<ActoresPeliculas> actoresPeliculas;
+>>>>>>> 27e8e328f37e79bb02908e5f43c0c1b85de6c0fd
+
+	/** Valoracion de la pelicula por el usuario */
 	@Column(name = "valoracion_usuario")
 	private double valoracionUsuario;
+
+	/** Valoracion de la pelicula por el usuario */
+	@Column(name = "valoracion")
+	private double valoracion;
 
 	/** Fecha de visualizacion del usuario */
 	@Column(name = "fecha_visualizacion_usuario")
@@ -96,6 +107,20 @@ public class Pelicula implements Serializable {
 	 */
 	public List<GeneroPelicula> getGeneroPelicula() {
 		return generoPelicula;
+	}
+
+	/**
+	 * @return the valoracion
+	 */
+	public double getValoracion() {
+		return valoracion;
+	}
+
+	/**
+	 * @param valoracion the valoracion to set
+	 */
+	public void setValoracion(double valoracion) {
+		this.valoracion = valoracion;
 	}
 
 	/**
@@ -176,17 +201,17 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
-	 * @return the company
+	 * @return the compPelicula
 	 */
-	public Company getCompany() {
-		return company;
+	public List<CompanyPelicula> getCompPelicula() {
+		return compPelicula;
 	}
 
 	/**
-	 * @param company the company to set
+	 * @param compPelicula the compPelicula to set
 	 */
-	public void setCompany(Company company) {
-		this.company = company;
+	public void setCompPelicula(List<CompanyPelicula> compPelicula) {
+		this.compPelicula = compPelicula;
 	}
 
 	/**
@@ -204,31 +229,31 @@ public class Pelicula implements Serializable {
 	}
 
 	/**
-	 * @return the directores
+	 * @return the directoresPelicula
 	 */
-	public List<Director> getDirectores() {
-		return directores;
+	public List<DirectoresPeliculas> getDirectoresPelicula() {
+		return directoresPelicula;
 	}
 
 	/**
-	 * @param directores the directores to set
+	 * @param directoresPelicula the directoresPelicula to set
 	 */
-	public void setDirectores(List<Director> directores) {
-		this.directores = directores;
+	public void setDirectoresPelicula(List<DirectoresPeliculas> directoresPelicula) {
+		this.directoresPelicula = directoresPelicula;
 	}
 
 	/**
-	 * @return the actores
+	 * @return the actoresPeliculas
 	 */
-	public List<Actor> getActores() {
-		return actores;
+	public List<ActoresPeliculas> getActoresPeliculas() {
+		return actoresPeliculas;
 	}
 
 	/**
-	 * @param actores the actores to set
+	 * @param actoresPeliculas the actoresPeliculas to set
 	 */
-	public void setActores(List<Actor> actores) {
-		this.actores = actores;
+	public void setActoresPeliculas(List<ActoresPeliculas> actoresPeliculas) {
+		this.actoresPeliculas = actoresPeliculas;
 	}
 
 	/**

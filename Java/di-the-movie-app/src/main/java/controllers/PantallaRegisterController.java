@@ -45,34 +45,43 @@ public class PantallaRegisterController {
 
 	@FXML
 	private Button btnRegistrarse;
-	
+
 	@FXML
-  private ImageView imgVector;
-	
+	private ImageView imgVector;
+
 	@FXML
   private Label lblErrores;
 	
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
-		//Si los campos no están vacíos
-		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank() && !txtRepetirContrasena.getText().isBlank()) {
-			//Y las contraseñas coinciden
+		// Si los campos no están vacíos
+		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank()
+				&& !txtRepetirContrasena.getText().isBlank()) {
+			// Y las contraseñas coinciden
 			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {
-			//TODO Ver si el usuario ya existe???
+				// TODO Ver si el usuario ya existe???
 				Session session = HibernateUtil.getSession();
-				//Crea un usuario con los datos de los campos
+				// Crea un usuario con los datos de los campos
 				User user = new User(txtEmail.getText(), txtContrasena.getText());
-				//Guardalo en la base de datos
+				// Guardalo en la base de datos
 				session.persist(user);
-				//Y vuelve a la pantalla de login
-				NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN, Constantes.CSS_PANTALLA_PRINCIPAL);
+				// Y vuelve a la pantalla de login
+				NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN,
+						Constantes.CSS_LOGIN);
 				pantallaLogin.navegaAPantalla();
 				NavegacionPantallas.cerrarVentanaActual(e);
 			} else {
+<<<<<<< HEAD
 				lblErrores.setText("Las contraseñas no coinciden, compruebe e intente de nuevo.");
 			}
 		} else {
 			lblErrores.setText("Todos los campos deben rellenarse, compruebe e intente de nuevo.");
+=======
+				// TODO mensaje error
+			}
+		} else {
+			// TODO mensaje error
+>>>>>>> 27e8e328f37e79bb02908e5f43c0c1b85de6c0fd
 		}
 	}
 

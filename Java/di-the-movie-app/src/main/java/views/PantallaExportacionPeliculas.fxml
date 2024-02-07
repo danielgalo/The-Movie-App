@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/exportacion-pelicula-style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaExportacionPeliculasController">
+   <children>
+      <BorderPane layoutX="200.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane fx:id="panelSuperior" prefHeight="82.0" prefWidth="1440.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lblCabecera" alignment="CENTER" layoutX="564.0" layoutY="19.0" prefHeight="45.0" prefWidth="364.0" text="Exportación de películas" textAlignment="CENTER" />
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane fx:id="panelCentral" prefHeight="794.0" prefWidth="1240.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="75.0" />
+               </BorderPane.margin>
+               <children>
+                  <GridPane prefHeight="768.0" prefWidth="1241.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="407.3333435058594" minWidth="10.0" prefWidth="342.33331298828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="546.6666870117188" minWidth="10.0" prefWidth="546.6666870117188" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.3333740234375" minWidth="10.0" prefWidth="345.66668701171875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="lblSeleccionaOpc" prefHeight="36.0" prefWidth="285.0" text="Selecciona una opción" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <RadioButton fx:id="rdbtnYear" mnemonicParsing="false" text="Por año" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="100.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="rdBtnTitulo" mnemonicParsing="false" text="Por título:" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets left="100.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="rdBtnGenero" mnemonicParsing="false" text="Por género" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets left="100.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="rdBtnTodo" mnemonicParsing="false" text="Exportar todo" GridPane.rowIndex="8">
+                           <padding>
+                              <Insets left="100.0" />
+                           </padding>
+                        </RadioButton>
+                        <Label fx:id="lblFormato" prefHeight="30.0" prefWidth="119.0" text="Formato:" GridPane.halignment="RIGHT" GridPane.rowIndex="10" />
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <children>
+                              <RadioButton fx:id="rdbtnCSV" layoutX="-81.0" layoutY="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="265.0" text="CSV">
+                                 <padding>
+                                    <Insets left="100.0" />
+                                 </padding>
+                              </RadioButton>
+                              <RadioButton fx:id="rdbtnJSON" layoutX="234.0" layoutY="10.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="265.0" text="JSON">
+                                 <padding>
+                                    <Insets left="100.0" />
+                                 </padding>
+                              </RadioButton>
+                           </children>
+                        </Pane>
+                        <TextField fx:id="txtYear" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtTitulo" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtGenero" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="lblDirectorioExp" prefHeight="36.0" prefWidth="325.0" text="Directorio de exportación:" GridPane.halignment="RIGHT" GridPane.rowIndex="12" />
+                        <TextField fx:id="txtDirectorio" promptText="C:\Usuario\usuario\documentos\peliculas.json" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <Button fx:id="btnExportar" mnemonicParsing="false" onMousePressed="#btnExportarPressed" text="Exportar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+                        <ChoiceBox fx:id="cboxFiltroYear" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label fx:id="lblError" prefHeight="36.0" prefWidth="554.0" text="  " GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                        <Label fx:id="lblInfo" prefHeight="36.0" prefWidth="285.0" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+         </center>
+         <left>
+            <Pane prefHeight="742.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="742.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </right>
+         <bottom>
+            <Pane prefHeight="100.0" prefWidth="1440.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onMousePressed="#btnVolverPressed" prefHeight="62.0" prefWidth="174.0" text="Menú" />
+      <ImageView fitHeight="41.0" fitWidth="75.0" layoutX="33.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/vector.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

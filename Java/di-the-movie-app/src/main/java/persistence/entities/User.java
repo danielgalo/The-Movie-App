@@ -30,7 +30,7 @@ public class User implements Serializable {
 	private Long id;
 
 	/** Email del usuario */
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 
 	/** Contraseña de usuario */

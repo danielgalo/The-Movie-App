@@ -30,7 +30,8 @@ public class UserDaoImpl extends CommonDaoImpl<User> implements UserDaoI {
 			session.getTransaction().begin();
 		}
 
-		TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email and password = :password", User.class);
+		TypedQuery<User> query = session.createQuery("FROM User WHERE email = :email and password = :password",
+				User.class);
 		query.setParameter("email", email);
 		query.setParameter("password", password);
 

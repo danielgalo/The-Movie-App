@@ -40,6 +40,13 @@ public class GeneroPeliculaId implements Serializable {
 	private Genero genero;
 
 	/**
+	 * Constructor vacío
+	 */
+	public GeneroPeliculaId() {
+		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
 	 * Constructor de la clase GeneroPeliculaId.
 	 * 
 	 * @param pelicula La entidad Pelicula asociada a la clave primaria.

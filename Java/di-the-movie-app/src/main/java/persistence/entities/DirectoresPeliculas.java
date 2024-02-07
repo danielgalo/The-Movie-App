@@ -7,43 +7,45 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
- * Entidad que representa la relacion entre generos y peliculas
+ * Entidad que representa la relacion entre actores y peliculas
  */
 @Entity
-@Table(name = "genero_pelicula")
-public class GeneroPelicula implements Serializable {
+@Table(name = "directores_peliculas")
+public class DirectoresPeliculas implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** Id de la relacion */
 	@EmbeddedId
-	private GeneroPeliculaId id;
-
-	public GeneroPelicula(GeneroPeliculaId id) {
-		this.id = id;
-	}
+	private DirectoresPeliculasId id;
 
 	/**
 	 * Constructor vacío
 	 */
-	public GeneroPelicula() {
+	public DirectoresPeliculas() {
 		// La librería Jackson necesita constructor vacío
+	}
+
+	/**
+	 * @param id
+	 */
+	public DirectoresPeliculas(DirectoresPeliculasId id) {
+		this.id = id;
 	}
 
 	/**
 	 * @return the id
 	 */
-	public GeneroPeliculaId getId() {
+	public DirectoresPeliculasId getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(GeneroPeliculaId id) {
+	public void setId(DirectoresPeliculasId id) {
 		this.id = id;
 	}
 
