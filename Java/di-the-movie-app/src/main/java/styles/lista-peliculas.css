@@ -52,3 +52,13 @@
 	-fx-background-radius: 60;
 	-fx-border-radius: 60;
 }
+
+#celdaPelicula{
+	-fx-pref-height: 240;
+	-fx-pref-width: 1390;
+	-fx-background-color: #d9d9d9;
+	-fx-background-radius: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 25;
+}

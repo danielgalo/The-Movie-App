@@ -66,11 +66,11 @@ public class Pelicula implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User usuario;
 
-	/** Generos de la pelicula */
+	/** Directores de la pelicula */
 	@ManyToMany(mappedBy = "peliculas")
 	private List<Director> directores;
 
-	/** Generos de la pelicula */
+	/** Actores de la pelicula */
 	@ManyToMany(mappedBy = "peliculas")
 	private List<Actor> actores;
 

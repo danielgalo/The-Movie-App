@@ -50,6 +50,9 @@ public class PantallaRegisterController {
   private ImageView imgVector;
 	
 	@FXML
+  private Label lblErrores;
+	
+	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
 		//Si los campos no están vacíos
 		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank() && !txtRepetirContrasena.getText().isBlank()) {
@@ -66,10 +69,10 @@ public class PantallaRegisterController {
 				pantallaLogin.navegaAPantalla();
 				NavegacionPantallas.cerrarVentanaActual(e);
 			} else {
-				//TODO mensaje error
+				lblErrores.setText("Las contraseñas no coinciden, compruebe e intente de nuevo.");
 			}
 		} else {
-			//TODO mensaje error
+			lblErrores.setText("Todos los campos deben rellenarse, compruebe e intente de nuevo.");
 		}
 	}
 

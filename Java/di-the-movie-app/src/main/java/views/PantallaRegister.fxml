@@ -141,6 +141,7 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
+                              <Label fx:id="lblErrores" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="141.0" prefHeight="30.0" prefWidth="786.0" textFill="RED" />
                            </children>
                         </Pane>
                         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
