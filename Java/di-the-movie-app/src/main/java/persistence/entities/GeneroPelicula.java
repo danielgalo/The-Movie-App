@@ -11,10 +11,10 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "genero_pelicula")
-public class GeneroPelicula implements Serializable {
+public class GeneroPelicula extends AbstractEntity implements Serializable {
 
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 1L;
 
