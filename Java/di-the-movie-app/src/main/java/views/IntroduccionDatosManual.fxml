@@ -155,6 +155,23 @@
                         </DropShadow>
                      </effect>
                   </DatePicker>
+                  <Label fx:id="lblCampoObligatorio" layoutX="811.0" layoutY="435.0" prefHeight="14.0" prefWidth="211.0" text="*Campo obligatorio" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblExito" layoutX="489.0" layoutY="616.0" prefHeight="35.0" prefWidth="372.0" text="¡Pelicula dada de alta con éxito!" textFill="#26ff00" visible="false">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.359649121761322" green="0.359649121761322" blue="0.359649121761322" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
                </children>
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
