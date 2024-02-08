@@ -3,6 +3,7 @@ package persistence.dao;
 import java.util.List;
 
 import persistence.entities.Pelicula;
+import persistence.entities.User;
 
 /**
  * Interfaz DAO de película
@@ -49,5 +50,12 @@ public interface PeliculaDaoI {
 	 * @return Lista de películas encontradas o null si no se encuentra
 	 */
 	public List<Pelicula> searchByEarlierYear(final int year);
+	
+	/**
+	 * Buscar películas por id de usuario
+	 * @param user
+	 * @return
+	 */
+	public List<Pelicula> searchByUser(final User user);
 
 }

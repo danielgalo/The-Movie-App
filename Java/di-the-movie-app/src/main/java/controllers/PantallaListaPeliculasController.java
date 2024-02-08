@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.List;
+
 import org.hibernate.Session;
 
 import javafx.fxml.FXML;
@@ -11,9 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
+import persistence.dao.PeliculaDaoImpl;
+import persistence.entities.Pelicula;
 import resources.CeldaPelicula;
 import utils.NavegacionPantallas;
-import utils.TMDBApi;
 import utils.constants.Constantes;
 
 public class PantallaListaPeliculasController {
@@ -37,12 +40,25 @@ public class PantallaListaPeliculasController {
   private ImageView imgVector;
   
   @FXML
+  private ImageView img;
+  
+  @FXML
   void initialize() {
-  	long idUsuarioActual = PantallaLoginController.currentUser.getId();
-  	//Nota: differecia posicionY de cada celda = 260
   	Session session = HibernateUtil.getSession();
-  	CeldaPelicula n = new CeldaPelicula(25, 479);
-  	mainPane.getChildren().add(n.getPane());
+  	
+  	PeliculaDaoImpl buscadorPeliculas = new PeliculaDaoImpl(session);
+  	List<Pelicula> listPeliculas = buscadorPeliculas.searchByUser(PantallaLoginController.currentUser);
+  	
+  	int posY = 220;
+  	for (Pelicula pelicula : listPeliculas) {
+  		CeldaPelicula n = new CeldaPelicula(25, posY, pelicula);
+  		mainPane.getChildren().add(n.getCeldaPelicula());
+  		posY += 260;
+		}
+  	mainPane.setPrefHeight(posY + 50);
+  	if (mainPane.getPrefHeight() < 1024) {
+			mainPane.setPrefHeight(1024);
+		}
   }
 
   @FXML

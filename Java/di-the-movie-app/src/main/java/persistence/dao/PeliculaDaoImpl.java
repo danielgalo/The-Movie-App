@@ -9,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import persistence.entities.Genero;
 import persistence.entities.GeneroPelicula;
 import persistence.entities.Pelicula;
+import persistence.entities.User;
 
 /**
  * Implementación del DAO de películas
@@ -121,6 +122,16 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@Override
+	public List<Pelicula> searchByUser(User user) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
+		String hql = "FROM Pelicula WHERE usuario.id = :id";
+
+		return session.createQuery(hql).setParameter("id", user.getId()).list();
 	}
 
 }

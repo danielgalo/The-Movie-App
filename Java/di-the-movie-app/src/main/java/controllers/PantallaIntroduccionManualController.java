@@ -64,7 +64,7 @@ public class PantallaIntroduccionManualController {
     	if (dateFechaEstreno.getValue() != null) {				
     		Session session = HibernateUtil.getSession();
     		PeliculaDaoImpl insertadorPeli = new PeliculaDaoImpl(session);
-    		
+    		//TODO NO DEJAR DAR DE ALTA SIN UNA URL VALIDA
     		Pelicula peli = new Pelicula();
     		peli.setUsuario(PantallaLoginController.currentUser);
     		peli.setTitulo(txtTitulo.getText());
