@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "peliculas")
-public class Pelicula implements Serializable {
+public class Pelicula extends AbstractEntity implements Serializable {
 
 	/** Id serial */
 	private static final long serialVersionUID = 1L;

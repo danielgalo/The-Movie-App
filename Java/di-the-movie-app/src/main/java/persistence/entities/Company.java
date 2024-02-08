@@ -1,5 +1,6 @@
 package persistence.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -16,7 +17,12 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "companies")
-public class Company {
+public class Company extends AbstractEntity implements Serializable {
+
+	/**
+	 * Serial ID
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/** Id de la pelicula */
 	@Id

@@ -16,10 +16,10 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-public class User implements Serializable {
+public class User extends AbstractEntity implements Serializable {
 
 	/**
-	 * 
+	 * Serial ID
 	 */
 	private static final long serialVersionUID = 1L;
 
