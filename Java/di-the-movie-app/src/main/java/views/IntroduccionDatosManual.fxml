@@ -94,7 +94,7 @@
                         </DropShadow>
                      </effect>
                   </Label>
-                  <Button id="btnAlta" fx:id="btnAlta" layoutX="510.0" layoutY="659.0" mnemonicParsing="false" onMouseEntered="#btnAltaEntered" onMouseExited="#btnAltaExited" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
+                  <Button id="btnAlta" fx:id="btnAlta" layoutX="510.0" layoutY="659.0" mnemonicParsing="false" onMouseEntered="#btnAltaEntered" onMouseExited="#btnAltaExited" onMousePressed="#btnAltaPressed" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
                      <font>
                         <Font size="50.0" />
                      </font>
