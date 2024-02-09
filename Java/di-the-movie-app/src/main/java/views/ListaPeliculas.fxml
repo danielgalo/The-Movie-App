@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -14,53 +15,48 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaListaPeliculasController">
    <children>
-      <Pane id="mainPane" fx:id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/lista-peliculas.css">
-         <children>
-            <Pane id="cabecera" prefHeight="114.0" prefWidth="1440.0" stylesheets="@../styles/lista-peliculas.css">
+      <ScrollPane id="mainPane" fitToWidth="true" prefHeight="1024.0" prefWidth="1440.0">
+        <content>
+          <AnchorPane id="mainPane" fx:id="mainPane" minHeight="0.0" minWidth="0.0" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/lista-peliculas.css">
                <children>
-                  <Label id="lblCabecera" layoutX="530.0" layoutY="27.0" stylesheets="@../styles/lista-peliculas.css" text="Lista de películas" textFill="WHITE">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
-                  <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/lista-peliculas.css" text="Menú" />
-                  <ImageView fx:id="imgVector" fitHeight="41.0" fitWidth="75.0" layoutX="39.0" layoutY="39.0" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed">
-                     <image>
-                        <Image url="@../resources/vector.png" />
-                     </image>
-                  </ImageView>
+                  <Pane id="cabecera" prefHeight="114.0" prefWidth="1440.0" stylesheets="@../styles/lista-peliculas.css">
+                     <children>
+                        <Label id="lblCabecera" layoutX="480.0" layoutY="22.0" stylesheets="@../styles/lista-peliculas.css" text="LISTA DE PELÍCULAS" textFill="WHITE">
+                           <font>
+                              <Font size="50.0" />
+                           </font>
+                        </Label>
+                        <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/lista-peliculas.css" text="Menú" />
+                        <ImageView fx:id="imgVector" fitHeight="41.0" fitWidth="75.0" layoutX="39.0" layoutY="39.0" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed">
+                           <image>
+                              <Image url="@../resources/vector.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Button id="btnFiltrar" fx:id="btnFiltrar" layoutX="38.0" layoutY="136.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="261.0" stylesheets="@../styles/lista-peliculas.css" text="FILTRAR POR        ">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.4000000059604645" green="0.4000000059604645" blue="0.4000000059604645" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Polygon fill="WHITE" layoutX="313.0" layoutY="107.0" points="-84.11112976074219, 48.11109924316406, -32.555572509765625, 48.11109924316406, -57.4444580078125, 68.55555725097656" stroke="WHITE" strokeType="INSIDE" />
+                  <TextField id="barraBusqueda" fx:id="txtBuscarPelicula" layoutX="807.0" layoutY="136.0" prefHeight="54.0" prefWidth="581.0" stylesheets="@../styles/lista-peliculas.css">
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                           <color>
+                              <Color red="0.40392157435417175" green="0.40392157435417175" blue="0.40392157435417175" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+                  <Button id="btnBuscar" fx:id="btnBuscar" layoutX="1233.0" layoutY="136.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="54.0" prefWidth="155.0" stylesheets="@../styles/lista-peliculas.css" text="Buscar" />
                </children>
-            </Pane>
-            <Button id="btnFiltrar" fx:id="btnFiltrar" layoutX="38.0" layoutY="136.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="261.0" stylesheets="@../styles/lista-peliculas.css" text="FILTRAR POR        ">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                     <color>
-                        <Color red="0.5" green="0.5" blue="0.5" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Button>
-            <Polygon fill="WHITE" layoutX="313.0" layoutY="107.0" points="-84.11112976074219, 48.11109924316406, -32.555572509765625, 48.11109924316406, -57.4444580078125, 68.55555725097656" stroke="WHITE" strokeType="INSIDE" />
-            <TextField id="barraBusqueda" fx:id="txtBuscarPelicula" layoutX="807.0" layoutY="136.0" prefHeight="54.0" prefWidth="581.0" stylesheets="@../styles/lista-peliculas.css">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                     <color>
-                        <Color red="0.5526315569877625" green="0.5526315569877625" blue="0.5526315569877625" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </TextField>
-            <Button id="btnBuscar" fx:id="btnBuscar" layoutX="1233.0" layoutY="136.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="54.0" prefWidth="155.0" stylesheets="@../styles/lista-peliculas.css" text="Buscar" />
-            <Pane id="celdaPelicula" layoutX="25.0" layoutY="219.0" stylesheets="@../styles/lista-peliculas.css">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                     <color>
-                        <Color red="0.4035087823867798" green="0.4035087823867798" blue="0.4035087823867798" />
-                     </color>
-                  </DropShadow>
-               </effect></Pane>
-            <ImageView fx:id="img" fitHeight="198.0" fitWidth="165.0" layoutX="1004.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-      </Pane>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

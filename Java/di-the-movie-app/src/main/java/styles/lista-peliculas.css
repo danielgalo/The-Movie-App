@@ -8,6 +8,7 @@
 
 #lblCabecera{
 	-fx-font-family: System;
+	-fx-font-weight: bold;
 	-fx-font-size: 50;
 	-fx-text-fill: white;
 }
@@ -54,11 +55,55 @@
 }
 
 #celdaPelicula{
-	-fx-pref-height: 240;
-	-fx-pref-width: 1390;
 	-fx-background-color: #d9d9d9;
 	-fx-background-radius: 25;
 	-fx-border-color: black;
 	-fx-border-width: 3px;
 	-fx-border-radius: 25;
+}
+
+#poster{
+	-fx-arc-width: 30;
+	-fx-arc-height: 30;
+}
+
+#tituloPelicula{
+	-fx-font-size: 40;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#lblGenero{
+	-fx-font-size: 32;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#genero{
+	-fx-font-size: 32;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#lblFechaLanzamiento{
+	-fx-font-size: 32;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#fechaLanzamiento{
+	-fx-font-size: 32;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#sinopsis{
+	-fx-font-size: 24;
+	-fx-font-fill: black;
+	-fx-font-weight: bold;
+}
+
+#descripcion{
+	-fx-font-size: 16;
+	-fx-font-fill: black;
 }

@@ -1,8 +1,14 @@
 package controllers;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.hibernate.Session;
 
@@ -15,9 +21,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import persistence.HibernateUtil;
+import persistence.dao.GeneroDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.GeneroPelicula;
+import persistence.entities.GeneroPeliculaId;
 import persistence.entities.Pelicula;
 import utils.NavegacionPantallas;
 import utils.constants.Constantes;
@@ -46,10 +55,10 @@ public class PantallaIntroduccionManualController {
     private ChoiceBox<String> cmbGenero;
     
     @FXML
-    private Label lblExito;
+    private Label lblPeliculaInsertada;
     
     @FXML
-    private Label lblCampoObligatorio;
+    private Label lblRecordatorioCampoObligatorio = new Label();
     
     @FXML
     void initialize() {
@@ -59,28 +68,57 @@ public class PantallaIntroduccionManualController {
 
     @FXML
     void btnAltaPressed(MouseEvent event) {
-    	lblCampoObligatorio.setEffect(null);
-    	lblExito.setVisible(false);
-    	if (dateFechaEstreno.getValue() != null) {				
-    		Session session = HibernateUtil.getSession();
-    		PeliculaDaoImpl insertadorPeli = new PeliculaDaoImpl(session);
-    		
-    		Pelicula peli = new Pelicula();
-    		peli.setUsuario(PantallaLoginController.currentUser);
-    		peli.setTitulo(txtTitulo.getText());
-    		List<GeneroPelicula> genero = new ArrayList<GeneroPelicula>();
-    		peli.setGeneroPelicula(genero);
-    		peli.setOverview(txtDescripcion.getText());
-    		Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
-    		peli.setReleaseDate(fechaEstreno);
-    		peli.setCartel(txtUrl.getText());
-    		insertadorPeli.insert(peli);
-    		lblExito.setVisible(true);
+    	lblRecordatorioCampoObligatorio.setEffect(null);
+    	lblPeliculaInsertada.setVisible(false);
+    	
+    	
+    	if (dateFechaEstreno.getValue() != null) {
+    		Image image = null;
+				try {
+					image = ImageIO.read(new URL(txtUrl.getText()));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+    		if(image != null){
+    			if (txtUrl.getText().endsWith(".contains") || txtUrl.getText().contains(".jpg")) {
+    				Session session = HibernateUtil.getSession();
+    				PeliculaDaoImpl insertadorPelicula = new PeliculaDaoImpl(session);
+    				
+    				Pelicula pelicula = new Pelicula();
+    				pelicula.setUsuario(PantallaLoginController.currentUser);
+    				pelicula.setTitulo(txtTitulo.getText());
+    				
+    				GeneroDaoImpl obtenedorGenero = new GeneroDaoImpl(session);
+    				GeneroPelicula generoPelicula = new GeneroPelicula(new GeneroPeliculaId(pelicula, obtenedorGenero.getGeneroByName(cmbGenero.getValue())));
+    				List<GeneroPelicula> listaGeneros = new ArrayList<GeneroPelicula>();
+    				listaGeneros.add(generoPelicula);
+    				
+    				pelicula.setGeneroPelicula(listaGeneros);
+    				pelicula.setOverview(txtDescripcion.getText());
+    				@SuppressWarnings("deprecation")
+    				Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
+    				pelicula.setReleaseDate(fechaEstreno);
+    				pelicula.setCartel(txtUrl.getText());
+    				insertadorPelicula.insert(pelicula);
+    				
+    				lblPeliculaInsertada.setTextFill(Paint.valueOf("Green"));
+    				lblPeliculaInsertada.setText("¡Pelicula dada de alta con éxito!");
+    				lblPeliculaInsertada.setVisible(true);
+    			} else {
+    				lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
+    				lblPeliculaInsertada.setText("Formato de URL invalido (solo .png y .jpg)");
+    				lblPeliculaInsertada.setVisible(true);
+    			} 
+    		} else {
+    			lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
+  				lblPeliculaInsertada.setText("URL de imagen inválido.");
+  				lblPeliculaInsertada.setVisible(true);
+				}
 			} else {
 				DropShadow shadow = new DropShadow();
 	  		shadow.setColor(new Color(1.0, 1.0, 1.0, 1.0));
 	  		shadow.setSpread(0.79);
-	  		lblCampoObligatorio.setEffect(shadow);
+	  		lblRecordatorioCampoObligatorio.setEffect(shadow);
 			}
     }
 
