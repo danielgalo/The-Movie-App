@@ -31,9 +31,11 @@ public class GeneroDaoImpl extends CommonDaoImpl<Genero> implements GeneroDaoI {
 			session.getTransaction().begin();
 		}
 
-		String hql = "FROM Genero WHERE titulo = :nombre";
-		return (Genero) session.createQuery(hql).setParameter("nombre", nombre);
-
+		String hql = "FROM Genero WHERE nombre = :nombre";
+		Query<Genero> query = session.createQuery(hql);
+		query.setParameter("nombre", nombre);
+		
+		return query.getSingleResult();
 	}
 
 	@Override

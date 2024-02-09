@@ -24,9 +24,13 @@ public class CeldaPelicula {
 	public CeldaPelicula(int posicionX, int posicionY, Pelicula pelicula) {
 		poster = pelicula.getCartel();
 		titulo = pelicula.getTitulo();
-		for (GeneroPelicula generoId : pelicula.getGeneroPelicula()) {			
-			genero = generoId.getId().getGenero().getNombre();
-			break;
+		for (GeneroPelicula generoId : pelicula.getGeneroPelicula()) {		
+			if (!(generoId.getId().getGenero().getNombre().isBlank())) {
+				genero = generoId.getId().getGenero().getNombre();
+				break;				
+			} else {
+				System.out.println("--------------genero vacío-----------------");
+			}
 		}
 		fechaLanzamiento = pelicula.getReleaseDate().getDay() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();
 		descripcion = pelicula.getOverview();
