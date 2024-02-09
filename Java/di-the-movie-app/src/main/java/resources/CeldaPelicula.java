@@ -28,8 +28,6 @@ public class CeldaPelicula {
 			if (!(generoId.getId().getGenero().getNombre().isBlank())) {
 				genero = generoId.getId().getGenero().getNombre();
 				break;				
-			} else {
-				System.out.println("--------------genero vacío-----------------");
 			}
 		}
 		fechaLanzamiento = pelicula.getReleaseDate().getDay() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();
