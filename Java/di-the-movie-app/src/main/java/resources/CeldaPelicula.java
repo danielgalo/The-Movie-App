@@ -30,7 +30,11 @@ public class CeldaPelicula {
 				break;				
 			}
 		}
-		fechaLanzamiento = pelicula.getReleaseDate().getDay() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();
+		if (pelicula.getFechaVisualizacionUsuario() != null) {
+			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "/" + (pelicula.getReleaseDate().getMonth() + 1) + "/" + (pelicula.getReleaseDate().getYear() + 1900);
+		} else {
+			fechaLanzamiento = pelicula.getReleaseDate().getDate() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();			
+		}
 		descripcion = pelicula.getOverview();
 		
 		/* SOMBRAS DE LOS ELEMENTOS DE LA CELDA */

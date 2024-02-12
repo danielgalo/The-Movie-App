@@ -201,6 +201,7 @@ public class PantallaAltaAPIController {
 	/**
 	 * Inserta la película que aparece en la pantalla en la base de datos
 	 */
+	@SuppressWarnings("deprecation")
 	private void insertPelicula() {
 		Session session = null;
 
