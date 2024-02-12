@@ -19,9 +19,12 @@ public class CeldaPelicula {
 	private String genero;
 	private String fechaLanzamiento;
 	private String descripcion;
+	private Pelicula pelicula;
 	
 	@SuppressWarnings("deprecation")
 	public CeldaPelicula(int posicionX, int posicionY, Pelicula pelicula) {
+		this.pelicula = pelicula;
+		
 		poster = pelicula.getCartel();
 		titulo = pelicula.getTitulo();
 		for (GeneroPelicula generoId : pelicula.getGeneroPelicula()) {		
@@ -30,7 +33,11 @@ public class CeldaPelicula {
 				break;				
 			}
 		}
-		fechaLanzamiento = pelicula.getReleaseDate().getDay() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();
+		if (pelicula.getFechaVisualizacionUsuario() != null) {
+			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "/" + (pelicula.getReleaseDate().getMonth() + 1) + "/" + (pelicula.getReleaseDate().getYear() + 1900);
+		} else {
+			fechaLanzamiento = pelicula.getReleaseDate().getDate() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();			
+		}
 		descripcion = pelicula.getOverview();
 		
 		/* SOMBRAS DE LOS ELEMENTOS DE LA CELDA */
@@ -157,6 +164,10 @@ public class CeldaPelicula {
 	
 	public Pane getCeldaPelicula() {
 		return celdaPelicula;
+	}
+	
+	public Pelicula getPelicula() {
+		return pelicula;
 	}
 	
 }
