@@ -12,10 +12,11 @@ import persistence.entities.Pelicula;
 import persistence.entities.User;
 
 /**
- * Implementación del DAO de películas
+ * Implementación del DAO de películas.
  */
 public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements PeliculaDaoI {
 
+	/** Sesion hibernate */
 	private Session session;
 
 	/**
@@ -29,18 +30,22 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 	}
 
 	@Override
-	public List<Pelicula> searchMovieByTitle(String title) {
+	public List<Pelicula> searchMovieByTitle(String title, int userId) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
-		String hql = "FROM Pelicula WHERE titulo = :title";
+		String hql = "FROM Pelicula WHERE titulo = :title AND usuario.id = :id";
 
-		return session.createQuery(hql).setParameter("title", title).list();
+		TypedQuery<Pelicula> query = session.createQuery(hql, Pelicula.class);
+		query.setParameter("title", title);
+		query.setParameter("id", userId);
+
+		return query.getResultList();
 
 	}
 
 	@Override
-	public List<Pelicula> searcyMoviesByGenre(String nombre) {
+	public List<Pelicula> searcyMoviesByGenre(String nombre, int userId) {
 
 		List<Pelicula> peliculasEncontradas = null;
 
@@ -70,9 +75,10 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 				Long idPeli = genPeli.getId().getPelicula().getId();
 
 				// Buscar películas por ese id, añadirlas a la lista de pelis encontradas
-				TypedQuery<Pelicula> queryPelicula = session.createQuery("FROM Pelicula WHERE id = :id",
-						Pelicula.class);
+				TypedQuery<Pelicula> queryPelicula = session
+						.createQuery("FROM Pelicula WHERE id = :id AND usuario.id = :userId", Pelicula.class);
 				queryPelicula.setParameter("id", idPeli);
+				queryPelicula.setParameter("userId", userId);
 				Pelicula peliEncontrada = queryPelicula.getSingleResult();
 				peliculasEncontradas.add(peliEncontrada);
 
@@ -85,11 +91,12 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 	}
 
 	@Override
-	public List<Pelicula> searchByExactYear(int year) {
-
+	public List<Pelicula> searchByExactYear(int year, int userId) {
 		try {
-			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year = :year", Pelicula.class);
+			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year = :year AND usuario.id = :id",
+					Pelicula.class);
 			query.setParameter("year", year);
+			query.setParameter("id", userId);
 
 			return query.getResultList();
 		} catch (Exception e) {
@@ -99,10 +106,12 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 	}
 
 	@Override
-	public List<Pelicula> searchByGreaterYear(int year) {
+	public List<Pelicula> searchByGreaterYear(int year, int userId) {
 		try {
-			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year > :year", Pelicula.class);
+			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year > :year AND usuario.id = :id",
+					Pelicula.class);
 			query.setParameter("year", year);
+			query.setParameter("id", userId);
 
 			return query.getResultList();
 		} catch (Exception e) {
@@ -112,10 +121,12 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 	}
 
 	@Override
-	public List<Pelicula> searchByEarlierYear(int year) {
+	public List<Pelicula> searchByEarlierYear(int year, int userId) {
 		try {
-			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year < :year", Pelicula.class);
+			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year < :year AND usuario.id = :id",
+					Pelicula.class);
 			query.setParameter("year", year);
+			query.setParameter("id", userId);
 
 			return query.getResultList();
 		} catch (Exception e) {
@@ -132,6 +143,21 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 		String hql = "FROM Pelicula WHERE usuario.id = :id";
 
 		return session.createQuery(hql).setParameter("id", user.getId()).list();
+	}
+
+	@Override
+	public Pelicula searchById(Long id, int userId) {
+		try {
+			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE id = :id AND usuario.id = :userId",
+					Pelicula.class);
+			query.setParameter("id", id);
+			query.setParameter("userId", userId);
+
+			return query.getResultList().get(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

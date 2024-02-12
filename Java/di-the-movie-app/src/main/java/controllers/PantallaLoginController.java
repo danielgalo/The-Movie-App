@@ -33,27 +33,35 @@ public class PantallaLoginController {
 	@FXML
 	private URL location;
 
+	/** Boton para iniciar sesión */
 	@FXML
 	private Button btnAcceder;
 
+	/** Botón para ir a ventana de registro */
 	@FXML
 	private Button btnRegister;
 
+	/** Imagen de logo */
 	@FXML
 	private ImageView imgLogo;
 
+	/** Título de la aplicacion */
 	@FXML
 	private Label lblTitle;
 
+	/** Informacion sobre resultados de login */
 	@FXML
 	private Label lblInfo;
 
+	/** Text field de correo */
 	@FXML
 	private TextField txtCorreo;
 
+	/** Text field de contraseña */
 	@FXML
 	private PasswordField txtPassword;
 
+	/** Usuario actual que usa la aplicacion, cambia al iniciar sesión */
 	public static User currentUser;
 
 	/**
@@ -120,6 +128,9 @@ public class PantallaLoginController {
 		}
 	}
 
+	/**
+	 * Inicia los componentes de la pantalla de login
+	 */
 	@FXML
 	void initialize() {
 

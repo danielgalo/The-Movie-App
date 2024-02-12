@@ -3,19 +3,9 @@ package controllers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import org.hibernate.Session;
-
-import dto.DetallesDTO;
-import dto.PeliculaDTO;
-import dto.PersonaCreditosDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -30,27 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import persistence.HibernateUtil;
-import persistence.dao.ActorDaoImpl;
-import persistence.dao.CompanyDaoImpl;
-import persistence.dao.DirectorDaoImpl;
-import persistence.dao.GeneroDaoImpl;
-import persistence.dao.LocalizacionDaoImpl;
-import persistence.dao.PeliculaDaoImpl;
-import persistence.entities.Actor;
-import persistence.entities.ActoresPeliculas;
-import persistence.entities.ActoresPeliculasId;
-import persistence.entities.Company;
-import persistence.entities.CompanyPelicula;
-import persistence.entities.CompanyPeliculaId;
-import persistence.entities.Director;
-import persistence.entities.DirectoresPeliculas;
-import persistence.entities.DirectoresPeliculasId;
-import persistence.entities.GeneroPelicula;
-import persistence.entities.GeneroPeliculaId;
-import persistence.entities.Localizacion;
-import persistence.entities.Pelicula;
-import persistence.entities.User;
+import persistence.dto.PeliculaDTO;
+import service.AltaPeliculasService;
 import utils.ControllerUtils;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
@@ -67,66 +38,90 @@ public class PantallaAltaAPIController {
 	@FXML
 	private URL location;
 
+	/** Botón de alta para la pelicula */
 	@FXML
 	private Button btnAlta;
 
+	/** Botón de película anterior */
 	@FXML
 	private Button btnAnterior;
 
+	/** Botón para buscar una película */
 	@FXML
 	private Button btnBuscar;
 
+	/** Botón para navegar a la pantalla de alta manual */
 	@FXML
 	private Button btnConsultaManual;
 
+	/** Botón de película siguiente */
 	@FXML
 	private Button btnSiguiente;
 
+	/** Cabecera de la pantalla */
 	@FXML
 	private Pane cabecera;
 
+	/** Imagen representativa de la película */
 	@FXML
 	private ImageView imgPelicula;
 
+	/** Título de la cabecera */
 	@FXML
 	private Label lblCabecera;
 
+	/** Label del título de la película encontrada */
 	@FXML
 	private Label lblResTitulo;
 
+	/** Label de la descripción de la película */
 	@FXML
 	private Label lblDescripcion;
 
+	/** Label titulo del panel de los resultados de la película */
 	@FXML
 	private Label lblDatosPelicula;
 
+	/** Label que está al lado del text field para introducir un titulo */
 	@FXML
 	private Label lblTituloIntroducir;
 
+	/** Text field para introducir titulo */
 	@FXML
 	private TextField txtTituloPelicula;
 
+	/** Spinner de valoración de usuario (0-10 con incremento de 0,5) */
 	@FXML
 	private Spinner<Double> spinnerValoracionUsuario;
 
+	/** Panel principal */
 	@FXML
 	private Pane panelPrincipal;
 
+	/**
+	 * Text area donde el usuario introduce los comentarios que tenga sobre la
+	 * pelicula
+	 */
 	@FXML
 	private TextArea txtAreaComentarios;
 
+	/** Text area para la localización de la película */
 	@FXML
 	private TextField txtLocalizacion;
 
+	/** Elemento para elegir fecha de visualizacion del usuario */
 	@FXML
 	private DatePicker dateFechaVisUsuario;
 
+	/** Botón para volver atrás de ventana */
 	@FXML
 	private Button btnVolver;
 
+	/** Label de mensajes de error */
 	@FXML
 	private Label lblError;
 
+	/** Label de mensajes de información */
 	@FXML
 	private Label lblInfo;
 
@@ -162,8 +157,6 @@ public class PantallaAltaAPIController {
 		ControllerUtils.setShadowButtons(shadow, btnAlta, btnAnterior, btnBuscar, btnSiguiente, btnConsultaManual);
 		ControllerUtils.setShadowPanes(shadow, panelPrincipal);
 
-		// Aplicar efectos de sombra a componentes
-
 	}
 
 	/**
@@ -174,13 +167,41 @@ public class PantallaAltaAPIController {
 	 */
 	@FXML
 	void btnAltaPressed(MouseEvent event) {
+
+		// Vaciar labels de informacion
+		if (!lblInfo.getText().isBlank()) {
+			lblInfo.setText("");
+		}
+
+		if (!lblError.getText().isBlank()) {
+			lblError.setText("");
+		}
+
 		// Si el valor de la fecha de visualización (campo obligatorio) no es nulo
 		if (dateFechaVisUsuario.getValue() != null) {
-			// Inserta la pelicula
-			insertPelicula();
+
+			// Recoger datos
+			String titulo = txtTituloPelicula.getText();
+			LocalDate localDate = dateFechaVisUsuario.getValue();
+			String comentariosUsuario = txtAreaComentarios.getText();
+			double valoracionUsuario = spinnerValoracionUsuario.getValue();
+			String localizacionPelicula = txtLocalizacion.getText();
+
+			// Inserta la pelicula, recoge codigo de salida
+			int exitCode = AltaPeliculasService.insertPelicula(titulo, posicionPelicula, localDate, comentariosUsuario,
+					valoracionUsuario, localizacionPelicula);
+
+			// Mostrar mensaje según el código de salida
+			if (exitCode == 0) {
+				showInfo("Película dada de alta correctamente");
+			} else {
+				showError("Ocurrió un error dando de alta la pelicula");
+			}
+
 		} else {
 			showError("La fecha de visualización es obligatoria");
 		}
+
 	}
 
 	/**
@@ -196,282 +217,6 @@ public class PantallaAltaAPIController {
 		pantallaPrincipal.navegaAPantalla();
 
 		NavegacionPantallas.cerrarVentanaActual(event);
-	}
-
-	/**
-	 * Inserta la película que aparece en la pantalla en la base de datos
-	 */
-	private void insertPelicula() {
-		Session session = null;
-
-		try {
-			// Obtener la sesión de HibernateUtil
-			session = HibernateUtil.getSession();
-
-			// Obtener película por el título introducido
-			String titulo = txtTituloPelicula.getText();
-			PeliculaDTO peliDto = TMDBApi.getPeliculaByTitulo(titulo, posicionPelicula);
-
-			if (peliDto != null) {
-
-				// Obtener usuario realizador de la búsqueda
-				User usuario = PantallaLoginController.currentUser;
-
-				// DAOs de entidades
-				GeneroDaoImpl generoDao = new GeneroDaoImpl(session);
-				PeliculaDaoImpl peliDao = new PeliculaDaoImpl(session);
-				CompanyDaoImpl compDao = new CompanyDaoImpl(session);
-				ActorDaoImpl actorDao = new ActorDaoImpl(session);
-				DirectorDaoImpl directorDao = new DirectorDaoImpl(session);
-				LocalizacionDaoImpl locDao = new LocalizacionDaoImpl(session);
-
-				// Entidad pelicula a insertar
-				Pelicula pelicula = new Pelicula();
-
-				// Patrón de formato para fechas
-				String pattern = "yyyy-MM-dd";
-				SimpleDateFormat releaseDateFormat = new SimpleDateFormat(pattern);
-
-				// Obtener la fecha de lanzamiento
-				Date releaseDate = releaseDateFormat.parse(peliDto.getReleaseDate());
-				// Obtener el año de lanzamiento
-				SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy");
-				int year = Integer.parseInt(yearDateFormat.format(releaseDate));
-
-				// Obtener fecha de visualización
-				LocalDate localDate = dateFechaVisUsuario.getValue();
-				Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-				// Datos de la entidad pelicula a insertar
-				setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion);
-
-				// Conseguir géneros para la pelicula
-				List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
-
-				// Id en la API de la pelicula
-				Long peliculaIdApi = peliDto.getId();
-				// Conseguir las compañias para la pelicula
-				List<CompanyPelicula> compsPelis = setCompaniesPelicula(compDao, pelicula, peliculaIdApi);
-
-				// Conseguir actores para la pelicula
-				List<ActoresPeliculas> actoresPelis = setActoresPelicula(peliDto, actorDao, pelicula, peliculaIdApi);
-
-				// Conseguir directores para la pelicula
-				List<DirectoresPeliculas> directoresPelis = setDirectoresPelicula(peliDto, directorDao, pelicula,
-						peliculaIdApi);
-
-				// Asignar localizacion a pelicula
-				setLocalizacionPelicula(locDao, pelicula);
-				// Asociar directores a la peícula
-				pelicula.setDirectoresPelicula(directoresPelis);
-				// Asociar actores a la película
-				pelicula.setActoresPeliculas(actoresPelis);
-				// Asociar géneros a la película
-				pelicula.setGeneroPelicula(generosPelicula);
-				// Asociar compañias a la pelicula
-				pelicula.setCompPelicula(compsPelis);
-				// Insertar película
-				peliDao.insert(pelicula);
-
-				// Mostrar mensaje de confirmación
-				showInfo("Película dada de alta correctamente");
-			} else {
-				showError("No se pudo encontrar la película");
-			}
-			// Si hay error, quitarlo
-			if (!lblError.getText().isBlank()) {
-				lblError.setText("");
-			}
-
-		} catch (Exception e) {
-			showError("Ocurrió un problema dando de alta la película");
-			e.printStackTrace();
-		} finally {
-			// Cerrar la sesión al finalizar
-			if (session != null) {
-				HibernateUtil.closeSession();
-			}
-		}
-	}
-
-	/**
-	 * Busca una localizacion en la base de datos, si existe se asigna a la
-	 * película, si no se crea e inserta y se asigna a la película
-	 * 
-	 * @param locDao   DAO de la entidad Localizacion
-	 * @param pelicula Pelicula a asignar la localizacion
-	 */
-	private void setLocalizacionPelicula(LocalizacionDaoImpl locDao, Pelicula pelicula) {
-		// Obtener input de localización
-		String inputLoc = txtLocalizacion.getText();
-		Localizacion localizacionPeli = null;
-
-		// Si se ha introducido algo, buscar localizacion
-		if (inputLoc != null && !inputLoc.isBlank()) {
-
-			localizacionPeli = locDao.getLocalizacionByNombre(inputLoc);
-
-			if (localizacionPeli == null) {
-				// Si no se encuentra, insertarla
-				Localizacion nuevaLoc = new Localizacion();
-				nuevaLoc.setNombre(inputLoc);
-				pelicula.setLocalizacion(nuevaLoc);
-				locDao.insert(nuevaLoc);
-
-			} else {
-				// Si ya está
-				pelicula.setLocalizacion(localizacionPeli);
-			}
-		}
-	}
-
-	/**
-	 * Inserta los directores de la película y los asocia a las tablas
-	 * correspondientes
-	 * 
-	 * @param peliDto       DTO de peli con datos del JSON dado por la API
-	 * @param directorDao   DAO del director
-	 * @param pelicula      entidad pelicula a asignar los directores
-	 * @param peliculaIdApi id de la pelicula dentro de la API
-	 * @return Lista de la relación entre directores y películas
-	 */
-	private List<DirectoresPeliculas> setDirectoresPelicula(PeliculaDTO peliDto, DirectorDaoImpl directorDao,
-			Pelicula pelicula, Long peliculaIdApi) {
-		// Por cada director de la película dentro de los creditos, asociarla a la
-		// película para la tabla directores_peliculas e insertarla en su propia tablas
-		List<DirectoresPeliculas> directoresPelis = new ArrayList<>();
-		List<PersonaCreditosDTO> directores = TMDBApi.getDirectoresByPeliculaId(peliculaIdApi);
-
-		// Si hay directores
-		if (directores != null && !directores.isEmpty()) {
-			// Obtener actores de la pelicula, insertarlos
-			for (PersonaCreditosDTO personaCreditosDTO : directores) {
-
-				Director director = new Director();
-				director.setNombre(personaCreditosDTO.getName());
-				directorDao.insert(director);
-
-				DirectoresPeliculas dp = new DirectoresPeliculas(new DirectoresPeliculasId(pelicula, director));
-				directoresPelis.add(dp);
-
-			}
-
-		} else {
-			System.out.println("----------No hay directores-------------" + "pelicula: " + peliDto.getTitulo());
-		}
-		return directoresPelis;
-	}
-
-	/**
-	 * Inserta los actores de la película y los asocia a las tablas correspondientes
-	 * 
-	 * @param peliDto       DTO de peli con datos del JSON dado por la API
-	 * @param actorDao      DAO del actor
-	 * @param pelicula      entidad pelicula a asignar los directores
-	 * @param peliculaIdApi id de la pelicula dentro de la API
-	 * @return Lista de la relación entre actores y películas
-	 */
-	private List<ActoresPeliculas> setActoresPelicula(PeliculaDTO peliDto, ActorDaoImpl actorDao, Pelicula pelicula,
-			Long peliculaIdApi) {
-		// Por cada actor de la película dentro de los creditos, asociarla a la
-		// película para la tabla actores_peliculas e insertarla en su propia tablas
-		List<ActoresPeliculas> actoresPelis = new ArrayList<>();
-		List<PersonaCreditosDTO> actores = TMDBApi.getActoresByPeliculaId(peliculaIdApi);
-
-		// Si hay actores
-		if (actores != null && !actores.isEmpty()) {
-			// Obtener actores de la pelicula, insertarlos
-			for (PersonaCreditosDTO personaCreditosDTO : actores) {
-
-				// Conseguir actor
-				Actor actor = new Actor();
-				actor.setNombre(personaCreditosDTO.getName());
-
-				// Insertarlo
-				actorDao.insert(actor);
-
-				// Relacion con pelicula
-				ActoresPeliculas ap = new ActoresPeliculas(new ActoresPeliculasId(pelicula, actor));
-				actoresPelis.add(ap);
-
-			}
-		} else {
-			System.out.println("----------No hay actores-------------" + "pelicula: " + peliDto.getTitulo());
-		}
-		return actoresPelis;
-	}
-
-	/**
-	 * Inserta las compañías de la película y las asocia a las tablas
-	 * correspondientes
-	 * 
-	 * @param compDao       DAO de la compañia
-	 * @param pelicula      entidad pelicula a asignar los directores
-	 * @param peliculaIdApi id de la pelicula dentro de la API
-	 * @return Lista de la relación entre compañia y películas
-	 */
-	private List<CompanyPelicula> setCompaniesPelicula(CompanyDaoImpl compDao, Pelicula pelicula, Long peliculaIdApi) {
-		DetallesDTO detallesPeli = TMDBApi.getDetallesById(peliculaIdApi);
-
-		List<Company> comps = detallesPeli.getProductionCompanies();
-		List<CompanyPelicula> compsPelis = new ArrayList<>();
-
-		// Por cada compañía de la película dentro de los detalles, asociarla a la
-		// película para la tabla company_pelicula e insertarla en su propia tabla
-		for (Company company : comps) {
-
-			compDao.insert(company);
-
-			CompanyPelicula compPeli = new CompanyPelicula(new CompanyPeliculaId(pelicula, company));
-			compsPelis.add(compPeli);
-		}
-		return compsPelis;
-	}
-
-	/**
-	 * Asocia los géneros ya existentes en la base de datos a las películas
-	 * correspondientes
-	 * 
-	 * @param peliDto   DTO de la pelicula con datos del JSON obtenido por la API
-	 * @param generoDao DAO de genero
-	 * @param pelicula  pelicula a asociar los géneros
-	 * @return Lista con la relación entre generos y peliculas
-	 */
-	private List<GeneroPelicula> setGenerosPelicula(PeliculaDTO peliDto, GeneroDaoImpl generoDao, Pelicula pelicula) {
-		List<GeneroPelicula> generosPelicula = new ArrayList<>();
-
-		// Obtener todos los géneros de la película
-		for (int generoId : peliDto.getGenreIds()) {
-			GeneroPelicula gp = new GeneroPelicula(
-					new GeneroPeliculaId(pelicula, generoDao.getGeneroById(Long.valueOf(generoId))));
-			generosPelicula.add(gp);
-		}
-		return generosPelicula;
-	}
-
-	/**
-	 * Asocia datos no dependientes de otras entidades a la entidad película
-	 * 
-	 * @param peliDto            DTO de la pelicula con datos del JSON obtenido por
-	 *                           la API
-	 * @param usuario            Usuario actual
-	 * @param pelicula           entidad pelicula
-	 * @param releaseDate        fecha de lanzamiento de la pelicula
-	 * @param year               año de lanzamiento de la pelicula
-	 * @param fechaVisualizacion fecha en el que el usuario ha visto la pelicula
-	 */
-	private void setDatosPelicula(PeliculaDTO peliDto, User usuario, Pelicula pelicula, Date releaseDate, int year,
-			Date fechaVisualizacion) {
-		pelicula.setTitulo(peliDto.getTitulo());
-		pelicula.setOverview(peliDto.getOverview());
-		pelicula.setReleaseDate(releaseDate);
-		pelicula.setCartel(peliDto.getImg());
-		pelicula.setComentariosUsuario(txtAreaComentarios.getText());
-		pelicula.setValoracionUsuario(spinnerValoracionUsuario.getValue());
-		pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
-		pelicula.setYear(year);
-		pelicula.setUsuario(usuario);
-		pelicula.setValoracion(peliDto.getVoteAverage());
 	}
 
 	/**

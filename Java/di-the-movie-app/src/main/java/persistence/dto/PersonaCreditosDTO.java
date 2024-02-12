@@ -1,4 +1,4 @@
-package dto;
+package persistence.dto;
 
 /**
  * DTO usado para obtener las personas que aparecen en los créditos de una

@@ -1,4 +1,4 @@
-package dto;
+package persistence.dto;
 
 public class GeneroDTO {
 

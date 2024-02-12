@@ -23,41 +23,58 @@ import utils.NavegacionPantallas;
 import utils.TMDBApi;
 import utils.constants.Constantes;
 
+/**
+ * Controlador de la pantalla o menú principal
+ */
 public class PantallaPrincipalController {
 
-	@FXML // ResourceBundle that was given to the FXMLLoader
+	@FXML
 	private ResourceBundle resources;
 
-	@FXML // URL location of the FXML file that was given to the FXMLLoader
+	@FXML
 	private URL location;
 
-	@FXML // fx:id="lblTitulo"
-	private Label lblTitulo; // Value injected by FXMLLoader
+	/** Titulo de la pantalla */
+	@FXML
+	private Label lblTitulo;
 
-	@FXML // fx:id="panelAltaPeliculas"
-	private Pane panelAltaPeliculas; // Value injected by FXMLLoader
+	/** Panel de alta de peliculas */
+	@FXML
+	private Pane panelAltaPeliculas;
 
-	@FXML // fx:id="panelConsultaPeliculas"
-	private Pane panelConsultaPeliculas; // Value injected by FXMLLoader
+	/** Panel de consulta de películas */
+	@FXML
+	private Pane panelConsultaPeliculas;
 
-	@FXML // fx:id="panelExportarPeliculas"
-	private Pane panelExportarPeliculas; // Value injected by FXMLLoader
+	/** Panel de exportar películas */
+	@FXML
+	private Pane panelExportarPeliculas;
 
-	@FXML // fx:id="panelSalir"
-	private Pane panelSalir; // Value injected by FXMLLoader
+	/** Panel de salir al login */
+	@FXML
+	private Pane panelSalir;
 
-	@FXML // fx:id="addBtn"
-	private ImageView addBtn; // Value injected by FXMLLoader
+	/** Imagen de añadir */
+	@FXML
+	private ImageView addBtn;
 
-	@FXML // fx:id="exitBtn"
-	private ImageView exitBtn; // Value injected by FXMLLoader
+	/** Imagen de salir */
+	@FXML
+	private ImageView exitBtn;
 
-	@FXML // fx:id="exportBtn"
-	private ImageView exportBtn; // Value injected by FXMLLoader
+	/** Imagen de exportar */
+	@FXML
+	private ImageView exportBtn;
 
-	@FXML // fx:id="searchBtn"
-	private ImageView searchBtn; // Value injected by FXMLLoader
+	/** Imagen de buscar */
+	@FXML
+	private ImageView searchBtn;
 
+	/**
+	 * Navega a la pantalla de alta de películas
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void altaPeliculasPressed(MouseEvent event) {
 
@@ -68,6 +85,11 @@ public class PantallaPrincipalController {
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
+	/**
+	 * Navega a pantalla de consulta de películas
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void consultaPeliculasPressed(MouseEvent event) {
 		NavegacionPantallas navegacion = new NavegacionPantallas("Listado de películas",
@@ -76,6 +98,11 @@ public class PantallaPrincipalController {
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
+	/**
+	 * Navega a pantalla de exportacion de peliculas
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void exportarPeliculasPressed(MouseEvent event) {
 		NavegacionPantallas navegacion = new NavegacionPantallas("Exportación de Películas",
@@ -84,6 +111,11 @@ public class PantallaPrincipalController {
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
+	/**
+	 * Navega a la pantalla de login
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void panelSalirPressed(MouseEvent event) {
 		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN,
@@ -92,7 +124,10 @@ public class PantallaPrincipalController {
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
-	@FXML // This method is called by the FXMLLoader when initialization is complete
+	/**
+	 * Inicia componentes de la pantalla
+	 */
+	@FXML
 	void initialize() {
 
 		addBtn.setImage(new Image("/resources/btn-add.png"));

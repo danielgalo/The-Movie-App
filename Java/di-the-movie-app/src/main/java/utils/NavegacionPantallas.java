@@ -25,9 +25,11 @@ public class NavegacionPantallas {
 	private String styleSheet;
 
 	/**
-	 * @param tituloVentana
-	 * @param rutaArchivoFxml
-	 * @param styleSheet
+	 * Consturctor sobrecargado
+	 * 
+	 * @param tituloVentana   título de la ventana
+	 * @param rutaArchivoFxml ruta al archivo FXML de la pantalla
+	 * @param styleSheet      ruta a la hoja de estilos de la pantalla
 	 */
 	public NavegacionPantallas(String tituloVentana, String rutaArchivoFxml, String styleSheet) {
 		this.tituloVentana = tituloVentana;
@@ -39,7 +41,6 @@ public class NavegacionPantallas {
 	 * Navega a la pantalla
 	 */
 	public void navegaAPantalla() {
-		// Navegar a pantalla de registro
 		try {
 			// Crear stage
 			Stage stage = new Stage();
@@ -47,8 +48,7 @@ public class NavegacionPantallas {
 			// Cargar la clase
 			loader.setLocation(TMAMain.class.getResource(rutaArchivoFxml));
 			// Crear la ventana
-			Pane ventana;
-			ventana = (Pane) loader.load();
+			Pane ventana = (Pane) loader.load();
 			Scene scene = new Scene(ventana);
 			// Añadirle los estilos
 			String urlCss = getClass().getResource(styleSheet).toExternalForm();

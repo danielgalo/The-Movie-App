@@ -14,12 +14,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import dto.DetallesDTO;
-import dto.PeliculaDTO;
-import dto.PersonaCreditosDTO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import persistence.dto.DetallesDTO;
+import persistence.dto.PeliculaDTO;
+import persistence.dto.PersonaCreditosDTO;
 import persistence.entities.Company;
 import persistence.entities.Genero;
 

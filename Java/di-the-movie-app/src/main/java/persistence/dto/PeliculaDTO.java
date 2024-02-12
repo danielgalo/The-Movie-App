@@ -1,4 +1,4 @@
-package dto;
+package persistence.dto;
 
 /**
  * Clase pelicula. Objeto DTO usado para traer datos de películas desde la API y

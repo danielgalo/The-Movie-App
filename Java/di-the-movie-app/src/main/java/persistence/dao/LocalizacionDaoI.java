@@ -2,6 +2,9 @@ package persistence.dao;
 
 import persistence.entities.Localizacion;
 
+/**
+ * Interfaz para el DAO de la entidad Localizacion
+ */
 public interface LocalizacionDaoI {
 
 	/**

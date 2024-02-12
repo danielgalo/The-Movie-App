@@ -1,19 +1,11 @@
 package controllers;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.hibernate.Session;
 
-import com.alibaba.fastjson.JSON;
-import com.opencsv.CSVWriter;
-
-import dto.PeliculaDTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -28,16 +20,23 @@ import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.Pelicula;
+import service.ExportacionFicherosService;
 import utils.ControllerUtils;
 import utils.NavegacionPantallas;
 import utils.constants.Constantes;
 
+/**
+ * Controlador de la pantalla de exportación de películas
+ */
 public class PantallaExportacionPeliculasController {
 
+	/** Texto para el choice box, año mayor */
 	private static final String YEAR_MAYOR_QUE = "Mayor que";
 
+	/** Texto para el choice box, año menor */
 	private static final String YEAR_MENOR_QUE = "Menor que";
 
+	/** Texto para el choice box, año exacto */
 	private static final String YEAR_EXACTO = "Año exacto";
 
 	@FXML
@@ -46,66 +45,89 @@ public class PantallaExportacionPeliculasController {
 	@FXML
 	private URL location;
 
+	/** Botón para exportar */
 	@FXML
 	private Button btnExportar;
 
+	/** Choice box para filtrar por años */
 	@FXML
 	private ChoiceBox<String> cboxFiltroYear;
 
+	/** Label de la cabecera */
 	@FXML
 	private Label lblCabecera;
 
+	/** Label de la cabecera */
 	@FXML
 	private Label lblDirectorioExp;
 
+	/** Label formato */
 	@FXML
 	private Label lblFormato;
 
+	/** Label seleccionar opción */
 	@FXML
 	private Label lblSeleccionaOpc;
 
+	/** Label de error */
 	@FXML
 	private Label lblError;
 
+	/** Label de informacion */
 	@FXML
 	private Label lblInfo;
 
+	/** Panel central con el contenido principal */
 	@FXML
 	private Pane panelCentral;
 
+	/** Cabecera */
 	@FXML
 	private Pane panelSuperior;
 
+	/** Opcion filtro por genero */
 	@FXML
 	private RadioButton rdBtnGenero;
 
+	/** Opcion filtro por titulo */
 	@FXML
 	private RadioButton rdBtnTitulo;
 
+	/** Opcion filtro por todo */
 	@FXML
 	private RadioButton rdBtnTodo;
 
+	/** Opcion exportar CSV */
 	@FXML
 	private RadioButton rdbtnCSV;
 
+	/** Opcion exportar JSON */
 	@FXML
 	private RadioButton rdbtnJSON;
 
+	/** Opcion filtro por año */
 	@FXML
 	private RadioButton rdbtnYear;
 
+	/** Text field para introducir el directorio */
 	@FXML
 	private TextField txtDirectorio;
 
+	/** Text field para introducir el genero */
 	@FXML
 	private TextField txtGenero;
 
+	/** Text field para introducir el titulo */
 	@FXML
 	private TextField txtTitulo;
 
+	/** Text field para introducir el año */
 	@FXML
 	private TextField txtYear;
 
+	/**
+	 * Inicia los componentes de la aplicación
+	 */
 	@FXML
 	void initialize() {
 
@@ -157,6 +179,8 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
+	 * Acciones a realizar cuando se pulsa el botón de exportar (comprueba las
+	 * opciones elegidas y exporta en base a ellas)
 	 * 
 	 * @param event
 	 */
@@ -222,7 +246,7 @@ public class PantallaExportacionPeliculasController {
 	 */
 	private void exportAll(PeliculaDaoImpl peliDao) {
 		List<Pelicula> allPeliculas = null;
-		allPeliculas = peliDao.searchAll();
+		allPeliculas = peliDao.searchByUser(PantallaLoginController.currentUser);
 		exportList(allPeliculas);
 	}
 
@@ -232,11 +256,14 @@ public class PantallaExportacionPeliculasController {
 	 * @param peliDao
 	 */
 	private void exportByTitulo(PeliculaDaoImpl peliDao) {
+
+		int userId = Integer.parseInt(PantallaLoginController.currentUser.getId().toString());
+
 		String tituloInput = txtTitulo.getText();
 		List<Pelicula> peliculasPorTitulo = null;
 
 		if (!tituloInput.isBlank()) {
-			peliculasPorTitulo = peliDao.searchMovieByTitle(tituloInput);
+			peliculasPorTitulo = peliDao.searchMovieByTitle(tituloInput, userId);
 			exportList(peliculasPorTitulo);
 		} else {
 			showError("| El título no puede estar vacío |");
@@ -250,15 +277,14 @@ public class PantallaExportacionPeliculasController {
 	 * 
 	 */
 	private void exportByGenero(PeliculaDaoImpl peliDao) {
+		int userId = Integer.parseInt(PantallaLoginController.currentUser.getId().toString());
+
 		String generoInput = txtGenero.getText();
 		List<Pelicula> peliculasPorGenero = null;
 
 		if (!generoInput.isBlank()) {
-			peliculasPorGenero = peliDao.searcyMoviesByGenre(generoInput);
+			peliculasPorGenero = peliDao.searcyMoviesByGenre(generoInput, userId);
 
-			for (Pelicula pelicula : peliculasPorGenero) {
-				System.out.println("------------------" + pelicula.getTitulo());
-			}
 			exportList(peliculasPorGenero);
 
 		} else {
@@ -272,6 +298,9 @@ public class PantallaExportacionPeliculasController {
 	 * @param peliDao
 	 */
 	private void exportByYear(PeliculaDaoImpl peliDao) {
+
+		int userId = Integer.parseInt(PantallaLoginController.currentUser.getId().toString());
+
 		String yearInput = txtYear.getText();
 
 		// Si el input es correcto
@@ -285,15 +314,15 @@ public class PantallaExportacionPeliculasController {
 			// Dependiendo de la opción elegida en el choice box
 			if (filtro.equals(YEAR_EXACTO)) {
 
-				peliculasPorYear = peliDao.searchByExactYear(year);
+				peliculasPorYear = peliDao.searchByExactYear(year, userId);
 
 			} else if (filtro.equals(YEAR_MAYOR_QUE)) {
 
-				peliculasPorYear = peliDao.searchByGreaterYear(year);
+				peliculasPorYear = peliDao.searchByGreaterYear(year, userId);
 
 			} else if (filtro.equals(YEAR_MENOR_QUE)) {
 
-				peliculasPorYear = peliDao.searchByEarlierYear(year);
+				peliculasPorYear = peliDao.searchByEarlierYear(year, userId);
 
 			}
 
@@ -315,19 +344,23 @@ public class PantallaExportacionPeliculasController {
 
 		String directorio = txtDirectorio.getText();
 
-		// Si está vacío, usar este directorio por defecto
-		if (directorio.isBlank()) {
-			directorio = "C:\\Users";
-		}
+		if (directorio != null) {
+			ExportacionFicherosService ficheroService = new ExportacionFicherosService(directorio);
+			if (rdbtnCSV.isSelected()) {
+				// Exportar lista s CSV
+				int exitCode = ficheroService.exportCSV(peliculas);
+				verificaExitCode(exitCode, "CSV");
 
-		if (rdbtnCSV.isSelected()) {
-			// Exportar lista s CSV
-			exportCSV(peliculas, directorio);
-		} else if (rdbtnJSON.isSelected()) {
-			// Exportar lista a JSON
-			exportJSON(peliculas, directorio);
+			} else if (rdbtnJSON.isSelected()) {
+				// Exportar lista a JSON
+				int exitCode = ficheroService.exportJSON(peliculas);
+				verificaExitCode(exitCode, "JSON");
+
+			} else {
+				showError("| Debe seleccionar un formato de exportación |");
+			}
 		} else {
-			showError("| Debe seleccionar un formato de exportación |");
+			showError("| Indique un directorio de exportación |");
 		}
 	}
 
@@ -350,90 +383,15 @@ public class PantallaExportacionPeliculasController {
 	}
 
 	/**
-	 * Exporta los objetos de una lista a un fichero JSON
+	 * Verifica un código de salida
 	 * 
-	 * @param peliculas  Lista de películas a exportar
-	 * @param directorio directorio en el que se generará el fichero JSON
+	 * @param exitCode
 	 */
-	private void exportJSON(List<Pelicula> peliculas, String directorio) {
-
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(directorio))) {
-
-			List<PeliculaDTO> pelisDTO = new ArrayList<>();
-
-			// Convertir las entidades a DTO, para evitar anidaciones al escribir en JSON
-			peliculaEntityToDTO(peliculas, pelisDTO);
-
-			// Convertir la lista de películas a una cadena JSON
-			String jsonString = JSON.toJSONString(pelisDTO, true);
-
-			// Escribir la cadena JSON en el archivo
-			writer.write(jsonString);
-
-			showInfo("JSON creado en: " + directorio);
-		} catch (IOException e) {
-			showError("Error creando JSON.");
-			System.err.println("Error al escribir el archivo JSON: " + e.getMessage());
+	private void verificaExitCode(int exitCode, String tipoExportacion) {
+		if (exitCode == 0) {
+			showInfo("Fichero " + tipoExportacion + " creado correctamente.");
+		} else {
+			showError("Hubo un error creando el fichero " + tipoExportacion + ".");
 		}
-	}
-
-	/**
-	 * Convierte de una lista de Entidades Pelicula a Objetos DTO, y los añade a la
-	 * lista de objetos DTO.
-	 * 
-	 * @param peliculas Lista de Entidades Películas
-	 * @param pelisDTO  Lista de DTOs Películas
-	 */
-	private void peliculaEntityToDTO(List<Pelicula> peliculas, List<PeliculaDTO> pelisDTO) {
-		for (Pelicula pelicula : peliculas) {
-
-			String titulo = pelicula.getTitulo();
-			String overview = pelicula.getOverview();
-			String releaseDate = pelicula.getReleaseDate().toString();
-			String img = pelicula.getCartel();
-			double voteAverage = pelicula.getValoracion();
-			String comentariosUsuario = pelicula.getComentariosUsuario();
-			String fechaVisualizacion = pelicula.getFechaVisualizacionUsuario().toString();
-			double valoracionUsuario = pelicula.getValoracionUsuario();
-
-			PeliculaDTO peliDto = new PeliculaDTO(titulo, overview, releaseDate, img, voteAverage, comentariosUsuario,
-					fechaVisualizacion, valoracionUsuario);
-			pelisDTO.add(peliDto);
-
-		}
-	}
-
-	/**
-	 * Exporta los objetos de una lista a un fichero CSV
-	 * 
-	 * @param peliculas  Lista de películas a exportar
-	 * @param directorio directorio en el que se generará el fichero CSV
-	 */
-	private void exportCSV(List<Pelicula> peliculas, String directorio) {
-
-		// Convertir la lista de entidades en DTO
-		List<PeliculaDTO> pelisDTO = new ArrayList<>();
-		peliculaEntityToDTO(peliculas, pelisDTO);
-
-		for (PeliculaDTO peliDTO : pelisDTO) {
-			// Crear objetos para escribir en el archivo CSV
-			try (CSVWriter writer = new CSVWriter(new FileWriter(directorio))) {
-				// Crear lista de objetos para escribir en el archivo CSV
-				List<String[]> data = new ArrayList<>();
-				data.add(new String[] { "titulo", "overview", "releaseDate", "img", "voteAverage", "comentariosUsuario",
-						"fechaVisualizacion", "valoracionUsuario" });
-				data.add(new String[] { peliDTO.getTitulo(), peliDTO.getOverview(), peliDTO.getReleaseDate(),
-						peliDTO.getImg(), String.valueOf(peliDTO.getVoteAverage()), peliDTO.getComentariosUsuario(),
-						peliDTO.getFechaVisualizacion(), String.valueOf(peliDTO.getValoracionUsuario()) });
-
-				// Escribir datos en el archivo CSV
-				writer.writeAll(data);
-				showInfo("CSV escrito en: " + directorio);
-			} catch (IOException e) {
-				showError("Error escribiendo el archivo CSV");
-				e.printStackTrace();
-			}
-		}
-
 	}
 }
