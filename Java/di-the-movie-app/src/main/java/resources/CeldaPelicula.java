@@ -19,9 +19,12 @@ public class CeldaPelicula {
 	private String genero;
 	private String fechaLanzamiento;
 	private String descripcion;
+	private Pelicula pelicula;
 	
 	@SuppressWarnings("deprecation")
 	public CeldaPelicula(int posicionX, int posicionY, Pelicula pelicula) {
+		this.pelicula = pelicula;
+		
 		poster = pelicula.getCartel();
 		titulo = pelicula.getTitulo();
 		for (GeneroPelicula generoId : pelicula.getGeneroPelicula()) {		
@@ -161,6 +164,10 @@ public class CeldaPelicula {
 	
 	public Pane getCeldaPelicula() {
 		return celdaPelicula;
+	}
+	
+	public Pelicula getPelicula() {
+		return pelicula;
 	}
 	
 }
