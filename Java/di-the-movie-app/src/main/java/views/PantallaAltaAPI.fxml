@@ -27,7 +27,7 @@
                <children>
                   <Label fx:id="lblResTitulo" layoutX="14.0" layoutY="17.0" text="Título (Fecha de estreno)" />
                   <ImageView fx:id="imgPelicula" fitHeight="474.0" fitWidth="330.0" layoutX="12.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="lblDescripcion" layoutX="358.0" layoutY="56.0" prefHeight="454.0" prefWidth="452.0" text="Busca una película..." />
+                  <Label fx:id="lblDescripcion" layoutX="358.0" layoutY="56.0" prefHeight="454.0" prefWidth="452.0" text="Busca una película..." textAlignment="CENTER" />
                   <Label layoutX="853.0" layoutY="31.0" text="Valora la película:" />
                   <Spinner fx:id="spinnerValoracionUsuario" disable="true" layoutX="1039.0" layoutY="34.0" prefHeight="25.0" prefWidth="173.0" />
                   <Label layoutX="851.0" layoutY="105.0" text="Comentarios sobre la película:" />

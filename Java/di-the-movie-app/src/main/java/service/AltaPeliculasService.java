@@ -138,7 +138,7 @@ public class AltaPeliculasService {
 
 				if (peliculaEncontrada != null) {
 					// Actualizar película
-					pelicula = session.merge(pelicula);
+					session.merge(pelicula);
 				} else {
 					// Insertar película
 					peliDao.insert(pelicula);

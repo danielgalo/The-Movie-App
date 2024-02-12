@@ -46,6 +46,9 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 
 	@Override
 	public List<Pelicula> searcyMoviesByGenre(String nombre, int userId) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
 
 		List<Pelicula> peliculasEncontradas = null;
 
@@ -92,6 +95,9 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 
 	@Override
 	public List<Pelicula> searchByExactYear(int year, int userId) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
 		try {
 			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year = :year AND usuario.id = :id",
 					Pelicula.class);
@@ -107,6 +113,9 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 
 	@Override
 	public List<Pelicula> searchByGreaterYear(int year, int userId) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
 		try {
 			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year > :year AND usuario.id = :id",
 					Pelicula.class);
@@ -122,6 +131,10 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 
 	@Override
 	public List<Pelicula> searchByEarlierYear(int year, int userId) {
+		if (!session.getTransaction().isActive()) {
+			session.getTransaction().begin();
+		}
+
 		try {
 			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE year < :year AND usuario.id = :id",
 					Pelicula.class);
