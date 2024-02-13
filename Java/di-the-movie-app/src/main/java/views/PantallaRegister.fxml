@@ -156,7 +156,7 @@
                               <RowConstraints maxHeight="32.666748046875" minHeight="10.0" prefHeight="16.666748046875" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button id="btnRegistrarse" fx:id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMousePressed="#btnRegistrarsePressed" prefHeight="70.0" prefWidth="232.0" stylesheets="@../styles/register-style.css" text="Registrarse" GridPane.columnIndex="1">
+                              <Button id="btnRegistrarse" fx:id="btnRegistrarse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseEntered="#btnRegistrarseEntered" onMouseExited="#btnRegistrarseExited" onMousePressed="#btnRegistrarsePressed" prefHeight="70.0" prefWidth="232.0" stylesheets="@../styles/register-style.css" text="Registrarse" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
@@ -172,6 +172,7 @@
                         </GridPane>
                      </children>
                   </GridPane>
+                  <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER" layoutX="39.0" layoutY="29.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="101.0" stylesheets="@../styles/register-style.css" text="&lt;" />
                </children>
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />

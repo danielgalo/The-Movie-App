@@ -31,7 +31,7 @@ public class ExportacionFicherosService {
 		if (!directorio.isBlank()) {
 			this.directorio = directorio;
 		} else {
-			directorio = "C:\\Desktop";
+			directorio = "C:/Desktop";
 		}
 
 	}

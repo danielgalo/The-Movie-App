@@ -56,7 +56,7 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	@OneToMany(mappedBy = "id.pelicula", cascade = CascadeType.ALL)
 	private List<GeneroPelicula> generoPelicula;
 
-	/** Usuario asociadad */
+	/** Usuario asociado */
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User usuario;
