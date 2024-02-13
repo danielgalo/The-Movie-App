@@ -138,7 +138,10 @@ public class AltaPeliculasService {
 
 				if (peliculaEncontrada != null) {
 					// Actualizar película
-					session.merge(pelicula);
+					PeliculaDaoImpl searcher = new PeliculaDaoImpl(session);
+					Pelicula peliABorrar = searcher.searchById(peliculaIdApi, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+					peliDao.delete(peliABorrar);
+					peliDao.insert(pelicula);
 				} else {
 					// Insertar película
 					peliDao.insert(pelicula);

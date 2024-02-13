@@ -80,7 +80,7 @@ public class PantallaIntroduccionManualController {
 					e.printStackTrace();
 				}
     		if(image != null){
-    			if (txtUrl.getText().endsWith(".contains") || txtUrl.getText().contains(".jpg")) {
+    			if (txtUrl.getText().endsWith(".png") || txtUrl.getText().contains(".jpg")) {
     				Session session = HibernateUtil.getSession();
     				PeliculaDaoImpl insertadorPelicula = new PeliculaDaoImpl(session);
     				
@@ -99,14 +99,9 @@ public class PantallaIntroduccionManualController {
     				Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
     				pelicula.setReleaseDate(fechaEstreno);
     				pelicula.setCartel(txtUrl.getText());
-    				try {
-    					insertadorPelicula.insert(pelicula);							
-						} catch (Exception e) {
-							lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
-							lblPeliculaInsertada.setText("Error al insertar la película.");
-							lblPeliculaInsertada.setVisible(true);
-						}
-    				
+    				//TODO add id
+    				insertadorPelicula.insert(pelicula);							
+						
     				lblPeliculaInsertada.setTextFill(Paint.valueOf("Green"));
     				lblPeliculaInsertada.setText("¡Pelicula dada de alta con éxito!");
     				lblPeliculaInsertada.setVisible(true);

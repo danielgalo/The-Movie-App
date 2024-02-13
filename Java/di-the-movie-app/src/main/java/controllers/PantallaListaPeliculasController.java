@@ -122,7 +122,6 @@ public class PantallaListaPeliculasController {
 			buscar = false;
 			mainPane.getChildren().removeAll(listaCeldasPeliculas);
 			initialize();
-			System.out.println("no se pudo buscar");
 		}
   }
 
