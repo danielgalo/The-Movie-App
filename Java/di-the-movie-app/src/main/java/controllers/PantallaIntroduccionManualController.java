@@ -99,7 +99,13 @@ public class PantallaIntroduccionManualController {
     				Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
     				pelicula.setReleaseDate(fechaEstreno);
     				pelicula.setCartel(txtUrl.getText());
-    				insertadorPelicula.insert(pelicula);
+    				try {
+    					insertadorPelicula.insert(pelicula);							
+						} catch (Exception e) {
+							lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
+							lblPeliculaInsertada.setText("Error al insertar la película.");
+							lblPeliculaInsertada.setVisible(true);
+						}
     				
     				lblPeliculaInsertada.setTextFill(Paint.valueOf("Green"));
     				lblPeliculaInsertada.setText("¡Pelicula dada de alta con éxito!");

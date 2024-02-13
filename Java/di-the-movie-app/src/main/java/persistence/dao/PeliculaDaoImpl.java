@@ -34,10 +34,10 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
-		String hql = "FROM Pelicula WHERE titulo = :title AND usuario.id = :id";
+		String hql = "FROM Pelicula WHERE titulo LIKE :title AND usuario.id = :id";
 
 		TypedQuery<Pelicula> query = session.createQuery(hql, Pelicula.class);
-		query.setParameter("title", title);
+		query.setParameter("title", "%" + title + "%");
 		query.setParameter("id", userId);
 
 		return query.getResultList();

@@ -45,15 +45,24 @@ public class PantallaListaPeliculasController {
   @FXML
   private ImageView img;
   
+  private boolean buscar = false;
+  private String tituloBuscar = "";
+  private List<Pelicula> listPeliculas;
+  private List<Pane> listaCeldasPeliculas;
+  
   @FXML
   void initialize() {
   	final Session session = HibernateUtil.getSession();
   	
   	PeliculaDaoImpl buscadorPeliculas = new PeliculaDaoImpl(session);
-  	List<Pelicula> listPeliculas = buscadorPeliculas.searchByUser(PantallaLoginController.currentUser);
+  	if (buscar && !tituloBuscar.isBlank()) {
+  		listPeliculas = buscadorPeliculas.searchMovieByTitle(tituloBuscar, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+		} else {
+			listPeliculas = buscadorPeliculas.searchByUser(PantallaLoginController.currentUser);			
+		}
   	
   	int posY = 220;
-  	final List<Pane> listaCeldasPeliculas = new ArrayList<Pane>();
+  	 listaCeldasPeliculas = new ArrayList<Pane>();
   	for (Pelicula pelicula : listPeliculas) {
   		final CeldaPelicula celdaPelicula = new CeldaPelicula(25, posY, pelicula);
   		
@@ -103,7 +112,18 @@ public class PantallaListaPeliculasController {
 
   @FXML
   void btnBuscarPressed(MouseEvent event) {
-
+  	if (!txtBuscarPelicula.getText().isBlank()) {
+			tituloBuscar = txtBuscarPelicula.getText();
+			buscar = true;
+			mainPane.getChildren().removeAll(listaCeldasPeliculas);
+			initialize();
+		} else {
+			tituloBuscar = "";
+			buscar = false;
+			mainPane.getChildren().removeAll(listaCeldasPeliculas);
+			initialize();
+			System.out.println("no se pudo buscar");
+		}
   }
 
   @FXML
