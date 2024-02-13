@@ -114,8 +114,8 @@
             <Pane prefHeight="100.0" prefWidth="1440.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onMousePressed="#btnVolverPressed" prefHeight="62.0" prefWidth="174.0" text="Menú" />
-      <ImageView fitHeight="41.0" fitWidth="75.0" layoutX="33.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="62.0" prefWidth="174.0" text="Menú" />
+      <ImageView fitHeight="41.0" fitWidth="75.0" layoutX="33.0" layoutY="26.0" onMousePressed="#btnVolverPressed" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/vector.png" />
          </image>

@@ -93,7 +93,7 @@ public class PantallaExportacionPeliculasController {
 	@FXML
 	private RadioButton rdBtnTitulo;
 
-	/** Opcion filtro por todo */
+	/** Opcion filtro por tod */
 	@FXML
 	private RadioButton rdBtnTodo;
 
@@ -124,6 +124,10 @@ public class PantallaExportacionPeliculasController {
 	/** Text field para introducir el año */
 	@FXML
 	private TextField txtYear;
+
+	/** Boton volver al menu */
+	@FXML
+	private Button btnVolver;
 
 	/**
 	 * Inicia los componentes de la aplicación
@@ -236,6 +240,20 @@ public class PantallaExportacionPeliculasController {
 				HibernateUtil.closeSession();
 			}
 		}
+
+	}
+
+	@FXML
+	void btnVolverEntered(MouseEvent event) {
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(new Color(0.0, 0.95, 1.0, 1.0));
+		shadow.setSpread(0.18);
+		btnVolver.setEffect(shadow);
+	}
+
+	@FXML
+	void btnVolverExited(MouseEvent event) {
+		btnVolver.setEffect(null);
 
 	}
 

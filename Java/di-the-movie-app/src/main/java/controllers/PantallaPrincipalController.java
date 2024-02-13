@@ -12,10 +12,12 @@ import org.hibernate.Session;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
 import persistence.dao.GeneroDaoImpl;
 import persistence.entities.Genero;
@@ -122,6 +124,67 @@ public class PantallaPrincipalController {
 				Constantes.CSS_LOGIN);
 		navegacion.navegaAPantalla();
 		NavegacionPantallas.cerrarVentanaActual(event);
+	}
+
+	@FXML
+	void salirEntered(MouseEvent event) {
+		aplicaEfectoMouseEntered(panelSalir);
+	}
+
+	@FXML
+	void salirExited(MouseEvent event) {
+		eliminaEfectoMouseExited(panelSalir);
+	}
+
+	@FXML
+	void altaEntered(MouseEvent event) {
+		aplicaEfectoMouseEntered(panelAltaPeliculas);
+	}
+
+	@FXML
+	void altaExited(MouseEvent event) {
+		eliminaEfectoMouseExited(panelAltaPeliculas);
+	}
+
+	@FXML
+	void expotarEntered(MouseEvent event) {
+		aplicaEfectoMouseEntered(panelExportarPeliculas);
+	}
+
+	@FXML
+	void exportarExited(MouseEvent event) {
+		eliminaEfectoMouseExited(panelExportarPeliculas);
+	}
+
+	@FXML
+	void consultaEntered(MouseEvent event) {
+		aplicaEfectoMouseEntered(panelConsultaPeliculas);
+	}
+
+	@FXML
+	void consultaExited(MouseEvent event) {
+		eliminaEfectoMouseExited(panelConsultaPeliculas);
+	}
+
+	/**
+	 * Aplica efectos de sombra al pasar por encima de un panel
+	 * 
+	 * @param panel
+	 */
+	private void aplicaEfectoMouseEntered(Pane panel) {
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(new Color(0.0, 0.95, 1.0, 1.0));
+		shadow.setSpread(0.18);
+		panel.setEffect(shadow);
+	}
+
+	/**
+	 * Elimina efectso de sombra al quitar el raton de encima
+	 * 
+	 * @param panel
+	 */
+	private void eliminaEfectoMouseExited(Pane panel) {
+		panel.setEffect(null);
 	}
 
 	/**

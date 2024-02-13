@@ -230,6 +230,20 @@ public class PantallaAltaAPIController {
 		NavegacionPantallas.cerrarVentanaActual(event);
 	}
 
+	@FXML
+	void btnVolverEntered(MouseEvent event) {
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(new Color(0.0, 0.95, 1.0, 1.0));
+		shadow.setSpread(0.18);
+		btnVolver.setEffect(shadow);
+	}
+
+	@FXML
+	void btnVolverExited(MouseEvent event) {
+		btnVolver.setEffect(null);
+
+	}
+
 	/**
 	 * Habilita elementos de input para insertar películas, antes de buscarla
 	 */
