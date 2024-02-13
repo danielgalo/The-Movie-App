@@ -53,6 +53,9 @@ public class PantallaLoginController {
 	@FXML
 	private Label lblInfo;
 
+	@FXML
+	private Label lblWelcome;
+
 	/** Text field de correo */
 	@FXML
 	private TextField txtCorreo;
@@ -109,11 +112,10 @@ public class PantallaLoginController {
 			// Si el usuario no es nulo (se ha encontrado en la bbdd) y la contraseña del
 			// usuario encontrado coincide con la introducida, inicia sesión
 			if (currentUser != null) {
-
+				lblInfo.setText("");
 				NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal",
 						Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
 				navegacion.navegaAPantalla();
-
 				// Cerrar pantalla actual
 				NavegacionPantallas.cerrarVentanaActual(event);
 
@@ -147,7 +149,8 @@ public class PantallaLoginController {
 
 		lblInfo.setWrapText(true);
 		lblInfo.setCenterShape(true);
-
+		lblWelcome.setWrapText(true);
+		lblWelcome.setCenterShape(true);
 	}
 
 }

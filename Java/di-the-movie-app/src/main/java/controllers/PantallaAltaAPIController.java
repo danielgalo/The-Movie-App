@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -191,12 +193,21 @@ public class PantallaAltaAPIController {
 			int exitCode = AltaPeliculasService.insertPelicula(titulo, posicionPelicula, localDate, comentariosUsuario,
 					valoracionUsuario, localizacionPelicula);
 
+			Alert alert = new Alert(AlertType.NONE, "Alta de película");
+			alert.setTitle("Alta de película");
+			alert.setResizable(false);
+			alert.setHeaderText("");
+
 			// Mostrar mensaje según el código de salida
 			if (exitCode == 0) {
-				showInfo("Película dada de alta correctamente");
+				alert.setAlertType(AlertType.CONFIRMATION);
+				alert.setContentText("La película ha sido dada de alta correctamente.");
 			} else {
-				showError("Ocurrió un error dando de alta la pelicula");
+				alert.setAlertType(AlertType.ERROR);
+				alert.setContentText("Ha ocurrido un error al dar de alta la película.");
 			}
+
+			alert.showAndWait();
 
 		} else {
 			showError("La fecha de visualización es obligatoria");
@@ -343,11 +354,13 @@ public class PantallaAltaAPIController {
 			lblResTitulo.setText(pelicula.getTitulo() + " (" + pelicula.getReleaseDate() + ")");
 			lblDescripcion.setText(pelicula.getOverview());
 			InputStream stream = null;
+
 			try {
 				stream = new URL(pelicula.getImg()).openStream();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+
 			Image image = new Image(stream);
 
 			// Mostrar la imagen en un ImageView
@@ -366,12 +379,4 @@ public class PantallaAltaAPIController {
 		lblError.setText(message);
 	}
 
-	/**
-	 * Muestra un mensaje de información
-	 * 
-	 * @param message
-	 */
-	private void showInfo(String message) {
-		lblInfo.setText(message);
-	}
 }
