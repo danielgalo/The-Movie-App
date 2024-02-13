@@ -75,6 +75,7 @@ CREATE TABLE directores (
 
 CREATE TABLE peliculas (
     valoracion_usuario FLOAT(53),
+	valoracion FLOAT(53),
     year INTEGER,
     fecha_de_alta DATETIME(6) NOT NULL,
     fecha_visualizacion_usuario DATETIME(6),

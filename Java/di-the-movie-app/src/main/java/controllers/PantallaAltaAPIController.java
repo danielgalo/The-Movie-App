@@ -194,7 +194,7 @@ public class PantallaAltaAPIController {
 					valoracionUsuario, localizacionPelicula);
 
 			Alert alert = new Alert(AlertType.NONE, "Alta de película");
-			alert.setTitle("Alta de película");
+			alert.setTitle("Alta de película" + valoracionUsuario);
 			alert.setResizable(false);
 			alert.setHeaderText("");
 

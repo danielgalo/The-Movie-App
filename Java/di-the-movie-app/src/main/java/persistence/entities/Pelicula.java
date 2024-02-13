@@ -73,6 +73,10 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	@Column(name = "valoracion_usuario")
 	private double valoracionUsuario;
 
+	/** Valoracion de la pelicula por el usuario */
+	@Column(name = "valoracion")
+	private double valoracion;
+
 	/** Fecha de visualizacion del usuario */
 	@Column(name = "fecha_visualizacion_usuario")
 	private Date fechaVisualizacionUsuario;
@@ -97,14 +101,14 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	 * @return the valoracion
 	 */
 	public double getValoracion() {
-		return valoracionUsuario;
+		return valoracion;
 	}
 
 	/**
 	 * @param valoracion the valoracion to set
 	 */
 	public void setValoracion(double valoracion) {
-		this.valoracionUsuario = valoracion;
+		this.valoracion = valoracion;
 	}
 
 	/**
