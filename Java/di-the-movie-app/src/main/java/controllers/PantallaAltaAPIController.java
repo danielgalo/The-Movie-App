@@ -159,6 +159,8 @@ public class PantallaAltaAPIController {
 		ControllerUtils.setShadowButtons(shadow, btnAlta, btnAnterior, btnBuscar, btnSiguiente, btnConsultaManual);
 		ControllerUtils.setShadowPanes(shadow, panelPrincipal);
 
+		spinnerValoracionUsuario.getValueFactory().setValue(5.0);
+
 	}
 
 	/**

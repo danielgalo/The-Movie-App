@@ -29,7 +29,7 @@
                   <ImageView fx:id="imgPelicula" fitHeight="474.0" fitWidth="330.0" layoutX="12.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
                   <Label fx:id="lblDescripcion" layoutX="358.0" layoutY="56.0" prefHeight="454.0" prefWidth="452.0" text="Busca una película..." textAlignment="CENTER" />
                   <Label layoutX="853.0" layoutY="31.0" text="Valora la película:" />
-                  <Spinner fx:id="spinnerValoracionUsuario" disable="true" layoutX="1039.0" layoutY="34.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Spinner fx:id="spinnerValoracionUsuario" disable="true" layoutX="1179.0" layoutY="35.0" prefHeight="25.0" prefWidth="173.0" />
                   <Label layoutX="851.0" layoutY="105.0" text="Comentarios sobre la película:" />
                   <TextArea fx:id="txtAreaComentarios" disable="true" layoutX="858.0" layoutY="149.0" prefHeight="81.0" prefWidth="500.0" />
                   <Label layoutX="854.0" layoutY="251.0" text="Localización de la película:" />
@@ -37,7 +37,7 @@
                   <Button fx:id="btnAlta" disable="true" layoutX="1290.0" layoutY="476.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
                   <Label layoutX="853.0" layoutY="305.0" text="Fecha de visualización:" />
                   <DatePicker fx:id="dateFechaVisUsuario" disable="true" layoutX="1140.0" layoutY="307.0" prefHeight="25.0" prefWidth="212.0" promptText="Fecha en la que la has visto" />
-                  <Label layoutX="1140.0" layoutY="332.0" prefHeight="12.0" prefWidth="193.0" text="*Campo obligatorio" textFill="RED">
+                  <Label id="lblError" layoutX="1140.0" layoutY="332.0" prefHeight="12.0" prefWidth="193.0" text="*Campo obligatorio" textFill="RED">
                      <font>
                         <Font size="10.0" />
                      </font>

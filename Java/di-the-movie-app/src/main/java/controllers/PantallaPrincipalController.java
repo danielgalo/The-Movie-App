@@ -21,6 +21,7 @@ import javafx.scene.paint.Color;
 import persistence.HibernateUtil;
 import persistence.dao.GeneroDaoImpl;
 import persistence.entities.Genero;
+import utils.ControllerUtils;
 import utils.NavegacionPantallas;
 import utils.TMDBApi;
 import utils.constants.Constantes;
@@ -67,6 +68,10 @@ public class PantallaPrincipalController {
 	/** Imagen de exportar */
 	@FXML
 	private ImageView exportBtn;
+
+	/** Imagen de logo */
+	@FXML
+	private ImageView imgLogo;
 
 	/** Imagen de buscar */
 	@FXML
@@ -134,6 +139,8 @@ public class PantallaPrincipalController {
 	@FXML
 	void salirExited(MouseEvent event) {
 		eliminaEfectoMouseExited(panelSalir);
+		aplicaSombras();
+
 	}
 
 	@FXML
@@ -144,6 +151,8 @@ public class PantallaPrincipalController {
 	@FXML
 	void altaExited(MouseEvent event) {
 		eliminaEfectoMouseExited(panelAltaPeliculas);
+		aplicaSombras();
+
 	}
 
 	@FXML
@@ -154,6 +163,7 @@ public class PantallaPrincipalController {
 	@FXML
 	void exportarExited(MouseEvent event) {
 		eliminaEfectoMouseExited(panelExportarPeliculas);
+		aplicaSombras();
 	}
 
 	@FXML
@@ -164,6 +174,8 @@ public class PantallaPrincipalController {
 	@FXML
 	void consultaExited(MouseEvent event) {
 		eliminaEfectoMouseExited(panelConsultaPeliculas);
+		aplicaSombras();
+
 	}
 
 	/**
@@ -193,13 +205,25 @@ public class PantallaPrincipalController {
 	@FXML
 	void initialize() {
 
+		imgLogo.setImage(new Image("/resources/logo-app.png"));
 		addBtn.setImage(new Image("/resources/btn-add.png"));
 		searchBtn.setImage(new Image("/resources/btn-search.png"));
 		exportBtn.setImage(new Image("/resources/btn-export.png"));
 		exitBtn.setImage(new Image("/resources/btn-exit.png"));
 
+		aplicaSombras();
+
 		insertGenresIfAbsent();
 
+	}
+
+	private void aplicaSombras() {
+		DropShadow shadow = new DropShadow();
+		shadow.setOffsetY(3);
+		shadow.setColor(new Color(0, 0, 0, 0.35));
+
+		ControllerUtils.setShadowPanes(shadow, panelAltaPeliculas, panelConsultaPeliculas, panelExportarPeliculas,
+				panelSalir);
 	}
 
 	/**

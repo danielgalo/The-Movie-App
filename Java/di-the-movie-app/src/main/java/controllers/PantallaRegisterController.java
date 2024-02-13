@@ -23,7 +23,11 @@ import utils.constants.Constantes;
 
 public class PantallaRegisterController {
 
-	private static final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+	/** Expresión regular para validar la contraseña */
+	private static final String REGEX_PASSWORD = "^(?=.*[\\d])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+
+	/** Expresion regular para validar email */
+	private static final String REGEX_EMAIL = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
 	@FXML
 	private Pane mainPane;
@@ -67,51 +71,107 @@ public class PantallaRegisterController {
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
 		// Si los campos no están vacíos
-		if (!txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank()
-				&& !txtRepetirContrasena.getText().isBlank()) {
-			// Si la contraseña cumple con los requisitos
-			if (Pattern.matches(REGEX_PASSWORD, txtContrasena.getText())) {
-				// Y las contraseñas coinciden
-				if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {
-					Session session = HibernateUtil.getSession();
-					UserDaoImpl buscadorUsuario = new UserDaoImpl(session);
-					User usuarioExistente = buscadorUsuario.getUser(txtEmail.getText(), txtContrasena.getText());
-					// Y no existe un usuario con ese email
-					if (usuarioExistente == null) {
-						try {
-							// Crea un usuario con los datos de los campos
-							User user = new User(txtEmail.getText(), txtContrasena.getText());
-							// Guardalo en la base de datos
-							session.persist(user);
-							// Y vuelve a la pantalla de login
-							NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login",
-									Constantes.PANTALLA_LOGIN, Constantes.CSS_LOGIN);
-							pantallaLogin.navegaAPantalla();
-							NavegacionPantallas.cerrarVentanaActual(e);
-						} catch (Exception e2) {
-							lblErrores.setText("Ese correo electrónico ya está en uso.");
-							e2.printStackTrace();
-							session.clear();
-						}
-					} else { // Usuario ya existe
-						lblErrores.setText("Ese correo electrónico ya está en uso.");
-					}
-				} else { // Contraseñas no coinciden
-					lblErrores.setText("Las contraseñas no coinciden, compruebe e intente de nuevo.");
+		if (validateFieldsNotEmpty() && validateRegisterFields()) {
+			// Si la contraseña y email cumplen con el formato
+
+			// Y las contraseñas coinciden
+			if (txtContrasena.getText().equals(txtRepetirContrasena.getText())) {
+				Session session = HibernateUtil.getSession();
+				UserDaoImpl buscadorUsuario = new UserDaoImpl(session);
+				User usuarioExistente = buscadorUsuario.getUser(txtEmail.getText(), txtContrasena.getText());
+				// Y no existe un usuario con ese email
+				if (usuarioExistente == null) {
+					registraUsuario(e, session);
+				} else { // Usuario ya existe
+					lblErrores.setText("Ese correo electrónico ya está en uso.");
 				}
-			} else { // Contraseña o correo incumple formato
-				Alert alert = new Alert(AlertType.WARNING,
-						"Error de formato de credenciales. Comprueba que la contraseña o el correo electrónico sean válidos.");
-				alert.setTitle("Error de formato de credenciales.");
-				alert.setResizable(false);
-				alert.setHeaderText(
-						"Comprueba que el correo electrónico tenga un formato correcto y que la contraseña tenga al menos:"
-								+ "\n- Entre 8 y 20 caracteres." + "\n- Una mayúscula." + "\n- Una minúscula."
-								+ "\n- Un dígito." + "\n- Un caracter especial.\n");
-				alert.show();
+			} else { // Contraseñas no coinciden
+				lblErrores.setText("Las contraseñas no coinciden, compruebe e intente de nuevo.");
 			}
-		} else { // Campos vacíos
-			lblErrores.setText("Todos los campos deben rellenarse, compruebe e intente de nuevo.");
+
+		} else { // Campos vacíos o formato no válido
+
+			// Campos vacíos
+			if (!validateFieldsNotEmpty()) {
+				lblErrores.setText("Todos los campos deben rellenarse, compruebe e intente de nuevo.");
+			}
+
+			// Formatos incorrectos
+			if (!validateRegisterFields()) {
+				showAlertMessages();
+			}
+		}
+	}
+
+	/**
+	 * Comprueba que el usuario no ha introducido valores en blanco
+	 * 
+	 * @return true si el usuario no ha introducido ningún valor en blanco, false en
+	 *         caso contrario
+	 */
+	private boolean validateFieldsNotEmpty() {
+		return !txtEmail.getText().isBlank() && !txtContrasena.getText().isBlank()
+				&& !txtRepetirContrasena.getText().isBlank();
+	}
+
+	/**
+	 * Valida que los campos de registros tengan un formato correcto
+	 * 
+	 * @return true si los campos coinciden con el formato esperado, false en caso
+	 *         contrario
+	 */
+	private boolean validateRegisterFields() {
+		return Pattern.matches(REGEX_PASSWORD, txtContrasena.getText())
+				&& Pattern.matches(REGEX_EMAIL, txtEmail.getText());
+	}
+
+	/**
+	 * Registra un usuario en la base de datos
+	 * 
+	 * @param e
+	 * @param session
+	 */
+	private void registraUsuario(MouseEvent e, Session session) {
+		try {
+			// Crea un usuario con los datos de los campos
+			User user = new User(txtEmail.getText(), txtContrasena.getText());
+			// Guardalo en la base de datos
+			session.persist(user);
+			// Y vuelve a la pantalla de login
+			NavegacionPantallas pantallaLogin = new NavegacionPantallas("Pantalla Login", Constantes.PANTALLA_LOGIN,
+					Constantes.CSS_LOGIN);
+			pantallaLogin.navegaAPantalla();
+			NavegacionPantallas.cerrarVentanaActual(e);
+		} catch (Exception e2) {
+			lblErrores.setText("Ese correo electrónico ya está en uso.");
+			e2.printStackTrace();
+			session.clear();
+		}
+	}
+
+	/**
+	 * Muestra ventana emergente con información del registro, al introducir
+	 * credenciales no válidas
+	 */
+	private void showAlertMessages() {
+
+		// Alerta contraseña
+		if (!Pattern.matches(REGEX_PASSWORD, txtContrasena.getText())) {
+			Alert alert = new Alert(AlertType.WARNING, "Contraseña no válida");
+			alert.setTitle("Error de formato de credenciales.");
+			alert.setResizable(false);
+			alert.setHeaderText("Comprueba que la contraseña tenga al menos:" + "\n- Entre 8 y 20 caracteres."
+					+ "\n- Una mayúscula." + "\n- Una minúscula." + "\n- Un dígito." + "\n- Un caracter especial.\n");
+			alert.show();
+		}
+
+		// Alerta email
+		if (!Pattern.matches(REGEX_EMAIL, txtEmail.getText())) {
+			Alert alert = new Alert(AlertType.WARNING, "Email no válido");
+			alert.setResizable(false);
+			alert.setHeaderText(
+					"Comprueba que el correo electrónico tenga un formato correcto, por ejemplo: usuario@dominio.com");
+			alert.show();
 		}
 	}
 
