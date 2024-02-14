@@ -20,7 +20,7 @@
       <GridPane layoutX="47.0" layoutY="139.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="434.66668701171875" minWidth="0.0" prefWidth="0.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1278.0" minWidth="10.0" prefWidth="1278.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1278.0" minWidth="10.0" prefWidth="800.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="417.33331298828125" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>
@@ -36,26 +36,26 @@
          <children>
             <Pane fx:id="panelAltaPeliculas" onMouseEntered="#altaEntered" onMouseExited="#altaExited" onMousePressed="#altaPeliculasPressed" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1296.0" text="Alta de Películas" textAlignment="CENTER" />
-                  <ImageView fx:id="addBtn" fitHeight="75.0" fitWidth="75.0" layoutX="1180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1020.0" text="Alta de Películas" textAlignment="CENTER" />
+                  <ImageView fx:id="addBtn" fitHeight="75.0" fitWidth="75.0" layoutX="909.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane fx:id="panelConsultaPeliculas" onMouseEntered="#consultaEntered" onMouseExited="#consultaExited" onMousePressed="#consultaPeliculasPressed" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label alignment="CENTER" layoutX="-9.0" layoutY="37.0" prefHeight="36.0" prefWidth="1296.0" text="Consulta de Películas" />
-                  <ImageView fx:id="searchBtn" fitHeight="75.0" fitWidth="75.0" layoutX="1186.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" layoutX="-9.0" layoutY="37.0" prefHeight="36.0" prefWidth="1033.0" text="Consulta de Películas" />
+                  <ImageView fx:id="searchBtn" fitHeight="75.0" fitWidth="75.0" layoutX="911.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane fx:id="panelExportarPeliculas" onMouseEntered="#expotarEntered" onMouseExited="#exportarExited" onMousePressed="#exportarPeliculasPressed" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <Label alignment="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1298.0" text="Exportar Películas" />
-                  <ImageView fx:id="exportBtn" fitHeight="75.0" fitWidth="75.0" layoutX="1176.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1030.0" text="Exportar Películas" />
+                  <ImageView fx:id="exportBtn" fitHeight="75.0" fitWidth="75.0" layoutX="912.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <Pane fx:id="panelSalir" onMouseEntered="#salirEntered" onMouseExited="#salirExited" onMousePressed="#panelSalirPressed" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <Label alignment="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1298.0" text="Salir" />
-                  <ImageView fx:id="exitBtn" fitHeight="75.0" fitWidth="75.0" layoutX="1176.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label alignment="CENTER" layoutX="-9.0" layoutY="38.0" prefHeight="36.0" prefWidth="1033.0" text="Salir" />
+                  <ImageView fx:id="exitBtn" fitHeight="75.0" fitWidth="75.0" layoutX="910.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>

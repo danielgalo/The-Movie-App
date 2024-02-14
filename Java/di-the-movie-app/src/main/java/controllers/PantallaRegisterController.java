@@ -68,6 +68,16 @@ public class PantallaRegisterController {
 	@FXML
 	private Button btnVolver;
 
+	/**
+	 * Inicializa el controlador después de que se haya cargado la raíz del archivo
+	 * FXML.
+	 */
+	@FXML
+	void initialize() {
+		txtContrasena.setManaged(true);
+		txtContrasena.setVisible(true);
+	}
+
 	@FXML
 	void btnRegistrarsePressed(MouseEvent e) {
 		// Si los campos no están vacíos
