@@ -202,14 +202,20 @@ public class PantallaAltaAPIController {
 
 			// Mostrar mensaje según el código de salida
 			if (exitCode == 0) {
-				alert.setAlertType(AlertType.CONFIRMATION);
+				alert.setAlertType(AlertType.INFORMATION);
 				alert.setContentText("La película ha sido dada de alta correctamente.");
-			} else {
+			} else if (exitCode == -1) {
 				alert.setAlertType(AlertType.ERROR);
 				alert.setContentText("Ha ocurrido un error al dar de alta la película.");
+			} else if (exitCode == 2) {
+				alert.setAlertType(AlertType.INFORMATION);
+				alert.setContentText("Actualización de película cancelada");
+			} else if (exitCode == 1) {
+				alert.setAlertType(AlertType.INFORMATION);
+				alert.setContentText("Película actualizada correctamente");
 			}
 
-			alert.showAndWait();
+			alert.show();
 
 		} else {
 			showError("La fecha de visualización es obligatoria");

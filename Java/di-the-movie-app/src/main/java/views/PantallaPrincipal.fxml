@@ -12,8 +12,9 @@
    <children>
       <Pane fx:id="panelSuperior" layoutX="69.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="950.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="lblTitulo" alignment="CENTER" layoutY="13.0" prefHeight="45.0" prefWidth="1447.0" text="The Movie App" />
-            <ImageView fx:id="imgLogo" fitHeight="66.0" fitWidth="80.0" layoutX="17.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblTitulo" layoutX="136.0" layoutY="13.0" prefHeight="45.0" prefWidth="472.0" text="The Movie App" />
+            <ImageView fx:id="imgLogo" fitHeight="66.0" fitWidth="80.0" layoutX="23.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblBienvenido" alignment="CENTER_RIGHT" layoutX="723.0" layoutY="13.0" prefHeight="45.0" prefWidth="663.0" />
          </children>
       </Pane>
       <GridPane layoutX="47.0" layoutY="139.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">

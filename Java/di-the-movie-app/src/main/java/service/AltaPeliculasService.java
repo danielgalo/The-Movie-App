@@ -6,10 +6,13 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.Session;
 
 import controllers.PantallaLoginController;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import persistence.HibernateUtil;
 import persistence.dao.ActorDaoImpl;
 import persistence.dao.CompanyDaoImpl;
@@ -59,8 +62,9 @@ public class AltaPeliculasService {
 	 * @param comentariosUsuario comentarios del usuario sobre la película
 	 * @param valoracionUsuario  valoración del usuario de la película
 	 * @param input              nombre de la localización de la película
-	 * @return {@code 0} si se pudo dar de alta la película o {@code -1} si hubo
-	 *         algún problema
+	 * @return {@code 0} si se pudo dar de alta la película, {@code -1} si hubo
+	 *         algún problema y {@code 2} si el usuario cancela la insercion de la
+	 *         pelicula
 	 */
 	public static int insertPelicula(String titulo, int posicionPelicula, LocalDate localDate,
 			String comentariosUsuario, double valoracionUsuario, String inputLoc) {
@@ -136,18 +140,38 @@ public class AltaPeliculasService {
 				// Asociar compañias a la pelicula
 				pelicula.setCompPelicula(compsPelis);
 
+				// Si la película no existe previamente en la base de datos
 				if (peliculaEncontrada != null) {
-					// Actualizar película
-					PeliculaDaoImpl searcher = new PeliculaDaoImpl(session);
-					Pelicula peliABorrar = searcher.searchById(peliculaIdApi, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
-					peliDao.delete(peliABorrar);
-					peliDao.insert(pelicula);
+					// Crear una alerta de confirmación
+					Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+					alert.setTitle("Confirmación");
+					alert.setHeaderText("¿Estás seguro de querer actualizar la película?");
+					alert.setContentText("Se sobreescribirán los datos introducidos.");
+
+					// Mostrar la alerta y esperar a que el usuario elija una opción
+					Optional<ButtonType> result = alert.showAndWait();
+
+					// Verificar la opción elegida por el usuario
+					if (result.isPresent() && result.get() == ButtonType.OK) {
+						// Actualizar película
+						PeliculaDaoImpl searcher = new PeliculaDaoImpl(session);
+						Pelicula peliABorrar = searcher.searchById(peliculaIdApi,
+								Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+						peliDao.delete(peliABorrar);
+						peliDao.insert(pelicula);
+
+						return 1;
+
+					} else {
+						// El usuario canceló la operación
+						return 2;
+					}
 				} else {
-					// Insertar película
+					// No se ha encontrado la película en la base de datos. Insertar película
 					peliDao.insert(pelicula);
+					return 0;
 				}
 
-				return 0;
 			} else {
 				return -1;
 			}
