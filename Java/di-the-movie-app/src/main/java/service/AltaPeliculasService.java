@@ -119,6 +119,7 @@ public class AltaPeliculasService {
 
 				// Id en la API de la pelicula
 				Long peliculaIdApi = peliDto.getId();
+
 				// Conseguir las compañias para la pelicula
 				List<CompanyPelicula> compsPelis = setCompaniesPelicula(compDao, pelicula, peliculaIdApi);
 
@@ -200,7 +201,7 @@ public class AltaPeliculasService {
 	 */
 	private static void setDatosPelicula(PeliculaDTO peliDto, User usuario, Pelicula pelicula, Date releaseDate,
 			int year, Date fechaVisualizacion, String comentariosUsuario, double valoracionUsuario) {
-		pelicula.setId(peliDto.getId());
+		pelicula.setIdApi(peliDto.getId());
 		pelicula.setTitulo(peliDto.getTitulo());
 		pelicula.setOverview(peliDto.getOverview());
 		pelicula.setReleaseDate(releaseDate);

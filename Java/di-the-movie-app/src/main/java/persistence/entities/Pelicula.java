@@ -8,6 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -24,10 +25,15 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	/** Id serial */
 	private static final long serialVersionUID = 1L;
 
-	/** Id de la pelicula */
+	/** Id de la pelicula en la BBDD */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
+
+	/** Id de la pelicula en la API */
+	@Column(name = "id_api")
+	private Long idApi;
 
 	/** Titulo de la pelicula */
 	@Column(name = "titulo")
@@ -122,15 +128,15 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
-		return id;
+	public Long getIdApi() {
+		return idApi;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param idApi the id to set
 	 */
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdApi(Long idApi) {
+		this.idApi = idApi;
 	}
 
 	/**

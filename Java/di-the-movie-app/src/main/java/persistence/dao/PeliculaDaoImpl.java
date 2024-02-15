@@ -75,11 +75,11 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 			for (GeneroPelicula genPeli : queryGPResults) {
 
 				// Obtener el id de las películas
-				Long idPeli = genPeli.getId().getPelicula().getId();
+				Long idPeli = genPeli.getId().getPelicula().getIdApi();
 
 				// Buscar películas por ese id, añadirlas a la lista de pelis encontradas
 				TypedQuery<Pelicula> queryPelicula = session
-						.createQuery("FROM Pelicula WHERE id = :id AND usuario.id = :userId", Pelicula.class);
+						.createQuery("FROM Pelicula WHERE idApi = :id AND usuario.id = :userId", Pelicula.class);
 				queryPelicula.setParameter("id", idPeli);
 				queryPelicula.setParameter("userId", userId);
 				Pelicula peliEncontrada = queryPelicula.getSingleResult();
@@ -161,7 +161,7 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 	@Override
 	public Pelicula searchById(Long id, int userId) {
 		try {
-			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE id = :id AND usuario.id = :userId",
+			TypedQuery<Pelicula> query = session.createQuery("FROM Pelicula WHERE idApi = :id AND usuario.id = :userId",
 					Pelicula.class);
 			query.setParameter("id", id);
 			query.setParameter("userId", userId);

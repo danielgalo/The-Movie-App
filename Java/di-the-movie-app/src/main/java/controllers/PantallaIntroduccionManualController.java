@@ -139,7 +139,7 @@ public class PantallaIntroduccionManualController {
     					for (long i = 1; i < 999999999; i++) {
     						Pelicula peliExistente = gestorPelicula.searchById(i, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
 								if (peliExistente == null) {
-									pelicula.setId(i);
+									pelicula.setIdApi(i);
 									break;
 								}
 							}
@@ -248,7 +248,7 @@ public class PantallaIntroduccionManualController {
     					gestorPelicula.insert(pelicula);
     					
     					//Comprueba que la película recién insertada se encuentra en la base de datos
-    					Pelicula peliculaInsertada = gestorPelicula.searchById(pelicula.getId(), Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+    					Pelicula peliculaInsertada = gestorPelicula.searchById(pelicula.getIdApi(), Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
     					//Si se encuentra la película
     					if (peliculaInsertada != null) {
     						//Muestra un mensaje de confirmación

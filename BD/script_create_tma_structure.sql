@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS the_movie_app;
 CREATE DATABASE the_movie_app;
 USE the_movie_app;
--- Eliminar claves foráneas
-
 
 -- Eliminar tablas existentes si existen
 DROP TABLE IF EXISTS actores;
@@ -74,12 +72,14 @@ CREATE TABLE directores (
 
 
 CREATE TABLE peliculas (
+
+    id BIGINT NOT NULL AUTO_INCREMENT,
+	id_api BIGINT NOT NULL,
     valoracion_usuario FLOAT(53),
 	valoracion FLOAT(53),
     year INTEGER,
     fecha_de_alta DATETIME(6) NOT NULL,
     fecha_visualizacion_usuario DATETIME(6),
-    id BIGINT NOT NULL AUTO_INCREMENT,
     localizacion_id BIGINT,
     release_date DATETIME(6),
     ultima_fecha_modificacion DATETIME(6),
