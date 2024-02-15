@@ -20,6 +20,7 @@ public class CeldaPelicula {
 	private String fechaLanzamiento;
 	private String descripcion;
 	private Pelicula pelicula;
+	private Label tituloPulsable;
 	
 	@SuppressWarnings("deprecation")
 	public CeldaPelicula(int posicionY, Pelicula pelicula) {
@@ -27,17 +28,17 @@ public class CeldaPelicula {
 		
 		poster = pelicula.getCartel();
 		titulo = pelicula.getTitulo();
-		for (GeneroPelicula generoId : pelicula.getGeneroPelicula()) {		
-			if (!(generoId.getId().getGenero().getNombre().isBlank())) {
-				genero = generoId.getId().getGenero().getNombre();
+		for (GeneroPelicula generoPelicula : pelicula.getGeneroPelicula()) {		
+			if (!(generoPelicula.getId().getGenero().getNombre().isBlank())) {
+				genero = generoPelicula.getId().getGenero().getNombre();
 				break;				
 			}
 		}
 		
-		if (pelicula.getYear() != 0) {
-			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "/" + (pelicula.getReleaseDate().getMonth() + 1) + "/" + (pelicula.getReleaseDate().getYear() + 1900);
+		if (pelicula.getIdApi() != null) {
+			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "-" + (pelicula.getReleaseDate().getMonth() + 1) + "-" + (pelicula.getReleaseDate().getYear() + 1900);
 		} else {
-			fechaLanzamiento = pelicula.getReleaseDate().getDate() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();			
+			fechaLanzamiento = pelicula.getReleaseDate().getDate() + "-" + pelicula.getReleaseDate().getMonth() + "-" + pelicula.getReleaseDate().getYear();			
 		}
 		descripcion = pelicula.getOverview();
 		
@@ -148,6 +149,11 @@ public class CeldaPelicula {
   	//Poster
   	celdaPelicula.getChildren().add(posterElemento);
   	//Título de la película
+  	/**
+  	 * Nota: De paso tambien pasa el label a una variable para ser usado
+  	 * como botón para abrir más información de la película.
+  	 */
+  	tituloPulsable = tituloPelicula;
   	celdaPelicula.getChildren().add(tituloPelicula);
   	//Etiqueta "GENERO:"
   	celdaPelicula.getChildren().add(lblGeneroPelicula);
@@ -169,6 +175,10 @@ public class CeldaPelicula {
 	
 	public Pelicula getPelicula() {
 		return pelicula;
+	}
+	
+	public Label getLabelTituloPulsable(){
+		return tituloPulsable;
 	}
 	
 }

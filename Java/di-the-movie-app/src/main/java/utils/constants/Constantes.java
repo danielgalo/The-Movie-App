@@ -27,6 +27,9 @@ public class Constantes {
 
 	/* Pantalla de listado de películas */
 	public static final String PANTALLA_EXPORTACION_PELICULAS = "/views/PantallaExportacionPeliculas.fxml";
+	
+	/* Pantalla de información de películas */
+	public static final String PANTALLA_INFORMACION_PELICULA = "/views/InformacionPelicula.fxml";
 
 	// HOJAS DE ESTILOS
 
@@ -50,6 +53,9 @@ public class Constantes {
 
 	/* Pantalla de listado de películas */
 	public static final String CSS_EXPORTACION_PELICULAS = "/styles/exportacion-pelicula-style.css";
+	
+	/* Pantalla de información de películas */
+	public static final String CSS_INFORMACION_PELICULA = "/styles/informacion-pelicula-style.css";
 
 	/**
 	 * Constructor privado

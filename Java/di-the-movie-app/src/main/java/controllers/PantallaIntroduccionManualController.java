@@ -5,8 +5,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.LongToIntFunction;
-
 import javax.imageio.ImageIO;
 
 import org.hibernate.Session;
@@ -136,14 +134,6 @@ public class PantallaIntroduccionManualController {
     					//Asigna a la película el usuario_id del usuario que está usando la app
     					pelicula.setUsuario(PantallaLoginController.currentUser);
     					
-    					for (long i = 1; i < 999999999; i++) {
-    						Pelicula peliExistente = gestorPelicula.searchById(i, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
-								if (peliExistente == null) {
-									pelicula.setIdApi(i);
-									break;
-								}
-							}
-    					
     					//Asigna a la película el título
     					pelicula.setTitulo(txtTitulo.getText());
     					
@@ -246,20 +236,10 @@ public class PantallaIntroduccionManualController {
     					
     					//Inserta la película en la base de datos
     					gestorPelicula.insert(pelicula);
-    					
-    					//Comprueba que la película recién insertada se encuentra en la base de datos
-    					Pelicula peliculaInsertada = gestorPelicula.searchById(pelicula.getIdApi(), Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
-    					//Si se encuentra la película
-    					if (peliculaInsertada != null) {
-    						//Muestra un mensaje de confirmación
-    						lblResultadoAlta.setTextFill(Paint.valueOf("Green"));
-    						lblResultadoAlta.setText("¡Pelicula dada de alta con éxito!");
-    					//Si no se encuentra
-							} else {
-								//Muestra un mensaje de error
-								lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
-    						lblResultadoAlta.setText("Error al dar de alta la película, vuelva al menú e intentelo de nuevo");
-							}
+    					    					
+    					//Si todo va bien, muestra un mensaje de confirmación
+    					lblResultadoAlta.setTextFill(Paint.valueOf("Green"));
+    					lblResultadoAlta.setText("¡Pelicula dada de alta con éxito!");
     				//Si la valoración no es un número entre 0 y 10
 						} else {
 							//Muestra un mensaje de error

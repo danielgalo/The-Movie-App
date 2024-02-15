@@ -1,12 +1,16 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
+import application.TMAMain;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
@@ -15,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import persistence.HibernateUtil;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.Pelicula;
@@ -49,6 +54,7 @@ public class PantallaListaPeliculasController {
   private String tituloBuscar = "";
   private List<Pelicula> listPeliculas;
   private List<Pane> listaCeldasPeliculas;
+  protected static Pelicula peliculaActual;
   
   @FXML
   void initialize() {
@@ -97,6 +103,29 @@ public class PantallaListaPeliculasController {
 					mainPane.getChildren().removeAll(listaCeldasPeliculas);
 					initialize();
 				}
+			});
+  		
+  		celdaPelicula.getLabelTituloPulsable().setOnMouseEntered(new EventHandler<MouseEvent>() {
+  			@Override
+  			public void handle(MouseEvent event) {
+  				celdaPelicula.getLabelTituloPulsable().setUnderline(true);
+  			}
+			});
+  		
+  		celdaPelicula.getLabelTituloPulsable().setOnMouseExited(new EventHandler<MouseEvent>() {
+  			@Override
+  			public void handle(MouseEvent event) {
+  				celdaPelicula.getLabelTituloPulsable().setUnderline(false);
+  			}
+			});
+  		
+  		celdaPelicula.getLabelTituloPulsable().setOnMousePressed(new EventHandler<MouseEvent>() {
+  			@Override
+  			public void handle(MouseEvent event) {
+  				peliculaActual = celdaPelicula.getPelicula();
+  				NavegacionPantallas navegacionPantallas = new NavegacionPantallas("Información pelicula", Constantes.PANTALLA_INFORMACION_PELICULA, Constantes.CSS_INFORMACION_PELICULA);
+  				navegacionPantallas.navegaAPantalla();
+  			}
 			});
   		
   		celdaPelicula.getCeldaPelicula().getChildren().add(btnBorrarPelicula);

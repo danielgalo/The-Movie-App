@@ -1,0 +1,23 @@
+#mainPane{
+	-fx-background-color: #d9d9d9;
+	-fx-background-radius: 25;
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-border-radius: 25;
+}
+
+#labelTitulo{
+	-fx-font-size: 56px;
+	-fx-font-weight: bold;
+}
+
+#labelElementos{
+	-fx-font-size: 36px;
+	-fx-font-weight: bold;
+}
+
+#textArea{
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+	-fx-font-size: 24px;
+}
