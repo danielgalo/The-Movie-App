@@ -49,6 +49,12 @@
 	-fx-border-radius: 60;
 }
 
+#txtDescripcion{
+	-fx-font-size: 24px;
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+}
+
 #fechaEstreno{
 	-fx-font-size: 24px;
 	-fx-border-color: black;

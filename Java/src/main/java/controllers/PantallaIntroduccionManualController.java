@@ -99,7 +99,7 @@ public class PantallaIntroduccionManualController {
     				Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
     				pelicula.setReleaseDate(fechaEstreno);
     				pelicula.setCartel(txtUrl.getText());
-    				//TODO add id
+    				//TODO add overwrite pop-up
     				insertadorPelicula.insert(pelicula);							
 						
     				lblPeliculaInsertada.setTextFill(Paint.valueOf("Green"));
