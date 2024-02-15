@@ -148,6 +148,7 @@ public class PeliculaDaoImpl extends CommonDaoImpl<Pelicula> implements Pelicula
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<Pelicula> searchByUser(User user) {
 		if (!session.getTransaction().isActive()) {

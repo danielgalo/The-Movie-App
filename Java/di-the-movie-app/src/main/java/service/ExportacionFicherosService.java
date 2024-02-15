@@ -99,10 +99,6 @@ public class ExportacionFicherosService {
 			e.printStackTrace();
 			return -1;
 		}
-
-		for (PeliculaDTO peliDTO : pelisDTO) {
-
-		}
 		return 0;
 	}
 

@@ -24,6 +24,7 @@ public class GeneroDaoImpl extends CommonDaoImpl<Genero> implements GeneroDaoI {
 
 	}
 
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public Genero getGeneroByName(String nombre) {
 
@@ -38,6 +39,7 @@ public class GeneroDaoImpl extends CommonDaoImpl<Genero> implements GeneroDaoI {
 		return query.getSingleResult();
 	}
 
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Override
 	public Genero getGeneroById(Long id) {
 		if (!session.getTransaction().isActive()) {

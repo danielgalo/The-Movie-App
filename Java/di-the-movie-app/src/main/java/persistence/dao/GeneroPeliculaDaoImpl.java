@@ -10,6 +10,7 @@ import persistence.entities.GeneroPelicula;
 public class GeneroPeliculaDaoImpl extends CommonDaoImpl<GeneroPelicula> {
 
 	/** Sesion hibernate */
+	@SuppressWarnings("unused")
 	private Session session;
 
 	/**

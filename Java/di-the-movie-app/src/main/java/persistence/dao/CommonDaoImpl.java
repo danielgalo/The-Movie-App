@@ -57,6 +57,7 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	/**
 	 * Metodo que elimina un objeto de la base de datos
 	 */
+	@SuppressWarnings("deprecation")
 	public void delete(final T paramT) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
@@ -69,7 +70,7 @@ public abstract class CommonDaoImpl<T> implements CommonDaoI<T> {
 	/**
 	 * Metodo que lista todos los objetos de la base de datos
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public List<T> searchAll() {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();

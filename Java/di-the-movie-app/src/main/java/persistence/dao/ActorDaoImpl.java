@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import persistence.entities.Actor;
-import persistence.entities.ActoresPeliculas;
 
 /**
  * Implementación DAO para actores
@@ -24,6 +23,7 @@ public class ActorDaoImpl extends CommonDaoImpl<Actor> {
 		this.session = session;
 	}
 	
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public Actor getActorByName(String nombre) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();

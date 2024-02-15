@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import persistence.entities.Director;
-import persistence.entities.DirectoresPeliculas;
 
 /**
  * Clase DAO para los directores
@@ -24,6 +23,7 @@ public class DirectorDaoImpl extends CommonDaoImpl<Director> {
 		this.session = session;
 	}
 
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public Director getDirectorByName(String nombre) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
