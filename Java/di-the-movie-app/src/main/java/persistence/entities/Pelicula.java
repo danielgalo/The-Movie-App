@@ -27,7 +27,6 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	/** Id de la pelicula */
 	@Id
 	@Column(name = "id")
-	@GeneratedValue
 	private Long id;
 
 	/** Titulo de la pelicula */

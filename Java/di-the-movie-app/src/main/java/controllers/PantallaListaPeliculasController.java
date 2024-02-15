@@ -64,7 +64,7 @@ public class PantallaListaPeliculasController {
   	int posY = 220;
   	 listaCeldasPeliculas = new ArrayList<Pane>();
   	for (Pelicula pelicula : listPeliculas) {
-  		final CeldaPelicula celdaPelicula = new CeldaPelicula(25, posY, pelicula);
+  		final CeldaPelicula celdaPelicula = new CeldaPelicula(posY, pelicula);
   		
   		final Button btnBorrarPelicula = new Button();
   		btnBorrarPelicula.setId("btnBorrarPelicula");

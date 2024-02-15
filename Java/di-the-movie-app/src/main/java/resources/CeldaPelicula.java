@@ -22,7 +22,7 @@ public class CeldaPelicula {
 	private Pelicula pelicula;
 	
 	@SuppressWarnings("deprecation")
-	public CeldaPelicula(int posicionX, int posicionY, Pelicula pelicula) {
+	public CeldaPelicula(int posicionY, Pelicula pelicula) {
 		this.pelicula = pelicula;
 		
 		poster = pelicula.getCartel();
@@ -33,6 +33,7 @@ public class CeldaPelicula {
 				break;				
 			}
 		}
+		
 		if (pelicula.getYear() != 0) {
 			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "/" + (pelicula.getReleaseDate().getMonth() + 1) + "/" + (pelicula.getReleaseDate().getYear() + 1900);
 		} else {
@@ -136,7 +137,7 @@ public class CeldaPelicula {
   	
   	/* CREACIÓN DE LA CELDA */
 		celdaPelicula = new Pane();
-  	celdaPelicula.setLayoutX(posicionX);
+  	celdaPelicula.setLayoutX(25);
   	celdaPelicula.setLayoutY(posicionY);
   	celdaPelicula.setPrefWidth(1370);
   	celdaPelicula.setPrefHeight(240);

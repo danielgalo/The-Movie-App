@@ -5,6 +5,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.LongToIntFunction;
 
 import javax.imageio.ImageIO;
 
@@ -64,10 +65,7 @@ public class PantallaIntroduccionManualController {
   private ImageView imgVector;
 
   @FXML
-  private Label lblPeliculaInsertada;
-
-  @FXML
-  private Label lblRecordatorioCampoObligatorio;
+  private Label lblResultadoAlta;
 
   @FXML
   private Spinner<Double> spnValoracion;
@@ -95,22 +93,27 @@ public class PantallaIntroduccionManualController {
     
     @FXML
     void initialize() {
+    	//Añade todos los generos seleccionables al comboBox de generos 
     	String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
     	cmbGenero.getItems().addAll(generos);
-    	
+    	//Asigna los valores y límites del campo de valoración
     	SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);
   		spnValoracion.setValueFactory(valueFactory);
     }
 
     @FXML
+    /**
+     * Crea una película nueva en la base de datos con los datos provistos en el formulario
+     * @param event
+     */
     void btnAltaPressed(MouseEvent event) {
-    	lblRecordatorioCampoObligatorio.setEffect(null);
-    	lblPeliculaInsertada.setText("");;
+    	//Limpia la etiqueta del resultado del alta
+    	lblResultadoAlta.setText("");
     	
-    	
+    	//Si los campos obligatorios están rellenos
     	if (!camposObligatoriosAreNull()) {
-    		Image image = null;
     		//Comprueba que la URL lleva a una imagen usable
+    		Image image = null;
 				try {
 					image = ImageIO.read(new URL(txtUrl.getText()));
 				} catch (Exception e) {
@@ -123,22 +126,33 @@ public class PantallaIntroduccionManualController {
     			 * Nota: ImageView solo parecía aceptar formato png y jpg
     			 */
     			if (txtUrl.getText().endsWith(".png") || txtUrl.getText().contains(".jpg")) {
+    				//Y si la valoración es un número entre 0 y 10
     				if (spnValoracion.getValue() <= 10 && spnValoracion.getValue() >= 0) {
     					//Inicia una nueva sesión con la tabla peliculas
     					Session session = HibernateUtil.getSession();
     					PeliculaDaoImpl gestorPelicula = new PeliculaDaoImpl(session);
     					//Crea una nueva instancia pelicula
     					Pelicula pelicula = new Pelicula();
-    					//Asigna a la película el id del usuario que está usando la app
+    					//Asigna a la película el usuario_id del usuario que está usando la app
     					pelicula.setUsuario(PantallaLoginController.currentUser);
+    					
+    					for (long i = 1; i < 999999999; i++) {
+    						Pelicula peliExistente = gestorPelicula.searchById(i, Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+								if (peliExistente == null) {
+									pelicula.setId(i);
+									break;
+								}
+							}
     					
     					//Asigna a la película el título
     					pelicula.setTitulo(txtTitulo.getText());
     					
-    					//Crea una nueva lista de generos donde se almacenará el genero elegido
+    					//Obten el genero de la base de datos según el nombre del comboBox
     					GeneroDaoImpl obtenedorGenero = new GeneroDaoImpl(session);
     					GeneroPelicula generoPelicula = new GeneroPelicula(new GeneroPeliculaId(pelicula, obtenedorGenero.getGeneroByName(cmbGenero.getValue())));
+    					//Crea una nueva lista para el genero
     					List<GeneroPelicula> listaGeneros = new ArrayList<GeneroPelicula>();
+    					//Añade el genero a la lista
     					listaGeneros.add(generoPelicula);
     					
     					//Asigna a la película el genero elegido
@@ -147,60 +161,80 @@ public class PantallaIntroduccionManualController {
     					//Asigna a la película la descripción
     					pelicula.setOverview(txtDescripcion.getText());
     					
-    					//Asigna a la película los actores separados por una coma
+    					//Si el campo de actores no está vacío
     					if (!txtActores.getText().isBlank()) {
+    						//Divide los nombres y guardalos en un array
     						String[] nombresActores = txtActores.getText().split(",");
+    						//Crea la lista que se asignará a la película
     						ActorDaoImpl gestorActores = new ActorDaoImpl(session);
     						List<ActoresPeliculas> actores = new ArrayList<ActoresPeliculas>();
+    						//Por cada nombre de actor en el array
     						for (String nombreActor : nombresActores) {
+    							//Crea un nuevo actor
     							Actor actor = new Actor();
+    							//Asignale un nombre
     							actor.setNombre(nombreActor);
+    							//Añadelo a la base de datos
     							gestorActores.insert(actor);
-    							
+    							//Y añadelo a la lista de actores
     							ActoresPeliculasId actorId = new ActoresPeliculasId(pelicula, actor);
     							ActoresPeliculas actorPeliculas = new ActoresPeliculas(actorId);
     							actores.add(actorPeliculas);
     						}
+    						//Asigna a la película los actores
     						pelicula.setActoresPeliculas(actores);								
 							}
     					
-    					//Asigna a la película los directores separados por una coma
-    					if (!txtDirectores.getText().isBlank()) {								
+    					//Si el campo de directores no está vacío
+    					if (!txtDirectores.getText().isBlank()) {		
+    						//Divide los nombres y guardalos en un array
     						String[] nombresDirectores = txtDirectores.getText().split(",");
+    						//Crea la lista que se asignará a la película
     						DirectorDaoImpl gestorDirectores = new DirectorDaoImpl(session);
     						List<DirectoresPeliculas> directores = new ArrayList<DirectoresPeliculas>();
+    						//Por cada nombre de director en el array
     						for (String nombreDirector : nombresDirectores) {
+    							//Crea un nuevo director
     							Director director = new Director();
+    							//Asignale un nombre
     							director.setNombre(nombreDirector);
+    							//Añadelo a la base de datos
     							gestorDirectores.insert(director);
-    							
+    							//Y añadelo a la lista de directores
     							DirectoresPeliculasId directorId = new DirectoresPeliculasId(pelicula, director);
     							DirectoresPeliculas directorPeliculas = new DirectoresPeliculas(directorId);
     							directores.add(directorPeliculas);
     						}
+    						//Asigna a la película los directores
     						pelicula.setDirectoresPelicula(directores);
 							}
     					
-    					//Asigna a la película la fecha de estreno 
+    					//Crea un nuevo objeto Date con los datos del campo de la fecha de estreno
     					@SuppressWarnings("deprecation")
     					Date fechaEstreno = new Date(dateFechaEstreno.getValue().getYear(), dateFechaEstreno.getValue().getMonthValue(), dateFechaEstreno.getValue().getDayOfMonth()); 
+    					//Asigna a la película la fecha de estreno
     					pelicula.setReleaseDate(fechaEstreno);
     					
-    					//Asigna a la película la fecha de estreno 
+    					//Crea un nuevo objeto Date con los datos del campo de la fecha de visualización
     					@SuppressWarnings("deprecation")
     					Date fechaVisualizacion = new Date(dateFechaVisualizacion.getValue().getYear(), dateFechaVisualizacion.getValue().getMonthValue(), dateFechaVisualizacion.getValue().getDayOfMonth()); 
+    					//Asigna a la película la fecha de visualización 
     					pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
     					
-    					//Asigna a la película la localización
+    					//Si el campo localización no está vacío
     					if (!txtLocalizacion.getText().isBlank()) {
+    						//Crea un nuevo objeto localizacion
     						LocalizacionDaoImpl gestorLocalizacion = new LocalizacionDaoImpl(session);
     						Localizacion localizacion = new Localizacion();
+    						//Asignale como nombre el texto del campo
     						localizacion.setNombre(txtLocalizacion.getText());
+    						//Insertalo en la base de datos
     						gestorLocalizacion.insert(localizacion);
+    						//Y asignaselo a la película
     						pelicula.setLocalizacion(localizacion);								
 							}
     					
-    					//Asigna a la película la valoracion
+    					//Asigna a la película la valoracion como valoración general y del usuario
     					pelicula.setValoracion(spnValoracion.getValue());
     					pelicula.setValoracionUsuario(spnValoracion.getValue());
     					
@@ -209,31 +243,53 @@ public class PantallaIntroduccionManualController {
     					
     					//Asigna a la película la URL de la imagen del poster
     					pelicula.setCartel(txtUrl.getText());
-    					//TODO add overwrite pop-up
+    					
+    					//Inserta la película en la base de datos
     					gestorPelicula.insert(pelicula);
     					
-    					//Si todo va bien, se mostrará un mensaje de confirmación
-    					lblPeliculaInsertada.setTextFill(Paint.valueOf("Green"));
-    					lblPeliculaInsertada.setText("¡Pelicula dada de alta con éxito!");
-    					
+    					//Comprueba que la película recién insertada se encuentra en la base de datos
+    					Pelicula peliculaInsertada = gestorPelicula.searchById(pelicula.getId(), Integer.parseInt("" + PantallaLoginController.currentUser.getId()));
+    					//Si se encuentra la película
+    					if (peliculaInsertada != null) {
+    						//Muestra un mensaje de confirmación
+    						lblResultadoAlta.setTextFill(Paint.valueOf("Green"));
+    						lblResultadoAlta.setText("¡Pelicula dada de alta con éxito!");
+    					//Si no se encuentra
+							} else {
+								//Muestra un mensaje de error
+								lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
+    						lblResultadoAlta.setText("Error al dar de alta la película, vuelva al menú e intentelo de nuevo");
+							}
+    				//Si la valoración no es un número entre 0 y 10
 						} else {
-							lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
-		  				lblPeliculaInsertada.setText("La valoración debe ser solo un número entre 0 y 10.");
+							//Muestra un mensaje de error
+							lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
+		  				lblResultadoAlta.setText("La valoración debe ser solo un número entre 0 y 10.");
 						}
+    			//Si la imagen no es aceptada
     			} else {
-    				lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
-    				lblPeliculaInsertada.setText("Formato de URL invalido (solo .png y .jpg)");
-    			} 
+    				//Muestra un mensaje diciendo que el formato es invalido
+    				lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
+    				lblResultadoAlta.setText("Formato de URL invalido (solo .png y .jpg)");
+    			}
+    		//Si el URL no lleva a una imagen
     		} else {
-    			lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
-  				lblPeliculaInsertada.setText("URL de imagen inválido.");
+    			//Muestra un mensaje de error
+    			lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
+  				lblResultadoAlta.setText("URL de imagen inválido.");
 				}
+    	//Si los campos obligatorios no están rellenos
 			} else {
-				lblPeliculaInsertada.setTextFill(Paint.valueOf("Red"));
-				lblPeliculaInsertada.setText("Recuerde rellenar los campo obligatorios (marcados con un * rojo)");
+				//Muestra un mensaje de error
+				lblResultadoAlta.setTextFill(Paint.valueOf("Red"));
+				lblResultadoAlta.setText("Recuerde rellenar los campo obligatorios (marcados con un * rojo)");
 			}
     }
-
+    
+    /**
+     * Se asegura de que todos los campos obligatorios tienen datos válidos insertados
+     * @return
+     */
     private boolean camposObligatoriosAreNull() {
 			if (txtTitulo.getText().isBlank() || cmbGenero.getValue() == null || dateFechaEstreno.getValue() == null || dateFechaVisualizacion.getValue() == null || txtUrl.getText().isBlank()) {
 				return true;
@@ -241,8 +297,12 @@ public class PantallaIntroduccionManualController {
 				return false;				
 			}
 		}
-
+    
 		@FXML
+		/**
+		 * Cierra esta ventana y vuelve a la pantalla principal de la app.
+		 * @param event
+		 */
     void btnVolverPressed(MouseEvent event) {
     	NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Principal", Constantes.PANTALLA_PRINCIPAL, Constantes.CSS_PANTALLA_PRINCIPAL);
     	navegacion.navegaAPantalla();
@@ -250,6 +310,10 @@ public class PantallaIntroduccionManualController {
     }
     
     @FXML
+    /**
+     * Da un efecto de sombra al botón
+     * @param event
+     */
     void btnVolverEntered(MouseEvent event) {
     	DropShadow shadow = new DropShadow();
   		shadow.setColor(new Color(0.0, 0.95, 1.0, 1.0));
@@ -258,11 +322,19 @@ public class PantallaIntroduccionManualController {
     }
     
     @FXML
+    /**
+     * Quitá el efecto de sombra al botón
+     * @param event
+     */
     void btnVolverExited(MouseEvent event) {
     	btnVolver.setEffect(null);
     }
     
     @FXML
+    /**
+     * Da un efecto de sombra al botón
+     * @param event
+     */
     void btnAltaEntered(MouseEvent event) {
     	DropShadow shadow = new DropShadow();
   		shadow.setColor(new Color(0.3421, 0.3421, 0.3421, 1.0));
@@ -271,6 +343,10 @@ public class PantallaIntroduccionManualController {
     }
     
     @FXML
+    /**
+     * Quitá el efecto de sombra al botón
+     * @param event
+     */
     void btnAltaExited(MouseEvent event) {
     	btnAlta.setEffect(null);
     }
