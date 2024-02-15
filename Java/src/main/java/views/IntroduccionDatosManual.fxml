@@ -4,6 +4,9 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,169 +18,324 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaIntroduccionManualController">
    <children>
-      <Pane id="mainPane" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/introduccion-manual-style.css">
-         <children>
-            <Pane id="cabecera" prefHeight="114.0" prefWidth="1440.0">
+      <ScrollPane fitToWidth="true" prefHeight="1024.0" prefWidth="1440.0">
+         <content>
+            <AnchorPane prefHeight="1790.0" prefWidth="1440.0">
                <children>
-                  <Label id="lblCabecera" layoutX="393.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Introducción de datos manual" textFill="WHITE">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Label>
-                  <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/introduccion-manual-style.css" text="Menú" />
-                  <ImageView fx:id="imgVector" fitHeight="41.0" fitWidth="75.0" layoutX="39.0" layoutY="39.0" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed">
-                     <image>
-                        <Image url="@../resources/vector.png" />
-                     </image>
-                  </ImageView>
+                  <Pane id="mainPane" prefHeight="1790.0" prefWidth="1440.0" stylesheets="@../styles/introduccion-manual-style.css">
+                     <children>
+                        <Pane id="cabecera" prefHeight="114.0" prefWidth="1440.0">
+                           <children>
+                              <Label id="lblCabecera" layoutX="393.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Introducción de datos manual" textFill="WHITE">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <Button id="btnVolver" fx:id="btnVolver" alignment="CENTER_RIGHT" layoutX="29.0" layoutY="19.0" mnemonicParsing="false" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed" prefHeight="80.0" prefWidth="174.0" stylesheets="@../styles/introduccion-manual-style.css" text="Menú" />
+                              <ImageView fx:id="imgVector" fitHeight="41.0" fitWidth="75.0" layoutX="39.0" layoutY="39.0" onMouseEntered="#btnVolverEntered" onMouseExited="#btnVolverExited" onMousePressed="#btnVolverPressed">
+                                 <image>
+                                    <Image url="@../resources/vector.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane id="subPane" layoutX="50.0" layoutY="149.0" prefHeight="1605.0" prefWidth="1340.0" stylesheets="@../styles/introduccion-manual-style.css">
+                           <children>
+                              <Label layoutX="142.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Rellenar los campos con los datos de la película">
+                                 <font>
+                                    <Font name="System Bold" size="50.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4868420958518982" green="0.4868420958518982" blue="0.4868420958518982" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="130.0" stylesheets="@../styles/introduccion-manual-style.css" text="Título:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="330.0" stylesheets="@../styles/introduccion-manual-style.css" text="Descripción:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="730.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de estreno:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="1330.0" stylesheets="@../styles/introduccion-manual-style.css" text="Poster (URL):">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Button id="btnAlta" fx:id="btnAlta" layoutX="510.0" layoutY="1455.0" mnemonicParsing="false" onMouseEntered="#btnAltaEntered" onMouseExited="#btnAltaExited" onMousePressed="#btnAltaPressed" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Button>
+                              <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="120.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextField>
+                              <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="1320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextField>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="230.0" stylesheets="@../styles/introduccion-manual-style.css" text="Género:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <ChoiceBox id="txtField" fx:id="cmbGenero" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.41228070855140686" green="0.41228070855140686" blue="0.41228070855140686" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ChoiceBox>
+                              <DatePicker id="altField" fx:id="dateFechaEstreno" layoutX="500.0" layoutY="720.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </DatePicker>
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="710.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblPeliculaInsertada" alignment="CENTER" layoutX="30.0" layoutY="1410.0" prefHeight="35.0" prefWidth="1270.0">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.5087719559669495" green="0.5056313872337341" blue="0.5056313872337341" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <TextArea id="altField" fx:id="txtDescripcion" layoutX="500.0" layoutY="320.0" prefHeight="172.0" prefWidth="810.0" promptText="Sinopsis de la película..." stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextArea>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="530.0" stylesheets="@../styles/introduccion-manual-style.css" text="Actores (separados por &quot;,&quot;):">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <TextField id="txtField" fx:id="txtActores" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextField>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="630.0" stylesheets="@../styles/introduccion-manual-style.css" text="Directores (separados por &quot;,&quot;):">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <TextField id="txtField" fx:id="txtDirectores" layoutX="500.0" layoutY="620.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextField>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="830.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de visualización:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <DatePicker id="altField" fx:id="dateFechaVisualizacion" layoutX="500.0" layoutY="820.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </DatePicker>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="930.0" stylesheets="@../styles/introduccion-manual-style.css" text="Localización:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <TextField id="txtField" fx:id="txtLocalizacion" layoutX="500.0" layoutY="920.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextField>
+                              <Spinner id="altField" fx:id="spnValoracion" editable="true" layoutX="500.0" layoutY="1020.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Spinner>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="1030.0" stylesheets="@../styles/introduccion-manual-style.css" text="Valoración:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="1130.0" stylesheets="@../styles/introduccion-manual-style.css" text="Comentarios:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Label>
+                              <TextArea id="altField" fx:id="txtComentarios" layoutX="500.0" layoutY="1120.0" prefHeight="172.0" prefWidth="810.0" promptText="Comentarios personales sobre la película..." stylesheets="@../styles/introduccion-manual-style.css">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </TextArea>
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="810.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="110.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="1310.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="210.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
+                           </effect>
+                        </Pane>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
-            <Pane id="subPane" layoutX="50.0" layoutY="149.0" prefHeight="810.0" prefWidth="1340.0" stylesheets="@../styles/introduccion-manual-style.css">
-               <children>
-                  <Label layoutX="142.0" layoutY="24.0" stylesheets="@../styles/introduccion-manual-style.css" text="Rellenar los campos con los datos de la película">
-                     <font>
-                        <Font name="System Bold" size="50.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.4868420958518982" green="0.4868420958518982" blue="0.4868420958518982" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <Label id="lblTitulo" layoutX="30.0" layoutY="130.0" stylesheets="@../styles/introduccion-manual-style.css" text="Título:">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <Label id="lblDescripcion" layoutX="30.0" layoutY="330.0" stylesheets="@../styles/introduccion-manual-style.css" text="Descripción:">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <Label id="lblFechaEstreno" layoutX="30.0" layoutY="430.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de estreno:">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <Label id="lblPoster" layoutX="30.0" layoutY="530.0" stylesheets="@../styles/introduccion-manual-style.css" text="Poster (URL)">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <Button id="btnAlta" fx:id="btnAlta" layoutX="510.0" layoutY="660.0" mnemonicParsing="false" onMouseEntered="#btnAltaEntered" onMouseExited="#btnAltaExited" onMousePressed="#btnAltaPressed" stylesheets="@../styles/introduccion-manual-style.css" text="Dar de alta">
-                     <font>
-                        <Font size="50.0" />
-                     </font>
-                  </Button>
-                  <TextField id="txtField" fx:id="txtTitulo" layoutX="500.0" layoutY="120.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </TextField>
-                  <TextField id="txtField" fx:id="txtDescripcion" layoutX="500.0" layoutY="320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </TextField>
-                  <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="520.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.4588235318660736" green="0.4588235318660736" blue="0.4588235318660736" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </TextField>
-                  <Label id="lblTitulo" layoutX="30.0" layoutY="230.0" stylesheets="@../styles/introduccion-manual-style.css" text="Género:">
-                     <font>
-                        <Font name="System Bold" size="30.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-                  <ChoiceBox id="txtField" fx:id="cmbGenero" layoutX="500.0" layoutY="220.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.41228070855140686" green="0.41228070855140686" blue="0.41228070855140686" />
-                           </color>
-                        </DropShadow>
-                     </effect></ChoiceBox>
-                  <DatePicker id="fechaEstreno" fx:id="dateFechaEstreno" layoutX="500.0" layoutY="420.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.37719297409057617" green="0.36787956953048706" blue="0.36787956953048706" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </DatePicker>
-                  <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="811.0" layoutY="435.0" prefHeight="14.0" prefWidth="211.0" text="*Campo obligatorio" textFill="RED">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lblPeliculaInsertada" alignment="CENTER" layoutX="394.0" layoutY="614.0" prefHeight="35.0" prefWidth="553.0" visible="false">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.5087719559669495" green="0.5056313872337341" blue="0.5056313872337341" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Label>
-               </children>
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0" />
-               </effect>
-            </Pane>
-         </children>
-      </Pane>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

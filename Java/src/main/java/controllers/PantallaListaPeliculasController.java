@@ -137,6 +137,19 @@ public class PantallaListaPeliculasController {
   void btnVolverExited(MouseEvent event) {
   	btnVolver.setEffect(null);
   }
+  
+  @FXML
+  void btnBuscarEntered(MouseEvent event) {
+  	DropShadow shadow = new DropShadow();
+		shadow.setColor(new Color(0.0, 0.0, 0.0, 1.0));
+		shadow.setSpread(0.18);
+		btnBuscar.setEffect(shadow);
+  }
+  
+  @FXML
+  void btnBuscarExited(MouseEvent event) {
+  	btnBuscar.setEffect(null);
+  }
 
   @FXML
   void btnVolverPressed(MouseEvent event) {

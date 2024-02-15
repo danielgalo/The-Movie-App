@@ -33,7 +33,7 @@ public class CeldaPelicula {
 				break;				
 			}
 		}
-		if (pelicula.getFechaVisualizacionUsuario() != null) {
+		if (pelicula.getYear() != 0) {
 			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "/" + (pelicula.getReleaseDate().getMonth() + 1) + "/" + (pelicula.getReleaseDate().getYear() + 1900);
 		} else {
 			fechaLanzamiento = pelicula.getReleaseDate().getDate() + "/" + pelicula.getReleaseDate().getMonth() + "/" + pelicula.getReleaseDate().getYear();			

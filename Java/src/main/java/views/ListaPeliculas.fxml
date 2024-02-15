@@ -53,7 +53,7 @@
                         </DropShadow>
                      </effect>
                   </TextField>
-                  <Button id="btnBuscar" fx:id="btnBuscar" layoutX="1233.0" layoutY="136.0" mnemonicParsing="false" onMousePressed="#btnBuscarPressed" prefHeight="54.0" prefWidth="155.0" stylesheets="@../styles/lista-peliculas.css" text="Buscar" />
+                  <Button id="btnBuscar" fx:id="btnBuscar" layoutX="1233.0" layoutY="136.0" mnemonicParsing="false" onMouseEntered="#btnBuscarEntered" onMouseExited="#btnBuscarExited" onMousePressed="#btnBuscarPressed" prefHeight="54.0" prefWidth="155.0" stylesheets="@../styles/lista-peliculas.css" text="Buscar" />
                </children>
             </AnchorPane>
         </content>
