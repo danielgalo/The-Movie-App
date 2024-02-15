@@ -24,13 +24,13 @@ public class ActorDaoImpl extends CommonDaoImpl<Actor> {
 		this.session = session;
 	}
 	
-	public ActoresPeliculas getActorByName(String nombre) {
+	public Actor getActorByName(String nombre) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
 		String hql = "FROM Actor WHERE nombre = :nombre";
-		Query<ActoresPeliculas> query = session.createQuery(hql);
+		Query<Actor> query = session.createQuery(hql);
 		query.setParameter("nombre", nombre);
 		
 		return query.getSingleResult();

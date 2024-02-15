@@ -18,7 +18,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaIntroduccionManualController">
    <children>
-      <ScrollPane fitToWidth="true" prefHeight="1790.0" prefWidth="1440.0">
+      <ScrollPane fitToWidth="true" prefHeight="1024.0" prefWidth="1440.0">
          <content>
             <AnchorPane prefHeight="1790.0" prefWidth="1440.0">
                <children>
@@ -115,7 +115,7 @@
                                     </DropShadow>
                                  </effect>
                               </TextField>
-                              <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="1320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css">
+                              <TextField id="txtField" fx:id="txtUrl" layoutX="500.0" layoutY="1320.0" prefHeight="64.0" prefWidth="810.0" stylesheets="@../styles/introduccion-manual-style.css" text="https://png.pngtree.com/png-clipart/20190611/original/pngtree-cartoon-astronauts-png-image_3171372.jpg">
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                                        <color>
@@ -159,7 +159,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lblPeliculaInsertada" alignment="CENTER" layoutX="395.0" layoutY="1410.0" prefHeight="35.0" prefWidth="553.0">
+                              <Label fx:id="lblPeliculaInsertada" alignment="CENTER" layoutX="30.0" layoutY="1410.0" prefHeight="35.0" prefWidth="1270.0">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -264,7 +264,7 @@
                                     </DropShadow>
                                  </effect>
                               </TextField>
-                              <Spinner id="altField" fx:id="spnValoracion" layoutX="500.0" layoutY="1020.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
+                              <Spinner id="altField" fx:id="spnValoracion" editable="true" layoutX="500.0" layoutY="1020.0" prefHeight="64.0" prefWidth="300.0" stylesheets="@../styles/introduccion-manual-style.css">
                                  <effect>
                                     <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                                        <color>

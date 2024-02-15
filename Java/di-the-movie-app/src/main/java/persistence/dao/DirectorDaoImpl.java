@@ -24,13 +24,13 @@ public class DirectorDaoImpl extends CommonDaoImpl<Director> {
 		this.session = session;
 	}
 
-	public DirectoresPeliculas getDirectorByName(String nombre) {
+	public Director getDirectorByName(String nombre) {
 		if (!session.getTransaction().isActive()) {
 			session.getTransaction().begin();
 		}
 
 		String hql = "FROM Director WHERE nombre = :nombre";
-		Query<DirectoresPeliculas> query = session.createQuery(hql);
+		Query<Director> query = session.createQuery(hql);
 		query.setParameter("nombre", nombre);
 		
 		return query.getSingleResult();

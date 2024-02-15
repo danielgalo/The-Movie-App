@@ -29,8 +29,12 @@ import persistence.dao.ActorDaoImpl;
 import persistence.dao.DirectorDaoImpl;
 import persistence.dao.GeneroDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
+import persistence.entities.Actor;
 import persistence.entities.ActoresPeliculas;
+import persistence.entities.ActoresPeliculasId;
+import persistence.entities.Director;
 import persistence.entities.DirectoresPeliculas;
+import persistence.entities.DirectoresPeliculasId;
 import persistence.entities.GeneroPelicula;
 import persistence.entities.GeneroPeliculaId;
 import persistence.entities.Localizacion;
@@ -159,8 +163,13 @@ public class PantallaIntroduccionManualController {
     						ActorDaoImpl gestorActores = new ActorDaoImpl(session);
     						List<ActoresPeliculas> actores = new ArrayList<ActoresPeliculas>();
     						for (String nombreActor : nombresActores) {
-    							ActoresPeliculas actor = gestorActores.getActorByName(nombreActor);
-    							actores.add(actor);
+    							Actor actor = new Actor();
+    							actor.setNombre(nombreActor);
+    							gestorActores.insert(actor);
+    							
+    							ActoresPeliculasId actorId = new ActoresPeliculasId(pelicula, actor);
+    							ActoresPeliculas actorPeliculas = new ActoresPeliculas(actorId);
+    							actores.add(actorPeliculas);
     						}
     						pelicula.setActoresPeliculas(actores);								
 							}
@@ -171,10 +180,15 @@ public class PantallaIntroduccionManualController {
     						DirectorDaoImpl gestorDirectores = new DirectorDaoImpl(session);
     						List<DirectoresPeliculas> directores = new ArrayList<DirectoresPeliculas>();
     						for (String nombreDirector : nombresDirectores) {
-    							DirectoresPeliculas director = gestorDirectores.getDirectorByName(nombreDirector);
-    							directores.add(director);
+    							Director director = new Director();
+    							director.setNombre(nombreDirector);
+    							gestorDirectores.insert(director);
+    							
+    							DirectoresPeliculasId directorId = new DirectoresPeliculasId(pelicula, director);
+    							DirectoresPeliculas directorPeliculas = new DirectoresPeliculas(directorId);
+    							directores.add(directorPeliculas);
     						}
-    						pelicula.setDirectoresPelicula(null);
+    						pelicula.setDirectoresPelicula(directores);
 							}
     					
     					//Asigna a la película la fecha de estreno 
