@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -95,15 +96,6 @@
                         </Pane>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <TextField id="txtContrasena" fx:id="txtContrasena" layoutX="3.0" layoutY="51.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
-                                 <effect>
-                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                                       <color>
-                                          <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </TextField>
                               <Label id="lblContrasena" layoutX="325.0" stylesheets="@../styles/register-style.css" text="Contraseña:">
                                  <font>
                                     <Font size="30.0" />
@@ -116,19 +108,11 @@
                                     </DropShadow>
                                  </effect>
                               </Label>
+                              <PasswordField id="txtContrasena" fx:id="txtContrasena" layoutX="3.0" layoutY="56.0" stylesheets="@../styles/register-style.css" />
                            </children>
                         </Pane>
                         <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/pantalla-principal-style.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <TextField id="txtRepetirContrasena" fx:id="txtRepetirContrasena" layoutX="3.0" layoutY="62.0" prefHeight="73.0" prefWidth="810.0" stylesheets="@../styles/register-style.css">
-                                 <effect>
-                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                                       <color>
-                                          <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect>
-                              </TextField>
                               <Label id="lblRepetirContrasena" layoutX="277.0" stylesheets="@../styles/register-style.css" text="Repetir contraseña:">
                                  <font>
                                     <Font size="30.0" />
@@ -142,6 +126,7 @@
                                  </effect>
                               </Label>
                               <Label fx:id="lblErrores" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="141.0" prefHeight="30.0" prefWidth="786.0" textFill="RED" />
+                              <PasswordField id="txtRepetirContrasena" fx:id="txtRepetirContrasena" layoutX="2.0" layoutY="56.0" stylesheets="@../styles/register-style.css" />
                            </children>
                         </Pane>
                         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/register-style.css" GridPane.columnIndex="1" GridPane.rowIndex="4">

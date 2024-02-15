@@ -41,6 +41,10 @@ public class PantallaPrincipalController {
 	@FXML
 	private Label lblTitulo;
 
+	/** Texto de bienvenida */
+	@FXML
+	private Label lblBienvenido;
+
 	/** Panel de alta de peliculas */
 	@FXML
 	private Pane panelAltaPeliculas;
@@ -204,6 +208,12 @@ public class PantallaPrincipalController {
 	 */
 	@FXML
 	void initialize() {
+
+		// Recoger la parte del email precedente al "@", que se usará como nombre de
+		// usuario a mostrar
+		String username = PantallaLoginController.currentUser.getEmail().split("@")[0];
+
+		lblBienvenido.setText("Bienvenido, " + username);
 
 		imgLogo.setImage(new Image("/resources/logo-app.png"));
 		addBtn.setImage(new Image("/resources/btn-add.png"));

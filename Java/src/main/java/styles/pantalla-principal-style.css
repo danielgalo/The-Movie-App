@@ -84,15 +84,18 @@
 
 #lblTitulo {
     -fx-text-fill: white;
-    -fx-alignment: center; 
     -fx-font-size: 30px;
     -fx-font-weight: 700; 
-    -fx-text-alignment: center;
 	-fx-translate-x: 50%; 
     -fx-translate-y: 50%;
-    -fx-alignment: CENTER;
     
     
+}
+
+#lblBienvenido {
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-font-weight: 600; 
 }
 
 #txtTituloPelicula {
