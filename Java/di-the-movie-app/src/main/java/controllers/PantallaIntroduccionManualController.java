@@ -28,6 +28,7 @@ import persistence.HibernateUtil;
 import persistence.dao.ActorDaoImpl;
 import persistence.dao.DirectorDaoImpl;
 import persistence.dao.GeneroDaoImpl;
+import persistence.dao.LocalizacionDaoImpl;
 import persistence.dao.PeliculaDaoImpl;
 import persistence.entities.Actor;
 import persistence.entities.ActoresPeliculas;
@@ -131,17 +132,6 @@ public class PantallaIntroduccionManualController {
     					//Asigna a la película el id del usuario que está usando la app
     					pelicula.setUsuario(PantallaLoginController.currentUser);
     					
-    					//Asigna a la película un id de película que no esté en uso
-    					int idUsuario = Integer.parseInt("" + PantallaLoginController.currentUser.getId());
-    					for (long i = 1; i <= 999999999; i++) {
-    						Pelicula registroPeliculaVacio = gestorPelicula.searchById(i, idUsuario);
-								if (registroPeliculaVacio == null) {
-									pelicula.setId(i);
-									session.clear();
-									break;
-								}
-							}
-    					
     					//Asigna a la película el título
     					pelicula.setTitulo(txtTitulo.getText());
     					
@@ -203,8 +193,10 @@ public class PantallaIntroduccionManualController {
     					
     					//Asigna a la película la localización
     					if (!txtLocalizacion.getText().isBlank()) {
+    						LocalizacionDaoImpl gestorLocalizacion = new LocalizacionDaoImpl(session);
     						Localizacion localizacion = new Localizacion();
     						localizacion.setNombre(txtLocalizacion.getText());
+    						gestorLocalizacion.insert(localizacion);
     						pelicula.setLocalizacion(localizacion);								
 							}
     					

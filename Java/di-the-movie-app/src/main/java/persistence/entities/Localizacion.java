@@ -35,7 +35,7 @@ public class Localizacion extends AbstractEntity implements Serializable {
 	private String nombre;
 
 	/** Películas en la localización */
-	@OneToMany(mappedBy = "localizacion", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "localizacion")
 	private List<Pelicula> peliculas;
 
 	/**
