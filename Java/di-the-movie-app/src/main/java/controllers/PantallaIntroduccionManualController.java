@@ -11,6 +11,7 @@ import org.hibernate.Session;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -92,9 +93,11 @@ public class PantallaIntroduccionManualController {
   @FXML
   private TextField txtUrl;
     
-  protected static String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
+  @FXML
+  private CheckBox chkVista;
   
     @FXML
+    String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
     void initialize() {
     	//Añade todos los generos seleccionables al comboBox de generos 
     	cmbGenero.getItems().addAll(generos);
@@ -212,8 +215,10 @@ public class PantallaIntroduccionManualController {
     					//Crea un nuevo objeto Date con los datos del campo de la fecha de visualización
     					@SuppressWarnings("deprecation")
     					Date fechaVisualizacion = new Date(dateFechaVisualizacion.getValue().getYear(), dateFechaVisualizacion.getValue().getMonthValue(), dateFechaVisualizacion.getValue().getDayOfMonth()); 
-    					//Asigna a la película la fecha de visualización 
-    					pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);
+    					//Asigna a la película la fecha de visualización
+    					if (chkVista.isSelected()) {
+    						pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);								
+							}
     					
     					//Si el campo localización no está vacío
     					if (!txtLocalizacion.getText().isBlank()) {
@@ -229,8 +234,10 @@ public class PantallaIntroduccionManualController {
 							}
     					
     					//Asigna a la película la valoracion como valoración general y del usuario
-    					pelicula.setValoracion(spnValoracion.getValue());
-    					pelicula.setValoracionUsuario(spnValoracion.getValue());
+    					if (chkVista.isSelected()) {
+    						pelicula.setValoracion(spnValoracion.getValue());
+    						pelicula.setValoracionUsuario(spnValoracion.getValue());								
+							}
     					
     					//Asigna a la película los comentarios del usuario
     					pelicula.setComentariosUsuario(txtComentarios.getText());
@@ -275,10 +282,18 @@ public class PantallaIntroduccionManualController {
      * @return
      */
     private boolean camposObligatoriosAreNull() {
-			if (txtTitulo.getText().isBlank() || cmbGenero.getValue() == null || dateFechaEstreno.getValue() == null || dateFechaVisualizacion.getValue() == null || txtUrl.getText().isBlank()) {
-				return true;
+    	if (chkVista.isSelected()) {
+    		if (txtTitulo.getText().isBlank() || cmbGenero.getValue() == null || dateFechaEstreno.getValue() == null || dateFechaVisualizacion.getValue() == null || txtUrl.getText().isBlank()) {
+    			return true;
+    		} else {
+    			return false;				
+    		}				
 			} else {
-				return false;				
+				if (txtTitulo.getText().isBlank() || cmbGenero.getValue() == null || dateFechaEstreno.getValue() == null || txtUrl.getText().isBlank()) {
+    			return true;
+    		} else {
+    			return false;				
+    		}
 			}
 		}
     
@@ -333,6 +348,22 @@ public class PantallaIntroduccionManualController {
      */
     void btnAltaExited(MouseEvent event) {
     	btnAlta.setEffect(null);
+    }
+    
+    @FXML
+    /**
+     * Quitá el efecto de sombra al botón
+     * @param event
+     */
+    void chkVistaPressed(MouseEvent event) {
+    	if (chkVista.isSelected()) {
+				dateFechaVisualizacion.setEditable(false);
+				spnValoracion.setEditable(false);
+				
+			} else {
+				dateFechaVisualizacion.setEditable(true);
+				spnValoracion.setEditable(true);
+			}
     }
 
 }

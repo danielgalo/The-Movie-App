@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -222,7 +223,7 @@
                                     </DropShadow>
                                  </effect>
                               </TextField>
-                              <Label id="lblElemento" layoutX="30.0" layoutY="830.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de visualización:">
+                              <Label id="lblElemento" layoutX="170.0" layoutY="830.0" stylesheets="@../styles/introduccion-manual-style.css" text="Fecha de visualización:">
                                  <font>
                                     <Font name="System Bold" size="30.0" />
                                  </font>
@@ -306,7 +307,7 @@
                                     </DropShadow>
                                  </effect>
                               </TextArea>
-                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="810.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
+                              <Label fx:id="lblRecordatorioCampoObligatorio" layoutX="480.0" layoutY="800.0" prefHeight="35.0" prefWidth="14.0" text="*" textFill="RED">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -325,6 +326,27 @@
                                  <font>
                                     <Font size="24.0" />
                                  </font>
+                              </Label>
+                              <CheckBox fx:id="chkVista" layoutX="125.0" layoutY="845.0" mnemonicParsing="false" onMousePressed="#chkVistaPressed">
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </CheckBox>
+                              <Label id="lblElemento" layoutX="30.0" layoutY="830.0" stylesheets="@../styles/introduccion-manual-style.css" text="Vista:">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                                       <color>
+                                          <Color red="0.44736841320991516" green="0.44736841320991516" blue="0.44736841320991516" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
                               </Label>
                            </children>
                            <effect>
