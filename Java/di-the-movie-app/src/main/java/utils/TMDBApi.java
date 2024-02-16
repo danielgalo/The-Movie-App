@@ -85,7 +85,7 @@ public class TMDBApi {
 				JsonObject result = results.get(posicionPelicula).getAsJsonObject();
 
 				// Obtener datos
-				String title = result.get("original_title").getAsString();
+				String title = result.get("title").getAsString();
 				String overview = result.get("overview").getAsString();
 				String releaseDate = result.get("release_date").getAsString();
 				String posterPath = result.get("poster_path").getAsString();
@@ -204,7 +204,7 @@ public class TMDBApi {
 			OkHttpClient client = new OkHttpClient();
 
 			Request request = new Request.Builder()
-					.url("https://api.themoviedb.org/3/movie/" + id.toString() + "/credits?language=en-US").get()
+					.url("https://api.themoviedb.org/3/movie/" + id.toString() + "/credits?language=es-ES").get()
 					.addHeader("accept", "application/json")
 					.addHeader("Authorization",
 							"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZTVjMTgxN2U4NGRlMmMwZGU4ZDM0YmM5MTY1MWEwMCIsInN1YiI6IjY1NmVlZDEzNjUxN2Q2MDBjYzQzMWQyNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ISS3oHobccfNtISmXqBs_dPb3jOm0s9LDQdbN7t1fEQ")

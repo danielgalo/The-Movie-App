@@ -42,7 +42,7 @@ public class NavegacionPantallas {
 	 */
 	public void navegaAPantalla() {
 		try {
-			// Crear stage
+			//Crear Stage
 			Stage stage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			// Cargar la clase
@@ -80,4 +80,5 @@ public class NavegacionPantallas {
 		// Cerrar la ventana actual
 		stage.close();
 	}
+	
 }

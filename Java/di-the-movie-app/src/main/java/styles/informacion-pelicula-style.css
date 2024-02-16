@@ -7,8 +7,9 @@
 }
 
 #labelTitulo{
-	-fx-font-size: 56px;
+	-fx-font-size: 40px;
 	-fx-font-weight: bold;
+	-fx-font-style: italic;
 }
 
 #labelElementos{

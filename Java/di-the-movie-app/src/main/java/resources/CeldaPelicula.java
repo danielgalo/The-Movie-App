@@ -23,18 +23,37 @@ public class CeldaPelicula {
 	private Label tituloPulsable;
 	
 	@SuppressWarnings("deprecation")
+	/**
+	 * Un panel que actua a modo de "celda", conteniendo datos básicos de una película para su rápido reconocimiento
+	 * @param posicionY. La posición vertical de la celda en el panel padre donde será contenida
+	 * @param pelicula. La película cuyos datos se quieren contener en la celda
+	 */
 	public CeldaPelicula(int posicionY, Pelicula pelicula) {
 		this.pelicula = pelicula;
-		
+		//Obten la URL del cartel de la película
 		poster = pelicula.getCartel();
+		//Obten el título de la película
 		titulo = pelicula.getTitulo();
+		/**
+		 * Obten UN SOLO GENERO de la película
+		 * 
+		 * Nota: Un solo género es suficiente para ser básico para mostrar en la celda,
+		 * si obtuviese más no cabrían en la celda
+		 */
 		for (GeneroPelicula generoPelicula : pelicula.getGeneroPelicula()) {		
 			if (!(generoPelicula.getId().getGenero().getNombre().isBlank())) {
 				genero = generoPelicula.getId().getGenero().getNombre();
 				break;				
 			}
 		}
-		
+		/**
+		 * Obten la fecha de estreno de la película
+		 * 
+  	 * Nota: Las películas insertadas desde la API muestran las fechas de manera distinta,
+  	 * sospecho que es por la clase Date más que por la API, pero en cualquier caso aquellas películas
+  	 * que vengan de la API (que tengan un id que viene de la API). Aquellas que vienen de la inserción manual
+  	 * no parecen tener este problema
+  	 */
 		if (pelicula.getIdApi() != null) {
 			fechaLanzamiento = (pelicula.getReleaseDate().getDate()) + "-" + (pelicula.getReleaseDate().getMonth() + 1) + "-" + (pelicula.getReleaseDate().getYear() + 1900);
 		} else {
@@ -169,14 +188,26 @@ public class CeldaPelicula {
   	celdaPelicula.getChildren().add(txtDescripcion);
 	}
 	
+	/**
+	 * Devuelve el panel (o celda) con los datos de la película
+	 * @return
+	 */
 	public Pane getCeldaPelicula() {
 		return celdaPelicula;
 	}
 	
+	/**
+	 * Devuelve la película contenida en la celda
+	 * @return
+	 */
 	public Pelicula getPelicula() {
 		return pelicula;
 	}
 	
+	/**
+	 * Devuelve la etiqueta que contiene el título de la película
+	 * @return
+	 */
 	public Label getLabelTituloPulsable(){
 		return tituloPulsable;
 	}
