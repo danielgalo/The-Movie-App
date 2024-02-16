@@ -52,6 +52,12 @@ public class ExportacionFicherosService {
 			// Convertir las entidades a DTO, para evitar anidaciones al escribir en JSON
 			peliculaEntityToDTO(peliculas, pelisDTO);
 
+			for (PeliculaDTO peliculaDTO : pelisDTO) {
+				if (peliculaDTO.getFechaVisualizacion() == null) {
+					peliculaDTO.setFechaVisualizacion("No visualizacion");
+				}
+			}
+
 			// Convertir la lista de películas a una cadena JSON
 			String jsonString = JSON.toJSONString(pelisDTO, true);
 
@@ -87,9 +93,17 @@ public class ExportacionFicherosService {
 					"fechaVisualizacion", "valoracionUsuario" });
 
 			for (PeliculaDTO peliDTO : pelisDTO) {
-				data.add(new String[] { peliDTO.getTitulo(), peliDTO.getOverview(), peliDTO.getReleaseDate(),
-						peliDTO.getImg(), String.valueOf(peliDTO.getVoteAverage()), peliDTO.getComentariosUsuario(),
-						peliDTO.getFechaVisualizacion(), String.valueOf(peliDTO.getValoracionUsuario()) });
+
+				if (peliDTO.getFechaVisualizacion() == null) {
+					data.add(new String[] { peliDTO.getTitulo(), peliDTO.getOverview(), peliDTO.getReleaseDate(),
+							peliDTO.getImg(), String.valueOf(peliDTO.getVoteAverage()), peliDTO.getComentariosUsuario(),
+							"Sin fecha de visualización", String.valueOf(peliDTO.getValoracionUsuario()) });
+				} else {
+					data.add(new String[] { peliDTO.getTitulo(), peliDTO.getOverview(), peliDTO.getReleaseDate(),
+							peliDTO.getImg(), String.valueOf(peliDTO.getVoteAverage()), peliDTO.getComentariosUsuario(),
+							peliDTO.getFechaVisualizacion(), String.valueOf(peliDTO.getValoracionUsuario()) });
+				}
+
 			}
 
 			// Escribir datos en el archivo CSV
@@ -118,7 +132,10 @@ public class ExportacionFicherosService {
 			String img = pelicula.getCartel();
 			double voteAverage = pelicula.getValoracion();
 			String comentariosUsuario = pelicula.getComentariosUsuario();
-			String fechaVisualizacion = pelicula.getFechaVisualizacionUsuario().toString();
+			String fechaVisualizacion = "";
+			if (pelicula.getFechaVisualizacionUsuario() == null) {
+				fechaVisualizacion = pelicula.getFechaVisualizacionUsuario().toString();
+			}
 			double valoracionUsuario = pelicula.getValoracionUsuario();
 
 			PeliculaDTO peliDto = new PeliculaDTO(titulo, overview, releaseDate, img, voteAverage, comentariosUsuario,

@@ -189,40 +189,47 @@ public class PantallaAltaAPIController {
 		}
 
 		// Si el valor de la fecha de visualización (campo obligatorio) no es nulo
+		if (dateFechaVisUsuario.getValue() != null) {
 
-		// Recoger datos
-		String titulo = txtTituloPelicula.getText();
-		LocalDate localDate = dateFechaVisUsuario.getValue();
-		String comentariosUsuario = txtAreaComentarios.getText();
-		double valoracionUsuario = spinnerValoracionUsuario.getValue();
-		String localizacionPelicula = txtLocalizacion.getText();
-
-		boolean vista = chckBoxVista.isSelected();
-		// Inserta la pelicula, recoge codigo de salida
-		int exitCode = AltaPeliculasService.insertPelicula(titulo, posicionPelicula, localDate, comentariosUsuario,
-				valoracionUsuario, localizacionPelicula, vista);
-
-		Alert alert = new Alert(AlertType.NONE, "Alta de película");
-		alert.setTitle("Alta de película");
-		alert.setResizable(false);
-		alert.setHeaderText("");
-
-		// Mostrar mensaje según el código de salida
-		if (exitCode == 0) {
-			alert.setAlertType(AlertType.INFORMATION);
-			alert.setContentText("La película ha sido dada de alta correctamente.");
-		} else if (exitCode == -1) {
+			// Recoger datos
+			String titulo = txtTituloPelicula.getText();
+			LocalDate localDate = dateFechaVisUsuario.getValue();
+			String comentariosUsuario = txtAreaComentarios.getText();
+			double valoracionUsuario = spinnerValoracionUsuario.getValue();
+			String localizacionPelicula = txtLocalizacion.getText();
+			boolean vista = chckBoxVista.isSelected();
+			// Inserta la pelicula, recoge codigo de salida
+			int exitCode = AltaPeliculasService.insertPelicula(titulo, posicionPelicula, localDate, comentariosUsuario,
+					valoracionUsuario, localizacionPelicula, vista);
+			Alert alert = new Alert(AlertType.NONE, "Alta de película");
+			alert.setTitle("Alta de película");
+			alert.setResizable(false);
+			alert.setHeaderText("");
+			// Mostrar mensaje según el código de salida
+			if (exitCode == 0) {
+				alert.setAlertType(AlertType.INFORMATION);
+				alert.setContentText("La película ha sido dada de alta correctamente.");
+			} else if (exitCode == -1) {
+				alert.setAlertType(AlertType.ERROR);
+				alert.setContentText("Ha ocurrido un error al dar de alta la película.");
+			} else if (exitCode == 2) {
+				alert.setAlertType(AlertType.INFORMATION);
+				alert.setContentText("Actualización de película cancelada");
+			} else if (exitCode == 1) {
+				alert.setAlertType(AlertType.INFORMATION);
+				alert.setContentText("Película actualizada correctamente");
+			}
+			alert.show();
+		} else {
+			Alert alert = new Alert(AlertType.NONE, "Alta de película");
+			alert.setTitle("Alta de película");
+			alert.setResizable(false);
+			alert.setHeaderText("");
 			alert.setAlertType(AlertType.ERROR);
-			alert.setContentText("Ha ocurrido un error al dar de alta la película.");
-		} else if (exitCode == 2) {
-			alert.setAlertType(AlertType.INFORMATION);
-			alert.setContentText("Actualización de película cancelada");
-		} else if (exitCode == 1) {
-			alert.setAlertType(AlertType.INFORMATION);
-			alert.setContentText("Película actualizada correctamente");
+			alert.setContentText("Fecha de visualizacion es obligatoria");
+			alert.show();
+			// Mostrar mensaje según el
 		}
-
-		alert.show();
 
 	}
 
