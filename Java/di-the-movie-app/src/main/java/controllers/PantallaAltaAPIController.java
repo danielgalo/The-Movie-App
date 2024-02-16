@@ -30,7 +30,7 @@ import utils.TMDBApi;
 import utils.constants.Constantes;
 
 /**
- * Controlador para la pantalla de alta de películas mediante la API.
+ * Clase controlador para la pantalla de alta de películas mediante la API.
  */
 public class PantallaAltaAPIController {
 
@@ -196,7 +196,7 @@ public class PantallaAltaAPIController {
 					valoracionUsuario, localizacionPelicula);
 
 			Alert alert = new Alert(AlertType.NONE, "Alta de película");
-			alert.setTitle("Alta de película" + valoracionUsuario);
+			alert.setTitle("Alta de película");
 			alert.setResizable(false);
 			alert.setHeaderText("");
 
