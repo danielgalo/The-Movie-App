@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"application"},{"l":"controllers"},{"l":"persistence"},{"l":"persistence.dao"},{"l":"persistence.dto"},{"l":"persistence.entities"},{"l":"resources"},{"l":"service"},{"l":"utils"},{"l":"utils.constants"}];updateSearchResults();
