@@ -27,7 +27,7 @@ import utils.constants.Constantes;
 public class PantallaListaPeliculasController {
 	
 	@FXML
-  private static Pane mainPane;
+  private Pane mainPane;
 	
 	@FXML
 	private TextField txtBuscarPelicula;
@@ -51,7 +51,7 @@ public class PantallaListaPeliculasController {
   protected static String tituloBuscar = "";
   
   @FXML
-  static void initialize() {
+  void initialize() {
   	final Session session = HibernateUtil.getSession();
   	//Si se ha buscado una película via la barra de busqueda
   	PeliculaDaoImpl buscadorPeliculas = new PeliculaDaoImpl(session);
