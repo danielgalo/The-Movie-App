@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Session;
 
 import javafx.event.EventHandler;
@@ -25,17 +24,14 @@ import utils.constants.Constantes;
 public class PantallaListaPeliculasController {
 	
 	@FXML
-  private Pane mainPane;
+  private static Pane mainPane;
 	
 	@FXML
 	private TextField txtBuscarPelicula;
 
   @FXML
   private Button btnBuscar;
-
-  @FXML
-  private Button btnFiltrar;
-
+  
   @FXML
   private Button btnVolver;
 
@@ -45,14 +41,14 @@ public class PantallaListaPeliculasController {
   @FXML
   private ImageView img;
   
-  private boolean buscar = false;
-  private String tituloBuscar = "";
-  private List<Pelicula> listPeliculas;
-  private List<Pane> listaCeldasPeliculas;
+  private static List<Pelicula> listPeliculas;
+  private static List<Pane> listaCeldasPeliculas;
   protected static Pelicula peliculaActual;
+  private static boolean buscar = false;
+  protected static String tituloBuscar = "";
   
   @FXML
-  void initialize() {
+  static void initialize() {
   	final Session session = HibernateUtil.getSession();
   	
   	PeliculaDaoImpl buscadorPeliculas = new PeliculaDaoImpl(session);
@@ -132,6 +128,7 @@ public class PantallaListaPeliculasController {
   	if (mainPane.getPrefHeight() < 1024) {
 			mainPane.setPrefHeight(1024);
 		}
+  	
   }
 
   @FXML

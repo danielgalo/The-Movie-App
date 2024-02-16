@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -23,7 +24,7 @@ public class PantallaInformacionPeliculaController {
     private Label lblFechaVisualizacion;
 
     @FXML
-    private Label lblGeneros;
+    private TextField txtGeneros;
 
     @FXML
     private Label lblTitulo;
@@ -59,7 +60,7 @@ public class PantallaInformacionPeliculaController {
     void initialize() {
     	poster.setArcWidth(30.0);
     	poster.setArcHeight(30.0);
-    	ImagePattern imagen = new ImagePattern(new Image(pelicula.getCartel(), 165, 200, false, false));
+    	ImagePattern imagen = new ImagePattern(new Image(pelicula.getCartel(), 327, 478, false, false));
     	poster.setFill(imagen);
     	
     	String generos = "";						
@@ -68,22 +69,27 @@ public class PantallaInformacionPeliculaController {
   			if (!(generoPelicula.getId().getGenero().getNombre().isBlank())) {
   				String genero = generoPelicula.getId().getGenero().getNombre();
   				if (generosImportados == 1) {
-  					generos += genero;
+  					if (!generos.contains(genero)) {
+  						generos += genero;							
+  						generosImportados++;
+						}
 					} else {
-						generos = genero + ", " + genero;					
+						if (!generos.contains(genero)) {
+							generos = generos + ", " + genero;
+						}
 					}
-  				generosImportados++;
   			}
   		}
-    	lblGeneros.setText(generos);
+    	txtGeneros.setText(generos);
     	
     	if (pelicula.getIdApi() != null) {
   			lblFechaEstreno.setText((pelicula.getReleaseDate().getDate()) + "-" + (pelicula.getReleaseDate().getMonth() + 1) + "-" + (pelicula.getReleaseDate().getYear() + 1900));
+  			lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + (pelicula.getFechaVisualizacionUsuario().getMonth() + 1) + "-" + (pelicula.getFechaVisualizacionUsuario().getYear() + 1900));
   		} else {
   			lblFechaEstreno.setText(pelicula.getReleaseDate().getDate() + "-" + pelicula.getReleaseDate().getMonth() + "-" + pelicula.getReleaseDate().getYear());			
+  			lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + pelicula.getFechaVisualizacionUsuario().getMonth() + "-" + pelicula.getFechaVisualizacionUsuario().getYear());
   		}
     	
-    	lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + pelicula.getFechaVisualizacionUsuario().getMonth() + "-" + pelicula.getFechaVisualizacionUsuario().getYear());
     	
     	txtDescripcion.setText(pelicula.getOverview());
     	

@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -23,7 +24,7 @@
                   </DropShadow>
                </effect>
             </Rectangle>
-            <Label id="labelTitulo" fx:id="lblTitulo" alignment="TOP_LEFT" layoutX="375.0" layoutY="60.0" prefHeight="166.0" prefWidth="692.0" stylesheets="@../styles/informacion-pelicula-style.css" text="Tituloooooooooooooooooooooooooooooooo" wrapText="true">
+            <Label id="labelTitulo" fx:id="lblTitulo" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="375.0" layoutY="60.0" prefHeight="179.0" prefWidth="692.0" stylesheets="@../styles/informacion-pelicula-style.css" text="Titulo largo ej. Straight Outta Nowhere: Scooby-Doo! Meets Courage the Cowardly Dog" wrapText="true">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -32,7 +33,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TextArea id="textArea" fx:id="txtDescripcion" editable="false" layoutX="375.0" layoutY="405.0" prefHeight="128.0" prefWidth="721.0" stylesheets="@../styles/informacion-pelicula-style.css" wrapText="true">
+            <TextArea id="textArea" fx:id="txtDescripcion" editable="false" layoutX="376.0" layoutY="429.0" prefHeight="128.0" prefWidth="721.0" stylesheets="@../styles/informacion-pelicula-style.css" wrapText="true">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -41,7 +42,7 @@
                   </DropShadow>
                </effect>
             </TextArea>
-            <Label id="labelElementos" layoutX="385.0" layoutY="360.0" prefHeight="53.0" prefWidth="164.0" stylesheets="@../styles/informacion-pelicula-style.css" text="SINOPSIS">
+            <Label id="labelElementos" layoutX="386.0" layoutY="384.0" prefHeight="53.0" prefWidth="164.0" stylesheets="@../styles/informacion-pelicula-style.css" text="SINOPSIS">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -50,7 +51,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" layoutX="375.0" layoutY="240.0" stylesheets="@../styles/informacion-pelicula-style.css" text="GENEROS:">
+            <Label id="labelElementos" layoutX="376.0" layoutY="264.0" stylesheets="@../styles/informacion-pelicula-style.css" text="GENEROS:">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -59,7 +60,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" layoutX="375.0" layoutY="300.0" stylesheets="@../styles/informacion-pelicula-style.css" text="FECHA DE ESTRENO:">
+            <Label id="labelElementos" layoutX="376.0" layoutY="324.0" stylesheets="@../styles/informacion-pelicula-style.css" text="FECHA DE ESTRENO:">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -68,7 +69,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" fx:id="lblGeneros" layoutX="557.0" layoutY="240.0" prefHeight="53.0" prefWidth="518.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XXXXXXXXXXX">
+            <Label id="labelElementos" fx:id="lblFechaEstreno" layoutX="736.0" layoutY="324.0" prefHeight="53.0" prefWidth="340.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX/XXXX">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -77,16 +78,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" fx:id="lblFechaEstreno" layoutX="735.0" layoutY="300.0" prefHeight="53.0" prefWidth="340.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX/XXXX">
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                     <color>
-                        <Color red="0.5438596606254578" green="0.5438596606254578" blue="0.5438596606254578" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Label>
-            <TextArea id="textArea" fx:id="txtComentarios" editable="false" layoutX="26.0" layoutY="865.0" prefHeight="97.0" prefWidth="1072.0" stylesheets="@../styles/informacion-pelicula-style.css" wrapText="true">
+            <TextArea id="textArea" fx:id="txtComentarios" editable="false" layoutX="27.0" layoutY="889.0" prefHeight="97.0" prefWidth="1072.0" stylesheets="@../styles/informacion-pelicula-style.css" wrapText="true">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -95,7 +87,7 @@
                   </DropShadow>
                </effect>
             </TextArea>
-            <Label id="labelElementos" layoutX="36.0" layoutY="816.0" stylesheets="@../styles/informacion-pelicula-style.css" text="COMENTARIOS">
+            <Label id="labelElementos" layoutX="37.0" layoutY="840.0" stylesheets="@../styles/informacion-pelicula-style.css" text="COMENTARIOS">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -104,7 +96,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" alignment="CENTER" layoutX="23.0" layoutY="545.0" prefHeight="53.0" prefWidth="234.0" stylesheets="@../styles/informacion-pelicula-style.css" text="ACTORES">
+            <Label id="labelElementos" alignment="CENTER" layoutX="24.0" layoutY="569.0" prefHeight="53.0" prefWidth="234.0" stylesheets="@../styles/informacion-pelicula-style.css" text="ACTORES">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -113,7 +105,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <ListView id="txtArea" fx:id="lstActores" layoutX="30.0" layoutY="590.0" prefHeight="219.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../styles/informacion-pelicula-style.css">
+            <ListView id="txtArea" fx:id="lstActores" layoutX="31.0" layoutY="614.0" prefHeight="219.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../styles/informacion-pelicula-style.css">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -122,7 +114,7 @@
                   </DropShadow>
                </effect>
             </ListView>
-            <Label id="labelElementos" alignment="CENTER" layoutX="300.0" layoutY="545.0" prefHeight="53.0" prefWidth="228.0" stylesheets="@../styles/informacion-pelicula-style.css" text="DIRECTORES">
+            <Label id="labelElementos" alignment="CENTER" layoutX="301.0" layoutY="569.0" prefHeight="53.0" prefWidth="228.0" stylesheets="@../styles/informacion-pelicula-style.css" text="DIRECTORES">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -131,7 +123,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <ListView id="txtArea" fx:id="lstDirectores" layoutX="300.0" layoutY="590.0" prefHeight="219.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../styles/informacion-pelicula-style.css">
+            <ListView id="txtArea" fx:id="lstDirectores" layoutX="301.0" layoutY="614.0" prefHeight="219.0" prefWidth="228.0" style="-fx-border-color: black; -fx-border-width: 3px;" stylesheets="@../styles/informacion-pelicula-style.css">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -140,7 +132,7 @@
                   </DropShadow>
                </effect>
             </ListView>
-            <Label id="labelElementos" layoutX="560.0" layoutY="605.0" prefHeight="53.0" prefWidth="256.0" stylesheets="@../styles/informacion-pelicula-style.css" text="VALORACIÓN:">
+            <Label id="labelElementos" layoutX="561.0" layoutY="629.0" prefHeight="53.0" prefWidth="256.0" stylesheets="@../styles/informacion-pelicula-style.css" text="VALORACIÓN:">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -149,7 +141,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" layoutX="560.0" layoutY="745.0" prefHeight="53.0" prefWidth="268.0" stylesheets="@../styles/informacion-pelicula-style.css" text="VAL. USUARIO:">
+            <Label id="labelElementos" layoutX="561.0" layoutY="769.0" prefHeight="53.0" prefWidth="268.0" stylesheets="@../styles/informacion-pelicula-style.css" text="VAL. USUARIO:">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -158,7 +150,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" layoutX="560.0" layoutY="675.0" prefHeight="53.0" prefWidth="228.0" stylesheets="@../styles/informacion-pelicula-style.css" text="FEC. VISTA:">
+            <Label id="labelElementos" layoutX="561.0" layoutY="699.0" prefHeight="53.0" prefWidth="242.0" stylesheets="@../styles/informacion-pelicula-style.css" text="FECHA VISTA:">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -167,7 +159,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" fx:id="lblFechaVisualizacion" layoutX="765.0" layoutY="675.0" prefHeight="53.0" prefWidth="323.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX/XXXX">
+            <Label id="labelElementos" fx:id="lblFechaVisualizacion" layoutX="809.0" layoutY="699.0" prefHeight="53.0" prefWidth="280.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX/XXXX">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -176,7 +168,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" fx:id="lblValoracionUsuario" layoutX="830.0" layoutY="745.0" prefHeight="53.0" prefWidth="268.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX">
+            <Label id="labelElementos" fx:id="lblValoracionUsuario" layoutX="831.0" layoutY="769.0" prefHeight="53.0" prefWidth="268.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -185,7 +177,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <Label id="labelElementos" fx:id="lblValoracion" layoutX="820.0" layoutY="605.0" prefHeight="53.0" prefWidth="280.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX">
+            <Label id="labelElementos" fx:id="lblValoracion" layoutX="821.0" layoutY="629.0" prefHeight="53.0" prefWidth="280.0" stylesheets="@../styles/informacion-pelicula-style.css" text="XX/XX">
                <effect>
                   <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                      <color>
@@ -199,6 +191,15 @@
                   <Font size="36.0" />
                </font>
             </Label>
+            <TextField id="textArea" fx:id="txtGeneros" editable="false" layoutX="561.0" layoutY="262.0" prefHeight="53.0" prefWidth="537.0" stylesheets="@../styles/informacion-pelicula-style.css">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
+                     <color>
+                        <Color red="0.4117647111415863" green="0.4117647111415863" blue="0.4117647111415863" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </TextField>
          </children>
       </Pane>
    </children>

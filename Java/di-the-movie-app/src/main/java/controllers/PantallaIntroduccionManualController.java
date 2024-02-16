@@ -89,10 +89,11 @@ public class PantallaIntroduccionManualController {
   @FXML
   private TextField txtUrl;
     
+  protected static String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
+  
     @FXML
     void initialize() {
     	//Añade todos los generos seleccionables al comboBox de generos 
-    	String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
     	cmbGenero.getItems().addAll(generos);
     	//Asigna los valores y límites del campo de valoración
     	SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);

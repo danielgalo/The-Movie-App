@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaListaPeliculasController">
@@ -34,17 +33,7 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Button id="btnFiltrar" fx:id="btnFiltrar" layoutX="38.0" layoutY="136.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="261.0" stylesheets="@../styles/lista-peliculas.css" text="FILTRAR POR        ">
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
-                           <color>
-                              <Color red="0.4000000059604645" green="0.4000000059604645" blue="0.4000000059604645" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Button>
-                  <Polygon fill="WHITE" layoutX="313.0" layoutY="107.0" points="-84.11112976074219, 48.11109924316406, -32.555572509765625, 48.11109924316406, -57.4444580078125, 68.55555725097656" stroke="WHITE" strokeType="INSIDE" />
-                  <TextField id="barraBusqueda" fx:id="txtBuscarPelicula" layoutX="807.0" layoutY="136.0" prefHeight="54.0" prefWidth="581.0" stylesheets="@../styles/lista-peliculas.css">
+                  <TextField id="barraBusqueda" fx:id="txtBuscarPelicula" layoutX="43.0" layoutY="136.0" prefHeight="55.0" prefWidth="1345.0" stylesheets="@../styles/lista-peliculas.css">
                      <effect>
                         <DropShadow blurType="ONE_PASS_BOX" offsetY="4.0">
                            <color>
