@@ -37,6 +37,9 @@ public class PantallaInformacionPeliculaController {
 
     @FXML
     private Label lblValoracionUsuario;
+    
+    @FXML
+    private Label lblVista;
 
     @FXML
     private ListView<String> lstActores;
@@ -103,22 +106,35 @@ public class PantallaInformacionPeliculaController {
     	 */
     	if (pelicula.getIdApi() != null) {
   			lblFechaEstreno.setText((pelicula.getReleaseDate().getDate()) + "-" + (pelicula.getReleaseDate().getMonth() + 1) + "-" + (pelicula.getReleaseDate().getYear() + 1900));
-  			lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + (pelicula.getFechaVisualizacionUsuario().getMonth() + 1) + "-" + (pelicula.getFechaVisualizacionUsuario().getYear() + 1900));
   		} else {
   			lblFechaEstreno.setText(pelicula.getReleaseDate().getDate() + "-" + pelicula.getReleaseDate().getMonth() + "-" + pelicula.getReleaseDate().getYear());			
-  			lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + pelicula.getFechaVisualizacionUsuario().getMonth() + "-" + pelicula.getFechaVisualizacionUsuario().getYear());
+  			
   		}
     	
     	//Muestra la descripción de la película
     	txtDescripcion.setText(pelicula.getOverview());
     	//Muestra la valoración media de la película
     	lblValoracion.setText(pelicula.getValoracion() + "/10");
-    	//Muestra la valoración del usuario de la película
-    	lblValoracionUsuario.setText(pelicula.getValoracionUsuario() + "/10");
     	//Muestra los comentarios del usuario de la película
     	txtComentarios.setText(pelicula.getComentariosUsuario());
     	//Muestra el título de la película
     	lblTitulo.setText(pelicula.getTitulo());
+    	
+    	//Muestra si la película ha sido vista por el usuario
+    	if (pelicula.isVisualizada()) {
+				lblVista.setText("SÍ");
+				//Si ha sido vista, se incluirá la fecha de visualización y la valoración del usuario
+				lblValoracionUsuario.setText(pelicula.getValoracionUsuario() + "/10");
+				if (pelicula.getIdApi() != null) {
+					lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + (pelicula.getFechaVisualizacionUsuario().getMonth() + 1) + "-" + (pelicula.getFechaVisualizacionUsuario().getYear() + 1900));
+				} else {
+					lblFechaVisualizacion.setText(pelicula.getFechaVisualizacionUsuario().getDate() + "-" + pelicula.getFechaVisualizacionUsuario().getMonth() + "-" + pelicula.getFechaVisualizacionUsuario().getYear());
+				}
+			} else {
+				lblVista.setText("NO");
+				lblValoracionUsuario.setText("No vista aún");
+				lblFechaVisualizacion.setText("No vista aún.");
+			}
     	
     	//Muestra en una lista los actores de la película
     	for (ActoresPeliculas actoresPeliculas : pelicula.getActoresPeliculas()) {
