@@ -97,6 +97,31 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	@JoinColumn(name = "localizacion_id")
 	private Localizacion localizacion;
 
+	/** Película visualizada */
+	@Column(name = "visualizada")
+	private boolean visualizada;
+
+	/**
+	 * @return the visualizada
+	 */
+	public boolean isVisualizada() {
+		return visualizada;
+	}
+
+	/**
+	 * @param visualizada the visualizada to set
+	 */
+	public void setVisualizada(boolean visualizada) {
+		this.visualizada = visualizada;
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	/**
 	 * @return the generoPelicula
 	 */
@@ -138,7 +163,7 @@ public class Pelicula extends AbstractEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * @return the API id
 	 */

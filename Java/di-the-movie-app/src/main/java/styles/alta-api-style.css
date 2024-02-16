@@ -23,6 +23,12 @@
 	    -fx-font-weight: 700; 
 	
 }
+
+#chckBoxVista{
+		-fx-font-size: 20.0px;
+	    -fx-font-weight: 700; 
+	
+}
 #lblError{
 	-fx-font-family: "Inter";
 	-fx-text-fill:red;

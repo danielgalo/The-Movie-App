@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
@@ -44,6 +45,7 @@
                   </Label>
                   <Label fx:id="lblInfo" alignment="CENTER_RIGHT" layoutX="858.0" layoutY="410.0" prefHeight="30.0" prefWidth="498.0" />
                   <Label fx:id="lblError" alignment="CENTER_RIGHT" layoutX="854.0" layoutY="482.0" prefHeight="30.0" prefWidth="339.0" />
+                  <CheckBox fx:id="chckBoxVista" disable="true" layoutX="1266.0" layoutY="364.0" mnemonicParsing="false" text="Vista" />
                </children>
             </Pane>
          </children>

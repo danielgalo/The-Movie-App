@@ -62,12 +62,14 @@ public class AltaPeliculasService {
 	 * @param comentariosUsuario comentarios del usuario sobre la película
 	 * @param valoracionUsuario  valoración del usuario de la película
 	 * @param input              nombre de la localización de la película
+	 * @param vista              indicador de si la pelicula ha sido visualizada
+	 * 
 	 * @return {@code 0} si se pudo dar de alta la película, {@code -1} si hubo
 	 *         algún problema y {@code 2} si el usuario cancela la insercion de la
 	 *         pelicula
 	 */
 	public static int insertPelicula(String titulo, int posicionPelicula, LocalDate localDate,
-			String comentariosUsuario, double valoracionUsuario, String inputLoc) {
+			String comentariosUsuario, double valoracionUsuario, String inputLoc, boolean vista) {
 		Session session = null;
 
 		try {
@@ -112,7 +114,7 @@ public class AltaPeliculasService {
 
 				// Datos de la entidad pelicula a insertar
 				setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion, comentariosUsuario,
-						valoracionUsuario);
+						valoracionUsuario, vista);
 
 				// Conseguir géneros para la pelicula
 				List<GeneroPelicula> generosPelicula = setGenerosPelicula(peliDto, generoDao, pelicula);
@@ -198,9 +200,10 @@ public class AltaPeliculasService {
 	 * @param releaseDate        fecha de lanzamiento de la pelicula
 	 * @param year               año de lanzamiento de la pelicula
 	 * @param fechaVisualizacion fecha en el que el usuario ha visto la pelicula
+	 * @param vista              indicador de si la pelicula ha sido visualizada
 	 */
 	private static void setDatosPelicula(PeliculaDTO peliDto, User usuario, Pelicula pelicula, Date releaseDate,
-			int year, Date fechaVisualizacion, String comentariosUsuario, double valoracionUsuario) {
+			int year, Date fechaVisualizacion, String comentariosUsuario, double valoracionUsuario, boolean vista) {
 		pelicula.setIdApi(peliDto.getId());
 		pelicula.setTitulo(peliDto.getTitulo());
 		pelicula.setOverview(peliDto.getOverview());
@@ -212,6 +215,8 @@ public class AltaPeliculasService {
 		pelicula.setYear(year);
 		pelicula.setUsuario(usuario);
 		pelicula.setValoracion(peliDto.getVoteAverage());
+		pelicula.setVisualizada(vista);
+
 	}
 
 	/**

@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
@@ -127,6 +128,10 @@ public class PantallaAltaAPIController {
 	@FXML
 	private Label lblInfo;
 
+	/** Check box pelicula vista */
+	@FXML
+	private CheckBox chckBoxVista;
+
 	/** Posición de la película en la búsqueda */
 	private int posicionPelicula;
 
@@ -153,6 +158,8 @@ public class PantallaAltaAPIController {
 		DropShadow shadow = new DropShadow();
 		shadow.setOffsetY(3);
 		shadow.setColor(new Color(0, 0, 0, 0.35));
+
+		chckBoxVista.setEffect(shadow);
 
 		ControllerUtils.setShadowLabels(shadow, lblCabecera, lblTituloIntroducir, lblDatosPelicula);
 		ControllerUtils.setShadowTxtFields(shadow, txtTituloPelicula);
@@ -191,9 +198,10 @@ public class PantallaAltaAPIController {
 			double valoracionUsuario = spinnerValoracionUsuario.getValue();
 			String localizacionPelicula = txtLocalizacion.getText();
 
+			boolean vista = chckBoxVista.isSelected();
 			// Inserta la pelicula, recoge codigo de salida
 			int exitCode = AltaPeliculasService.insertPelicula(titulo, posicionPelicula, localDate, comentariosUsuario,
-					valoracionUsuario, localizacionPelicula);
+					valoracionUsuario, localizacionPelicula, vista);
 
 			Alert alert = new Alert(AlertType.NONE, "Alta de película");
 			alert.setTitle("Alta de película");
@@ -264,6 +272,7 @@ public class PantallaAltaAPIController {
 		btnAlta.setDisable(false);
 		btnSiguiente.setDisable(false);
 		btnAnterior.setDisable(false);
+		chckBoxVista.setDisable(false);
 
 	}
 

@@ -88,6 +88,7 @@ CREATE TABLE peliculas (
     cartel VARCHAR(255),
     comentarios_usuario VARCHAR(255),
     titulo VARCHAR(255),
+     visualizada BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (id),
     FOREIGN KEY (localizacion_id) REFERENCES localizaciones (id),
     FOREIGN KEY (user_id) REFERENCES usuario (id)
