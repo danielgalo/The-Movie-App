@@ -11,7 +11,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../styles/alta-api-style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PantallaAltaAPIController">
    <children>
@@ -38,11 +37,6 @@
                   <Button fx:id="btnAlta" disable="true" layoutX="1290.0" layoutY="476.0" mnemonicParsing="false" onMousePressed="#btnAltaPressed" prefHeight="39.0" prefWidth="79.0" text="Alta" />
                   <Label layoutX="853.0" layoutY="305.0" text="Fecha de visualización:" />
                   <DatePicker fx:id="dateFechaVisUsuario" disable="true" layoutX="1140.0" layoutY="307.0" prefHeight="25.0" prefWidth="212.0" promptText="Fecha en la que la has visto" />
-                  <Label id="lblError" layoutX="1140.0" layoutY="332.0" prefHeight="12.0" prefWidth="193.0" text="*Campo obligatorio" textFill="RED">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="lblInfo" alignment="CENTER_RIGHT" layoutX="858.0" layoutY="410.0" prefHeight="30.0" prefWidth="498.0" />
                   <Label fx:id="lblError" alignment="CENTER_RIGHT" layoutX="854.0" layoutY="482.0" prefHeight="30.0" prefWidth="339.0" />
                   <CheckBox fx:id="chckBoxVista" disable="true" layoutX="1266.0" layoutY="364.0" mnemonicParsing="false" text="Vista" />

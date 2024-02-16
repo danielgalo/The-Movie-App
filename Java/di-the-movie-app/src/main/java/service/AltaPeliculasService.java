@@ -110,7 +110,10 @@ public class AltaPeliculasService {
 				SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy");
 				int year = Integer.parseInt(yearDateFormat.format(releaseDate));
 
-				Date fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+				Date fechaVisualizacion = null;
+				if (localDate != null) {
+					fechaVisualizacion = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+				}
 
 				// Datos de la entidad pelicula a insertar
 				setDatosPelicula(peliDto, usuario, pelicula, releaseDate, year, fechaVisualizacion, comentariosUsuario,
