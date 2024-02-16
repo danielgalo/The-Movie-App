@@ -42,6 +42,9 @@ import persistence.entities.Pelicula;
 import utils.NavegacionPantallas;
 import utils.constants.Constantes;
 
+/**
+ * Pantalla para la introducción de una película y sus datos en la base de datos con un formulario.
+ */
 public class PantallaIntroduccionManualController {
 
 	@FXML

@@ -186,6 +186,10 @@ public class PantallaRegisterController {
 	}
 
 	@FXML
+	/**
+	 * Añade sombra al botón
+	 * @param event
+	 */
 	void btnRegistrarseEntered(MouseEvent event) {
 		DropShadow shadow = new DropShadow();
 		shadow.setColor(new Color(0.0, 0.0, 0.0, 1.0));
@@ -194,11 +198,19 @@ public class PantallaRegisterController {
 	}
 
 	@FXML
+	/**
+	 * Quita la sombra al botón
+	 * @param event
+	 */
 	void btnRegistrarseExited(MouseEvent event) {
 		btnRegistrarse.setEffect(null);
 	}
 
 	@FXML
+	/**
+	 * Cierra la ventana de registro y vuelve a la pantalla de login
+	 * @param event
+	 */
 	void btnVolverPressed(MouseEvent event) {
 		NavegacionPantallas navegacion = new NavegacionPantallas("Pantalla Logín", Constantes.PANTALLA_LOGIN,
 				Constantes.CSS_LOGIN);
@@ -207,6 +219,10 @@ public class PantallaRegisterController {
 	}
 
 	@FXML
+	/**
+	 * Añade sombra al botón
+	 * @param event
+	 */
 	void btnVolverEntered(MouseEvent event) {
 		DropShadow shadow = new DropShadow();
 		shadow.setColor(new Color(0.0, 0.0, 0.0, 1.0));
@@ -215,6 +231,10 @@ public class PantallaRegisterController {
 	}
 
 	@FXML
+	/**
+	 * Le quita la sombra al botón
+	 * @param event
+	 */
 	void btnVolverExited(MouseEvent event) {
 		btnVolver.setEffect(null);
 	}
