@@ -97,9 +97,9 @@ public class PantallaIntroduccionManualController {
   private CheckBox chkVista;
   
     @FXML
-    String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
     void initialize() {
     	//Añade todos los generos seleccionables al comboBox de generos 
+    	String[] generos = {"Acción", "Animación", "Aventura", "Bélica", "Ciencia ficción", "Comedia", "Crimen", "Documental", "Drama", "Familia", "Fantasía", "Historia", "Misterio", "Música", "Película de TV", "Romance", "Suspense", "Terror", "Western"};
     	cmbGenero.getItems().addAll(generos);
     	//Asigna los valores y límites del campo de valoración
     	SpinnerValueFactory<Double> valueFactory = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 10, 0, 0.5);
@@ -212,11 +212,11 @@ public class PantallaIntroduccionManualController {
     					//Asigna a la película la fecha de estreno
     					pelicula.setReleaseDate(fechaEstreno);
     					
-    					//Crea un nuevo objeto Date con los datos del campo de la fecha de visualización
-    					@SuppressWarnings("deprecation")
-    					Date fechaVisualizacion = new Date(dateFechaVisualizacion.getValue().getYear(), dateFechaVisualizacion.getValue().getMonthValue(), dateFechaVisualizacion.getValue().getDayOfMonth()); 
     					//Asigna a la película la fecha de visualización
     					if (chkVista.isSelected()) {
+    						@SuppressWarnings("deprecation")
+    						//Crea un nuevo objeto Date con los datos del campo de la fecha de visualización
+    						Date fechaVisualizacion = new Date(dateFechaVisualizacion.getValue().getYear(), dateFechaVisualizacion.getValue().getMonthValue(), dateFechaVisualizacion.getValue().getDayOfMonth()); 
     						pelicula.setFechaVisualizacionUsuario(fechaVisualizacion);								
 							}
     					
@@ -244,6 +244,10 @@ public class PantallaIntroduccionManualController {
     					
     					//Asigna a la película la URL de la imagen del poster
     					pelicula.setCartel(txtUrl.getText());
+    					
+    					if (chkVista.isSelected()) {
+								pelicula.setVisualizada(true);
+							}
     					
     					//Inserta la película en la base de datos
     					gestorPelicula.insert(pelicula);
